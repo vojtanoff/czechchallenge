@@ -30,7 +30,7 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-cta">
-      <a class="btn btn-primary" id="registerTop" href="#contact">Register</a>
+      <a class="btn btn-primary" id="registerTop" href="#contact">I'm interested</a>
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -55,7 +55,7 @@
     <span class="vol">Vol. 3 · Let's join us again!</span>
     <div class="meta">23 October 2026<small>Complex PCI Meeting · Pardubice · Czechia · welcome dinner 22 October</small></div>
     <div class="cta">
-      <a class="btn btn-lime" href="#contact">Register</a>
+      <a class="btn btn-lime" href="#contact">I'm interested</a>
       <a class="btn btn-ghost" href="#program">See the program</a>
     </div>
   </div>
@@ -159,10 +159,10 @@
 <section id="contact" class="contact">
   <div class="wrap contact-grid">
     <div class="reveal">
-      <p class="eyebrow">Registration &amp; contact</p>
-      <h2>Save your seat in Pardubice.</h2>
-      <p style="margin-top:18px">Registration is by e-mail. Send us your name, institution and whether you'll join the welcome dinner on October&nbsp;22 – we'll confirm within a few days. Capacity of the hall is limited.</p>
-      <p><a class="btn btn-lime" id="registerBtn" href="#">Register by e-mail</a></p>
+      <p class="eyebrow">Interest &amp; contact</p>
+      <h2>Not invited yet? Tell us you're interested.</h2>
+      <p style="margin-top:18px">This year's meeting is by invitation. If you'd like to be part of the coming editions, let us know – your interest helps us scale the meeting according to demand in the years ahead. Thank you!</p>
+      <p><a class="btn btn-lime" id="registerBtn" href="#">I'm interested – send an e-mail</a></p>
     </div>
     <div class="card reveal">
       <b>CTO&amp;CHIP Czech Challenge</b>
@@ -254,8 +254,9 @@
     }).join("");
 
     // registrace mailem
-    var mail="mailto:"+C.event.email+"?subject="+encodeURIComponent("Registration – Czech Challenge 2026")
-      +"&body="+encodeURIComponent("Name:\nInstitution:\nWelcome dinner 22 Oct: yes / no\n");
+    // letos je akce na pozvání – mail sbírá zájem, ne registrace
+    var mail="mailto:"+C.event.email+"?subject="+encodeURIComponent("Interested – CTO&CHIP Czech Challenge")
+      +"&body="+encodeURIComponent("Hello,\n\nI'm interested in the CTO&CHIP Czech Challenge.\n\nName:\nInstitution:\nCountry:\n\n---\nThis year's meeting is by invitation. Your interest helps us scale the meeting according to demand in the coming years – thank you for your interest!");
     ["#registerBtn","#registerTop"].forEach(function(s){ $(s).href=mail; });
     $("#mailLink").href="mailto:"+C.event.email;
 
