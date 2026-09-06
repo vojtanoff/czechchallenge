@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=2026-09-07a">
+<link rel="stylesheet" href="style.css?v=2026-09-07b">
 </head>
 <body>
 
@@ -247,52 +247,6 @@
         var y=scrollY||pageYOffset; if(y>innerHeight*0.6) byloDole=true;
         else if(byloDole && y<40 && smotana){ byloDole=false; nakresli(); }
       },{passive:true});
-    })();
-
-    // POKUS: stopa smyčky přes celou stránku, kreslí se podle scrollu (vypnutí: ?stopa=0)
-    (function(){
-      if(/[?&]stopa=test/.test(location.search)) document.documentElement.style.setProperty("--stopa-test","1");
-      if(/[?&]stopa=0/.test(location.search) || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-      var NS="http://www.w3.org/2000/svg", svg=document.createElementNS(NS,"svg"), path=document.createElementNS(NS,"path");
-      svg.setAttribute("class","stopa"); svg.setAttribute("aria-hidden","true"); svg.appendChild(path); document.body.appendChild(svg);
-      var tab=[], delka=0;
-      // deterministický „náhodný" generátor – stopa je pokaždé stejná, ale nepravidelná
-      function rnd(seed){ return function(){ seed|=0; seed=seed+0x6D2B79F5|0; var t=Math.imul(seed^seed>>>15,1|seed); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
-      // obrazce, které čára cestou nakreslí (vždy začínají i končí v aktuálním bodě, aby čára pokračovala)
-      var OBRAZCE={
-        klicka:function(r,sm){ return " c"+(sm*r*1.6)+" "+(r*0.9)+", "+(sm*r*1.6)+" "+(-r*1.9)+", 0 "+(-r)+" c"+(-sm*r*1.2)+" "+(r*0.6)+", "+(-sm*r*0.4)+" "+(r*1.2)+", 0 "+r; },
-        srdce:function(r,sm){ return " c"+(-r*1.5)+" "+(-r*1.2)+", "+(-r*0.9)+" "+(-r*2.3)+", 0 "+(-r*1.55)+" c"+(r*0.9)+" "+(-r*0.75)+", "+(r*1.5)+" "+(r*0.35)+", 0 "+(r*1.55); },
-        spirala:function(r,sm){ var d="", n=3; for(var j=0;j<n;j++){ var q=r*(0.75-j*0.12); d+=" c"+(sm*q*1.7)+" "+(q*0.8)+", "+(sm*q*1.7)+" "+(-q*2.0)+", "+(sm*q*0.55)+" "+(-q*0.9)+" c"+(-sm*q*0.9)+" "+(q*0.5)+", "+(-sm*q*0.6)+" "+(q*1.1)+", "+(sm*q*0.35)+" "+(q*0.9); } return d; },
-        osmicka:function(r,sm){ return " c"+(sm*r*1.8)+" "+(-r*1.4)+", "+(sm*r*1.8)+" "+(r*1.4)+", 0 0 c"+(-sm*r*1.8)+" "+(-r*1.4)+", "+(-sm*r*1.8)+" "+(r*1.4)+", 0 0"; }
-      };
-      function postav(){
-        var W=document.documentElement.clientWidth, H=document.documentElement.scrollHeight, hero=document.querySelector(".hero");
-        var y0=hero?hero.offsetTop+hero.offsetHeight-40:400, R=rnd(2026);
-        svg.setAttribute("width",W); svg.setAttribute("height",H); svg.setAttribute("viewBox","0 0 "+W+" "+H);
-        var x=W*0.86, y=y0, d="M"+x+" "+y, sm=-1, pořadí=["klicka","srdce","spirala","klicka","osmicka","srdce","klicka","spirala"], o=0, odObrazce=0;
-        while(y<H-160){
-          var dy=380+R()*520, nx=sm<0?W*(0.06+R()*0.22):W*(0.72+R()*0.22), ny=Math.min(y+dy,H-120);
-          var c1y=y+dy*(0.35+R()*0.35), c2y=ny-dy*(0.35+R()*0.35), c1x=x+(R()-0.5)*W*0.25, c2x=nx+(R()-0.5)*W*0.25;
-          d+=" C"+c1x+" "+c1y+", "+c2x+" "+c2y+", "+nx+" "+ny;
-          x=nx; y=ny; odObrazce++;
-          if(odObrazce>=2-(R()<0.35?1:0) && y<H-400){ var r=Math.min(110,W*0.08)*(0.7+R()*0.6); d+=OBRAZCE[pořadí[o++%pořadí.length]](r,-sm); odObrazce=0; }   // obrazec vždy dovnitř stránky
-          sm=-sm;
-        }
-        path.setAttribute("d",d); delka=path.getTotalLength(); path.style.strokeDasharray=delka; tab=[];
-        for(var k=0;k<=600;k++){ var pt=path.getPointAtLength(delka*k/600); tab.push([delka*k/600,pt.y]); }
-        kresli();
-      }
-      function kresli(){
-        if(!tab.length) return;
-        var cil=(scrollY||pageYOffset)+innerHeight*0.72, L=0;       // špička čáry drží zhruba ve spodní třetině okna
-        var maxy=-1e9; for(var k=0;k<tab.length;k++){ maxy=Math.max(maxy,tab[k][1]); if(maxy>=cil) break; L=tab[k][0]; }
-        path.style.strokeDashoffset=delka-L;
-      }
-      var tik=false; addEventListener("scroll",function(){ if(tik) return; tik=true; requestAnimationFrame(function(){ kresli(); tik=false; }); },{passive:true});
-      addEventListener("resize",function(){ clearTimeout(svg._t); svg._t=setTimeout(postav,200); });
-      addEventListener("load",function(){ setTimeout(postav,300); }); setTimeout(postav,800);
-      // stránka se po načtení fotek prodlužuje – při změně výšky dokumentu stopu přestavět
-      if(window.ResizeObserver){ var vyska=0; new ResizeObserver(function(){ var h=document.documentElement.scrollHeight; if(Math.abs(h-vyska)>40){ vyska=h; clearTimeout(svg._t); svg._t=setTimeout(postav,250); } }).observe(document.body); }
     })();
 
     // directors

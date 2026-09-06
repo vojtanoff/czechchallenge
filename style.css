@@ -31,7 +31,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} *{animation:none !important; transition:none !important} }
-body{margin:0; position:relative; background:var(--ground); color:var(--ink); font-family:var(--font-body);
+body{margin:0; background:var(--ground); color:var(--ink); font-family:var(--font-body);
   font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased}
 img{max-width:100%; display:block}
 a{color:var(--violet)}
@@ -229,10 +229,3 @@ footer img{height:22px; filter:grayscale(1); opacity:.7}
 .reveal{transform:translateY(18px); transition:transform .7s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{transform:none}
 
-/* POKUS: stopa smyčky, která se kreslí podle scrollu přes celou stránku (vypnout ?stopa=0) */
-.stopa{position:absolute; left:0; top:0; width:100%; z-index:2; pointer-events:none; opacity:.42; mix-blend-mode:multiply}
-:root[style*="--stopa-test"] .stopa{opacity:1!important; mix-blend-mode:normal!important} :root[style*="--stopa-test"] .stopa path{stroke:#F2FF9F}
-.stopa path{fill:none; stroke:var(--violet); stroke-width:7; stroke-linecap:round; vector-effect:non-scaling-stroke}
-@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .stopa{mix-blend-mode:screen; opacity:.28} }
-:root[data-theme="dark"] .stopa{mix-blend-mode:screen; opacity:.28}
-@media (max-width:700px){ .stopa{opacity:.3} .stopa path{stroke-width:5} }
