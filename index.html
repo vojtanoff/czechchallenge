@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=2026-09-06l">
+<link rel="stylesheet" href="style.css?v=2026-09-06m">
 </head>
 <body>
 
@@ -235,6 +235,20 @@
         if(dalsi===cur) return;
         ds[cur].classList.remove("on"); prolni(imgs,cur,dalsi); cur=dalsi; ds[cur].classList.add("on"); },5200);
     }
+
+    // smyčka: po načtení se nakreslí, chvíli vydrží a zase se smotá; po návratu nahoru (scroll) znovu
+    (function(){
+      var sm=document.querySelector(".loop"); if(!sm) return;
+      var bezi=false, smotana=true, cas=null;
+      function nakresli(){ if(bezi) return; bezi=true; smotana=false; sm.classList.add("on");
+        cas=setTimeout(function(){ sm.classList.remove("on"); setTimeout(function(){ bezi=false; smotana=true; },2600); },2600+3400); }
+      setTimeout(nakresli,400);
+      var byloDole=false;
+      addEventListener("scroll",function(){
+        var y=scrollY||pageYOffset; if(y>innerHeight*0.6) byloDole=true;
+        else if(byloDole && y<40 && smotana){ byloDole=false; nakresli(); }
+      },{passive:true});
+    })();
 
     // directors
     // víc fotek u jednoho člověka = střídají se (prolnutím), první je výchozí; bez fotky monogram
