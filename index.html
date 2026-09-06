@@ -217,8 +217,13 @@
     POS=C.pos||{};
     // hero – prolínání fotek
     var box=$("#heroPhotos"), dots=$("#heroDots");
-    C.hero.forEach(function(src,i){
-      var im=new Image(); im.src=src; im.alt=""; if(i===0) im.className="on"; im.loading="eager"; im.decoding="async"; poz(im,src,"50% 40%"); box.appendChild(im);
+    // první fotka pevná, zbytek náhodný výběr z galerie (jen na šířku) + ostatních hero fotek – při každém načtení jiný
+    var zasoba=[].concat(C.hero.slice(1)), gal=[].concat(C.gallery["2025"]||[],C.gallery["2024"]||[]);
+    gal.forEach(function(g){ if(!g.vyska && zasoba.indexOf(g.src)<0) zasoba.push(g.src); });
+    for(var z=zasoba.length-1; z>0; z--){ var r=Math.floor(Math.random()*(z+1)), t=zasoba[z]; zasoba[z]=zasoba[r]; zasoba[r]=t; }
+    var heroSez=[C.hero[0]].concat(zasoba.slice(0,9));
+    heroSez.forEach(function(src,i){
+      var im=new Image(); im.src=src; im.alt=""; if(i===0) im.className="on"; im.loading=i<3?"eager":"lazy"; im.decoding="async"; poz(im,src,"50% 40%"); box.appendChild(im);
       var d=document.createElement("i"); if(i===0) d.className="on"; dots.appendChild(d);
     });
     var cur=0, imgs=box.children, ds=dots.children;
