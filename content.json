@@ -12,7 +12,6 @@
  },
  "hero": [
   "img/photos/hero/hero-01.jpg",
-  "img/photos/hero/hero-11.jpg",
   "img/photos/hero/hero-02.jpg",
   "img/photos/hero/hero-03.jpg",
   "img/photos/hero/hero-04.jpg",
@@ -179,154 +178,174 @@
  "gallery": {
   "2025": [
    {
-    "src": "img/photos/2025/KAB_00074.jpg",
-    "thumb": "img/photos/2025/thumb/KAB_00074.jpg"
+    "src": "img/photos/2025/KAB_00048.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_00048.jpg"
    },
    {
-    "src": "img/photos/2025/KAB_7786.jpg",
-    "thumb": "img/photos/2025/thumb/KAB_7786.jpg"
+    "src": "img/photos/2025/KAB_00104.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_00104.jpg"
    },
    {
-    "src": "img/photos/2025/KAB_8032.jpg",
-    "thumb": "img/photos/2025/thumb/KAB_8032.jpg"
+    "src": "img/photos/2025/KAB_00151.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_00151.jpg"
    },
    {
-    "src": "img/photos/2025/KAB_8040.jpg",
-    "thumb": "img/photos/2025/thumb/KAB_8040.jpg"
+    "src": "img/photos/2025/KAB_00259.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_00259.jpg"
    },
    {
-    "src": "img/photos/2025/KAB_00409.jpg",
-    "thumb": "img/photos/2025/thumb/KAB_00409.jpg"
+    "src": "img/photos/2025/KAB_00328.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_00328.jpg"
    },
    {
-    "src": "img/photos/2025/KAB_00505.jpg",
-    "thumb": "img/photos/2025/thumb/KAB_00505.jpg"
+    "src": "img/photos/2025/KAB_00455.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_00455.jpg"
    },
    {
-    "src": "img/photos/2025/KAB_8497.jpg",
-    "thumb": "img/photos/2025/thumb/KAB_8497.jpg"
+    "src": "img/photos/2025/KAB_7682.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_7682.jpg"
    },
    {
-    "src": "img/photos/2025/KAB_8523.jpg",
-    "thumb": "img/photos/2025/thumb/KAB_8523.jpg"
+    "src": "img/photos/2025/KAB_7759.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_7759.jpg"
    },
    {
-    "src": "img/photos/2025/KAB_7901.jpg",
-    "thumb": "img/photos/2025/thumb/KAB_7901.jpg"
+    "src": "img/photos/2025/KAB_7815.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_7815.jpg"
    },
    {
-    "src": "img/photos/2025/KAB_7893.jpg",
-    "thumb": "img/photos/2025/thumb/KAB_7893.jpg"
+    "src": "img/photos/2025/KAB_7845.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_7845.jpg"
    },
    {
-    "src": "img/photos/2025/KAB_8119.jpg",
-    "thumb": "img/photos/2025/thumb/KAB_8119.jpg"
+    "src": "img/photos/2025/KAB_7873.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_7873.jpg"
    },
    {
-    "src": "img/photos/2025/KAB_8193.jpg",
-    "thumb": "img/photos/2025/thumb/KAB_8193.jpg"
+    "src": "img/photos/2025/KAB_7880.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_7880.jpg"
    },
    {
-    "src": "img/photos/2025/KAB_8329.jpg",
-    "thumb": "img/photos/2025/thumb/KAB_8329.jpg"
+    "src": "img/photos/2025/KAB_7889.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_7889.jpg"
    },
    {
-    "src": "img/photos/2025/KAB_7840.jpg",
-    "thumb": "img/photos/2025/thumb/KAB_7840.jpg"
+    "src": "img/photos/2025/KAB_7976.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_7976.jpg"
    },
    {
-    "src": "img/photos/2025/KAB_7995.jpg",
-    "thumb": "img/photos/2025/thumb/KAB_7995.jpg"
+    "src": "img/photos/2025/KAB_8411.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_8411.jpg"
    },
    {
-    "src": "img/photos/2025/KAB_00122.jpg",
-    "thumb": "img/photos/2025/thumb/KAB_00122.jpg"
+    "src": "img/photos/2025/KAB_8452.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_8452.jpg"
    },
    {
-    "src": "img/photos/2025/KAB_8003.jpg",
-    "thumb": "img/photos/2025/thumb/KAB_8003.jpg"
+    "src": "img/photos/2025/KAB_8464.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_8464.jpg"
    },
    {
-    "src": "img/photos/2025/KAB_00306.jpg",
-    "thumb": "img/photos/2025/thumb/KAB_00306.jpg"
+    "src": "img/photos/2025/KAB_8554.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_8554.jpg"
    }
   ],
   "2024": [
    {
-    "src": "img/photos/2024/Agel8.jpg",
-    "thumb": "img/photos/2024/thumb/Agel8.jpg"
+    "src": "img/photos/2024/KAB_6458.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_6458.jpg"
    },
    {
-    "src": "img/photos/2024/KAB_6819.jpg",
-    "thumb": "img/photos/2024/thumb/KAB_6819.jpg"
+    "src": "img/photos/2024/KAB_6534.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_6534.jpg"
    },
    {
-    "src": "img/photos/2024/KAB_6912.jpg",
-    "thumb": "img/photos/2024/thumb/KAB_6912.jpg"
+    "src": "img/photos/2024/KAB_6718.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_6718.jpg"
    },
    {
-    "src": "img/photos/2024/KAB_6913.jpg",
-    "thumb": "img/photos/2024/thumb/KAB_6913.jpg"
+    "src": "img/photos/2024/KAB_6781.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_6781.jpg"
    },
    {
-    "src": "img/photos/2024/KAB_7124.jpg",
-    "thumb": "img/photos/2024/thumb/KAB_7124.jpg"
+    "src": "img/photos/2024/KAB_6811.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_6811.jpg"
    },
    {
-    "src": "img/photos/2024/KAB_7148.jpg",
-    "thumb": "img/photos/2024/thumb/KAB_7148.jpg"
+    "src": "img/photos/2024/KAB_6868.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_6868.jpg"
    },
    {
-    "src": "img/photos/2024/KAB_7682.jpg",
-    "thumb": "img/photos/2024/thumb/KAB_7682.jpg"
+    "src": "img/photos/2024/KAB_6977.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_6977.jpg"
    },
    {
-    "src": "img/photos/2024/KAB_7710.jpg",
-    "thumb": "img/photos/2024/thumb/KAB_7710.jpg"
+    "src": "img/photos/2024/KAB_7044.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7044.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_7080.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7080.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_7099.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7099.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_7115-Enhanced-NR.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7115-Enhanced-NR.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_7144.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7144.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_7252.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7252.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_7312.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7312.jpg"
    },
    {
     "src": "img/photos/2024/KAB_7339.jpg",
     "thumb": "img/photos/2024/thumb/KAB_7339.jpg"
    },
    {
-    "src": "img/photos/2024/KAB_6850.jpg",
-    "thumb": "img/photos/2024/thumb/KAB_6850.jpg"
+    "src": "img/photos/2024/KAB_7443.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7443.jpg"
    },
    {
-    "src": "img/photos/2024/KAB_7082.jpg",
-    "thumb": "img/photos/2024/thumb/KAB_7082.jpg"
+    "src": "img/photos/2024/KAB_7650.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7650.jpg"
    },
    {
-    "src": "img/photos/2024/KAB_7101.jpg",
-    "thumb": "img/photos/2024/thumb/KAB_7101.jpg"
+    "src": "img/photos/2024/KAB_7652.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7652.jpg"
    },
    {
-    "src": "img/photos/2024/KAB_6455.jpg",
-    "thumb": "img/photos/2024/thumb/KAB_6455.jpg"
+    "src": "img/photos/2024/KAB_7943.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7943.jpg"
    },
    {
-    "src": "img/photos/2024/KAB_6561.jpg",
-    "thumb": "img/photos/2024/thumb/KAB_6561.jpg"
+    "src": "img/photos/2024/KAB_7971.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7971.jpg"
    },
    {
     "src": "img/photos/2024/KAB_7976.jpg",
     "thumb": "img/photos/2024/thumb/KAB_7976.jpg"
    },
    {
-    "src": "img/photos/2024/KAB_7629.jpg",
-    "thumb": "img/photos/2024/thumb/KAB_7629.jpg"
+    "src": "img/photos/2024/Agel2v6a.jpg",
+    "thumb": "img/photos/2024/thumb/Agel2v6a.jpg"
    },
    {
-    "src": "img/photos/2024/KAB_7615.jpg",
-    "thumb": "img/photos/2024/thumb/KAB_7615.jpg"
+    "src": "img/photos/2024/Agel7a_Gasparini.jpg",
+    "thumb": "img/photos/2024/thumb/Agel7a_Gasparini.jpg"
    },
    {
-    "src": "img/photos/2024/KAB_6833.jpg",
-    "thumb": "img/photos/2024/thumb/KAB_6833.jpg"
-   },
-   {
-    "src": "img/photos/2024/KAB_7246.jpg",
-    "thumb": "img/photos/2024/thumb/KAB_7246.jpg"
+    "src": "img/photos/2024/Agel8.jpg",
+    "thumb": "img/photos/2024/thumb/Agel8.jpg"
    }
   ]
  }
