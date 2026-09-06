@@ -12,6 +12,7 @@
  },
  "hero": [
   "img/photos/hero/hero-01.jpg",
+  "img/photos/hero/hero-11.jpg",
   "img/photos/hero/hero-02.jpg",
   "img/photos/hero/hero-03.jpg",
   "img/photos/hero/hero-04.jpg",
@@ -34,6 +35,12 @@
    "role": "Course Director",
    "org": "KC AGEL Pardubice",
    "photo": "img/photos/director-2.jpg"
+  },
+  {
+   "name": "Tereza Horníčková",
+   "role": "Ideas, production, follow-through",
+   "org": "Organising team",
+   "photo": "img/photos/team-tereza.jpg"
   }
  ],
  "program": [
@@ -238,6 +245,10 @@
    }
   ],
   "2024": [
+   {
+    "src": "img/photos/2024/Agel8.jpg",
+    "thumb": "img/photos/2024/thumb/Agel8.jpg"
+   },
    {
     "src": "img/photos/2024/KAB_6819.jpg",
     "thumb": "img/photos/2024/thumb/KAB_6819.jpg"
