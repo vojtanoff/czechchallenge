@@ -198,6 +198,7 @@ section{padding:clamp(64px,9vw,120px) 0}
 .contact h2{color:#fff}
 .contact p{opacity:.92; max-width:none}
 .contact a{color:#fff}
+.contact .btn-lime{color:var(--lime-ink)}   /* .contact a má vyšší specificitu než .btn-lime – jinak bílá na žluté */
 .contact .card{background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.22); border-radius:var(--radius); padding:24px; display:grid; gap:10px}
 .contact .card b{font-family:var(--font-display); font-size:18px}
 @media (max-width:860px){ .contact-grid{grid-template-columns:1fr} }
