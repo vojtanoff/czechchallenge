@@ -66,8 +66,8 @@ section{padding:clamp(64px,9vw,120px) 0}
   backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid var(--line)}
 .nav .wrap{display:flex; align-items:center; justify-content:space-between; height:76px; gap:20px}
 .brand{display:flex; align-items:center; text-decoration:none; color:var(--ink)}
-.brand img{height:38px; width:auto}
-@media (min-width:861px){ .nav .wrap{height:88px} .brand img{height:50px} }
+.brand img{height:44px; width:auto}
+@media (min-width:861px){ .nav .wrap{height:96px} .brand img{height:66px} }
 .brand span{font-family:var(--font-display); font-weight:700; font-size:15px; letter-spacing:.02em}
 .menu{display:flex; gap:26px; list-style:none; margin:0; padding:0}
 .menu a{color:var(--ink-2); text-decoration:none; font-weight:500; font-size:15px}
@@ -93,7 +93,7 @@ section{padding:clamp(64px,9vw,120px) 0}
   background:linear-gradient(180deg, rgba(23,19,58,.15) 0%, rgba(23,19,58,.35) 45%, rgba(23,19,58,.86) 100%),
              linear-gradient(90deg, rgba(75,50,208,.42), rgba(75,50,208,0) 60%)}
 .hero .wrap{position:relative; z-index:2; padding:120px 0 56px; display:grid; gap:18px}
-.hero-logo{height:44px; width:auto; filter:brightness(0) invert(1); opacity:.95}
+
 .hero h1{font-size:clamp(52px,9.5vw,132px); font-weight:800; line-height:.92; letter-spacing:-.035em}
 .hero h1 em{font-style:italic; font-weight:700}
 .hero .vol{display:inline-flex; align-items:center; gap:10px; background:var(--lime); color:var(--lime-ink);
