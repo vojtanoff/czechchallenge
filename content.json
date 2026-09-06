@@ -19,7 +19,9 @@
   "img/photos/hero/hero-07.jpg",
   "img/photos/hero/hero-08.jpg",
   "img/photos/hero/hero-09.jpg",
-  "img/photos/hero/hero-10.jpg"
+  "img/photos/hero/hero-10.jpg",
+  "img/photos/hero/hero-10.jpg",
+  "img/photos/hero/hero-11.jpg"
  ],
  "directors": [
   {
@@ -261,6 +263,22 @@
    {
     "src": "img/photos/2025/KAB_8554.jpg",
     "thumb": "img/photos/2025/thumb/KAB_8554.jpg"
+   },
+   {
+    "src": "img/photos/2025/KAB_7830.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_7830.jpg"
+   },
+   {
+    "src": "img/photos/2025/KAB_8122.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_8122.jpg"
+   },
+   {
+    "src": "img/photos/2025/KAB_8128.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_8128.jpg"
+   },
+   {
+    "src": "img/photos/2025/KAB_8329.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_8329.jpg"
    }
   ],
   "2024": [
@@ -359,6 +377,26 @@
    {
     "src": "img/photos/2024/Agel8.jpg",
     "thumb": "img/photos/2024/thumb/Agel8.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_7118.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7118.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_7673.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7673.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_7687.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7687.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_7773.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7773.jpg"
+   },
+   {
+    "src": "img/photos/2024/Agel2w.jpg",
+    "thumb": "img/photos/2024/thumb/Agel2w.jpg"
    }
   ]
  },
