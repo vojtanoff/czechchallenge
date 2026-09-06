@@ -13,6 +13,7 @@
  "hero": [
   "img/photos/hero/hero-01.jpg",
   "img/photos/hero/hero-03.jpg",
+  "img/photos/hero/hero-12.jpg",
   "img/photos/hero/hero-04.jpg",
   "img/photos/hero/hero-05.jpg",
   "img/photos/hero/hero-06.jpg",
@@ -60,7 +61,9 @@
    "role": "Live cases, logistics, hospitality",
    "org": "KC AGEL Pardubice",
    "photos": [
-    "img/photos/team-sestry.jpg"
+    "img/photos/team-sestry.jpg",
+    "img/photos/team-sestry-2.jpg",
+    "img/photos/team-sestry-3.jpg"
    ]
   }
  ],
@@ -429,13 +432,17 @@
   "img/photos/vojta-sal-2.jpg": "38% 22%",
   "img/photos/hero/hero-05.jpg": "50% 48%",
   "img/photos/hero/hero-08.jpg": "50% 50%",
-  "img/photos/team-sestry.jpg": "45% 40%",
+  "img/photos/team-sestry.jpg": "50% 42%",
   "img/photos/stipal-1.jpg": "50% 30%",
   "img/photos/tomasov-1.jpg": "62% 30%",
-  "img/photos/kral-1.jpg": "50% 28%",
+  "img/photos/kral-1.jpg": "50% 30%",
   "img/photos/kral-2.jpg": "50% 30%",
-  "img/photos/kral-3.jpg": "42% 28%",
-  "img/photos/kral-4.jpg": "50% 30%"
+  "img/photos/stipal-2.jpg": "50% 28%",
+  "img/photos/stipal-3.jpg": "50% 30%",
+  "img/photos/stipal-4.jpg": "42% 28%",
+  "img/photos/team-sestry-2.jpg": "50% 40%",
+  "img/photos/team-sestry-3.jpg": "22% 45%",
+  "img/photos/hero/hero-12.jpg": "40% 30%"
  },
  "committee": [
   {
@@ -444,9 +451,7 @@
    "org": "KC AGEL Pardubice",
    "photos": [
     "img/photos/kral-1.jpg",
-    "img/photos/kral-2.jpg",
-    "img/photos/kral-3.jpg",
-    "img/photos/kral-4.jpg"
+    "img/photos/kral-2.jpg"
    ]
   },
   {
@@ -462,7 +467,10 @@
    "role": "Program",
    "org": "FN Brno",
    "photos": [
-    "img/photos/stipal-1.jpg"
+    "img/photos/stipal-1.jpg",
+    "img/photos/stipal-2.jpg",
+    "img/photos/stipal-3.jpg",
+    "img/photos/stipal-4.jpg"
    ]
   }
  ]
