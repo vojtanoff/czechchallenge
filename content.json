@@ -1,0 +1,315 @@
+{
+ "event": {
+  "name": "CTO&CHIP Czech Challenge",
+  "edition": "Vol. 3",
+  "date": "2026-10-23",
+  "date_text": "23 October 2026",
+  "dinner_text": "22 October 2026",
+  "city": "Pardubice, Czechia",
+  "tagline": "Complex PCI Meeting",
+  "email": "ctochip@czechchallenge.com",
+  "aftermovie": "KLrtxHLZmQw"
+ },
+ "hero": [
+  "img/photos/hero/hero-01.jpg",
+  "img/photos/hero/hero-02.jpg",
+  "img/photos/hero/hero-03.jpg",
+  "img/photos/hero/hero-04.jpg",
+  "img/photos/hero/hero-05.jpg",
+  "img/photos/hero/hero-06.jpg",
+  "img/photos/hero/hero-07.jpg",
+  "img/photos/hero/hero-08.jpg",
+  "img/photos/hero/hero-09.jpg",
+  "img/photos/hero/hero-10.jpg"
+ ],
+ "directors": [
+  {
+   "name": "Vojtěch Novotný",
+   "role": "Course Director",
+   "org": "KC AGEL Pardubice",
+   "photo": "img/photos/director-1.jpg"
+  },
+  {
+   "name": "Ivo Varvařovský",
+   "role": "Course Director",
+   "org": "KC AGEL Pardubice",
+   "photo": "img/photos/director-2.jpg"
+  }
+ ],
+ "program": [
+  {
+   "day": "Thursday",
+   "date": "22 October 2026",
+   "items": [
+    {
+     "time": "evening",
+     "title": "Welcome dinner",
+     "desc": "Arrival, welcome and an informal evening for faculty and participants."
+    }
+   ]
+  },
+  {
+   "day": "Friday",
+   "date": "23 October 2026",
+   "items": [
+    {
+     "time": "Block 1",
+     "title": "Complex PCI · vascular access · CTO",
+     "desc": "Techniques, calcification and imaging, complications, devices."
+    },
+    {
+     "time": "Block 2",
+     "title": "Complex PCI · vascular access · CTO",
+     "desc": "Continued – with live cases from the cath lab."
+    },
+    {
+     "time": "Block 3",
+     "title": "Mechanical circulatory support in high-risk PCI",
+     "desc": "When, for whom and how – with data on both sides."
+    },
+    {
+     "time": "Block 4",
+     "title": "Becoming a CTO operator – AI and educational pathways",
+     "desc": "Rapid-fire five-minute talks: proctoring, fellowship, remote and master–apprentice models."
+    },
+    {
+     "time": "Battles",
+     "title": "Pro & con debates",
+     "desc": "Controversies argued with real data – and decided by the audience."
+    }
+   ]
+  }
+ ],
+ "live_cases": "Live cases from KC AGEL Pardubice and from partner cath labs abroad – details in the scientific program.",
+ "faculty_note": "Czech & 20+ international faculty. The full list will be announced with the program.",
+ "partners": {
+  "General partners": [
+   {
+    "name": "Terumo",
+    "logo": "img/logos/Principal_terumo.svg"
+   },
+   {
+    "name": "Euromedical",
+    "logo": "img/logos/Principal_euromedical.svg"
+   }
+  ],
+  "Gold partners": [
+   {
+    "name": "Cardion",
+    "logo": "img/logos/06_cardion.svg"
+   },
+   {
+    "name": "Vamex",
+    "logo": "img/logos/Vamex_logo green new.jpg"
+   },
+   {
+    "name": "Boston Scientific",
+    "logo": "img/logos/06_boston_scientfiic.svg"
+   },
+   {
+    "name": "Cordis",
+    "logo": "img/logos/Cordis_Logo_v3.jpg"
+   }
+  ],
+  "Silver partners": [
+   {
+    "name": "Medtesting",
+    "logo": "img/logos/medtesting.png"
+   },
+   {
+    "name": "Teleflex",
+    "logo": "img/logos/Teleflex_v2.png"
+   },
+   {
+    "name": "Prague Medical",
+    "logo": "img/logos/Prague_medical.svg"
+   },
+   {
+    "name": "Inlab",
+    "logo": "img/logos/Inlab_logo_v2.svg"
+   }
+  ],
+  "Partners": [
+   {
+    "name": "Promedica",
+    "logo": "img/logos/07_Promedica.svg"
+   },
+   {
+    "name": "Innova Medical",
+    "logo": "img/logos/06_innova_medical.svg"
+   }
+  ]
+ },
+ "patronage": [
+  {
+   "name": "Czech Association of Interventional Cardiology",
+   "logo": "img/logos/Patronage_ceska_intervencni_kardiologie.svg"
+  },
+  {
+   "name": "EuroCTO Club",
+   "logo": "img/logos/Patronage_Euro_CTO_Colourfull.svg"
+  },
+  {
+   "name": "Pardubice Region",
+   "logo": "img/logos/Patronage_Pardubicky_kraj.svg"
+  },
+  {
+   "name": "Hospitals of the Pardubice Region",
+   "logo": "img/logos/Patronage_nemocnice_pardubickeho_kraje.svg"
+  },
+  {
+   "name": "KC AGEL Pardubice",
+   "logo": "img/logos/Patronage_agel_kardiologické_centrum.svg"
+  }
+ ],
+ "gallery": {
+  "2025": [
+   {
+    "src": "img/photos/2025/KAB_00074.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_00074.jpg"
+   },
+   {
+    "src": "img/photos/2025/KAB_7786.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_7786.jpg"
+   },
+   {
+    "src": "img/photos/2025/KAB_8032.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_8032.jpg"
+   },
+   {
+    "src": "img/photos/2025/KAB_8040.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_8040.jpg"
+   },
+   {
+    "src": "img/photos/2025/KAB_00409.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_00409.jpg"
+   },
+   {
+    "src": "img/photos/2025/KAB_00505.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_00505.jpg"
+   },
+   {
+    "src": "img/photos/2025/KAB_8497.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_8497.jpg"
+   },
+   {
+    "src": "img/photos/2025/KAB_8523.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_8523.jpg"
+   },
+   {
+    "src": "img/photos/2025/KAB_7901.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_7901.jpg"
+   },
+   {
+    "src": "img/photos/2025/KAB_7893.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_7893.jpg"
+   },
+   {
+    "src": "img/photos/2025/KAB_8119.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_8119.jpg"
+   },
+   {
+    "src": "img/photos/2025/KAB_8193.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_8193.jpg"
+   },
+   {
+    "src": "img/photos/2025/KAB_8329.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_8329.jpg"
+   },
+   {
+    "src": "img/photos/2025/KAB_7840.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_7840.jpg"
+   },
+   {
+    "src": "img/photos/2025/KAB_7995.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_7995.jpg"
+   },
+   {
+    "src": "img/photos/2025/KAB_00122.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_00122.jpg"
+   },
+   {
+    "src": "img/photos/2025/KAB_8003.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_8003.jpg"
+   },
+   {
+    "src": "img/photos/2025/KAB_00306.jpg",
+    "thumb": "img/photos/2025/thumb/KAB_00306.jpg"
+   }
+  ],
+  "2024": [
+   {
+    "src": "img/photos/2024/KAB_6819.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_6819.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_6912.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_6912.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_6913.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_6913.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_7124.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7124.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_7148.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7148.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_7682.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7682.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_7710.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7710.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_7339.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7339.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_6850.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_6850.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_7082.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7082.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_7101.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7101.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_6455.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_6455.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_6561.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_6561.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_7976.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7976.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_7629.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7629.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_7615.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7615.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_6833.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_6833.jpg"
+   },
+   {
+    "src": "img/photos/2024/KAB_7246.jpg",
+    "thumb": "img/photos/2024/thumb/KAB_7246.jpg"
+   }
+  ]
+ }
+}

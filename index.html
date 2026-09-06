@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CTO&amp;CHIP Czech Challenge Vol. 3 – 23 October 2026, Pardubice</title>
+<meta name="description" content="CTO&CHIP Czech Challenge – Complex PCI Meeting in Pardubice, Czechia. Live cases, Czech & international faculty, pro & con battles. Third edition, 23 October 2026.">
+<meta property="og:title" content="CTO&CHIP Czech Challenge Vol. 3 · 23.10.2026 · Pardubice">
+<meta property="og:description" content="Complex PCI Meeting – live cases, international faculty, battles. Let's join us again!">
+<meta property="og:image" content="img/brand/vizual-2026-sirka.png">
+<link rel="icon" href="img/brand/FAV_Icon_CTO.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=2026-09-06a">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="CTO&CHIP Czech Challenge – home">
+      <img src="img/brand/CTO_CHIP_LOGO.svg" alt="">
+      <span>Czech Challenge</span>
+    </a>
+    <ul class="menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#program">Program</a></li>
+      <li><a href="#faculty">Faculty</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#partners">Partners</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-primary" id="registerTop" href="#contact">Register</a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<nav class="fullmenu" id="fullmenu" data-open="false" aria-label="Menu">
+  <button class="close" id="menuClose" aria-label="Close menu">×</button>
+  <a href="#about">About</a><a href="#program">Program</a><a href="#faculty">Faculty</a>
+  <a href="#gallery">Gallery</a><a href="#partners">Partners</a><a href="#contact">Contact</a>
+</nav>
+
+<main id="top">
+
+<!-- HERO: prolínající fotky z ročníků 2024 a 2025, přes ně vizuál 2026 -->
+<section class="hero" aria-label="Czech Challenge 2026">
+  <div class="hero-photos" id="heroPhotos"></div>
+  <svg class="loop" viewBox="0 0 560 520" aria-hidden="true">
+    <path d="M470 60 C560 150, 470 300, 340 330 C240 352, 150 300, 170 220 C190 150, 300 150, 300 240 C300 330, 190 380, 120 340 C40 290, 70 170, 180 150 C270 134, 360 210, 380 300 C400 400, 300 500, 180 470"/>
+  </svg>
+  <div class="wrap">
+    <img class="hero-logo" src="img/brand/CTO_CHIP_LOGO.svg" alt="CTO&CHIP Czech Challenge">
+    <h1>Czech<br>Challenge</h1>
+    <span class="vol">Vol. 3 · Let's join us again!</span>
+    <div class="meta">23 October 2026<small>Complex PCI Meeting · Pardubice · Czechia · welcome dinner 22 October</small></div>
+    <div class="cta">
+      <a class="btn btn-lime" href="#contact">Register</a>
+      <a class="btn btn-ghost" href="#program">See the program</a>
+    </div>
+  </div>
+  <div class="dots" id="heroDots" aria-hidden="true"></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid reveal">
+    <div>
+      <p class="eyebrow">About the meeting</p>
+      <h2>Science, sharing and friendship – third time in Pardubice.</h2>
+      <p style="margin-top:22px">After two successful editions, the CTO&amp;CHIP Czech Challenge returns for its third year as an international meeting that brings together leading experts and colleagues from across Europe and beyond.</p>
+      <p>Vol. 3 will once again combine live cases, focused sessions and open discussion with the spirit of collaboration and friendship that has defined the meeting from the start. New this year: pro&nbsp;&amp;&nbsp;con battles argued with real data – and decided by you.</p>
+      <p>We'll start together with a welcome dinner on October&nbsp;22, followed by a full day of live cases, lectures, battles and shared learning on October&nbsp;23, 2026.</p>
+      <ul class="facts">
+        <li>Live cases</li><li>Czech &amp; 20+ international faculty</li><li>Battles</li><li>One day, one room</li>
+      </ul>
+    </div>
+    <div>
+      <p class="eyebrow">Course directors</p>
+      <div class="directors" id="directors"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section id="program" class="program">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Program</p>
+      <h2>Two days. Four blocks. Live cases in between.</h2>
+      <p class="lead">A working draft of the scientific program – speakers and exact times will follow with the final version.</p>
+    </div>
+    <div class="days reveal" id="days"></div>
+    <div class="live reveal">
+      <b>Live cases</b>
+      <p id="liveCases"></p>
+    </div>
+    <div class="gal-foot">
+      <a class="btn btn-outline" href="#" aria-disabled="true">Scientific program (PDF) – coming soon</a>
+    </div>
+  </div>
+</section>
+
+<!-- FACULTY -->
+<section id="faculty">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Faculty</p>
+      <h2>Operators you know from the big stages – in one room with you.</h2>
+    </div>
+    <div class="faculty-band reveal">
+      <img src="img/photos/2025/KAB_00409.jpg" alt="Panel discussion at Czech Challenge 2025" loading="lazy">
+      <div>
+        <h3>Czech &amp; 20+ international faculty</h3>
+        <p id="facultyNote"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="gallery">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Previous editions</p>
+      <h2>What it looked like in 2024 and 2025.</h2>
+      <p class="lead">Real cath lab, real audience, real discussion. Photos by Lukáš Kaboň.</p>
+    </div>
+    <div class="grid reveal" id="galleryPreview"></div>
+    <div class="gal-foot">
+      <a class="btn btn-primary" href="gallery.html">All photos</a>
+      <span style="color:var(--ink-3)">36 photos from both editions</span>
+    </div>
+    <div class="video reveal" id="video" role="button" tabindex="0" aria-label="Play the Czech Challenge 2025 aftermovie">
+      <img src="img/photos/2025/KAB_8040.jpg" alt="">
+      <div class="play"><span><svg width="30" height="30" viewBox="0 0 24 24" fill="#3D3F12"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="cap">Aftermovie · Czech Challenge 2025</div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section id="partners">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Partners</p>
+      <h2>This wouldn't be possible without you.</h2>
+    </div>
+    <div id="partners-tiers" class="reveal"></div>
+    <div class="thanks reveal">Thank you to all our partners for your continuous support. Together, we are shaping the future!</div>
+    <div class="tier patronage reveal">
+      <h3>Under the patronage of</h3>
+      <div class="logos" id="patronage"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / REGISTRATION -->
+<section id="contact" class="contact">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <p class="eyebrow">Registration &amp; contact</p>
+      <h2>Save your seat in Pardubice.</h2>
+      <p style="margin-top:18px">Registration is by e-mail. Send us your name, institution and whether you'll join the welcome dinner on October&nbsp;22 – we'll confirm within a few days. Capacity of the hall is limited.</p>
+      <p><a class="btn btn-lime" id="registerBtn" href="#">Register by e-mail</a></p>
+    </div>
+    <div class="card reveal">
+      <b>CTO&amp;CHIP Czech Challenge</b>
+      <span>Complex PCI Meeting · Vol. 3</span>
+      <span>23 October 2026 · Pardubice, Czechia</span>
+      <span>Organised by Kardiologické centrum AGEL, Pardubice</span>
+      <a id="mailLink" href="#">ctochip@czechchallenge.com</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 CTO&amp;CHIP Czech Challenge · Pardubice · Complex PCI Meeting</span>
+    <img src="img/brand/CTO_CHIP_LOGO.svg" alt="">
+  </div>
+</footer>
+
+<script>
+/* Obsah (partneři, program, galerie, directors) je v content.json – příští ročník
+   se mění tam, ne v HTML. Texty odstavců jsou tady, ať je vidí i vyhledávače. */
+(function(){
+  var $=function(s){ return document.querySelector(s); };
+  function esc(t){ return String(t==null?"":t).replace(/[&<>"]/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+
+  // menu
+  var burger=$("#burger"), full=$("#fullmenu");
+  function menu(o){ full.dataset.open=o?"true":"false"; burger.setAttribute("aria-expanded",o?"true":"false"); document.body.style.overflow=o?"hidden":""; }
+  burger.addEventListener("click",function(){ menu(full.dataset.open!=="true"); });
+  $("#menuClose").addEventListener("click",function(){ menu(false); });
+  full.querySelectorAll("a").forEach(function(a){ a.addEventListener("click",function(){ menu(false); }); });
+
+  // jemné najetí sekcí – z viditelného stavu (jen posun), ať náhled i sdílený odkaz ukáže vše
+  if("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches){
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }); },{rootMargin:"0px 0px -8% 0px"});
+    document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
+  } else { document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("in"); }); }
+
+  fetch("content.json",{cache:"no-store"}).then(function(r){ return r.json(); }).then(function(C){
+    // hero – prolínání fotek
+    var box=$("#heroPhotos"), dots=$("#heroDots");
+    C.hero.forEach(function(src,i){
+      var im=new Image(); im.src=src; im.alt=""; if(i===0) im.className="on"; im.loading=i<2?"eager":"lazy"; box.appendChild(im);
+      var d=document.createElement("i"); if(i===0) d.className="on"; dots.appendChild(d);
+    });
+    var cur=0, imgs=box.children, ds=dots.children;
+    if(!matchMedia("(prefers-reduced-motion: reduce)").matches && imgs.length>1){
+      setInterval(function(){ imgs[cur].classList.remove("on"); ds[cur].classList.remove("on");
+        cur=(cur+1)%imgs.length; imgs[cur].classList.add("on"); ds[cur].classList.add("on"); },5200);
+    }
+
+    // directors
+    $("#directors").innerHTML=C.directors.map(function(d){
+      return '<div class="director"><img src="'+esc(d.photo)+'" alt="'+esc(d.name)+'" loading="lazy"><div><b>'+esc(d.name)+'</b><span>'+esc(d.role)+' · '+esc(d.org)+'</span></div></div>';
+    }).join("");
+
+    // program
+    $("#days").innerHTML=C.program.map(function(day){
+      return '<div class="day"><h3>'+esc(day.day)+'</h3><div class="date">'+esc(day.date)+'</div>'+day.items.map(function(it){
+        return '<div class="slot"><div class="t">'+esc(it.time)+'</div><div><b>'+esc(it.title)+'</b><p>'+esc(it.desc)+'</p></div></div>';
+      }).join("")+'</div>';
+    }).join("");
+    $("#liveCases").textContent=C.live_cases;
+    $("#facultyNote").textContent=C.faculty_note;
+
+    // galerie – náhled: 8 z 2025, 4 z 2024
+    var g=C.gallery, pick=g["2025"].slice(0,8).map(function(p){ return [p,"2025"]; }).concat(g["2024"].slice(0,4).map(function(p){ return [p,"2024"]; }));
+    $("#galleryPreview").innerHTML=pick.map(function(x,i){
+      return '<a href="gallery.html#'+x[1]+'"'+(i===0?' class="tall"':'')+'><img src="'+esc(x[0].thumb)+'" alt="Czech Challenge '+x[1]+'" loading="lazy"><span class="yr">'+x[1]+'</span></a>';
+    }).join("");
+
+    // partneři po úrovních
+    var tiers=Object.keys(C.partners);
+    $("#partners-tiers").innerHTML=tiers.map(function(t){
+      var cls=/general/i.test(t)?" general":"";
+      return '<div class="tier"><h3>'+esc(t)+'</h3><div class="logos'+cls+'">'+C.partners[t].map(function(p){
+        return '<div class="logo"><img src="'+esc(p.logo)+'" alt="'+esc(p.name)+'" loading="lazy"></div>';
+      }).join("")+'</div></div>';
+    }).join("");
+    $("#patronage").innerHTML=C.patronage.map(function(p){
+      return '<div class="logo"><img src="'+esc(p.logo)+'" alt="'+esc(p.name)+'" loading="lazy"></div>';
+    }).join("");
+
+    // registrace mailem
+    var mail="mailto:"+C.event.email+"?subject="+encodeURIComponent("Registration – Czech Challenge 2026")
+      +"&body="+encodeURIComponent("Name:\nInstitution:\nWelcome dinner 22 Oct: yes / no\n");
+    ["#registerBtn","#registerTop"].forEach(function(s){ $(s).href=mail; });
+    $("#mailLink").href="mailto:"+C.event.email;
+
+    // aftermovie – iframe až po kliknutí, ať se stránka nenačítá s YouTube
+    var v=$("#video");
+    function play(){ v.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+C.event.aftermovie+'?autoplay=1&rel=0" title="Czech Challenge 2025 aftermovie" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>'; }
+    v.addEventListener("click",play); v.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); play(); } });
+  });
+})();
+</script>
+</body>
+</html>
