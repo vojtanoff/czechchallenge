@@ -59,6 +59,7 @@
    "org": "KC AGEL Pardubice",
    "photos": [
     "img/photos/team-sestry-4.jpg",
+    "img/photos/team-vrchni.jpg",
     "img/photos/team-sestry.jpg",
     "img/photos/team-sestry-2.jpg",
     "img/photos/team-sestry-3.jpg"
@@ -451,7 +452,8 @@
   "img/photos/kral-3.jpg": "62% 30%",
   "img/photos/stipal-2.jpg": "50% 28%",
   "img/photos/vojta-mikrofon.jpg": "50% 18%",
-  "img/photos/team-sestry-4.jpg": "50% 30%"
+  "img/photos/team-sestry-4.jpg": "50% 30%",
+  "img/photos/team-vrchni.jpg": "50% 30%"
  },
  "committee": [
   {
