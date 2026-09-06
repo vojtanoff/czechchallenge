@@ -154,6 +154,8 @@ section{padding:clamp(64px,9vw,120px) 0}
 .faculty-band::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(23,19,58,0) 20%,rgba(23,19,58,.88))}
 .faculty-band div{position:relative; z-index:2; padding:clamp(24px,4vw,44px)}
 .faculty-band h3{font-size:clamp(28px,4vw,44px); font-weight:800; margin-bottom:8px}
+/* na telefonu pas na sirku (4:3), jinak z panelu na sirku zbyde jen prostredek */
+@media (max-width:700px){ .faculty-band{min-height:0; aspect-ratio:4/3} .faculty-band h3{font-size:24px} .faculty-band p{font-size:14px} .faculty-band div{padding:18px} }
 .faculty-band p{margin:0; opacity:.92; max-width:52ch}
 
 /* ---------- galerie ---------- */
