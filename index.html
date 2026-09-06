@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=2026-09-06n">
+<link rel="stylesheet" href="style.css?v=2026-09-06o">
 </head>
 <body>
 
@@ -247,6 +247,40 @@
         var y=scrollY||pageYOffset; if(y>innerHeight*0.6) byloDole=true;
         else if(byloDole && y<40 && smotana){ byloDole=false; nakresli(); }
       },{passive:true});
+    })();
+
+    // POKUS: stopa smyčky přes celou stránku, kreslí se podle scrollu (vypnutí: ?stopa=0)
+    (function(){
+      if(/[?&]stopa=0/.test(location.search) || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      var NS="http://www.w3.org/2000/svg", svg=document.createElementNS(NS,"svg"), path=document.createElementNS(NS,"path");
+      svg.setAttribute("class","stopa"); svg.setAttribute("aria-hidden","true"); svg.appendChild(path); document.body.appendChild(svg);
+      var tab=[], delka=0;
+      function postav(){
+        var W=document.documentElement.clientWidth, H=document.documentElement.scrollHeight, hero=document.querySelector(".hero");
+        var y0=hero?hero.offsetTop+hero.offsetHeight-40:400;   // začíná pod hero, kde končí smyčka v hlavičce
+        svg.setAttribute("width",W); svg.setAttribute("height",H); svg.setAttribute("viewBox","0 0 "+W+" "+H);
+        // meandr střídavě k levému a pravému okraji, každý druhý oblouk má kličku jako v logu
+        var kroky=Math.max(4,Math.round((H-y0)/620)), dy=(H-y0-80)/kroky, d="M"+(W*0.86)+" "+y0, x=W*0.86, y=y0, sm=-1;
+        for(var i=0;i<kroky;i++){
+          var nx=(sm<0?W*0.10:W*0.90), ny=y+dy;
+          d+=" C"+x+" "+(y+dy*0.55)+", "+nx+" "+(ny-dy*0.55)+", "+nx+" "+ny;
+          if(i%2===1 && i<kroky-1){ var r=Math.min(90,W*0.09); d+=" c"+(sm*r*1.6)+" "+(r*0.9)+", "+(sm*r*1.6)+" "+(-r*1.9)+", 0 "+(-r);  // klička
+            d+=" c"+(-sm*r*1.2)+" "+(r*0.6)+", "+(-sm*r*0.4)+" "+(r*1.2)+", 0 "+(r); }
+          x=nx; y=ny; sm=-sm;
+        }
+        path.setAttribute("d",d); delka=path.getTotalLength(); path.style.strokeDasharray=delka; tab=[];
+        for(var k=0;k<=400;k++){ var pt=path.getPointAtLength(delka*k/400); tab.push([delka*k/400,pt.y]); }
+        kresli();
+      }
+      function kresli(){
+        if(!tab.length) return;
+        var cil=(scrollY||pageYOffset)+innerHeight*0.72, L=0;       // špička čáry drží zhruba ve spodní třetině okna
+        for(var k=1;k<tab.length;k++){ if(tab[k][1]>=cil){ var a=tab[k-1], b=tab[k]; L=a[0]+(b[0]-a[0])*Math.max(0,Math.min(1,(cil-a[1])/((b[1]-a[1])||1))); break; } L=tab[k][0]; }
+        path.style.strokeDashoffset=delka-L;
+      }
+      var tik=false; addEventListener("scroll",function(){ if(tik) return; tik=true; requestAnimationFrame(function(){ kresli(); tik=false; }); },{passive:true});
+      addEventListener("resize",function(){ clearTimeout(svg._t); svg._t=setTimeout(postav,200); });
+      addEventListener("load",function(){ setTimeout(postav,300); }); setTimeout(postav,800);
     })();
 
     // directors
