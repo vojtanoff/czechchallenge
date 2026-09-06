@@ -59,7 +59,7 @@
    "date": "22 October 2026",
    "items": [
     {
-     "time": "evening",
+     "time": "Evening",
      "title": "Welcome dinner",
      "desc": "Arrival, welcome and an informal evening for faculty and participants."
     }
@@ -72,32 +72,32 @@
     {
      "time": "Session 1",
      "title": "Road to CTO & CHIP",
-     "desc": "Access, guiding, wire strategy – the essentials that get you to the lesion and through it."
+     "desc": "How a complex case comes together: planning, vascular access, guiding support and wire strategy – from the first angiogram to crossing the lesion."
     },
     {
      "time": "Session 2",
      "title": "CTO & CHIP update 2026",
-     "desc": "What changed this year – techniques, devices and the data behind them."
+     "desc": "What has changed in the last year: techniques, devices, imaging and calcium – and the data behind them."
     },
     {
      "time": "Session 3",
      "title": "MCS-supported PCI",
-     "desc": "Mechanical circulatory support in high-risk PCI: when, for whom and how."
+     "desc": "Mechanical circulatory support in high-risk PCI: patient selection, devices, access and how to handle complications."
     },
     {
      "time": "Session 4",
      "title": "CTO & CHIP beyond the cath lab",
-     "desc": "AI, training pathways, proctoring – how one becomes a CTO & CHIP operator today."
+     "desc": "Training, proctoring, fellowships and AI – how one becomes a CTO & CHIP operator today."
     },
     {
      "time": "New this year",
      "title": "Quick debate",
-     "desc": "Multiple views on the road to becoming a CTO & CHIP operator – short, sharp, decided by the audience."
+     "desc": "Multiple views on the road to becoming a CTO & CHIP operator – short, sharp and decided by the audience."
     }
    ]
   }
  ],
- "live_cases": "Live cases from KC AGEL Pardubice and from partner cath labs abroad – details in the scientific program.",
+ "live_cases": "Live cases run between the sessions – from the KC AGEL Pardubice cath lab and from partner centres abroad. Details in the scientific program.",
  "faculty_note": "Czech & 20+ international faculty. The full list will be announced with the program.",
  "partners": {
   "General partners": [
