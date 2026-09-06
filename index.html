@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=2026-09-06k">
+<link rel="stylesheet" href="style.css?v=2026-09-06l">
 </head>
 <body>
 
@@ -78,6 +78,8 @@
     <div>
       <p class="eyebrow">Course directors &amp; team</p>
       <div class="directors" id="directors"></div>
+      <p class="eyebrow" style="margin-top:26px">Scientific committee</p>
+      <div class="directors" id="committee"></div>
     </div>
   </div>
 </section>
@@ -230,12 +232,16 @@
     }
 
     // directors
-    // víc fotek u jednoho člověka = střídají se (prolnutím), první je výchozí
-    $("#directors").innerHTML=C.directors.map(function(d){
-      var fotky=d.photos||[d.photo];
-      return '<div class="director"><div class="pic">'+fotky.map(function(f,i){ return '<img src="'+esc(f)+'" alt="'+esc(d.name)+'" loading="lazy" style="object-position:'+esc(POS[f]||"50% 25%")+'"'+(i===0?' class="on"':'')+'>'; }).join("")+'</div>'
-        +'<div><b>'+esc(d.name)+'</b><span>'+esc(d.role)+' · '+esc(d.org)+'</span></div></div>';
-    }).join("");
+    // víc fotek u jednoho člověka = střídají se (prolnutím), první je výchozí; bez fotky monogram
+    function karta(d){
+      var fotky=d.photos||(d.photo?[d.photo]:[]);
+      var mono=d.name.split(/\s+/).map(function(x){ return x[0]; }).join("").slice(0,2);
+      var pic=fotky.length ? fotky.map(function(f,i){ return '<img src="'+esc(f)+'" alt="'+esc(d.name)+'" loading="lazy" style="object-position:'+esc(POS[f]||"50% 25%")+'"'+(i===0?' class="on"':'')+'>'; }).join("")
+                           : '<span class="mono">'+esc(mono)+'</span>';
+      return '<div class="director"><div class="pic">'+pic+'</div><div><b>'+esc(d.name)+'</b><span>'+esc(d.role)+' · '+esc(d.org)+'</span></div></div>';
+    }
+    $("#directors").innerHTML=C.directors.map(karta).join("");
+    $("#committee").innerHTML=(C.committee||[]).map(karta).join("");
     if(!matchMedia("(prefers-reduced-motion: reduce)").matches){
       document.querySelectorAll(".director .pic").forEach(function(pic,i){
         var ims=pic.children, k=0; if(ims.length<2) return;

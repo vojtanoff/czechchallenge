@@ -383,5 +383,25 @@
   "img/photos/vojta-sal-2.jpg": "38% 22%",
   "img/photos/hero/hero-05.jpg": "50% 48%",
   "img/photos/hero/hero-08.jpg": "50% 50%"
- }
+ },
+ "committee": [
+  {
+   "name": "Aleš Král",
+   "role": "Live cases coordination · program",
+   "org": "KC AGEL Pardubice",
+   "photos": []
+  },
+  {
+   "name": "Pavol Tomašov",
+   "role": "Program",
+   "org": "KN Liberec",
+   "photos": []
+  },
+  {
+   "name": "Roman Štípal",
+   "role": "Program",
+   "org": "FN Brno",
+   "photos": []
+  }
+ ]
 }
