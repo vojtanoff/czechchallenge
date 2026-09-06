@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=2026-09-06d">
+<link rel="stylesheet" href="style.css?v=2026-09-06e">
 </head>
 <body>
 
@@ -188,6 +188,9 @@
    se mění tam, ne v HTML. Texty odstavců jsou tady, ať je vidí i vyhledávače. */
 (function(){
   var $=function(s){ return document.querySelector(s); };
+  // výřez fotky: kde má být ohnisko, když se ořízne (telefon vs. počítač); výchozí podle typu
+  var POS={};
+  function poz(im,src,vychozi){ im.style.objectPosition=(POS[src]||vychozi); }
   function esc(t){ return String(t==null?"":t).replace(/[&<>"]/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
 
   // menu
@@ -204,10 +207,11 @@
   } else { document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("in"); }); }
 
   fetch("content.json",{cache:"no-store"}).then(function(r){ return r.json(); }).then(function(C){
+    POS=C.pos||{};
     // hero – prolínání fotek
     var box=$("#heroPhotos"), dots=$("#heroDots");
     C.hero.forEach(function(src,i){
-      var im=new Image(); im.src=src; im.alt=""; if(i===0) im.className="on"; im.loading="eager"; im.decoding="async"; box.appendChild(im);
+      var im=new Image(); im.src=src; im.alt=""; if(i===0) im.className="on"; im.loading="eager"; im.decoding="async"; poz(im,src,"50% 40%"); box.appendChild(im);
       var d=document.createElement("i"); if(i===0) d.className="on"; dots.appendChild(d);
     });
     var cur=0, imgs=box.children, ds=dots.children;
@@ -225,7 +229,7 @@
     // víc fotek u jednoho člověka = střídají se (prolnutím), první je výchozí
     $("#directors").innerHTML=C.directors.map(function(d){
       var fotky=d.photos||[d.photo];
-      return '<div class="director"><div class="pic">'+fotky.map(function(f,i){ return '<img src="'+esc(f)+'" alt="'+esc(d.name)+'" loading="lazy"'+(i===0?' class="on"':'')+'>'; }).join("")+'</div>'
+      return '<div class="director"><div class="pic">'+fotky.map(function(f,i){ return '<img src="'+esc(f)+'" alt="'+esc(d.name)+'" loading="lazy" style="object-position:'+esc(POS[f]||"50% 25%")+'"'+(i===0?' class="on"':'')+'>'; }).join("")+'</div>'
         +'<div><b>'+esc(d.name)+'</b><span>'+esc(d.role)+' · '+esc(d.org)+'</span></div></div>';
     }).join("");
     if(!matchMedia("(prefers-reduced-motion: reduce)").matches){
@@ -245,7 +249,7 @@
     $("#facultyNote").textContent=C.faculty_note;
     // panelové fotky se v sekci Faculty střídají stejně jako v hero
     var fb=$("#facultyPhotos");
-    (C.faculty_photos||[]).forEach(function(src,i){ var im=new Image(); im.src=src; im.alt="Panel discussion at Czech Challenge"; im.loading="lazy"; if(i===0) im.className="on"; fb.appendChild(im); });
+    (C.faculty_photos||[]).forEach(function(src,i){ var im=new Image(); im.src=src; im.alt="Panel discussion at Czech Challenge"; im.loading="lazy"; if(i===0) im.className="on"; poz(im,src,"50% 40%"); fb.appendChild(im); });
     if(!matchMedia("(prefers-reduced-motion: reduce)").matches && fb.children.length>1){
       var fk=0; setInterval(function(){ var d=(fk+1)%fb.children.length; if(!fb.children[d].complete) return;
         fb.children[fk].classList.remove("on"); fk=d; fb.children[fk].classList.add("on"); },5600);
@@ -254,7 +258,7 @@
     // galerie – náhled: 8 z 2025, 4 z 2024
     var g=C.gallery, pick=g["2025"].slice(0,8).map(function(p){ return [p,"2025"]; }).concat(g["2024"].slice(0,4).map(function(p){ return [p,"2024"]; }));
     $("#galleryPreview").innerHTML=pick.map(function(x,i){
-      return '<a href="gallery.html#'+x[1]+'"'+(i===0?' class="tall"':'')+'><img src="'+esc(x[0].thumb)+'" alt="Czech Challenge '+x[1]+'" loading="lazy"><span class="yr">'+x[1]+'</span></a>';
+      return '<a href="gallery.html#'+x[1]+'"'+(i===0?' class="tall"':'')+'><img src="'+esc(x[0].thumb)+'" alt="Czech Challenge '+x[1]+'" loading="lazy" style="object-position:'+esc(POS[x[0].src]||"50% 40%")+'"><span class="yr">'+x[1]+'</span></a>';
     }).join("");
 
     // partneři po úrovních
