@@ -429,7 +429,10 @@
   "img/photos/vojta-sal-2.jpg": "38% 22%",
   "img/photos/hero/hero-05.jpg": "50% 48%",
   "img/photos/hero/hero-08.jpg": "50% 50%",
-  "img/photos/team-sestry.jpg": "45% 40%"
+  "img/photos/team-sestry.jpg": "45% 40%",
+  "img/photos/tomasov-1.jpg": "50% 28%",
+  "img/photos/tomasov-2.jpg": "50% 30%",
+  "img/photos/tomasov-3.jpg": "42% 28%"
  },
  "committee": [
   {
@@ -442,7 +445,11 @@
    "name": "Pavol Tomašov",
    "role": "Program",
    "org": "KN Liberec",
-   "photos": []
+   "photos": [
+    "img/photos/tomasov-1.jpg",
+    "img/photos/tomasov-2.jpg",
+    "img/photos/tomasov-3.jpg"
+   ]
   },
   {
    "name": "Roman Štípal",
