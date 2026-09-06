@@ -117,7 +117,9 @@ section{padding:clamp(64px,9vw,120px) 0}
 .directors{display:grid; gap:14px}
 .director{display:grid; grid-template-columns:96px 1fr; gap:16px; align-items:center; background:var(--surface);
   border-radius:var(--radius); padding:12px; box-shadow:var(--shadow)}
-.director img{width:96px; height:96px; object-fit:cover; border-radius:14px}
+.director .pic{position:relative; width:96px; height:96px; border-radius:14px; overflow:hidden}
+.director .pic img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1.2s ease}
+.director .pic img.on{opacity:1}
 .director b{font-family:var(--font-display); font-size:19px; display:block}
 .director span{color:var(--ink-3); font-size:14px}
 .facts{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px}

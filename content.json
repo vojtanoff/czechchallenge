@@ -28,19 +28,26 @@
    "name": "Vojtěch Novotný",
    "role": "Course Director",
    "org": "KC AGEL Pardubice",
-   "photo": "img/photos/director-1.jpg"
+   "photos": [
+    "img/photos/director-1.jpg"
+   ]
   },
   {
    "name": "Ivo Varvařovský",
    "role": "Course Director",
    "org": "KC AGEL Pardubice",
-   "photo": "img/photos/director-2.jpg"
+   "photos": [
+    "img/photos/director-2.jpg",
+    "img/photos/director-2b.jpg"
+   ]
   },
   {
    "name": "Tereza Horníčková",
    "role": "Ideas, production, follow-through",
    "org": "Organising team",
-   "photo": "img/photos/team-tereza.jpg"
+   "photos": [
+    "img/photos/team-tereza.jpg"
+   ]
   }
  ],
  "program": [

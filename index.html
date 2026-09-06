@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=2026-09-06b">
+<link rel="stylesheet" href="style.css?v=2026-09-06c">
 </head>
 <body>
 
@@ -222,9 +222,18 @@
     }
 
     // directors
+    // víc fotek u jednoho člověka = střídají se (prolnutím), první je výchozí
     $("#directors").innerHTML=C.directors.map(function(d){
-      return '<div class="director"><img src="'+esc(d.photo)+'" alt="'+esc(d.name)+'" loading="lazy"><div><b>'+esc(d.name)+'</b><span>'+esc(d.role)+' · '+esc(d.org)+'</span></div></div>';
+      var fotky=d.photos||[d.photo];
+      return '<div class="director"><div class="pic">'+fotky.map(function(f,i){ return '<img src="'+esc(f)+'" alt="'+esc(d.name)+'" loading="lazy"'+(i===0?' class="on"':'')+'>'; }).join("")+'</div>'
+        +'<div><b>'+esc(d.name)+'</b><span>'+esc(d.role)+' · '+esc(d.org)+'</span></div></div>';
     }).join("");
+    if(!matchMedia("(prefers-reduced-motion: reduce)").matches){
+      document.querySelectorAll(".director .pic").forEach(function(pic,i){
+        var ims=pic.children, k=0; if(ims.length<2) return;
+        setInterval(function(){ ims[k].classList.remove("on"); k=(k+1)%ims.length; ims[k].classList.add("on"); }, 6000+i*900);
+      });
+    }
 
     // program
     $("#days").innerHTML=C.program.map(function(day){
