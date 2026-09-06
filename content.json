@@ -53,29 +53,29 @@
    "date": "23 October 2026",
    "items": [
     {
-     "time": "Block 1",
-     "title": "Complex PCI · vascular access · CTO",
-     "desc": "Techniques, calcification and imaging, complications, devices."
+     "time": "Session 1",
+     "title": "Road to CTO & CHIP",
+     "desc": "Access, guiding, wire strategy – the essentials that get you to the lesion and through it."
     },
     {
-     "time": "Block 2",
-     "title": "Complex PCI · vascular access · CTO",
-     "desc": "Continued – with live cases from the cath lab."
+     "time": "Session 2",
+     "title": "CTO & CHIP update 2026",
+     "desc": "What changed this year – techniques, devices and the data behind them."
     },
     {
-     "time": "Block 3",
-     "title": "Mechanical circulatory support in high-risk PCI",
-     "desc": "When, for whom and how – with data on both sides."
+     "time": "Session 3",
+     "title": "MCS-supported PCI",
+     "desc": "Mechanical circulatory support in high-risk PCI: when, for whom and how."
     },
     {
-     "time": "Block 4",
-     "title": "Becoming a CTO operator – AI and educational pathways",
-     "desc": "Rapid-fire five-minute talks: proctoring, fellowship, remote and master–apprentice models."
+     "time": "Session 4",
+     "title": "CTO & CHIP beyond the cath lab",
+     "desc": "AI, training pathways, proctoring – how one becomes a CTO & CHIP operator today."
     },
     {
-     "time": "Battles",
-     "title": "Pro & con debates",
-     "desc": "Controversies argued with real data – and decided by the audience."
+     "time": "New this year",
+     "title": "Quick debate",
+     "desc": "Multiple views on the road to becoming a CTO & CHIP operator – short, sharp, decided by the audience."
     }
    ]
   }
