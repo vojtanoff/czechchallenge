@@ -434,15 +434,15 @@
   "img/photos/hero/hero-08.jpg": "50% 50%",
   "img/photos/team-sestry.jpg": "50% 42%",
   "img/photos/stipal-1.jpg": "50% 30%",
-  "img/photos/tomasov-1.jpg": "62% 30%",
   "img/photos/kral-1.jpg": "50% 30%",
   "img/photos/kral-2.jpg": "50% 30%",
-  "img/photos/stipal-2.jpg": "50% 28%",
-  "img/photos/stipal-3.jpg": "50% 30%",
-  "img/photos/stipal-4.jpg": "42% 28%",
   "img/photos/team-sestry-2.jpg": "50% 40%",
   "img/photos/team-sestry-3.jpg": "22% 45%",
-  "img/photos/hero/hero-12.jpg": "40% 30%"
+  "img/photos/hero/hero-12.jpg": "40% 30%",
+  "img/photos/tomasov-2.jpg": "50% 28%",
+  "img/photos/tomasov-3.jpg": "50% 30%",
+  "img/photos/tomasov-4.jpg": "42% 28%",
+  "img/photos/kral-3.jpg": "62% 30%"
  },
  "committee": [
   {
@@ -451,6 +451,7 @@
    "org": "KC AGEL Pardubice",
    "photos": [
     "img/photos/kral-1.jpg",
+    "img/photos/kral-3.jpg",
     "img/photos/kral-2.jpg"
    ]
   },
@@ -459,7 +460,9 @@
    "role": "Program",
    "org": "KN Liberec",
    "photos": [
-    "img/photos/tomasov-1.jpg"
+    "img/photos/tomasov-2.jpg",
+    "img/photos/tomasov-3.jpg",
+    "img/photos/tomasov-4.jpg"
    ]
   },
   {
@@ -467,10 +470,7 @@
    "role": "Program",
    "org": "FN Brno",
    "photos": [
-    "img/photos/stipal-1.jpg",
-    "img/photos/stipal-2.jpg",
-    "img/photos/stipal-3.jpg",
-    "img/photos/stipal-4.jpg"
+    "img/photos/stipal-1.jpg"
    ]
   }
  ]
