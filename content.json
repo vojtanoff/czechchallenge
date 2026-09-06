@@ -13,16 +13,13 @@
  "hero": [
   "img/photos/hero/hero-01.jpg",
   "img/photos/hero/hero-03.jpg",
-  "img/photos/hero/hero-12.jpg",
   "img/photos/hero/hero-04.jpg",
   "img/photos/hero/hero-05.jpg",
   "img/photos/hero/hero-06.jpg",
   "img/photos/hero/hero-07.jpg",
   "img/photos/hero/hero-08.jpg",
   "img/photos/hero/hero-09.jpg",
-  "img/photos/hero/hero-10.jpg",
-  "img/photos/hero/hero-10.jpg",
-  "img/photos/hero/hero-11.jpg"
+  "img/photos/hero/hero-10.jpg"
  ],
  "directors": [
   {
@@ -282,6 +279,14 @@
    {
     "src": "img/photos/2025/KAB_8329.jpg",
     "thumb": "img/photos/2025/thumb/KAB_8329.jpg"
+   },
+   {
+    "src": "img/photos/2025/hero-11.jpg",
+    "thumb": "img/photos/2025/thumb/hero-11.jpg"
+   },
+   {
+    "src": "img/photos/2025/hero-12.jpg",
+    "thumb": "img/photos/2025/thumb/hero-12.jpg"
    }
   ],
   "2024": [
