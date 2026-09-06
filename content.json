@@ -28,6 +28,7 @@
    "org": "KC AGEL Pardubice",
    "photos": [
     "img/photos/vojta-portret.jpg",
+    "img/photos/vojta-mikrofon.jpg",
     "img/photos/director-1.jpg",
     "img/photos/vojta-sal-1.jpg",
     "img/photos/vojta-3.jpg",
@@ -448,7 +449,8 @@
   "img/photos/tomasov-3.jpg": "50% 30%",
   "img/photos/tomasov-4.jpg": "42% 28%",
   "img/photos/kral-3.jpg": "62% 30%",
-  "img/photos/stipal-2.jpg": "50% 28%"
+  "img/photos/stipal-2.jpg": "50% 28%",
+  "img/photos/vojta-mikrofon.jpg": "50% 18%"
  },
  "committee": [
   {
