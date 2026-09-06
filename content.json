@@ -430,32 +430,40 @@
   "img/photos/hero/hero-05.jpg": "50% 48%",
   "img/photos/hero/hero-08.jpg": "50% 50%",
   "img/photos/team-sestry.jpg": "45% 40%",
-  "img/photos/tomasov-1.jpg": "50% 28%",
-  "img/photos/tomasov-2.jpg": "50% 30%",
-  "img/photos/tomasov-3.jpg": "42% 28%"
+  "img/photos/stipal-1.jpg": "50% 30%",
+  "img/photos/tomasov-1.jpg": "62% 30%",
+  "img/photos/kral-1.jpg": "50% 28%",
+  "img/photos/kral-2.jpg": "50% 30%",
+  "img/photos/kral-3.jpg": "42% 28%",
+  "img/photos/kral-4.jpg": "50% 30%"
  },
  "committee": [
   {
    "name": "Aleš Král",
    "role": "Live cases coordination · program",
    "org": "KC AGEL Pardubice",
-   "photos": []
+   "photos": [
+    "img/photos/kral-1.jpg",
+    "img/photos/kral-2.jpg",
+    "img/photos/kral-3.jpg",
+    "img/photos/kral-4.jpg"
+   ]
   },
   {
    "name": "Pavol Tomašov",
    "role": "Program",
    "org": "KN Liberec",
    "photos": [
-    "img/photos/tomasov-1.jpg",
-    "img/photos/tomasov-2.jpg",
-    "img/photos/tomasov-3.jpg"
+    "img/photos/tomasov-1.jpg"
    ]
   },
   {
    "name": "Roman Štípal",
    "role": "Program",
    "org": "FN Brno",
-   "photos": []
+   "photos": [
+    "img/photos/stipal-1.jpg"
+   ]
   }
  ]
 }
