@@ -28,9 +28,11 @@
    "role": "Course Director",
    "org": "KC AGEL Pardubice",
    "photos": [
+    "img/photos/vojta-portret.jpg",
     "img/photos/director-1.jpg",
+    "img/photos/vojta-sal-1.jpg",
     "img/photos/vojta-3.jpg",
-    "img/photos/vojta-2.jpg"
+    "img/photos/vojta-sal-2.jpg"
    ]
   },
   {
@@ -374,9 +376,11 @@
   "img/photos/2025/KAB_00259.jpg": "60% 40%",
   "img/photos/2024/KAB_6811.jpg": "40% 50%",
   "img/photos/team-tereza-2.jpg": "50% 35%",
-  "img/photos/vojta-2.jpg": "50% 40%",
   "img/photos/ivos-1.jpg": "50% 30%",
   "img/photos/director-1.jpg": "50% 28%",
-  "img/photos/vojta-3.jpg": "50% 35%"
+  "img/photos/vojta-3.jpg": "50% 35%",
+  "img/photos/vojta-sal-1.jpg": "50% 22%",
+  "img/photos/vojta-portret.jpg": "50% 18%",
+  "img/photos/vojta-sal-2.jpg": "38% 22%"
  }
 }
