@@ -283,8 +283,8 @@
         prolni(fb.children,fk,d); fk=d; },5600);
     }
 
-    // galerie – náhled: 8 z 2025, 4 z 2024
-    var g=C.gallery, posl=g["2025"][g["2025"].length-1], pick=g["2025"].slice(0,7).map(function(p){ return [p,"2025"]; }).concat(g["2024"].slice(0,4).map(function(p){ return [p,"2024"]; })).concat([[posl,"2025"]]);
+    // galerie – náhled: 6 z 2025, 4 z 2024 + skupinová faculty 2024 (11 dlaždic + 1 vysoká = 3 plné řady)
+    var g=C.gallery, posl=g["2024"][g["2024"].length-1], pick=g["2025"].slice(0,6).map(function(p){ return [p,"2025"]; }).concat(g["2024"].slice(0,4).map(function(p){ return [p,"2024"]; })).concat([[posl,"2024"]]);
     $("#galleryPreview").innerHTML=pick.map(function(x,i){
       return '<a href="gallery.html#'+x[1]+'"'+(i===0?' class="tall"':'')+'><img src="'+esc(x[0].thumb)+'" alt="Czech Challenge '+x[1]+'" loading="lazy" style="object-position:'+esc(POS[x[0].src]||"50% 40%")+'"><span class="yr">'+x[1]+'</span></a>';
     }).join("");

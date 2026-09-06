@@ -298,10 +298,6 @@
    {
     "src": "img/photos/2025/hero-12.jpg",
     "thumb": "img/photos/2025/thumb/hero-12.jpg"
-   },
-   {
-    "src": "img/photos/2025/faculty-2025.jpg",
-    "thumb": "img/photos/2025/thumb/faculty-2025.jpg"
    }
   ],
   "2024": [
@@ -426,6 +422,11 @@
    {
     "src": "img/photos/2024/Agel2w.jpg",
     "thumb": "img/photos/2024/thumb/Agel2w.jpg"
+   },
+   {
+    "src": "img/photos/2024/faculty-2024.jpg",
+    "thumb": "img/photos/2024/thumb/faculty-2024.jpg",
+    "nehero": true
    }
   ]
  },
@@ -495,7 +496,6 @@
   "img/photos/2025/KAB_8329.jpg": "51% 53%",
   "img/photos/2025/hero-11.jpg": "44% 25%",
   "img/photos/2025/hero-12.jpg": "36% 23%",
-  "img/photos/2025/faculty-2025.jpg": "50% 25%",
   "img/photos/2024/KAB_6458.jpg": "50% 45%",
   "img/photos/2024/KAB_6534.jpg": "65% 16%",
   "img/photos/2024/KAB_6718.jpg": "43% 33%",
@@ -522,7 +522,8 @@
   "img/photos/2024/KAB_7687.jpg": "47% 35%",
   "img/photos/2024/KAB_7773.jpg": "53% 23%",
   "img/photos/2024/Agel2w.jpg": "53% 23%",
-  "img/photos/hero/hero-13.jpg": "46% 30%"
+  "img/photos/hero/hero-13.jpg": "46% 30%",
+  "img/photos/2024/faculty-2024.jpg": "50% 25%"
  },
  "committee": [
   {
