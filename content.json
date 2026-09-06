@@ -52,6 +52,14 @@
     "img/photos/team-tereza.jpg",
     "img/photos/team-tereza-2.jpg"
    ]
+  },
+  {
+   "name": "Cath lab nursing team",
+   "role": "Live cases, logistics, hospitality",
+   "org": "KC AGEL Pardubice",
+   "photos": [
+    "img/photos/team-sestry.jpg"
+   ]
   }
  ],
  "program": [
@@ -382,7 +390,8 @@
   "img/photos/vojta-portret.jpg": "50% 32%",
   "img/photos/vojta-sal-2.jpg": "38% 22%",
   "img/photos/hero/hero-05.jpg": "50% 48%",
-  "img/photos/hero/hero-08.jpg": "50% 50%"
+  "img/photos/hero/hero-08.jpg": "50% 50%",
+  "img/photos/team-sestry.jpg": "45% 40%"
  },
  "committee": [
   {
