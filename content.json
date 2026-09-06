@@ -113,6 +113,10 @@
   ],
   "Gold partners": [
    {
+    "name": "Innova Medical",
+    "logo": "img/logos/06_innova_medical.svg"
+   },
+   {
     "name": "Cardion",
     "logo": "img/logos/06_cardion.svg"
    },
@@ -127,10 +131,6 @@
    {
     "name": "Cordis",
     "logo": "img/logos/Cordis_Logo_v3.jpg"
-   },
-   {
-    "name": "Innova Medical",
-    "logo": "img/logos/06_innova_medical.svg"
    }
   ],
   "Silver partners": [
