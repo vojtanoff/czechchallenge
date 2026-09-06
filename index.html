@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=2026-09-06c">
+<link rel="stylesheet" href="style.css?v=2026-09-06d">
 </head>
 <body>
 
@@ -109,7 +109,7 @@
       <h2>Operators you know from the big stages – in one room with you.</h2>
     </div>
     <div class="faculty-band reveal">
-      <img src="img/photos/2025/KAB_00409.jpg" alt="Panel discussion at Czech Challenge 2025" loading="lazy">
+      <div class="band-photos" id="facultyPhotos"></div>
       <div>
         <h3>Czech &amp; 20+ international faculty</h3>
         <p id="facultyNote"></p>
@@ -243,6 +243,13 @@
     }).join("");
     $("#liveCases").textContent=C.live_cases;
     $("#facultyNote").textContent=C.faculty_note;
+    // panelové fotky se v sekci Faculty střídají stejně jako v hero
+    var fb=$("#facultyPhotos");
+    (C.faculty_photos||[]).forEach(function(src,i){ var im=new Image(); im.src=src; im.alt="Panel discussion at Czech Challenge"; im.loading="lazy"; if(i===0) im.className="on"; fb.appendChild(im); });
+    if(!matchMedia("(prefers-reduced-motion: reduce)").matches && fb.children.length>1){
+      var fk=0; setInterval(function(){ var d=(fk+1)%fb.children.length; if(!fb.children[d].complete) return;
+        fb.children[fk].classList.remove("on"); fk=d; fb.children[fk].classList.add("on"); },5600);
+    }
 
     // galerie – náhled: 8 z 2025, 4 z 2024
     var g=C.gallery, pick=g["2025"].slice(0,8).map(function(p){ return [p,"2025"]; }).concat(g["2024"].slice(0,4).map(function(p){ return [p,"2024"]; }));
