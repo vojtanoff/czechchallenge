@@ -12,7 +12,6 @@
  },
  "hero": [
   "img/photos/hero/hero-01.jpg",
-  "img/photos/hero/hero-02.jpg",
   "img/photos/hero/hero-03.jpg",
   "img/photos/hero/hero-04.jpg",
   "img/photos/hero/hero-05.jpg",
@@ -363,13 +362,13 @@
   "img/photos/2024/KAB_6811.jpg"
  ],
  "pos": {
-  "img/photos/hero/hero-01.jpg": "50% 45%",
-  "img/photos/hero/hero-03.jpg": "40% 50%",
-  "img/photos/hero/hero-04.jpg": "50% 35%",
+  "img/photos/hero/hero-01.jpg": "45% 58%",
+  "img/photos/hero/hero-03.jpg": "35% 55%",
+  "img/photos/hero/hero-04.jpg": "50% 42%",
   "img/photos/hero/hero-06.jpg": "45% 50%",
-  "img/photos/hero/hero-07.jpg": "45% 40%",
-  "img/photos/hero/hero-09.jpg": "55% 40%",
-  "img/photos/hero/hero-10.jpg": "45% 35%",
+  "img/photos/hero/hero-07.jpg": "40% 50%",
+  "img/photos/hero/hero-09.jpg": "48% 50%",
+  "img/photos/hero/hero-10.jpg": "40% 45%",
   "img/photos/2024/KAB_7144.jpg": "50% 68%",
   "img/photos/2024/KAB_6781.jpg": "50% 40%",
   "img/photos/2025/KAB_7682.jpg": "50% 35%",
@@ -381,6 +380,8 @@
   "img/photos/vojta-3.jpg": "50% 35%",
   "img/photos/vojta-sal-1.jpg": "50% 22%",
   "img/photos/vojta-portret.jpg": "50% 18%",
-  "img/photos/vojta-sal-2.jpg": "38% 22%"
+  "img/photos/vojta-sal-2.jpg": "38% 22%",
+  "img/photos/hero/hero-05.jpg": "50% 48%",
+  "img/photos/hero/hero-08.jpg": "50% 50%"
  }
 }
