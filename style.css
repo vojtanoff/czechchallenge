@@ -85,7 +85,7 @@ section{padding:clamp(64px,9vw,120px) 0}
 /* ---------- hero ---------- */
 .hero{position:relative; min-height:clamp(560px,82vh,860px); display:grid; align-items:end;
   overflow:hidden; background:var(--violet-deep); color:#fff; padding:0}
-.hero-photos{position:absolute; inset:0}
+.hero-photos{position:absolute; inset:0; z-index:0; isolation:isolate}
 .hero-photos img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0;
   transition:opacity 1.6s ease; transform:scale(1.04); will-change:opacity}
 .hero-photos img.on{opacity:1}
@@ -119,7 +119,7 @@ section{padding:clamp(64px,9vw,120px) 0}
 .directors{display:grid; gap:14px}
 .director{display:grid; grid-template-columns:96px 1fr; gap:16px; align-items:center; background:var(--surface);
   border-radius:var(--radius); padding:12px; box-shadow:var(--shadow)}
-.director .pic{position:relative; width:96px; height:96px; border-radius:14px; overflow:hidden}
+.director .pic{position:relative; width:96px; height:96px; border-radius:14px; overflow:hidden; isolation:isolate}
 .director .pic img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1.2s ease}
 .director .pic img.on{opacity:1}
 .director b{font-family:var(--font-display); font-size:19px; display:block}
@@ -148,7 +148,7 @@ section{padding:clamp(64px,9vw,120px) 0}
 
 /* ---------- faculty ---------- */
 .faculty-band{position:relative; border-radius:var(--radius); overflow:hidden; min-height:380px; aspect-ratio:16/7; display:grid; align-items:end; color:#fff}
-.faculty-band .band-photos{position:absolute; inset:0}
+.faculty-band .band-photos{position:absolute; inset:0; z-index:0; isolation:isolate}
 .faculty-band img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1.4s ease}
 .faculty-band img.on{opacity:1}
 .faculty-band::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(23,19,58,0) 20%,rgba(23,19,58,.88))}
