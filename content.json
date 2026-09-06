@@ -109,6 +109,10 @@
    {
     "name": "Cordis",
     "logo": "img/logos/Cordis_Logo_v3.jpg"
+   },
+   {
+    "name": "Innova Medical",
+    "logo": "img/logos/06_innova_medical.svg"
    }
   ],
   "Silver partners": [
@@ -133,10 +137,6 @@
    {
     "name": "Promedica",
     "logo": "img/logos/07_Promedica.svg"
-   },
-   {
-    "name": "Innova Medical",
-    "logo": "img/logos/06_innova_medical.svg"
    }
   ]
  },
