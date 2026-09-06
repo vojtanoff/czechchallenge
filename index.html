@@ -193,6 +193,11 @@
   function poz(im,src,vychozi){ im.style.objectPosition=(POS[src]||vychozi); }
   function esc(t){ return String(t==null?"":t).replace(/[&<>"]/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
 
+  // prolínání fotek: nová se objeví nad starou a stará se odebere až po dokončení přechodu,
+  // jinak by uprostřed přechodu (obě v polovině) prosvítal jen fialový podklad
+  var VRSTVA=1;
+  function prolni(ims,od,na){ ims[na].style.zIndex=++VRSTVA; ims[na].classList.add("on"); setTimeout(function(){ if(od!==na) ims[od].classList.remove("on"); },1800); }
+
   // menu
   var burger=$("#burger"), full=$("#fullmenu");
   function menu(o){ full.dataset.open=o?"true":"false"; burger.setAttribute("aria-expanded",o?"true":"false"); document.body.style.overflow=o?"hidden":""; }
@@ -221,8 +226,7 @@
         var dalsi=(cur+1)%imgs.length, hlidac=0;
         while(!(imgs[dalsi].complete&&imgs[dalsi].naturalWidth) && hlidac++<imgs.length) dalsi=(dalsi+1)%imgs.length;
         if(dalsi===cur) return;
-        imgs[cur].classList.remove("on"); ds[cur].classList.remove("on");
-        cur=dalsi; imgs[cur].classList.add("on"); ds[cur].classList.add("on"); },5200);
+        ds[cur].classList.remove("on"); prolni(imgs,cur,dalsi); cur=dalsi; ds[cur].classList.add("on"); },5200);
     }
 
     // directors
@@ -235,7 +239,7 @@
     if(!matchMedia("(prefers-reduced-motion: reduce)").matches){
       document.querySelectorAll(".director .pic").forEach(function(pic,i){
         var ims=pic.children, k=0; if(ims.length<2) return;
-        setInterval(function(){ ims[k].classList.remove("on"); k=(k+1)%ims.length; ims[k].classList.add("on"); }, 6000+i*900);
+        setInterval(function(){ var d=(k+1)%ims.length; prolni(ims,k,d); k=d; }, 6000+i*900);
       });
     }
 
@@ -252,7 +256,7 @@
     (C.faculty_photos||[]).forEach(function(src,i){ var im=new Image(); im.src=src; im.alt="Panel discussion at Czech Challenge"; im.loading="lazy"; if(i===0) im.className="on"; poz(im,src,"50% 40%"); fb.appendChild(im); });
     if(!matchMedia("(prefers-reduced-motion: reduce)").matches && fb.children.length>1){
       var fk=0; setInterval(function(){ var d=(fk+1)%fb.children.length; if(!fb.children[d].complete) return;
-        fb.children[fk].classList.remove("on"); fk=d; fb.children[fk].classList.add("on"); },5600);
+        prolni(fb.children,fk,d); fk=d; },5600);
     }
 
     // galerie – náhled: 8 z 2025, 4 z 2024
