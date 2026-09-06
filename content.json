@@ -71,9 +71,14 @@
    "date": "23 October 2026",
    "items": [
     {
+     "time": "Live case",
+     "title": "Opening live case from Australia",
+     "desc": "The day opens in the cath lab – with a live case transmitted from Australia."
+    },
+    {
      "time": "Session 1",
      "title": "Road to CTO & CHIP",
-     "desc": "From the first angiogram to the crossed lesion: planning, access, guiding support and wire strategy."
+     "desc": "Different paths to CTO & CHIP – not from the first wire, but from everyday PCI to the next level."
     },
     {
      "time": "Session 2",
@@ -88,7 +93,7 @@
     {
      "time": "Session 4",
      "title": "CTO & CHIP beyond the cath lab",
-     "desc": "Training, proctoring, fellowships and AI – the paths that make a CTO & CHIP operator."
+     "desc": "The unconventional side of CTO & CHIP – connections and lessons from outside the cath lab."
     },
     {
      "time": "New this year",
@@ -98,7 +103,7 @@
    ]
   }
  ],
- "live_cases": "Live cases run between the sessions – from the KC AGEL Pardubice cath lab and from partner centres abroad. Details in the scientific program.",
+ "live_cases": "Live cases run through the day – opening from Australia, then from the KC AGEL Pardubice cath lab and partner centres abroad. Details in the scientific program.",
  "faculty_note": "Czech & 20+ international faculty. The full list will be announced with the program.",
  "partners": {
   "General partners": [
