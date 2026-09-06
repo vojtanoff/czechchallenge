@@ -442,7 +442,8 @@
   "img/photos/tomasov-2.jpg": "50% 28%",
   "img/photos/tomasov-3.jpg": "50% 30%",
   "img/photos/tomasov-4.jpg": "42% 28%",
-  "img/photos/kral-3.jpg": "62% 30%"
+  "img/photos/kral-3.jpg": "62% 30%",
+  "img/photos/stipal-2.jpg": "50% 28%"
  },
  "committee": [
   {
@@ -470,7 +471,8 @@
    "role": "Program",
    "org": "FN Brno",
    "photos": [
-    "img/photos/stipal-1.jpg"
+    "img/photos/stipal-1.jpg",
+    "img/photos/stipal-2.jpg"
    ]
   }
  ]
