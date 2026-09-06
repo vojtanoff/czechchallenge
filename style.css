@@ -189,7 +189,7 @@ section{padding:clamp(64px,9vw,120px) 0}
 .logos.general .logo{min-height:200px; padding:36px}
 .logo img{max-height:60px; width:auto; max-width:100%; object-fit:contain}
 .logos.general .logo img{max-height:120px}
-.patronage .logo{background:transparent; border:0; min-height:90px; padding:10px}
+.patronage .logo{min-height:100px; padding:16px}   /* stejné bílé karty jako partneři, i v dark mode */
 .thanks{margin-top:34px; padding:22px 26px; border-radius:var(--radius); background:var(--lime); color:var(--lime-ink);
   font-family:var(--font-display); font-weight:700; font-size:clamp(18px,2vw,22px); text-wrap:balance}
 
