@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=2026-09-07c">
-<link rel="stylesheet" href="style-pexa.css?v=9">
+<link rel="stylesheet" href="style-pexa.css?v=11">
 </head>
 <body>
 
@@ -42,6 +42,7 @@
   <a href="#gallery">Gallery</a><a href="#partners">Partners</a><a href="#contact">Contact</a>
 </nav>
 
+<div class="prepinac" aria-label="Varianta náhledu"><a href="?hero=pexa" data-v="pexa">Pexa</a><a href="?hero=foto" data-v="foto">Blend s fotkou</a></div>
 <main id="top">
 
 <!-- HERO: prolínající fotky z ročníků 2024 a 2025, přes ně vizuál 2026 -->
@@ -67,6 +68,7 @@
       <img class="hand" src="img/brand/ruka-3d.png" alt="" style="left:26.2%; top:33.2%">
     </div>
   </div>
+  <a class="prev" href="#gallery"><i><svg width="12" height="12" viewBox="0 0 14 14" fill="#4B32D0"><path d="M3 1.5v11l9-5.5z"/></svg></i>Previous editions</a>
   <div class="wrap">
     <div class="hero-card">
       <div class="hero-photos" id="heroPhotos"></div>
@@ -238,6 +240,12 @@
     document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
   } else { document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("in"); }); }
 
+  // varianta hero: ?hero=foto = fotografické hero (blend), jinak karta podle Pexy; volba se pamatuje
+  (function(){ var q=/[?&]hero=(foto|pexa)/.exec(location.search), v=q?q[1]:"pexa";   // 2. verze = Pexa (výchozí), 3. verze = ?hero=foto
+    if(v==="foto"){ document.body.classList.add("hero-foto"); var h=document.querySelector(".hero-pexa"), f=document.getElementById("heroPhotos"), d=document.getElementById("heroDots");
+      if(h&&f){ h.insertBefore(f,h.firstChild); } if(h&&d){ h.appendChild(d); } }
+    document.querySelectorAll(".prepinac a").forEach(function(a){ a.classList.toggle("on",(a.dataset.v==="foto")===(v==="foto")); });
+  })();
   fetch("content.json",{cache:"no-store"}).then(function(r){ return r.json(); }).then(function(C){
     POS=C.pos||{};
     // hero – prolínání fotek
