@@ -167,13 +167,16 @@ body.hero-foto .hero-pexa .prev{display:inline-flex}
 .prepinac a{color:#fff; text-decoration:none; padding:7px 12px; border-radius:999px; opacity:.75}
 .prepinac a.on{background:#fff; color:var(--violet); opacity:1}
 
-/* ---------- palec z flyeru u nadpisu ---------- */
+/* ---------- 3D ruka s krátkou hadicí u nadpisu: vyjede zpoza „2026" a ukáže nahoru k „Czech" ---------- */
 .titul{position:relative; display:inline-block}
-.titul .klip{position:absolute; left:calc(100% + 7%); top:0; bottom:.14em; width:70%; overflow:hidden; pointer-events:none}
-.titul .palec{position:absolute; left:0; bottom:0; height:74%; width:auto; transform:translateY(108%) rotate(-14deg); transform-origin:15% 100%;
-  transition:transform 1.1s cubic-bezier(.2,1.12,.3,1); filter:drop-shadow(0 10px 14px rgba(34,29,74,.18))}
-.titul.on .palec{transform:translateY(0) rotate(-5deg)}
-.titul .palec.skok{animation:skok .7s cubic-bezier(.3,1.4,.4,1)}
-@keyframes skok{0%{transform:translateY(0) rotate(-5deg)} 40%{transform:translateY(-9%) rotate(3deg)} 100%{transform:translateY(0) rotate(-5deg)}}
-body.hero-foto .titul .palec{filter:drop-shadow(0 12px 18px rgba(0,0,0,.35))}
-@media (max-width:860px){ .titul .klip{left:calc(100% + 2%); width:62%} .titul .palec{height:58%} }
+.titul .klip{position:absolute; left:calc(100% + 2%); top:-16%; bottom:.16em; width:64%; overflow:hidden; pointer-events:none; min-height:0; margin:0}
+.titul .tube{position:absolute; left:0; top:0; width:100%; height:100%; overflow:visible}
+.titul .tube .t-shadow{stroke-width:58; opacity:.2; transform:translate(10px,16px)}
+.titul .tube .t-base{stroke-width:46} .titul .tube .t-mask{stroke-width:46} .titul .tube .t-body{stroke-width:42} .titul .tube .t-dark{stroke-width:28; transform:translate(2px,7px)}
+.titul .tube .t-core{stroke-width:13; transform:translate(3px,10px)} .titul .tube .t-rim{transform:translate(5px,15px)} .titul .tube .t-mid{stroke-width:20; transform:translate(-3px,-6px)}
+.titul .tube .t-light{stroke-width:8; transform:translate(-5px,-11px)} .titul .tube .t-spec{stroke-width:2.2; transform:translate(-6px,-13px)}
+.titul .hand-nahoru{width:auto; height:58%; transform:translate(-55.5%,-96%) rotate(var(--uhel,0deg)); transform-origin:55.5% 96%; filter:drop-shadow(0 14px 18px rgba(34,29,74,.22))}
+.titul .hand-nahoru.nod{animation:nodUp .8s cubic-bezier(.3,.9,.3,1.2)}
+@keyframes nodUp{0%{transform:translate(-55.5%,-96%)} 35%{transform:translate(-55.5%,-96%) translateY(-18px) rotate(-4deg)} 70%{transform:translate(-55.5%,-96%) translateY(4px) rotate(2deg)} 100%{transform:translate(-55.5%,-96%)}}
+body.hero-foto .titul .hand-nahoru{filter:drop-shadow(0 14px 20px rgba(0,0,0,.4))}
+@media (max-width:860px){ .titul .klip{width:58%; left:calc(100% + 1%)} .titul .hand-nahoru{height:60%} }
