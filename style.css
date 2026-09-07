@@ -114,16 +114,17 @@ section{padding:clamp(64px,9vw,120px) 0}
 /* na telefonu je hero nižší – z fotky na šířku by jinak zbyl jen střed */
 @media (max-width:700px){ .hero{min-height:clamp(520px,72vh,720px)} .loop{width:46vw; right:-12%; top:1%; opacity:.5} .hero .wrap{padding-top:90px} }
 
-/* katétr a palec z původního webu: s první fotkou katétr nakreslí srdce, na jeho konci se objeví palec a dvakrát cukne; s druhou fotkou zmizí */
-.palec-box{position:absolute; left:max(16px,calc((100% - 1180px)/2)); top:92px; width:clamp(170px,19vw,280px); aspect-ratio:1; z-index:2; pointer-events:none}
+/* katétr a palec z původního webu (tvar jako Save the date 2025): s první fotkou drát zespodu udělá dvě smyčky a vyjede k ruce, ruka se objeví a dvakrát cukne; s druhou fotkou zmizí */
+.palec-box{position:absolute; left:max(16px,calc((100% - 1180px)/2)); top:84px; width:clamp(200px,22vw,320px); aspect-ratio:320/360; z-index:2; pointer-events:none}
 .palec-box .katetr{position:absolute; inset:0; width:100%; height:100%; overflow:visible}
-.palec-box .katetr path{fill:none; stroke:#4B32D0; stroke-width:9; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:1; stroke-dashoffset:1; opacity:0; transition:stroke-dashoffset 1s ease-in .1s, opacity .2s 1.1s}   /* po smotání zmizí i tečka z kulatého konce */
-.palec-box.on .katetr path{stroke-dashoffset:0; opacity:1; transition:stroke-dashoffset 2.3s cubic-bezier(.55,.05,.35,1) .2s, opacity .1s .2s}
-.palec-box .palec-v{position:absolute; left:84%; top:97.3%; width:40%; height:auto; transform:translate(-100%,-100%) scale(0) rotate(4deg) scaleX(-1); transform-origin:100% 100%; transition:transform .35s ease-in}
-.palec-box.on .palec-v{transform:translate(-100%,-100%) scale(1) rotate(4deg) scaleX(-1); transition:transform .7s cubic-bezier(.2,1.3,.3,1) 2.4s; animation:cuk .9s 3.2s cubic-bezier(.3,.9,.3,1.2) forwards}
-@keyframes cuk{0%{transform:translate(-100%,-100%) scale(1) rotate(4deg) scaleX(-1)} 22%{transform:translate(-100%,-107%) scale(1) rotate(-3deg) scaleX(-1)} 44%{transform:translate(-100%,-100%) scale(1) rotate(4deg) scaleX(-1)} 66%{transform:translate(-100%,-107%) scale(1) rotate(-3deg) scaleX(-1)} 100%{transform:translate(-100%,-100%) scale(1) rotate(4deg) scaleX(-1)}}
-@media (max-width:700px){ .palec-box{top:80px; width:clamp(130px,34vw,180px)} .palec-box .katetr path{stroke-width:11} }
-@media (prefers-reduced-motion:reduce){ .palec-box .katetr path{transition:none; stroke-dashoffset:0} .palec-box .palec-v{transition:none; animation:none; transform:translate(-100%,-100%) scale(1) rotate(4deg) scaleX(-1)} }
+.palec-box .katetr path{fill:none; stroke:#4B32D0; stroke-width:11; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:1; stroke-dashoffset:1; opacity:0; transition:stroke-dashoffset 1s ease-in .1s, opacity .2s 1.1s}
+.palec-box.on .katetr path{stroke-dashoffset:0; opacity:1; transition:stroke-dashoffset 2.6s cubic-bezier(.55,.05,.35,1) .2s, opacity .1s .2s}
+/* ruka: zápěstí (spodní střed obrázku) sedí na konci drátu, natočená palcem doleva nahoru */
+.palec-box .palec-v{position:absolute; left:67.5%; top:25.5%; width:42%; height:auto; transform:translate(-50%,-100%) rotate(-30deg) scale(0); transform-origin:50% 100%; transition:transform .35s ease-in}
+.palec-box.on .palec-v{transform:translate(-50%,-100%) rotate(-30deg) scale(1); transition:transform .7s cubic-bezier(.2,1.3,.3,1) 2.7s; animation:cuk .9s 3.5s cubic-bezier(.3,.9,.3,1.2) forwards}
+@keyframes cuk{0%{transform:translate(-50%,-100%) rotate(-30deg) scale(1)} 22%{transform:translate(-50%,-106%) rotate(-36deg) scale(1)} 44%{transform:translate(-50%,-100%) rotate(-30deg) scale(1)} 66%{transform:translate(-50%,-106%) rotate(-36deg) scale(1)} 100%{transform:translate(-50%,-100%) rotate(-30deg) scale(1)}}
+@media (max-width:700px){ .palec-box{top:78px; width:clamp(140px,38vw,200px)} .palec-box .katetr path{stroke-width:11} }
+@media (prefers-reduced-motion:reduce){ .palec-box .katetr path{transition:none; stroke-dashoffset:0; opacity:1} .palec-box .palec-v{transition:none; animation:none; transform:translate(-50%,-100%) rotate(-30deg) scale(1)} }
 
 /* ---------- about ---------- */
 .about-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(28px,5vw,72px); align-items:start}
