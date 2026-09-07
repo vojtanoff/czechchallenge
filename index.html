@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=2026-09-07c">
-<link rel="stylesheet" href="style-pexa.css?v=29">
+<link rel="stylesheet" href="style-pexa.css?v=30">
 </head>
 <body>
 
@@ -287,7 +287,9 @@
     // ruka u nadpisu: výchozí = vektorový palec z původního webu (identita 2024/25); ?ruka=3d = 3D ukazováček s hadicí z Figmy
     var r=/[?&]ruka=(3d|vektor)/.exec(location.search), t=document.getElementById("titul");
     if(t && !(r&&r[1]==="3d")){ t.classList.add("vektor"); var k=t.querySelector(".klip"); k.removeAttribute("id"); k.classList.remove("tube-wrap"); var sv=k.querySelector(".tube"); if(sv) sv.remove(); var h=k.querySelector(".hand"); if(h) h.remove();
-      setTimeout(function(){ t.classList.add("on"); }, matchMedia("(prefers-reduced-motion: reduce)").matches?0:600);
+      // palec se objeví s druhou fotkou v hero a s další zase zajede (při omezení animací je vidět pořád)
+      if(matchMedia("(prefers-reduced-motion: reduce)").matches) t.classList.add("on");
+      else document.addEventListener("herofoto",function(e){ t.classList.toggle("on", e.detail===1); });
       document.addEventListener("mouseover",function(e){ if(e.target.closest&&e.target.closest(".hero-pexa .cta .btn")&&t.classList.contains("on")){ var im=t.querySelector(".palec-v"); im.classList.remove("skok"); void im.offsetWidth; im.classList.add("skok"); } }); }
     document.querySelectorAll(".prepinac a").forEach(function(a){ var u=new URL(a.getAttribute("href"),location.href); if(r) u.searchParams.set("ruka",r[1]); a.setAttribute("href",u.pathname+u.search); });
   })();
@@ -311,7 +313,7 @@
         var dalsi=(cur+1)%imgs.length, hlidac=0;
         while(!(imgs[dalsi].complete&&imgs[dalsi].naturalWidth) && hlidac++<imgs.length) dalsi=(dalsi+1)%imgs.length;
         if(dalsi===cur) return;
-        ds[cur].classList.remove("on"); prolni(imgs,cur,dalsi); cur=dalsi; ds[cur].classList.add("on"); },5200);
+        ds[cur].classList.remove("on"); prolni(imgs,cur,dalsi); cur=dalsi; ds[cur].classList.add("on"); document.dispatchEvent(new CustomEvent("herofoto",{detail:cur})); },5200);
     }
 
     // smyčka: po načtení se nakreslí, chvíli vydrží a zase se smotá; po návratu nahoru (scroll) znovu
