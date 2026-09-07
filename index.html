@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=2026-09-07c">
-<link rel="stylesheet" href="style-pexa.css?v=4">
+<link rel="stylesheet" href="style-pexa.css?v=5">
 </head>
 <body>
 
@@ -282,6 +282,8 @@
       var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return;
         var t=e.target.querySelector(".tube"); setTimeout(function(){ t.classList.add("on"); },redukce?0:150); io.unobserve(e.target); }); },{threshold:.25});
       celky.forEach(function(c){ io.observe(c); });
+      // pojistka: kdyby pozorovatel nevystřelil (starší prohlížeč, vložení do rámu), hero hadice se nakreslí sama
+      setTimeout(function(){ var t=document.querySelector("#tubeHero .tube"); if(t) t.classList.add("on"); },1800);
       if(redukce) return;
       function kyv(h){ h.classList.remove("nod"); void h.offsetWidth; h.classList.add("nod"); }
       var ruceHero=document.querySelector("#tubeHero .hand"), ruceKontakt=document.querySelector("#tubeKontakt .hand");

@@ -82,7 +82,7 @@ h3{font-weight:500}
 .hero-card .hero-photos{position:absolute; inset:0; z-index:0}
 .hero-card .hero-photos img{transform:none}
 .hero-card::after{content:""; position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(180deg,rgba(75,50,208,.08),rgba(34,29,74,.45) 100%)}
-.hero-card .play{position:absolute; left:50%; top:50%; z-index:2; transform:translate(-50%,-50%); display:inline-flex; align-items:center; gap:10px;
+.hero-card .play{position:absolute; left:50%; top:50%; z-index:2; transform:translate(-50%,-50%); display:inline-flex; align-items:center; gap:10px; white-space:nowrap;
   background:rgba(255,255,255,.92); color:var(--violet); text-decoration:none; font-family:var(--font-display); font-weight:600; font-size:16px; padding:12px 18px 12px 12px; border-radius:999px; box-shadow:0 8px 24px rgba(0,0,0,.25)}
 .hero-card .play i{width:36px; height:36px; border-radius:50%; background:var(--violet); display:grid; place-items:center}
 .hero-card .tag{position:absolute; right:18px; bottom:16px; z-index:2; color:#fff; font-family:var(--font-display); font-weight:500; font-size:15px; text-shadow:0 2px 10px rgba(0,0,0,.5)}
@@ -127,6 +127,7 @@ footer img{filter:brightness(0) invert(1); opacity:.9; height:26px}
   .tube{inset:-4% 0 -4% -6%}
   .hand{width:clamp(110px,30vw,160px)}
   .hero-card{aspect-ratio:4/3}
+  .hero-card .play{font-size:14px; padding:9px 14px 9px 9px} .hero-card .play i{width:30px; height:30px}
   .contact{width:calc(100% - 20px)}
   .contact .tube-wrap{width:70vw; height:70vw; left:auto; right:-25%; bottom:-30%; opacity:.6}
 }
