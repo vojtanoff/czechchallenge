@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=2026-09-07c">
-<link rel="stylesheet" href="style-pexa.css?v=14">
+<link rel="stylesheet" href="style-pexa.css?v=21">
 </head>
 <body>
 
@@ -59,11 +59,40 @@
     </div>
     <div class="tube-wrap" id="tubeHero" aria-hidden="true">
       <svg class="tube" viewBox="0 0 900 760" aria-hidden="true">
-        <path class="t-shadow" pathLength="1" d="M980 700 C820 670, 640 650, 556 545 C462 428, 586 322, 676 386 C766 450, 700 588, 560 566 C420 544, 318 430, 336 310 C350 236, 300 254, 236 252"/>
-        <path class="t-base" pathLength="1" d="M980 700 C820 670, 640 650, 556 545 C462 428, 586 322, 676 386 C766 450, 700 588, 560 566 C420 544, 318 430, 336 310 C350 236, 300 254, 236 252"/>
-        <path class="t-body" pathLength="1" d="M980 700 C820 670, 640 650, 556 545 C462 428, 586 322, 676 386 C766 450, 700 588, 560 566 C420 544, 318 430, 336 310 C350 236, 300 254, 236 252"/>
-        <path class="t-light" pathLength="1" d="M980 700 C820 670, 640 650, 556 545 C462 428, 586 322, 676 386 C766 450, 700 588, 560 566 C420 544, 318 430, 336 310 C350 236, 300 254, 236 252"/>
-        <path class="t-spec" pathLength="1" d="M980 700 C820 670, 640 650, 556 545 C462 428, 586 322, 676 386 C766 450, 700 588, 560 566 C420 544, 318 430, 336 310 C350 236, 300 254, 236 252"/>
+        <g class="seg">
+          <defs>
+            <mask id="maska-hero-0" maskUnits="userSpaceOnUse" x="-200" y="-200" width="1300" height="1160"><path class="t-mask" pathLength="1" d="M990 700 C830 670, 650 650, 560 545 C468 430, 592 322, 682 386 C711 406, 723 435, 723 463"/></mask>
+          </defs>
+          <path class="t-shadow" pathLength="1" d="M990 700 C830 670, 650 650, 560 545 C468 430, 592 322, 682 386 C711 406, 723 435, 723 463"/>
+          <path class="t-base" pathLength="1" d="M990 700 C830 670, 650 650, 560 545 C468 430, 592 322, 682 386 C711 406, 723 435, 723 463"/>
+          <g mask="url(#maska-hero-0)">
+            <path class="t-body" pathLength="1" d="M990 700 C830 670, 650 650, 560 545 C468 430, 592 322, 682 386 C711 406, 723 435, 723 463"/>
+            <path class="t-dark" pathLength="1" d="M990 700 C830 670, 650 650, 560 545 C468 430, 592 322, 682 386 C711 406, 723 435, 723 463"/>
+            <path class="t-core" pathLength="1" d="M990 700 C830 670, 650 650, 560 545 C468 430, 592 322, 682 386 C711 406, 723 435, 723 463"/>
+            <path class="t-rim" pathLength="1" d="M990 700 C830 670, 650 650, 560 545 C468 430, 592 322, 682 386 C711 406, 723 435, 723 463"/>
+            <path class="t-mid" pathLength="1" d="M990 700 C830 670, 650 650, 560 545 C468 430, 592 322, 682 386 C711 406, 723 435, 723 463"/>
+            <path class="t-light" pathLength="1" d="M990 700 C830 670, 650 650, 560 545 C468 430, 592 322, 682 386 C711 406, 723 435, 723 463"/>
+            <path class="t-spec" pathLength="1" d="M990 700 C830 670, 650 650, 560 545 C468 430, 592 322, 682 386 C711 406, 723 435, 723 463"/>
+          </g>
+        </g>
+        <g class="seg" mask="url(#maska-hero-1-nav)">
+          <defs>
+            <mask id="maska-hero-1" maskUnits="userSpaceOnUse" x="-200" y="-200" width="1300" height="1160"><path class="t-mask" pathLength="1" d="M682 386 C772 450, 704 588, 564 566 C424 544, 322 430, 338 312 C350 236, 300 254, 236 252"/></mask>
+            <radialGradient id="maska-hero-1-fade"><stop offset="0.45" stop-color="#000"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+            <mask id="maska-hero-1-nav" maskUnits="userSpaceOnUse" x="-200" y="-200" width="1300" height="1160"><path class="t-mask t-mask-sir" pathLength="1" d="M682 386 C772 450, 704 588, 564 566 C424 544, 322 430, 338 312 C350 236, 300 254, 236 252"/><circle cx="682" cy="386" r="62" fill="url(#maska-hero-1-fade)"/></mask>
+          </defs>
+          <path class="t-shadow" pathLength="1" d="M682 386 C772 450, 704 588, 564 566 C424 544, 322 430, 338 312 C350 236, 300 254, 236 252"/>
+          <path class="t-base" pathLength="1" d="M682 386 C772 450, 704 588, 564 566 C424 544, 322 430, 338 312 C350 236, 300 254, 236 252"/>
+          <g mask="url(#maska-hero-1)">
+            <path class="t-body" pathLength="1" d="M682 386 C772 450, 704 588, 564 566 C424 544, 322 430, 338 312 C350 236, 300 254, 236 252"/>
+            <path class="t-dark" pathLength="1" d="M682 386 C772 450, 704 588, 564 566 C424 544, 322 430, 338 312 C350 236, 300 254, 236 252"/>
+            <path class="t-core" pathLength="1" d="M682 386 C772 450, 704 588, 564 566 C424 544, 322 430, 338 312 C350 236, 300 254, 236 252"/>
+            <path class="t-rim" pathLength="1" d="M682 386 C772 450, 704 588, 564 566 C424 544, 322 430, 338 312 C350 236, 300 254, 236 252"/>
+            <path class="t-mid" pathLength="1" d="M682 386 C772 450, 704 588, 564 566 C424 544, 322 430, 338 312 C350 236, 300 254, 236 252"/>
+            <path class="t-light" pathLength="1" d="M682 386 C772 450, 704 588, 564 566 C424 544, 322 430, 338 312 C350 236, 300 254, 236 252"/>
+            <path class="t-spec" pathLength="1" d="M682 386 C772 450, 704 588, 564 566 C424 544, 322 430, 338 312 C350 236, 300 254, 236 252"/>
+          </g>
+        </g>
       </svg>
       <img class="hand" src="img/brand/ruka-3d.png" alt="" style="left:26.2%; top:33.2%">
     </div>
@@ -178,11 +207,40 @@
 <section id="contact" class="contact">
   <div class="tube-wrap" id="tubeKontakt" aria-hidden="true">
     <svg class="tube" viewBox="0 0 900 760" aria-hidden="true">
-        <path class="t-shadow" pathLength="1" d="M960 720 C820 690, 700 640, 640 540 C570 420, 700 340, 760 420 C820 500, 700 600, 580 560 C440 514, 380 380, 300 330 C250 300, 200 318, 150 318"/>
-        <path class="t-base" pathLength="1" d="M960 720 C820 690, 700 640, 640 540 C570 420, 700 340, 760 420 C820 500, 700 600, 580 560 C440 514, 380 380, 300 330 C250 300, 200 318, 150 318"/>
-        <path class="t-body" pathLength="1" d="M960 720 C820 690, 700 640, 640 540 C570 420, 700 340, 760 420 C820 500, 700 600, 580 560 C440 514, 380 380, 300 330 C250 300, 200 318, 150 318"/>
-        <path class="t-light" pathLength="1" d="M960 720 C820 690, 700 640, 640 540 C570 420, 700 340, 760 420 C820 500, 700 600, 580 560 C440 514, 380 380, 300 330 C250 300, 200 318, 150 318"/>
-        <path class="t-spec" pathLength="1" d="M960 720 C820 690, 700 640, 640 540 C570 420, 700 340, 760 420 C820 500, 700 600, 580 560 C440 514, 380 380, 300 330 C250 300, 200 318, 150 318"/>
+        <g class="seg">
+          <defs>
+            <mask id="maska-kontakt-0" maskUnits="userSpaceOnUse" x="-200" y="-200" width="1300" height="1160"><path class="t-mask" pathLength="1" d="M960 720 C820 690, 700 640, 640 540 C570 420, 700 340, 760 420 C779 446, 780 473, 768 498"/></mask>
+          </defs>
+          <path class="t-shadow" pathLength="1" d="M960 720 C820 690, 700 640, 640 540 C570 420, 700 340, 760 420 C779 446, 780 473, 768 498"/>
+          <path class="t-base" pathLength="1" d="M960 720 C820 690, 700 640, 640 540 C570 420, 700 340, 760 420 C779 446, 780 473, 768 498"/>
+          <g mask="url(#maska-kontakt-0)">
+            <path class="t-body" pathLength="1" d="M960 720 C820 690, 700 640, 640 540 C570 420, 700 340, 760 420 C779 446, 780 473, 768 498"/>
+            <path class="t-dark" pathLength="1" d="M960 720 C820 690, 700 640, 640 540 C570 420, 700 340, 760 420 C779 446, 780 473, 768 498"/>
+            <path class="t-core" pathLength="1" d="M960 720 C820 690, 700 640, 640 540 C570 420, 700 340, 760 420 C779 446, 780 473, 768 498"/>
+            <path class="t-rim" pathLength="1" d="M960 720 C820 690, 700 640, 640 540 C570 420, 700 340, 760 420 C779 446, 780 473, 768 498"/>
+            <path class="t-mid" pathLength="1" d="M960 720 C820 690, 700 640, 640 540 C570 420, 700 340, 760 420 C779 446, 780 473, 768 498"/>
+            <path class="t-light" pathLength="1" d="M960 720 C820 690, 700 640, 640 540 C570 420, 700 340, 760 420 C779 446, 780 473, 768 498"/>
+            <path class="t-spec" pathLength="1" d="M960 720 C820 690, 700 640, 640 540 C570 420, 700 340, 760 420 C779 446, 780 473, 768 498"/>
+          </g>
+        </g>
+        <g class="seg" mask="url(#maska-kontakt-1-nav)">
+          <defs>
+            <mask id="maska-kontakt-1" maskUnits="userSpaceOnUse" x="-200" y="-200" width="1300" height="1160"><path class="t-mask" pathLength="1" d="M760 420 C820 500, 700 600, 580 560 C440 514, 380 380, 300 330 C250 300, 200 318, 150 318"/></mask>
+            <radialGradient id="maska-kontakt-1-fade"><stop offset="0.45" stop-color="#000"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+            <mask id="maska-kontakt-1-nav" maskUnits="userSpaceOnUse" x="-200" y="-200" width="1300" height="1160"><path class="t-mask t-mask-sir" pathLength="1" d="M760 420 C820 500, 700 600, 580 560 C440 514, 380 380, 300 330 C250 300, 200 318, 150 318"/><circle cx="760" cy="420" r="62" fill="url(#maska-kontakt-1-fade)"/></mask>
+          </defs>
+          <path class="t-shadow" pathLength="1" d="M760 420 C820 500, 700 600, 580 560 C440 514, 380 380, 300 330 C250 300, 200 318, 150 318"/>
+          <path class="t-base" pathLength="1" d="M760 420 C820 500, 700 600, 580 560 C440 514, 380 380, 300 330 C250 300, 200 318, 150 318"/>
+          <g mask="url(#maska-kontakt-1)">
+            <path class="t-body" pathLength="1" d="M760 420 C820 500, 700 600, 580 560 C440 514, 380 380, 300 330 C250 300, 200 318, 150 318"/>
+            <path class="t-dark" pathLength="1" d="M760 420 C820 500, 700 600, 580 560 C440 514, 380 380, 300 330 C250 300, 200 318, 150 318"/>
+            <path class="t-core" pathLength="1" d="M760 420 C820 500, 700 600, 580 560 C440 514, 380 380, 300 330 C250 300, 200 318, 150 318"/>
+            <path class="t-rim" pathLength="1" d="M760 420 C820 500, 700 600, 580 560 C440 514, 380 380, 300 330 C250 300, 200 318, 150 318"/>
+            <path class="t-mid" pathLength="1" d="M760 420 C820 500, 700 600, 580 560 C440 514, 380 380, 300 330 C250 300, 200 318, 150 318"/>
+            <path class="t-light" pathLength="1" d="M760 420 C820 500, 700 600, 580 560 C440 514, 380 380, 300 330 C250 300, 200 318, 150 318"/>
+            <path class="t-spec" pathLength="1" d="M760 420 C820 500, 700 600, 580 560 C440 514, 380 380, 300 330 C250 300, 200 318, 150 318"/>
+          </g>
+        </g>
       </svg>
     <img class="hand" src="img/brand/ruka-3d.png" alt="" style="left:16.7%; top:41.8%">
   </div>
@@ -283,33 +341,44 @@
       },{passive:true});
     })();
 
-    // hadice s rukou: nakreslí se, jakmile je v záběru; ruka pak kývne při najetí na tlačítko a lehce se natáčí za kurzorem
+    // hadice s rukou: kreslí se skriptem, ruka jede na její špičce a dojede s ní; pak kývne při najetí na tlačítko a natáčí se za kurzorem
     (function(){
       var celky=document.querySelectorAll(".tube-wrap"); if(!celky.length) return;
       var redukce=matchMedia("(prefers-reduced-motion: reduce)").matches;
-      var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return;
-        var t=e.target.querySelector(".tube"); setTimeout(function(){ t.classList.add("on"); },redukce?0:150); io.unobserve(e.target); }); },{threshold:.25});
+      function ease(t){ return t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2; }
+      function useky(c){ return Array.prototype.map.call(c.querySelectorAll(".tube .seg"),function(g){ return {g:g, cesty:g.querySelectorAll("path"), osa:g.querySelector(".t-base"), L:g.querySelector(".t-base").getTotalLength()}; }); }
+      function umisti(c,e){                       // e = podíl nakreslené délky 0–1 přes všechny úseky; ruka jede na špičce
+        var svg=c.querySelector(".tube"), ruka=c.querySelector(".hand"), us=useky(c); if(!svg||!ruka||!us.length) return;
+        var Lc=us.reduce(function(a,u){ return a+u.L; },0), zb=e*Lc, pt=null;
+        us.forEach(function(u){ var eu=Math.max(0,Math.min(1,zb/u.L)); u.cesty.forEach(function(p){ p.style.strokeDashoffset=1-eu; });
+          if(pt===null && (zb<u.L || u===us[us.length-1])) pt=u.osa.getPointAtLength(Math.max(0,Math.min(u.L,zb))); zb-=u.L; });
+        var m=svg.getScreenCTM(), r=c.getBoundingClientRect(); if(!m) return;
+        var x=m.a*pt.x+m.c*pt.y+m.e-r.left, y=m.b*pt.x+m.d*pt.y+m.f-r.top;
+        ruka.style.left=x+"px"; ruka.style.top=y+"px"; if(e>=1) ruka.style.setProperty("--uhel","0deg");
+      }
+      function kresli(c){
+        var svg=c.querySelector(".tube"), T=2600, t0;
+        if(redukce){ umisti(c,1); svg.classList.add("on"); c.querySelector(".hand").classList.add("dojela"); return; }
+        t0=performance.now();
+        var tik=setInterval(function(){ var t=Math.min(1,(performance.now()-t0)/T); umisti(c,ease(t));
+          if(t>=1){ clearInterval(tik); svg.classList.add("on"); c.querySelector(".hand").classList.add("dojela"); } },16);
+      }
+      celky.forEach(function(c){ umisti(c,0); });
+      var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; var c=e.target; io.unobserve(c); setTimeout(function(){ kresli(c); },250); }); },{threshold:.25});
       celky.forEach(function(c){ io.observe(c); });
-      // ruka sedí přesně na konci hadice – poloha se počítá z křivky, ne z procent (na mobilu se SVG jinak vlícuje)
-      function umistiRuce(){ celky.forEach(function(c){ var svg=c.querySelector(".tube"), path=c.querySelector(".t-body"), ruka=c.querySelector(".hand"); if(!svg||!path||!ruka) return;
-        var pt=path.getPointAtLength(path.getTotalLength()), m=svg.getScreenCTM(), r=c.getBoundingClientRect(); if(!m) return;
-        var x=m.a*pt.x+m.c*pt.y+m.e-r.left, y=m.b*pt.x+m.d*pt.y+m.f-r.top; ruka.style.left=x+"px"; ruka.style.top=y+"px"; }); }
-      umistiRuce(); addEventListener("resize",umistiRuce); addEventListener("load",umistiRuce); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(umistiRuce);
-      // pojistka: kdyby pozorovatel nevystřelil (starší prohlížeč, vložení do rámu), hero hadice se nakreslí sama
-      setTimeout(function(){ var t=document.querySelector("#tubeHero .tube"); if(t) t.classList.add("on"); },1800);
+      setTimeout(function(){ var c=document.getElementById("tubeHero"); if(c&&!c.querySelector(".tube.on")&&!c.dataset.jede){ c.dataset.jede=1; kresli(c); } },2200);
+      addEventListener("resize",function(){ celky.forEach(function(c){ if(c.querySelector(".tube.on")) umisti(c,1); }); });
+      if(document.fonts&&document.fonts.ready) document.fonts.ready.then(function(){ celky.forEach(function(c){ if(c.querySelector(".tube.on")) umisti(c,1); }); });
       if(redukce) return;
       function kyv(h){ h.classList.remove("nod"); void h.offsetWidth; h.classList.add("nod"); }
       var ruceHero=document.querySelector("#tubeHero .hand"), ruceKontakt=document.querySelector("#tubeKontakt .hand");
-      document.querySelectorAll(".hero-pexa .cta .btn").forEach(function(b){ b.addEventListener("mouseenter",function(){ if(ruceHero) kyv(ruceHero); }); });
-      var reg=document.getElementById("registerBtn"); if(reg&&ruceKontakt) reg.addEventListener("mouseenter",function(){ kyv(ruceKontakt); });
-      // náklon za kurzorem (jen počítač, jen když ruka nekývá)
+      document.querySelectorAll(".hero-pexa .cta .btn").forEach(function(b){ b.addEventListener("mouseenter",function(){ if(ruceHero&&ruceHero.classList.contains("dojela")) kyv(ruceHero); }); });
+      var reg=document.getElementById("registerBtn"); if(reg&&ruceKontakt) reg.addEventListener("mouseenter",function(){ if(ruceKontakt.classList.contains("dojela")) kyv(ruceKontakt); });
       if(ruceHero && matchMedia("(pointer:fine)").matches){
         var hero=document.querySelector(".hero-pexa"), tik=false;
-        hero.addEventListener("mousemove",function(ev){ if(tik||ruceHero.classList.contains("nod")||!ruceHero.previousElementSibling.classList.contains("on")) return; tik=true;
-          requestAnimationFrame(function(){ var r=hero.getBoundingClientRect(), dx=(ev.clientX-r.left)/r.width-.5, dy=(ev.clientY-r.top)/r.height-.5;
-            ruceHero.classList.add("follow"); ruceHero.style.transform="translate(-96%,-44.5%) rotate("+(dy*6)+"deg)"; tik=false; }); });
-        hero.addEventListener("mouseleave",function(){ ruceHero.style.transform=""; });
-        ruceHero.addEventListener("animationend",function(){ ruceHero.style.transform=""; });
+        hero.addEventListener("mousemove",function(ev){ if(tik||!ruceHero.classList.contains("dojela")||ruceHero.classList.contains("nod")) return; tik=true;
+          requestAnimationFrame(function(){ var r=hero.getBoundingClientRect(), dy=(ev.clientY-r.top)/r.height-.5; ruceHero.style.setProperty("--uhel",(dy*6).toFixed(2)+"deg"); tik=false; }); });
+        hero.addEventListener("mouseleave",function(){ ruceHero.style.setProperty("--uhel","0deg"); });
       }
     })();
     // aktivní pilulka v navigaci podle sekce v záběru
