@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=2026-09-07c">
-<link rel="stylesheet" href="style-pexa.css?v=34">
+<link rel="stylesheet" href="style-pexa.css?v=35">
 </head>
 <body>
 
@@ -42,34 +42,14 @@
   <a href="#gallery">Gallery</a><a href="#partners">Partners</a><a href="#contact">Contact</a>
 </nav>
 
-<div class="prepinac" aria-label="Varianta náhledu"><a href="?hero=pexa" data-v="pexa">Pexa</a><a href="?hero=foto" data-v="foto">Blend s fotkou</a><span class="del"></span><a href="?ruka=vektor" data-r="vektor">Palec 2025</a><a href="?ruka=3d" data-r="3d">3D ruka</a></div>
+<div class="prepinac" aria-label="Varianta náhledu"><a href="?hero=pexa" data-v="pexa">Pexa</a><a href="?hero=foto" data-v="foto">Blend s fotkou</a></div>
 <main id="top">
 
 <!-- HERO: prolínající fotky z ročníků 2024 a 2025, přes ně vizuál 2026 -->
 <section class="hero hero-pexa" aria-label="Czech Challenge 2026">
   <div class="wrap hero-grid">
     <div class="hero-text">
-      <div class="titul" id="titul"><h1>Czech<br>Challenge <span class="rok">2026</span></h1>
-        <div class="klip tube-wrap" id="tubeHero" aria-hidden="true">
-        <svg class="tube" viewBox="0 0 400 640" aria-hidden="true">
-          <g class="seg">
-            <defs><mask id="maska-titul-0" maskUnits="userSpaceOnUse" x="-100" y="-100" width="600" height="840"><path class="t-mask" pathLength="1" d="M150 720 C150 640, 118 580, 132 520 C144 462, 176 440, 168 392"/></mask></defs>
-            <path class="t-shadow" pathLength="1" d="M150 720 C150 640, 118 580, 132 520 C144 462, 176 440, 168 392"/>
-            <path class="t-base" pathLength="1" d="M150 720 C150 640, 118 580, 132 520 C144 462, 176 440, 168 392"/>
-            <g mask="url(#maska-titul-0)">
-              <path class="t-body" pathLength="1" d="M150 720 C150 640, 118 580, 132 520 C144 462, 176 440, 168 392"/>
-              <path class="t-dark" pathLength="1" d="M150 720 C150 640, 118 580, 132 520 C144 462, 176 440, 168 392"/>
-              <path class="t-core" pathLength="1" d="M150 720 C150 640, 118 580, 132 520 C144 462, 176 440, 168 392"/>
-              <path class="t-rim" pathLength="1" d="M150 720 C150 640, 118 580, 132 520 C144 462, 176 440, 168 392"/>
-              <path class="t-mid" pathLength="1" d="M150 720 C150 640, 118 580, 132 520 C144 462, 176 440, 168 392"/>
-              <path class="t-light" pathLength="1" d="M150 720 C150 640, 118 580, 132 520 C144 462, 176 440, 168 392"/>
-              <path class="t-spec" pathLength="1" d="M150 720 C150 640, 118 580, 132 520 C144 462, 176 440, 168 392"/>
-            </g>
-          </g>
-        </svg>
-        <img class="hand hand-nahoru" src="img/brand/ruka-3d-nahoru.png" alt="">
-        <img class="palec-v" src="img/brand/palec-2025.svg" alt="">
-        </div></div>
+      <h1><span class="r1">Czech<span class="palec-box" id="palecBox" aria-hidden="true"><img class="palec-v" src="img/brand/palec-3d.png" alt=""></span></span><br>Challenge <span class="rok">2026</span></h1>
       <div class="meta">23 October 2026<small>Complex PCI Meeting · Pardubice · Czechia · welcome dinner 22 October</small></div>
       <span class="vol">Vol. 3 · Together again</span>
       <div class="cta">
@@ -282,14 +262,12 @@
     if(v==="foto"){ document.body.classList.add("hero-foto"); var h=document.querySelector(".hero-pexa"), f=document.getElementById("heroPhotos"), d=document.getElementById("heroDots");
       if(h&&f){ h.insertBefore(f,h.firstChild); } if(h&&d){ h.appendChild(d); } }
     document.querySelectorAll(".prepinac a").forEach(function(a){ a.classList.toggle("on",(a.dataset.v==="foto")===(v==="foto")); });
-    // ruka u nadpisu: výchozí = vektorový palec z původního webu (identita 2024/25); ?ruka=3d = 3D ukazováček s hadicí z Figmy
-    var r=/[?&]ruka=(3d|vektor)/.exec(location.search), t=document.getElementById("titul");
-    if(t && !(r&&r[1]==="3d")){ t.classList.add("vektor"); var k=t.querySelector(".klip"); k.removeAttribute("id"); k.classList.remove("tube-wrap"); var sv=k.querySelector(".tube"); if(sv) sv.remove(); var h=k.querySelector(".hand"); if(h) h.remove();
-      // palec vyjede s první fotkou (po načtení) a s druhou zajede; při dalším kole rotace zase (při omezení animací je vidět pořád)
-      if(matchMedia("(prefers-reduced-motion: reduce)").matches) t.classList.add("on");
-      else { setTimeout(function(){ t.classList.add("on"); },600); document.addEventListener("herofoto",function(e){ t.classList.toggle("on", e.detail===0); }); }
-      document.addEventListener("mouseover",function(e){ if(e.target.closest&&e.target.closest(".hero-pexa .cta .btn")&&t.classList.contains("on")){ var im=t.querySelector(".palec-v"); im.classList.remove("skok"); void im.offsetWidth; im.classList.add("skok"); } }); }
-    document.querySelectorAll(".prepinac a").forEach(function(a){ var u=new URL(a.getAttribute("href"),location.href); if(r) u.searchParams.set("ruka",r[1]); a.setAttribute("href",u.pathname+u.search); });
+    // palec: s první fotkou vyskočí a dvakrát klepne, s druhou zmizí (stejné pravidlo jako na hlavním webu)
+    (function(){ var b=document.getElementById("palecBox"); if(!b) return;
+      if(matchMedia("(prefers-reduced-motion: reduce)").matches){ b.classList.add("on"); return; }
+      setTimeout(function(){ b.classList.add("on"); },700);
+      document.addEventListener("herofoto",function(e){ b.classList.toggle("on", e.detail===0); });
+    })();
   })();
   fetch("content.json",{cache:"no-store"}).then(function(r){ return r.json(); }).then(function(C){
     POS=C.pos||{};
