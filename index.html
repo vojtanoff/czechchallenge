@@ -13,6 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=2026-09-07c">
+<link rel="stylesheet" href="style-pexa.css?v=4">
 </head>
 <body>
 
@@ -44,21 +45,36 @@
 <main id="top">
 
 <!-- HERO: prolínající fotky z ročníků 2024 a 2025, přes ně vizuál 2026 -->
-<section class="hero" aria-label="Czech Challenge 2026">
-  <div class="hero-photos" id="heroPhotos"></div>
-  <svg class="loop" viewBox="0 0 560 520" aria-hidden="true">
-    <path d="M470 60 C560 150, 470 300, 340 330 C240 352, 150 300, 170 220 C190 150, 300 150, 300 240 C300 330, 190 380, 120 340 C40 290, 70 170, 180 150 C270 134, 360 210, 380 300 C400 400, 300 500, 180 470"/>
-  </svg>
-  <div class="wrap">
-    <h1>Czech<br>Challenge</h1>
-    <span class="vol">Vol. 3 · Together again</span>
-    <div class="meta">23 October 2026<small>Complex PCI Meeting · Pardubice · Czechia · welcome dinner 22 October</small></div>
-    <div class="cta">
-      <a class="btn btn-lime" href="#contact">I'm interested</a>
-      <a class="btn btn-ghost" href="#program">See the program</a>
+<section class="hero hero-pexa" aria-label="Czech Challenge 2026">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <h1>Czech<br>Challenge <span class="rok">2026</span></h1>
+      <div class="meta">23 October 2026<small>Complex PCI Meeting · Pardubice · Czechia · welcome dinner 22 October</small></div>
+      <span class="vol">Vol. 3 · Together again</span>
+      <div class="cta">
+        <a class="btn btn-lime" href="#contact">I'm interested</a>
+        <a class="btn btn-ghost" href="#program">See the program</a>
+      </div>
+    </div>
+    <div class="tube-wrap" id="tubeHero" aria-hidden="true">
+      <svg class="tube" viewBox="0 0 900 760" aria-hidden="true">
+        <path class="t-shadow" pathLength="1" d="M-80 690 C120 520, 250 400, 420 460 C610 528, 660 720, 490 700 C330 682, 372 470, 556 396 C700 338, 764 256, 742 168"/>
+        <path class="t-base" pathLength="1" d="M-80 690 C120 520, 250 400, 420 460 C610 528, 660 720, 490 700 C330 682, 372 470, 556 396 C700 338, 764 256, 742 168"/>
+        <path class="t-body" pathLength="1" d="M-80 690 C120 520, 250 400, 420 460 C610 528, 660 720, 490 700 C330 682, 372 470, 556 396 C700 338, 764 256, 742 168"/>
+        <path class="t-light" pathLength="1" d="M-80 690 C120 520, 250 400, 420 460 C610 528, 660 720, 490 700 C330 682, 372 470, 556 396 C700 338, 764 256, 742 168"/>
+        <path class="t-spec" pathLength="1" d="M-80 690 C120 520, 250 400, 420 460 C610 528, 660 720, 490 700 C330 682, 372 470, 556 396 C700 338, 764 256, 742 168"/>
+      </svg>
+      <img class="hand" src="img/brand/ruka-2026.png" alt="" style="left:82.4%; top:22%">
     </div>
   </div>
-  <div class="dots" id="heroDots" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-card">
+      <div class="hero-photos" id="heroPhotos"></div>
+      <a class="play" href="#gallery"><i><svg width="14" height="14" viewBox="0 0 14 14" fill="#fff"><path d="M3 1.5v11l9-5.5z"/></svg></i>Previous editions</a>
+      <span class="tag">Complex PCI Meeting</span>
+      <div class="dots" id="heroDots" aria-hidden="true"></div>
+    </div>
+  </div>
 </section>
 
 <!-- ABOUT -->
@@ -158,6 +174,16 @@
 
 <!-- CONTACT / REGISTRATION -->
 <section id="contact" class="contact">
+  <div class="tube-wrap" id="tubeKontakt" aria-hidden="true">
+    <svg class="tube" viewBox="0 0 900 760" aria-hidden="true">
+        <path class="t-shadow" pathLength="1" d="M-60 560 C80 420, 260 410, 330 470 C420 548, 340 640, 250 592 C160 545, 230 430, 360 400 C470 376, 560 300, 560 210"/>
+        <path class="t-base" pathLength="1" d="M-60 560 C80 420, 260 410, 330 470 C420 548, 340 640, 250 592 C160 545, 230 430, 360 400 C470 376, 560 300, 560 210"/>
+        <path class="t-body" pathLength="1" d="M-60 560 C80 420, 260 410, 330 470 C420 548, 340 640, 250 592 C160 545, 230 430, 360 400 C470 376, 560 300, 560 210"/>
+        <path class="t-light" pathLength="1" d="M-60 560 C80 420, 260 410, 330 470 C420 548, 340 640, 250 592 C160 545, 230 430, 360 400 C470 376, 560 300, 560 210"/>
+        <path class="t-spec" pathLength="1" d="M-60 560 C80 420, 260 410, 330 470 C420 548, 340 640, 250 592 C160 545, 230 430, 360 400 C470 376, 560 300, 560 210"/>
+      </svg>
+    <img class="hand" src="img/brand/ruka-2026.png" alt="" style="left:62%; top:28%">
+  </div>
   <div class="wrap contact-grid">
     <div class="reveal">
       <p class="eyebrow">Interest &amp; contact</p>
@@ -247,6 +273,36 @@
         var y=scrollY||pageYOffset; if(y>innerHeight*0.6) byloDole=true;
         else if(byloDole && y<40 && smotana){ byloDole=false; nakresli(); }
       },{passive:true});
+    })();
+
+    // hadice s rukou: nakreslí se, jakmile je v záběru; ruka pak kývne při najetí na tlačítko a lehce se natáčí za kurzorem
+    (function(){
+      var celky=document.querySelectorAll(".tube-wrap"); if(!celky.length) return;
+      var redukce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return;
+        var t=e.target.querySelector(".tube"); setTimeout(function(){ t.classList.add("on"); },redukce?0:150); io.unobserve(e.target); }); },{threshold:.25});
+      celky.forEach(function(c){ io.observe(c); });
+      if(redukce) return;
+      function kyv(h){ h.classList.remove("nod"); void h.offsetWidth; h.classList.add("nod"); }
+      var ruceHero=document.querySelector("#tubeHero .hand"), ruceKontakt=document.querySelector("#tubeKontakt .hand");
+      document.querySelectorAll(".hero-pexa .cta .btn").forEach(function(b){ b.addEventListener("mouseenter",function(){ if(ruceHero) kyv(ruceHero); }); });
+      var reg=document.getElementById("registerBtn"); if(reg&&ruceKontakt) reg.addEventListener("mouseenter",function(){ kyv(ruceKontakt); });
+      // náklon za kurzorem (jen počítač, jen když ruka nekývá)
+      if(ruceHero && matchMedia("(pointer:fine)").matches){
+        var hero=document.querySelector(".hero-pexa"), tik=false;
+        hero.addEventListener("mousemove",function(ev){ if(tik||ruceHero.classList.contains("nod")||!ruceHero.previousElementSibling.classList.contains("on")) return; tik=true;
+          requestAnimationFrame(function(){ var r=hero.getBoundingClientRect(), dx=(ev.clientX-r.left)/r.width-.5, dy=(ev.clientY-r.top)/r.height-.5;
+            ruceHero.classList.add("follow"); ruceHero.style.transform="translate(-50%,-92%) rotate("+(-8+dx*14)+"deg) translate("+(dx*10)+"px,"+(dy*8)+"px)"; tik=false; }); });
+        hero.addEventListener("mouseleave",function(){ ruceHero.style.transform=""; });
+        ruceHero.addEventListener("animationend",function(){ ruceHero.style.transform=""; });
+      }
+    })();
+    // aktivní pilulka v navigaci podle sekce v záběru
+    (function(){
+      var odkazy=Array.prototype.slice.call(document.querySelectorAll(".menu a")), mapa={};
+      odkazy.forEach(function(a){ var id=(a.getAttribute("href")||"").slice(1); var sec=document.getElementById(id); if(sec) mapa[id]=a; });
+      var io2=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ odkazy.forEach(function(a){ a.classList.remove("on"); }); var a=mapa[e.target.id]; if(a) a.classList.add("on"); } }); },{rootMargin:"-40% 0px -55% 0px"});
+      Object.keys(mapa).forEach(function(id){ io2.observe(document.getElementById(id)); });
     })();
 
     // directors

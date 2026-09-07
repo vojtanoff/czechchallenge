@@ -1,0 +1,134 @@
+/* Designová varianta podle Figmy Miloše Pexy (CC_WEB_REDESIGN, 2026).
+   Načítá se PO style.css a jen přepisuje: světlý podklad, fialová typografie
+   v lehkém řezu, navigace v pilulkách, 3D „hadice" se signature rukou.
+   Obsah, pořadí sekcí, fotky a texty zůstávají z hlavní větve. */
+
+:root{
+  color-scheme:light;
+  --ground:#F1F1F4; --surface:#FFFFFF; --surface-2:#F7F7FA;
+  --ink:#221D4A; --ink-2:#4E4A6E; --ink-3:#7E7A98; --line:#DDDDE4;
+  --violet:#4B32D0; --violet-deep:#3320A6; --violet-soft:#E6E2FA;
+  --tube-dark:#2A1A85; --tube:#4B32D0; --tube-light:#7D68F4; --tube-spec:#FFFFFF;
+  --shadow:0 14px 40px rgba(34,29,74,.10);
+  --radius:22px;
+}
+/* Figma je jednobarevná světlá – tmavý režim tady vědomě nepřepíná */
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --ground:#F1F1F4; --surface:#FFFFFF; --surface-2:#F7F7FA;
+  --ink:#221D4A; --ink-2:#4E4A6E; --ink-3:#7E7A98; --line:#DDDDE4;
+  --violet:#4B32D0; --violet-deep:#3320A6; --violet-soft:#E6E2FA;
+  --lime:#F2FF9F; --lime-ink:#3D3F12; --shadow:0 14px 40px rgba(34,29,74,.10);
+}}
+:root[data-theme="dark"]{
+  --ground:#F1F1F4; --surface:#FFFFFF; --surface-2:#F7F7FA;
+  --ink:#221D4A; --ink-2:#4E4A6E; --ink-3:#7E7A98; --line:#DDDDE4;
+  --violet:#4B32D0; --violet-deep:#3320A6; --violet-soft:#E6E2FA;
+  --lime:#F2FF9F; --lime-ink:#3D3F12; --shadow:0 14px 40px rgba(34,29,74,.10);
+}
+
+/* ---------- typografie: lehký řez, fialová ---------- */
+h2{font-weight:400; color:var(--violet); letter-spacing:-.025em; font-size:clamp(34px,4.6vw,58px)}
+h3{font-weight:500}
+.eyebrow{display:inline-block; background:var(--violet); color:#fff; font-size:11.5px; letter-spacing:.1em; padding:5px 12px; border-radius:999px; margin-bottom:16px}
+.sec-head p.lead{color:var(--ink-2)}
+.btn{font-weight:600}
+.btn-lime{background:var(--violet); color:#fff}
+.btn-lime:hover{background:var(--violet-deep)}
+.btn-ghost{color:var(--violet); border-color:var(--violet)}
+.btn-ghost:hover{background:var(--violet-soft)}
+
+/* ---------- navigace v pilulkách ---------- */
+.nav{background:color-mix(in srgb,var(--ground) 86%,transparent); border-bottom:0}
+.menu{background:#fff; border-radius:999px; padding:5px; gap:2px; box-shadow:0 2px 12px rgba(34,29,74,.08)}
+.menu a{padding:8px 15px; border-radius:999px; font-size:14px; color:var(--ink-2); transition:background .2s, color .2s}
+.menu a:hover{background:var(--violet-soft); color:var(--violet)}
+.menu a.on{background:var(--violet); color:#fff}
+.nav-cta .btn{background:transparent; color:var(--violet); border-color:var(--violet); padding:11px 18px}
+.nav-cta .btn:hover{background:var(--violet); color:#fff}
+
+/* ---------- hero: text vlevo, hadice s rukou vpravo, fotka jako karta pod tím ---------- */
+.hero-pexa{background:var(--ground); color:var(--ink); min-height:0; display:block; overflow:hidden; padding:0 0 clamp(40px,6vw,72px)}
+.hero-pexa::after{display:none}
+.hero-pexa .hero-grid{position:relative; display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); align-items:start; gap:24px; padding:clamp(28px,5vw,56px) 0 0}
+.hero-pexa h1{font-size:clamp(46px,7.4vw,104px); font-weight:400; line-height:.94; letter-spacing:-.035em; color:var(--violet); text-wrap:balance}
+.hero-pexa h1 .rok{display:block; font-weight:300}
+.hero-pexa .meta{font-family:var(--font-display); font-weight:500; font-size:clamp(20px,2.4vw,30px); color:var(--violet); margin-top:22px}
+.hero-pexa .meta small{color:var(--ink-2); font-size:clamp(15px,1.4vw,18px); opacity:1}
+.hero-pexa .vol{background:var(--lime); color:var(--lime-ink); margin-top:14px; font-weight:700; font-size:15px}
+.hero-pexa .cta{margin-top:18px}
+.hero-pexa .cta .btn{padding:11px 18px; font-size:15px}
+
+/* hadice: jedna křivka, pět vrstev tahu = plastický 3D dojem bez rastru; kreslí se po načtení */
+.tube-wrap{position:relative; z-index:0; pointer-events:none; align-self:stretch; min-height:300px; margin-bottom:-40px}
+.tube{position:absolute; inset:-8% -12% -6% -14%; width:auto; height:auto; overflow:visible}
+.tube path{fill:none; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:1; stroke-dashoffset:1;
+  transition:stroke-dashoffset 2.6s cubic-bezier(.55,.05,.25,1) .35s}
+.tube.on path{stroke-dashoffset:0}
+.tube .t-shadow{stroke:#1A0F5C; stroke-width:56; opacity:.22; filter:blur(12px); transform:translate(14px,22px)}
+.tube .t-base{stroke:var(--tube-dark); stroke-width:46}
+.tube .t-body{stroke:var(--tube); stroke-width:36; transform:translate(-3px,-4px)}
+.tube .t-light{stroke:var(--tube-light); stroke-width:16; opacity:.95; transform:translate(-9px,-10px)}
+.tube .t-spec{stroke:var(--tube-spec); stroke-width:4.5; opacity:.8; transform:translate(-13px,-14px)}
+.hand{position:absolute; width:clamp(120px,15vw,210px); height:auto; opacity:0; transform:translate(-50%,-92%) scale(.6) rotate(-8deg);
+  transform-origin:50% 92%; transition:opacity .5s ease 2.6s, transform .7s cubic-bezier(.2,1.2,.3,1) 2.6s;
+  filter:drop-shadow(0 12px 18px rgba(34,29,74,.22))}
+.tube.on ~ .hand{opacity:1; transform:translate(-50%,-92%) scale(1) rotate(-8deg)}
+.hand.nod{animation:nod .9s ease-in-out}
+@keyframes nod{0%{transform:translate(-50%,-92%) rotate(-8deg)} 30%{transform:translate(-50%,-92%) rotate(8deg)} 60%{transform:translate(-50%,-92%) rotate(-12deg)} 100%{transform:translate(-50%,-92%) rotate(-8deg)}}
+.hand.follow{transition:transform .35s ease}   /* po nakreslení: náklon za kurzorem */
+
+/* fotka jako karta pod nadpisem, přes ni tlačítko na minulé ročníky */
+.hero-card{position:relative; border-radius:var(--radius); overflow:hidden; aspect-ratio:16/7; min-height:280px; margin-top:clamp(18px,3vw,40px); box-shadow:var(--shadow); isolation:isolate}
+.hero-card .hero-photos{position:absolute; inset:0; z-index:0}
+.hero-card .hero-photos img{transform:none}
+.hero-card::after{content:""; position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(180deg,rgba(75,50,208,.08),rgba(34,29,74,.45) 100%)}
+.hero-card .play{position:absolute; left:50%; top:50%; z-index:2; transform:translate(-50%,-50%); display:inline-flex; align-items:center; gap:10px;
+  background:rgba(255,255,255,.92); color:var(--violet); text-decoration:none; font-family:var(--font-display); font-weight:600; font-size:16px; padding:12px 18px 12px 12px; border-radius:999px; box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.hero-card .play i{width:36px; height:36px; border-radius:50%; background:var(--violet); display:grid; place-items:center}
+.hero-card .tag{position:absolute; right:18px; bottom:16px; z-index:2; color:#fff; font-family:var(--font-display); font-weight:500; font-size:15px; text-shadow:0 2px 10px rgba(0,0,0,.5)}
+.hero-card .dots{position:absolute; left:18px; bottom:18px; z-index:2; display:flex; gap:6px}
+.hero-card .dots i{width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.5)}
+.hero-card .dots i.on{background:#fff}
+
+/* ---------- sekce: bílé karty na světlém podkladu ---------- */
+.program{background:var(--ground)}
+.days{background:var(--surface); border-radius:var(--radius); padding:clamp(20px,3vw,36px); box-shadow:var(--shadow)}
+.day{border-top:0}
+.live{background:var(--violet)}
+.faculty-band{border-radius:var(--radius)}
+.gallery{background:var(--ground)}
+.grid a{border-radius:14px}
+.video .play span{background:#fff}
+.video .play svg{color:var(--violet)}
+.logo{border-color:transparent; box-shadow:0 2px 10px rgba(34,29,74,.06)}
+.director{border:0; box-shadow:0 2px 10px rgba(34,29,74,.06)}
+
+/* kontakt: fialový blok jako ve Figmě, hadice přijíždí zleva a ruka ukazuje na tlačítko */
+.contact{position:relative; overflow:hidden; background:var(--violet); border-radius:var(--radius); margin:0 auto; width:min(1180px,calc(100% - 40px))}
+.contact .eyebrow{background:#fff; color:var(--violet)}
+.contact h2{color:#fff; font-weight:400}
+.contact .btn-lime{background:#fff; color:var(--violet)}
+.contact .btn-lime:hover{background:var(--lime); color:var(--lime-ink)}
+.contact .tube-wrap{position:absolute; left:30%; bottom:-14%; width:min(34vw,440px); height:min(34vw,440px); z-index:0}
+.contact .tube .t-shadow{opacity:.35}
+.contact .tube .t-base{stroke:#22157A}
+.contact .tube .t-body{stroke:#3A25A8}
+.contact .tube .t-light{stroke:#6F5BEA}
+.contact .contact-grid{position:relative; z-index:1}
+.contact .card{background:rgba(255,255,255,.12); backdrop-filter:blur(6px)}
+
+footer{padding:40px 0 48px}
+footer .wrap{background:var(--violet); color:#fff; border-radius:var(--radius); padding:28px 32px}
+footer img{filter:brightness(0) invert(1); opacity:.9; height:26px}
+
+@media (max-width:860px){
+  .hero-pexa .hero-grid{grid-template-columns:1fr; min-height:0}
+  .tube-wrap{min-height:240px; margin:0}
+  .tube{inset:-4% 0 -4% -6%}
+  .hand{width:clamp(110px,30vw,160px)}
+  .hero-card{aspect-ratio:4/3}
+  .contact{width:calc(100% - 20px)}
+  .contact .tube-wrap{width:70vw; height:70vw; left:auto; right:-25%; bottom:-30%; opacity:.6}
+}
+
+body{overflow-x:hidden}
