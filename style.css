@@ -114,22 +114,14 @@ section{padding:clamp(64px,9vw,120px) 0}
 /* na telefonu je hero nižší – z fotky na šířku by jinak zbyl jen střed */
 @media (max-width:700px){ .hero{min-height:clamp(520px,72vh,720px)} .loop{width:46vw; right:-12%; top:1%; opacity:.5} .hero .wrap{padding-top:90px} }
 
-/* zamotaná smyčka z flyeru zrcadlově zleva jako 3D hadice, na konci 3D levá ruka s palcem (render z ChatGPT):
-   s první fotkou se hadice nakreslí, ruka vyskočí a dvakrát cukne; s druhou fotkou zmizí */
-.palec-box{position:absolute; left:max(0px,calc((100% - 1180px)/2 - 20px)); top:86px; width:clamp(300px,36vw,520px); aspect-ratio:560/400; z-index:2; pointer-events:none}
-.palec-box .tube{position:absolute; inset:0; width:100%; height:100%; overflow:visible}
-.palec-box .tube path{fill:none; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:1; stroke-dashoffset:1; transition:stroke-dashoffset 1s ease-in .1s}
-.palec-box.on .tube path{stroke-dashoffset:0; transition:stroke-dashoffset 2.6s cubic-bezier(.55,.05,.35,1) .2s}
-.palec-box .tube{opacity:0; transition:opacity .2s 1.1s} .palec-box.on .tube{opacity:1; transition:opacity .1s .2s}
-/* hadice jednobarevná, fialová do barvy vizuálu; stínované vrstvy vypnuté (zůstávají v HTML pro případ návratu k 3D) */
-.palec-box .t-mask,.palec-box .t-shadow,.palec-box .tube g{display:none}
-.palec-box .t-base{stroke:#4B32D0; stroke-width:30}
-/* 3D levý palec svisle: zápěstí (po zrcadlení vpravo dole obrázku) sedí na konci hadice */
-.palec-box .palec-v{position:absolute; left:89.3%; top:49%; width:30%; height:auto; transform:translate(-50%,-86%) scale(0); transform-origin:50% 86%; transition:transform .35s ease-in; filter:drop-shadow(0 12px 16px rgba(20,12,70,.35))}
-.palec-box.on .palec-v{transform:translate(-50%,-86%) scale(1); transition:transform .7s cubic-bezier(.2,1.3,.3,1) 2.7s; animation:cuk .9s 3.5s cubic-bezier(.3,.9,.3,1.2) forwards}
-@keyframes cuk{0%{transform:translate(-50%,-86%) scale(1)} 22%{transform:translate(-50%,-92%) rotate(6deg) scale(1)} 44%{transform:translate(-50%,-86%) scale(1)} 66%{transform:translate(-50%,-92%) rotate(6deg) scale(1)} 100%{transform:translate(-50%,-86%) scale(1)}}
-@media (max-width:700px){ .palec-box{top:70px; left:-16px; width:clamp(230px,62vw,330px)} }
-@media (prefers-reduced-motion:reduce){ .palec-box .tube path{transition:none; stroke-dashoffset:0} .palec-box .tube{opacity:1} .palec-box .palec-v{transition:none; animation:none; transform:translate(-50%,-86%) scale(1)} }
+/* 3D levý palec (render z ChatGPT) vlevo nahoře v hero: s první fotkou vyskočí a přirozeně dvakrát klepne v zápěstí; s druhou fotkou zmizí */
+.palec-box{position:absolute; left:max(16px,calc((100% - 1180px)/2)); top:100px; width:clamp(150px,16vw,230px); z-index:2; pointer-events:none}
+.palec-box .palec-v{display:block; width:100%; height:auto; transform:scale(0) rotate(-10deg); transform-origin:50% 92%; transition:transform .3s ease-in; filter:drop-shadow(0 14px 18px rgba(20,12,70,.35))}
+.palec-box.on .palec-v{transform:scale(1) rotate(0deg); transition:transform .75s cubic-bezier(.2,1.35,.3,1) .5s; animation:klep 1.15s 1.5s cubic-bezier(.45,.05,.35,1) forwards}
+/* klepnutí: otočení v zápěstí dopředu a zpět, dvakrát, s malým dozněním */
+@keyframes klep{0%{transform:scale(1) rotate(0deg)} 16%{transform:scale(1.03) rotate(-13deg)} 34%{transform:scale(1) rotate(3deg)} 50%{transform:scale(1.03) rotate(-13deg)} 68%{transform:scale(1) rotate(3deg)} 82%{transform:scale(1) rotate(-1.5deg)} 100%{transform:scale(1) rotate(0deg)}}
+@media (max-width:700px){ .palec-box{top:86px; width:clamp(110px,28vw,150px)} }
+@media (prefers-reduced-motion:reduce){ .palec-box .palec-v{transition:none; animation:none; transform:none} }
 
 /* ---------- about ---------- */
 .about-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(28px,5vw,72px); align-items:start}
