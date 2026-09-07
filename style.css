@@ -117,9 +117,9 @@ section{padding:clamp(64px,9vw,120px) 0}
 /* 3D levý palec (render z ChatGPT) vlevo nahoře v hero: s první fotkou vyskočí a přirozeně dvakrát klepne v zápěstí; s druhou fotkou zmizí */
 .palec-box{position:absolute; left:max(16px,calc((100% - 1180px)/2)); top:100px; width:clamp(150px,16vw,230px); z-index:2; pointer-events:none}
 .palec-box .palec-v{display:block; width:100%; height:auto; transform:scale(0) rotate(-10deg); transform-origin:50% 92%; transition:transform .3s ease-in; filter:drop-shadow(0 14px 18px rgba(20,12,70,.35))}
-.palec-box.on .palec-v{transform:scale(1) rotate(0deg); transition:transform .75s cubic-bezier(.2,1.35,.3,1) .5s; animation:klep 1.15s 1.5s cubic-bezier(.45,.05,.35,1) forwards}
-/* klepnutí: otočení v zápěstí dopředu a zpět, dvakrát, s malým dozněním */
-@keyframes klep{0%{transform:scale(1) rotate(0deg)} 16%{transform:scale(1.03) rotate(-13deg)} 34%{transform:scale(1) rotate(3deg)} 50%{transform:scale(1.03) rotate(-13deg)} 68%{transform:scale(1) rotate(3deg)} 82%{transform:scale(1) rotate(-1.5deg)} 100%{transform:scale(1) rotate(0deg)}}
+.palec-box.on .palec-v{transform:scale(1) rotate(0deg); transition:transform .75s cubic-bezier(.2,1.35,.3,1) .5s; animation:klep 1.2s 1.5s cubic-bezier(.4,.05,.3,1) forwards}
+/* klepnutí: dvakrát dolů a zpět, měkce, s malým dozněním */
+@keyframes klep{0%{transform:scale(1) translateY(0)} 20%{transform:scale(1) translateY(11%)} 42%{transform:scale(1) translateY(0)} 62%{transform:scale(1) translateY(11%)} 84%{transform:scale(1) translateY(-1.5%)} 100%{transform:scale(1) translateY(0)}}
 @media (max-width:700px){ .palec-box{top:86px; width:clamp(110px,28vw,150px)} }
 @media (prefers-reduced-motion:reduce){ .palec-box .palec-v{transition:none; animation:none; transform:none} }
 
