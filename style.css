@@ -114,13 +114,13 @@ section{padding:clamp(64px,9vw,120px) 0}
 /* na telefonu je hero nižší – z fotky na šířku by jinak zbyl jen střed */
 @media (max-width:700px){ .hero{min-height:clamp(520px,72vh,720px)} .loop{width:46vw; right:-12%; top:1%; opacity:.5} .hero .wrap{padding-top:90px} }
 
-/* 3D levý palec (render z ChatGPT) vlevo nahoře v hero: s první fotkou vyskočí a přirozeně dvakrát klepne v zápěstí; s druhou fotkou zmizí */
-.palec-box{position:absolute; left:max(16px,calc((100% - 1180px)/2)); top:100px; width:clamp(150px,16vw,230px); z-index:2; pointer-events:none}
-.palec-box .palec-v{display:block; width:100%; height:auto; transform:scale(0) rotate(-10deg); transform-origin:50% 92%; transition:transform .3s ease-in; filter:drop-shadow(0 14px 18px rgba(20,12,70,.35))}
+/* 3D levý palec (render z ChatGPT) v mezeře za „Czech" a nad „Challenge": s první fotkou vyskočí a dvakrát klepne dolů; s druhou fotkou zmizí */
+.hero h1 .r1{position:relative; display:inline-block}
+.palec-box{position:absolute; left:calc(100% + .14em); bottom:-.02em; height:1.08em; aspect-ratio:808/900; pointer-events:none}
+.palec-box .palec-v{display:block; width:100%; height:100%; transform:scale(0) rotate(-10deg); transform-origin:50% 92%; transition:transform .3s ease-in; filter:drop-shadow(0 .1em .14em rgba(20,12,70,.35))}
 .palec-box.on .palec-v{transform:scale(1) rotate(0deg); transition:transform .75s cubic-bezier(.2,1.35,.3,1) .5s; animation:klep 1.2s 1.5s cubic-bezier(.4,.05,.3,1) forwards}
 /* klepnutí: dvakrát dolů a zpět, měkce, s malým dozněním */
 @keyframes klep{0%{transform:scale(1) translateY(0)} 20%{transform:scale(1) translateY(11%)} 42%{transform:scale(1) translateY(0)} 62%{transform:scale(1) translateY(11%)} 84%{transform:scale(1) translateY(-1.5%)} 100%{transform:scale(1) translateY(0)}}
-@media (max-width:700px){ .palec-box{top:86px; width:clamp(110px,28vw,150px)} }
 @media (prefers-reduced-motion:reduce){ .palec-box .palec-v{transition:none; animation:none; transform:none} }
 
 /* ---------- about ---------- */
