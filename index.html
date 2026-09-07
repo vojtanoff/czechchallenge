@@ -237,6 +237,15 @@
   // výřez fotky: kde má být ohnisko, když se ořízne (telefon vs. počítač); výchozí podle typu
   var POS={};
   function poz(im,src,vychozi){ im.style.objectPosition=(POS[src]||vychozi); }
+  /* Telefon: hero je na výšku, fotka na šířku se ořízne jen po stranách, takže výška obličejů se ohniskem posunout nedá.
+     Proto se fotka o kus zvětší a posune nahoru tak, aby ohnisko (obličeje) skončilo v horní třetině, nad nadpisem. */
+  function mobilniZoom(im,src,vychozi){
+    if(!matchMedia("(max-width:700px)").matches) return;
+    var p=(POS[src]||vychozi).split(/\s+/), cx=parseFloat(p[0])/100, cy=parseFloat(p[1]||"40")/100, cil=0.32;
+    if(!(cy>cil+0.04)) return;
+    var s=Math.min(1.6, 1+(cy-cil)/(1-cy)+0.03), dy=-(cy-cil)*100;
+    im.style.transformOrigin=(cx*100)+"% "+(cy*100)+"%"; im.style.transform="scale("+s.toFixed(3)+") translateY("+dy.toFixed(1)+"%)";
+  }
   function esc(t){ return String(t==null?"":t).replace(/[&<>"]/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
 
   // prolínání fotek: nová se objeví nad starou a stará se odebere až po dokončení přechodu,
@@ -279,7 +288,7 @@
     for(var z=zasoba.length-1; z>0; z--){ var r=Math.floor(Math.random()*(z+1)), t=zasoba[z]; zasoba[z]=zasoba[r]; zasoba[r]=t; }
     var heroSez=[C.hero[0]].concat(zasoba.slice(0,9));
     heroSez.forEach(function(src,i){
-      var im=new Image(); im.src=src; im.alt=""; if(i===0) im.className="on"; im.loading=i<3?"eager":"lazy"; im.decoding="async"; poz(im,src,"50% 40%"); box.appendChild(im);
+      var im=new Image(); im.src=src; im.alt=""; if(i===0) im.className="on"; im.loading=i<3?"eager":"lazy"; im.decoding="async"; poz(im,src,"50% 40%"); mobilniZoom(im,src,"50% 40%"); box.appendChild(im);
       var d=document.createElement("i"); if(i===0) d.className="on"; dots.appendChild(d);
     });
     var cur=0, imgs=box.children, ds=dots.children;
