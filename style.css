@@ -132,11 +132,11 @@ section{padding:clamp(64px,9vw,120px) 0}
 .palec-box .t-light{stroke:#CBA2FF; stroke-width:8; transform:translate(-5px,-11px); opacity:.95; filter:blur(1.8px)}
 .palec-box .t-spec{stroke:#F6F0FF; stroke-width:2; transform:translate(-6px,-12px); opacity:.85; filter:blur(.5px)}
 /* 3D levý palec svisle: zápěstí (po zrcadlení vpravo dole obrázku) sedí na konci hadice */
-.palec-box .palec-v{position:absolute; left:89.3%; top:49%; width:30%; height:auto; transform:translate(-46%,-94%) scaleX(-1) scale(0); transform-origin:46% 94%; transition:transform .35s ease-in; filter:drop-shadow(0 12px 16px rgba(20,12,70,.35))}
-.palec-box.on .palec-v{transform:translate(-46%,-94%) scaleX(-1) scale(1); transition:transform .7s cubic-bezier(.2,1.3,.3,1) 2.7s; animation:cuk .9s 3.5s cubic-bezier(.3,.9,.3,1.2) forwards}
-@keyframes cuk{0%{transform:translate(-46%,-94%) scaleX(-1) scale(1)} 22%{transform:translate(-46%,-100%) rotate(-6deg) scaleX(-1) scale(1)} 44%{transform:translate(-46%,-94%) scaleX(-1) scale(1)} 66%{transform:translate(-46%,-100%) rotate(-6deg) scaleX(-1) scale(1)} 100%{transform:translate(-46%,-94%) scaleX(-1) scale(1)}}
+.palec-box .palec-v{position:absolute; left:89.3%; top:49%; width:30%; height:auto; transform:translate(-54%,-94%) scale(0); transform-origin:54% 94%; transition:transform .35s ease-in; filter:drop-shadow(0 12px 16px rgba(20,12,70,.35))}
+.palec-box.on .palec-v{transform:translate(-54%,-94%) scale(1); transition:transform .7s cubic-bezier(.2,1.3,.3,1) 2.7s; animation:cuk .9s 3.5s cubic-bezier(.3,.9,.3,1.2) forwards}
+@keyframes cuk{0%{transform:translate(-54%,-94%) scale(1)} 22%{transform:translate(-54%,-100%) rotate(6deg) scale(1)} 44%{transform:translate(-54%,-94%) scale(1)} 66%{transform:translate(-54%,-100%) rotate(6deg) scale(1)} 100%{transform:translate(-54%,-94%) scale(1)}}
 @media (max-width:700px){ .palec-box{top:70px; left:-16px; width:clamp(230px,62vw,330px)} }
-@media (prefers-reduced-motion:reduce){ .palec-box .tube path{transition:none; stroke-dashoffset:0} .palec-box .tube{opacity:1} .palec-box .palec-v{transition:none; animation:none; transform:translate(-46%,-94%) scaleX(-1) scale(1)} }
+@media (prefers-reduced-motion:reduce){ .palec-box .tube path{transition:none; stroke-dashoffset:0} .palec-box .tube{opacity:1} .palec-box .palec-v{transition:none; animation:none; transform:translate(-54%,-94%) scale(1)} }
 
 /* ---------- about ---------- */
 .about-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(28px,5vw,72px); align-items:start}
