@@ -123,9 +123,9 @@ footer img{filter:brightness(0) invert(1); opacity:.9; height:26px}
 
 @media (max-width:860px){
   .hero-pexa .hero-grid{grid-template-columns:1fr; min-height:0}
-  .tube-wrap{min-height:240px; margin:0}
+  .tube-wrap{min-height:230px; margin:0 -20px 0 22%}
   .tube{left:-6%; top:-4%; width:106%; height:108%}
-  .hand{width:clamp(130px,36vw,190px)}
+  .hand{width:clamp(120px,32vw,160px)}
   .hero-card{aspect-ratio:4/3}
   .hero-card .play{font-size:14px; padding:9px 14px 9px 9px} .hero-card .play i{width:30px; height:30px}
   .contact{width:calc(100% - 20px)}

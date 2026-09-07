@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=2026-09-07c">
-<link rel="stylesheet" href="style-pexa.css?v=7">
+<link rel="stylesheet" href="style-pexa.css?v=9">
 </head>
 <body>
 
@@ -282,6 +282,11 @@
       var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return;
         var t=e.target.querySelector(".tube"); setTimeout(function(){ t.classList.add("on"); },redukce?0:150); io.unobserve(e.target); }); },{threshold:.25});
       celky.forEach(function(c){ io.observe(c); });
+      // ruka sedí přesně na konci hadice – poloha se počítá z křivky, ne z procent (na mobilu se SVG jinak vlícuje)
+      function umistiRuce(){ celky.forEach(function(c){ var svg=c.querySelector(".tube"), path=c.querySelector(".t-body"), ruka=c.querySelector(".hand"); if(!svg||!path||!ruka) return;
+        var pt=path.getPointAtLength(path.getTotalLength()), m=svg.getScreenCTM(), r=c.getBoundingClientRect(); if(!m) return;
+        var x=m.a*pt.x+m.c*pt.y+m.e-r.left, y=m.b*pt.x+m.d*pt.y+m.f-r.top; ruka.style.left=x+"px"; ruka.style.top=y+"px"; }); }
+      umistiRuce(); addEventListener("resize",umistiRuce); addEventListener("load",umistiRuce); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(umistiRuce);
       // pojistka: kdyby pozorovatel nevystřelil (starší prohlížeč, vložení do rámu), hero hadice se nakreslí sama
       setTimeout(function(){ var t=document.querySelector("#tubeHero .tube"); if(t) t.classList.add("on"); },1800);
       if(redukce) return;
