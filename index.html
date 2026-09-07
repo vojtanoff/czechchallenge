@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=2026-09-07b">
+<link rel="stylesheet" href="style.css?v=2026-09-07c">
 </head>
 <body>
 
@@ -254,7 +254,9 @@
     function karta(d){
       var fotky=d.photos||(d.photo?[d.photo]:[]);
       var mono=d.name.split(/\s+/).map(function(x){ return x[0]; }).join("").slice(0,2);
-      var pic=fotky.length ? fotky.map(function(f,i){ return '<img src="'+esc(f)+'" alt="'+esc(d.name)+'" loading="lazy" style="object-position:'+esc(POS[f]||"50% 25%")+'"'+(i===0?' class="on"':'')+'>'; }).join("")
+      // ohnisko „pan 42%" = fotka je široká, po zobrazení se pomalu projede zleva doprava (celý tým v řadě)
+      var pic=fotky.length ? fotky.map(function(f,i){ var p=POS[f]||"50% 25%", pan=/^pan\b/.test(p), py=pan?(p.split(/\s+/)[1]||"40%"):"";
+          return '<img src="'+esc(f)+'" alt="'+esc(d.name)+'" loading="lazy" style="object-position:'+esc(pan?"0% "+py:p)+(pan?";--py:"+esc(py):"")+'" class="'+(pan?"pan":"")+(i===0?" on":"")+'">'; }).join("")
                            : '<span class="mono">'+esc(mono)+'</span>';
       return '<div class="director"><div class="pic">'+pic+'</div><div><b>'+esc(d.name)+'</b><span>'+esc(d.role)+' · '+esc(d.org)+'</span></div></div>';
     }
