@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=2026-09-07c">
-<link rel="stylesheet" href="style-pexa.css?v=43">
+<link rel="stylesheet" href="style-pexa.css?v=44">
 </head>
 <body>
 
@@ -350,7 +350,7 @@
           us.forEach(function(x){ var bb=x.osa.getBBox(); top=Math.min(top,bb.y); bot=Math.max(bot,bb.y+bb.height); });
           return {sx:m.a*p0.x+m.e-r.left, tx:m.a*p1.x+m.e-r.left, ty:m.d*p1.y+m.f-r.top, top:m.d*top+m.f-r.top, bot:m.d*bot+m.f-r.top, W:r.width}; }
         var hw=ruka.offsetWidth||160, rod=c.offsetParent.getBoundingClientRect(), b=cil.getBoundingClientRect();
-        var prstX=b.right-rod.left+14, prstY=b.top-rod.top+b.height/2, tipX=prstX+.93*hw, tipY=prstY+.09*hw;
+        var prstX=b.right-rod.left+14, prstY=b.top-rod.top+b.height/2, tipX=prstX+.75*hw, tipY=prstY+.09*hw;   // konec hadice je pod dlaní (78 % šířky ruky), špička prstu ~3 % od levého okraje
         c.style.width=""; c.style.height=""; var q=mer(); if(!q) return;
         // měřítko: začátek hadice na pravém okraji rámečku, smyčka nesmí vyjet nahoru ani dolů
         var k=(rod.width-tipX)/Math.max(1,q.sx-q.tx);
