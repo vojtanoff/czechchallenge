@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=2026-09-07c">
-<link rel="stylesheet" href="style-pexa.css?v=49">
+<link rel="stylesheet" href="style-pexa.css?v=50">
 </head>
 <body>
 
@@ -264,7 +264,7 @@
           h.style.paddingTop=Math.max(0, sb*900/808-1.0*fs)+"px"; } }
       function fit(){
         var pc=innerWidth>860;
-        if(pexa && vol && meta && cta){ if(pc){ if(vol.nextElementSibling!==meta) text.insertBefore(vol,meta); } else if(vol.parentNode!==card){ card.insertBefore(vol,cta); } }
+        if(pexa && vol && meta && vol.nextElementSibling!==meta){ text.insertBefore(vol,meta); }   // Vol. 3 zůstává pod nadpisem, nikdy ve fotce (i na mobilu)
         if(pexa && card && pc){
           // hledá se šířka textového sloupce, při které je text stejně vysoký jako fotka 4:3 vedle něj (půlením intervalu – iterace by oscilovala)
           var grid=text.parentNode, Wg=grid.clientWidth, gap=parseFloat(getComputedStyle(grid).columnGap)||0, lo=Wg*.34, hi=Wg*.6;
