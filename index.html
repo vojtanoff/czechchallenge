@@ -265,11 +265,13 @@
     (function(){ var b=document.getElementById("palecBox"); if(!b) return;
       if(matchMedia("(prefers-reduced-motion: reduce)").matches){ b.classList.add("on"); return; }
       setTimeout(function(){ b.classList.add("on"); },700);
-      document.addEventListener("herofoto",function(e){ b.classList.toggle("on", e.detail===0); });
-      // po odscrollování dolů a návratu nahoru palec znovu vyskočí a klepne (a s další fotkou zase zmizí)
-      var byloDole=false, zpet=null;   // po návratu nahoru se palec ukáže jen na chvíli (3,8 s) a zase zmizí
+      var drz=false;   // během krátkého ukázání po návratu nahoru ho rotace fotek nevyhodí
+      document.addEventListener("herofoto",function(e){ if(!drz) b.classList.toggle("on", e.detail===0); });
+      // po odscrollování dolů a návratu nahoru palec znovu vyskočí a klepne a po 3,8 s zase zmizí
+      var byloDole=false, zpet=null;
       addEventListener("scroll",function(){ var y=scrollY||pageYOffset; if(y>innerHeight*.6) byloDole=true;
-        else if(byloDole&&y<40){ byloDole=false; b.classList.remove("on"); clearTimeout(zpet); zpet=setTimeout(function(){ b.classList.add("on"); zpet=setTimeout(function(){ b.classList.remove("on"); },3800); },350); } },{passive:true});
+        else if(byloDole&&y<40){ byloDole=false; b.classList.remove("on"); clearTimeout(zpet); drz=true;
+          zpet=setTimeout(function(){ b.classList.add("on"); zpet=setTimeout(function(){ b.classList.remove("on"); drz=false; },3800); },350); } },{passive:true});
     })();
     // directors
     // víc fotek u jednoho člověka = střídají se (prolnutím), první je výchozí; bez fotky monogram
