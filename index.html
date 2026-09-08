@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=2026-09-07c">
+<link rel="stylesheet" href="style.css?v=2026-09-08a">
 <link rel="stylesheet" href="style-pexa.css?v=50">
 </head>
 <body>
@@ -441,11 +441,41 @@
         prolni(fb.children,fk,d); fk=d; },5600);
     }
 
-    // galerie – náhled: 6 z 2025, 4 z 2024 + skupinová faculty 2024 (11 dlaždic + 1 vysoká = 3 plné řady)
-    var g=C.gallery, posl=g["2024"][g["2024"].length-1], pick=g["2025"].slice(0,6).map(function(p){ return [p,"2025"]; }).concat(g["2024"].slice(0,4).map(function(p){ return [p,"2024"]; })).concat([[posl,"2024"]]);
-    $("#galleryPreview").innerHTML=pick.map(function(x,i){
-      return '<a href="gallery.html#'+x[1]+'"'+(i===0?' class="tall"':'')+'><img src="'+esc(x[0].thumb)+'" alt="Czech Challenge '+x[1]+'" loading="lazy" style="object-position:'+esc(POS[x[0].src]||"50% 40%")+'"><span class="yr">'+x[1]+'</span></a>';
+    // galerie – náhled: 11 dlaždic (1 vysoká) = 3 plné řady ve 4 sloupcích; poloha dál drží svůj ročník
+    // (6× 2025, 5× 2024), ale fotka v ní se čas od času nepravidelně vymění za jinou z celého ročníku –
+    // tak je „vidět" celá galerie, ne jen napevno vybraná dvanáctka.
+    var g=C.gallery, sloty=["2025","2025","2025","2025","2025","2025","2024","2024","2024","2024","2024"];
+    var galTotal=(g["2025"]?g["2025"].length:0)+(g["2024"]?g["2024"].length:0);
+    var galFoot=document.querySelector(".gal-foot span"); if(galFoot) galFoot.textContent=galTotal+" photos from both editions";
+    var galVyuzito={};
+    function galNahodna(rok, vyhnout){
+      var pool=g[rok], p, pokus=0;
+      do{ p=pool[Math.floor(Math.random()*pool.length)]; pokus++; }
+      while(pokus<8 && (p.src===vyhnout || galVyuzito[p.src]));
+      return p;
+    }
+    var galDlazdice=sloty.map(function(rok){ var p=galNahodna(rok,null); galVyuzito[p.src]=true; return {rok:rok, aktualni:p}; });
+    $("#galleryPreview").innerHTML=galDlazdice.map(function(d,i){
+      var pos=esc(POS[d.aktualni.src]||"50% 40%");
+      return '<a href="gallery.html#'+d.rok+'"'+(i===0?' class="tall"':'')+'><img class="on" src="'+esc(d.aktualni.thumb)+'" alt="Czech Challenge '+d.rok+'" loading="'+(i<4?"eager":"lazy")+'" style="object-position:'+pos+'"><img alt="" style="object-position:'+pos+'"><span class="yr">'+d.rok+'</span></a>';
     }).join("");
+    if(!matchMedia("(prefers-reduced-motion: reduce)").matches){
+      var galOdkazy=$("#galleryPreview").children;
+      galDlazdice.forEach(function(d,i){
+        function dalsi(){
+          var a=galOdkazy[i], imgs=a.querySelectorAll("img"), stary=imgs[0].classList.contains("on")?0:1, cil=1-stary;
+          var novy=galNahodna(d.rok, d.aktualni.src);
+          imgs[cil].onload=function(){
+            delete galVyuzito[d.aktualni.src]; galVyuzito[novy.src]=true; d.aktualni=novy;
+            imgs[cil].style.objectPosition=POS[novy.src]||"50% 40%";
+            prolni(imgs, stary, cil);
+            setTimeout(dalsi, 6000+Math.random()*10000);   // nepravidelně – jiný interval pokaždé
+          };
+          imgs[cil].alt="Czech Challenge "+d.rok; imgs[cil].src=novy.thumb;
+        }
+        setTimeout(dalsi, 5000+Math.random()*10000+i*350);
+      });
+    }
 
     // partneři po úrovních
     var tiers=Object.keys(C.partners);
