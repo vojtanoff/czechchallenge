@@ -222,7 +222,7 @@ section{padding:clamp(64px,9vw,120px) 0}
 .contact p{opacity:.92; max-width:none}
 .contact a{color:#fff}
 .contact .btn-lime{color:var(--lime-ink)}   /* .contact a má vyšší specificitu než .btn-lime – jinak bílá na žluté */
-.contact .card{background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.22); border-radius:var(--radius); padding:24px; display:grid; gap:10px}
+.contact .card{background:rgba(255,255,255,.12); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,.22); border-radius:var(--radius); padding:24px; display:grid; gap:10px}   /* mléčná jako v Pexa verzi – smyčka katetru za ní jen prosvítá */
 .contact .card b{font-family:var(--font-display); font-size:18px}
 @media (max-width:860px){ .contact-grid{grid-template-columns:1fr} }
 /* 3D ruka ukazující na tlačítko: špička prstu je v ~30 % výšky obrázku, zápěstí vpravo; bez drop-shadow (Safari ho kreslí jako obdélník) */
@@ -287,12 +287,12 @@ footer img{height:22px; filter:grayscale(1); opacity:.7}
 .tube .t-light{stroke:#CBA2FF; stroke-width:10; transform:translate(-6px,-14px); opacity:.95; filter:blur(2.2px)}
 .tube .t-spec{stroke:#F6F0FF; stroke-width:2.6; transform:translate(-7px,-16px); opacity:.85; filter:blur(.6px)}
 .contact .tube .t-base{stroke:#22157A} .contact .tube .t-body{stroke:#4A1BC8} .contact .tube .t-dark{stroke:#2E0794} .contact .tube .t-core{stroke:#230580}
-.hand{position:absolute; width:clamp(120px,13vw,190px); height:auto; transform:translate(-78%,-44.5%) rotate(var(--uhel,0deg));
-  transform-origin:78% 44.5%; transition:transform .12s linear}
+.hand{position:absolute; width:clamp(120px,13vw,190px); height:auto; transform:translate(-78%,-41%) rotate(var(--uhel,0deg));
+  transform-origin:78% 41%; transition:transform .12s linear}
 .hand.nod{animation:nod .8s cubic-bezier(.3,.9,.3,1.2)}
 .hand.nod2{animation:nod2 1.3s cubic-bezier(.4,.05,.3,1)}
-@keyframes nod2{0%{transform:translate(-78%,-44.5%)} 22%{transform:translate(-78%,-44.5%) translateX(-22px) rotate(-3deg)} 45%{transform:translate(-78%,-44.5%)} 68%{transform:translate(-78%,-44.5%) translateX(-22px) rotate(-3deg)} 100%{transform:translate(-78%,-44.5%)}}
-@keyframes nod{0%{transform:translate(-78%,-44.5%)} 35%{transform:translate(-78%,-44.5%) translateX(-22px) rotate(-3deg)} 70%{transform:translate(-78%,-44.5%) translateX(6px) rotate(2deg)} 100%{transform:translate(-78%,-44.5%)}}
+@keyframes nod2{0%{transform:translate(-78%,-41%)} 22%{transform:translate(-78%,-41%) translateX(-22px) rotate(-3deg)} 45%{transform:translate(-78%,-41%)} 68%{transform:translate(-78%,-41%) translateX(-22px) rotate(-3deg)} 100%{transform:translate(-78%,-41%)}}
+@keyframes nod{0%{transform:translate(-78%,-41%)} 35%{transform:translate(-78%,-41%) translateX(-22px) rotate(-3deg)} 70%{transform:translate(-78%,-41%) translateX(6px) rotate(2deg)} 100%{transform:translate(-78%,-41%)}}
 
 .contact .tube .t-shadow{opacity:.35}
 @media (min-width:861px){ .ruka-cil .ruka{display:none} }
