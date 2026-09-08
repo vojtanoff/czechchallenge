@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=2026-09-08e">
+<link rel="stylesheet" href="style.css?v=2026-09-08f">
 </head>
 <body>
 
@@ -26,6 +26,7 @@
       <img src="img/brand/CTO_CHIP_LOGO.svg" alt="CTO&CHIP Czech Challenge">
     </a>
     <ul class="menu">
+      <li class="terc" aria-hidden="true"></li>
       <li><a href="#about">About</a></li>
       <li><a href="#program">Program</a></li>
       <li><a href="#faculty">Faculty</a></li>
@@ -349,6 +350,17 @@
           requestAnimationFrame(function(){ var r=hero.getBoundingClientRect(), dy=(ev.clientY-r.top)/r.height-.5; ruceHero.style.setProperty("--uhel",(dy*6).toFixed(2)+"deg"); tik=false; }); });
         hero.addEventListener("mouseleave",function(){ ruceHero.style.setProperty("--uhel","0deg"); });
       }
+    })();
+    // limetkový terč v menu klouže na položku sekce, která je právě v záběru (jako pilulka ve větvi design-pexa)
+    (function(){
+      var menu=document.querySelector(".menu"), terc=menu&&menu.querySelector(".terc"); if(!menu||!terc) return;
+      var odkazy=Array.prototype.slice.call(menu.querySelectorAll("a")), mapa={}, akt=null;
+      odkazy.forEach(function(a){ var id=(a.getAttribute("href")||"").slice(1); if(document.getElementById(id)) mapa[id]=a; });
+      function posun(){ if(!akt){ terc.classList.remove("on"); return; } terc.style.left=akt.offsetLeft+"px"; terc.style.width=akt.offsetWidth+"px"; terc.classList.add("on"); }
+      var io3=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; odkazy.forEach(function(a){ a.classList.remove("on"); }); akt=mapa[e.target.id]||null; if(akt) akt.classList.add("on"); posun(); }); },{rootMargin:"-40% 0px -55% 0px"});
+      Object.keys(mapa).forEach(function(id){ io3.observe(document.getElementById(id)); });
+      addEventListener("scroll",function(){ if((scrollY||pageYOffset)<innerHeight*.5 && akt){ akt.classList.remove("on"); akt=null; posun(); } },{passive:true});   // nahoře v hero bez terče
+      addEventListener("resize",posun); if(document.fonts) document.fonts.ready.then(posun);
     })();
     // 3D ruka u tlačítka v kontaktu: přijede zprava, když se sekce doscrolluje, „klikne" a pak klikne při každém najetí na tlačítko
     (function(){ var r=document.getElementById("rukaKontakt"), b=document.getElementById("registerBtn"); if(!r||!b) return;
