@@ -95,9 +95,7 @@ h3{font-weight:500}
   background:rgba(255,255,255,.92); color:var(--violet); text-decoration:none; font-family:var(--font-display); font-weight:600; font-size:14px; padding:7px 14px 7px 8px; border-radius:999px; box-shadow:0 6px 18px rgba(0,0,0,.22); transition:transform .15s}
 .hero-card .play:hover{transform:translateY(-1px)}
 .hero-card .play i{width:28px; height:28px; border-radius:50%; background:var(--violet); display:grid; place-items:center}
-/* pilulka „Vol. 3" a tlačítka leží dole ve fotce, tečky vpravo dole */
-.hero-card .vol{position:absolute; left:18px; bottom:calc(18px + 42px + 12px); z-index:2; margin:0}
-@media (max-width:860px){ .hero-card .vol{bottom:auto; top:16px; left:16px} }
+/* tlačítka leží dole ve fotce, tečky vpravo dole */
 .hero-card .cta{position:absolute; left:18px; right:18px; bottom:18px; z-index:2; margin:0; gap:10px}
 .hero-card .cta .btn-ghost{color:#fff; border-color:rgba(255,255,255,.75); backdrop-filter:blur(6px); background:rgba(23,19,58,.18)}
 .hero-card .cta .btn-ghost:hover{background:rgba(255,255,255,.18)}
