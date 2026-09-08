@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=2026-09-08g">
+<link rel="stylesheet" href="style.css?v=2026-09-08h">
 </head>
 <body>
 
@@ -291,7 +291,8 @@
 
     // hadice s rukou: kreslí se skriptem, ruka jede na její špičce a dojede s ní; pak kývne při najetí na tlačítko a natáčí se za kurzorem
     (function(){
-      var celky=document.querySelectorAll(".tube-wrap"); if(!celky.length) return;
+      // jen vykreslené obaly (na telefonu je hadice display:none – měření délky křivky by tam selhalo a shodilo zbytek skriptu)
+      var celky=Array.prototype.filter.call(document.querySelectorAll(".tube-wrap"),function(c){ return c.offsetParent!==null; }); if(!celky.length) return;
       var redukce=matchMedia("(prefers-reduced-motion: reduce)").matches;
       function ease(t){ return t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2; }
       function useky(c){ return Array.prototype.map.call(c.querySelectorAll(".tube .seg:not(.zaplata)"),function(g){ return {g:g, cesty:g.querySelectorAll("path"), osa:g.querySelector(".t-base"), L:g.querySelector(".t-base").getTotalLength()}; }); }
@@ -360,11 +361,12 @@
       addEventListener("scroll",function(){ if((scrollY||pageYOffset)<innerHeight*.5 && akt){ akt.classList.remove("on"); akt=null; posun(); } },{passive:true});   // nahoře v hero bez terče
       addEventListener("resize",posun); if(document.fonts) document.fonts.ready.then(posun);
     })();
-    // 3D ruka u tlačítka v kontaktu: přijede zprava, když se sekce doscrolluje, „klikne" a pak klikne při každém najetí na tlačítko
+    // 3D ruka u tlačítka v kontaktu (telefon, bez hadice): poprvé přijede a dvakrát ťukne, při dalším naskrolování a najetí ťukne jednou
     (function(){ var r=document.getElementById("rukaKontakt"), b=document.getElementById("registerBtn"); if(!r||!b) return;
-      function klik(){ r.classList.remove("klik"); void r.offsetWidth; r.classList.add("klik"); }
+      function klik(tr){ r.classList.remove("klik"); r.classList.remove("klik2"); void r.offsetWidth; r.classList.add(tr||"klik"); }
       if(matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)){ r.classList.add("tu"); }
-      else { var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; io.disconnect(); r.classList.add("tu"); setTimeout(klik,900); }); },{threshold:.6}); io.observe(b); }
+      else { var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return;
+          if(!r.classList.contains("tu")){ r.classList.add("tu"); setTimeout(function(){ klik("klik2"); },900); } else { setTimeout(klik,300); } }); },{threshold:.6}); io.observe(b); }
       b.addEventListener("mouseenter",function(){ if(r.classList.contains("tu")) klik(); });
     })();
     // palec z původního webu vlevo nahoře v hero: vjede s první fotkou, dvakrát cukne, s druhou fotkou zajede; při dalším kole znovu

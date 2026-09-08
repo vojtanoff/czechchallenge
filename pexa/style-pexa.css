@@ -149,45 +149,6 @@ footer img{filter:brightness(0) invert(1); opacity:.9; height:26px}
 
 body{overflow-x:hidden}
 
-/* ---------- BLEND: fotografické hero z hlavní větve + typografie a hadice podle Pexy (body.hero-foto) ---------- */
-body.hero-foto .hero-pexa{position:relative; background:var(--violet-deep); color:#fff; min-height:clamp(560px,82vh,860px); padding:0 0 clamp(36px,5vw,56px); isolation:isolate; display:flex; flex-direction:column; justify-content:flex-end}
-body.hero-foto .hero-pexa > .hero-photos{position:absolute; inset:0; z-index:0}
-body.hero-foto .hero-pexa > .hero-photos img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1.6s ease; transform:scale(1.03)}
-body.hero-foto .hero-pexa > .hero-photos img.on{opacity:1}
-body.hero-foto .hero-pexa::before{content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
-  background:linear-gradient(180deg, rgba(23,19,58,.18) 0%, rgba(23,19,58,.42) 45%, rgba(23,19,58,.92) 100%), linear-gradient(90deg, rgba(75,50,208,.55), rgba(75,50,208,0) 62%)}
-body.hero-foto .hero-pexa .hero-grid{position:relative; z-index:1; align-items:end; min-height:0; padding-top:0; width:min(1180px,calc(100% - 40px))}
-body.hero-foto .hero-pexa .hero-text{text-shadow:0 2px 14px rgba(23,19,58,.55)}
-body.hero-foto .hero-pexa h1{font-size:clamp(50px,7.4vw,104px); font-weight:800; letter-spacing:-.035em; line-height:.92}
-body.hero-foto .hero-pexa .hero-grid{grid-template-columns:1fr}
-body.hero-foto .hero-pexa h1 .rok{font-weight:800}
-body.hero-foto .hero-pexa .meta{font-weight:700}
-body.hero-foto .hero-pexa .meta small{font-weight:500; color:#fff}
-body.hero-foto .hero-pexa h1, body.hero-foto .hero-pexa .meta{color:#fff}
-body.hero-foto .hero-pexa .meta small{color:rgba(255,255,255,.88)}
-body.hero-foto .hero-pexa .cta .btn-lime{background:var(--lime); color:var(--lime-ink)}
-body.hero-foto .hero-pexa .cta{margin-top:18px}
-body.hero-foto .hero-pexa .cta .btn-ghost{color:#fff; border-color:rgba(255,255,255,.7)}
-body.hero-foto .hero-pexa .cta .btn-ghost:hover{background:rgba(255,255,255,.14)}
-body.hero-foto .hero-card{display:none}
-body.hero-foto .hero-pexa > .wrap:not(.hero-grid){display:none}   /* obal skryté karty měl z hlavního stylu 176 px vnitřního okraje */
-body.hero-foto .tube-wrap{z-index:1}
-body.hero-foto .tube .t-shadow{opacity:.35}
-body.hero-foto .hero-pexa .dots{position:absolute; right:22px; bottom:18px; z-index:2; display:flex; gap:6px}
-body.hero-foto .hero-pexa .dots i{width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.5)}
-body.hero-foto .hero-pexa .dots i.on{background:#fff}
-body.hero-foto .hero-pexa .prev{position:absolute; right:20px; bottom:44px; z-index:2; display:inline-flex; align-items:center; gap:9px; color:#fff; text-decoration:none; font-family:var(--font-display); font-weight:600; font-size:14px; background:rgba(255,255,255,.14); backdrop-filter:blur(8px); padding:7px 14px 7px 8px; border-radius:999px; border:1px solid rgba(255,255,255,.35)}
-body.hero-foto .hero-pexa .prev i{width:26px; height:26px; border-radius:50%; background:#fff; display:grid; place-items:center}
-body.hero-foto .nav{background:color-mix(in srgb,var(--ground) 92%,transparent)}
-.hero-pexa .prev{display:none}
-body.hero-foto .hero-pexa .prev{display:inline-flex}
-@media (max-width:860px){ body.hero-foto .hero-pexa{min-height:clamp(520px,74vh,720px)} body.hero-foto .tube-wrap{margin-top:-30px} }
-
-/* přepínač variant jen pro náhled – pryč před nasazením */
-.prepinac{position:fixed; left:50%; transform:translateX(-50%); bottom:14px; z-index:70; display:flex; gap:4px; background:rgba(34,29,74,.92); color:#fff; padding:5px; border-radius:999px; font:600 12.5px/1 var(--font-body); box-shadow:0 8px 24px rgba(0,0,0,.3)}
-.prepinac a{color:#fff; text-decoration:none; padding:7px 12px; border-radius:999px; opacity:.75}
-.prepinac a.on{background:#fff; color:var(--violet); opacity:1}
-
 /* ---------- 3D levý palec (render z ChatGPT) v mezeře za „Czech" a nad „Challenge" – stejné jako na hlavním webu ---------- */
 .hero-pexa h1 .r1{position:relative; display:inline-block}
 .palec-box{position:absolute; left:calc(100% + .12em); bottom:-.06em; height:1.42em; aspect-ratio:808/900; pointer-events:none}
@@ -195,3 +156,50 @@ body.hero-foto .hero-pexa .prev{display:inline-flex}
 .palec-box.on .palec-v{transform:scale(1) rotate(0deg); transition:transform .75s cubic-bezier(.2,1.35,.3,1) .5s; animation:klep 1.2s 1.5s cubic-bezier(.4,.05,.3,1) forwards}
 @keyframes klep{0%{transform:scale(1) rotate(0deg)} 20%{transform:scale(1) rotate(22deg)} 42%{transform:scale(1) rotate(0deg)} 62%{transform:scale(1) rotate(22deg)} 84%{transform:scale(1) rotate(-3deg)} 100%{transform:scale(1) rotate(0deg)}}
 @media (prefers-reduced-motion:reduce){ .palec-box .palec-v{transition:none; animation:none; transform:none} }
+
+/* ---------- kontakt na telefonu: bez hadice, jen 3D ruka pod tlačítkem (stejné chování jako katetr na PC) ---------- */
+/* 3D ruka ukazující na tlačítko: špička prstu je v ~30 % výšky obrázku, zápěstí vpravo; bez drop-shadow (Safari ho kreslí jako obdélník) */
+.ruka-cil{position:relative; display:inline-block; margin-top:8px}
+.ruka-cil .ruka{position:absolute; z-index:1; left:calc(100% + 12px); top:50%; width:clamp(130px,14vw,210px); height:auto; max-width:none; pointer-events:none;
+  transform:translate(70px,-30%); opacity:0; transition:transform .7s cubic-bezier(.2,1.2,.3,1), opacity .4s}
+.ruka-cil .ruka.tu{transform:translate(0,-30%); opacity:1}
+.ruka-cil .ruka.klik{animation:ruka-klik .55s cubic-bezier(.3,.9,.3,1.2)}
+@keyframes ruka-klik{0%{transform:translate(0,-30%)} 40%{transform:translate(-16px,-30%) rotate(-3deg)} 100%{transform:translate(0,-30%)}}
+.ruka-cil .ruka.klik2{animation:ruka-klik2 1.1s cubic-bezier(.4,.05,.3,1)}
+@keyframes ruka-klik2{0%{transform:translate(0,-30%)} 25%{transform:translate(-16px,-30%) rotate(-3deg)} 50%{transform:translate(0,-30%)} 75%{transform:translate(-16px,-30%) rotate(-3deg)} 100%{transform:translate(0,-30%)}}
+/* na telefonu je tlačítko přes celou šířku – ruka visí pod jeho pravým koncem a ukazuje šikmo nahoru (otáčí se kolem špičky prstu) */
+@media (max-width:700px){
+  .ruka-cil{margin-bottom:78px}
+  .ruka-cil .ruka{left:auto; right:-66px; top:calc(100% - 16px); width:110px; transform-origin:2% 30%; transform:rotate(40deg) translate(60px,0)}
+  .ruka-cil .ruka.tu{transform:rotate(40deg)}
+  .ruka-cil .ruka.klik{animation-name:ruka-klik-m}
+  .ruka-cil .ruka.klik2{animation-name:ruka-klik2-m}
+}
+@keyframes ruka-klik2-m{0%{transform:rotate(40deg)} 25%{transform:rotate(40deg) translate(-14px,0)} 50%{transform:rotate(40deg)} 75%{transform:rotate(40deg) translate(-14px,0)} 100%{transform:rotate(40deg)}}
+@keyframes ruka-klik-m{0%{transform:rotate(40deg)} 40%{transform:rotate(40deg) translate(-14px,0)} 100%{transform:rotate(40deg)}}
+@media (prefers-reduced-motion:reduce){ .ruka-cil .ruka{transition:none; animation:none} }
+
+footer{padding:34px 0 40px; color:var(--ink-3); font-size:14px}
+footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; align-items:center}
+footer img{height:22px; filter:grayscale(1); opacity:.7}
+
+/* ---------- galerie – vlastní stránka ---------- */
+.page-head{padding:56px 0 26px}
+.page-head h1{font-size:clamp(40px,6vw,72px); font-weight:800}
+.year-block{padding:24px 0 48px}
+.year-block h2{font-size:clamp(26px,3vw,36px); margin-bottom:16px}
+.lightbox{position:fixed; inset:0; z-index:80; background:rgba(16,14,34,.94); display:none; align-items:center; justify-content:center}
+.lightbox[data-open="true"]{display:flex}
+.lightbox img{max-width:94vw; max-height:88vh; border-radius:10px; box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.lightbox button{position:absolute; top:50%; transform:translateY(-50%); width:56px; height:56px; border-radius:50%; border:0;
+  background:rgba(255,255,255,.14); color:#fff; font-size:26px; cursor:pointer}
+.lightbox .prev{left:16px} .lightbox .next{right:16px}
+.lightbox .x{top:16px; right:16px; transform:none; width:48px; height:48px}
+.lightbox .cnt{position:absolute; bottom:18px; left:50%; transform:translateX(-50%); color:#fff; font-family:var(--font-display); font-weight:700; opacity:.8}
+
+/* jemné najetí sekcí – z viditelného stavu, jen posun */
+.reveal{transform:translateY(18px); transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{transform:none}
+
+
+@media (min-width:861px){ .ruka-cil .ruka{display:none} }
