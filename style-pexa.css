@@ -49,13 +49,13 @@ h3{font-weight:500}
 /* ---------- hero: text vlevo, hadice s rukou vpravo, fotka jako karta pod tím ---------- */
 .hero-pexa{background:var(--ground); color:var(--ink); min-height:0; display:block; overflow:hidden; padding:0 0 clamp(40px,6vw,72px)}
 .hero-pexa::after{display:none}
-.hero-pexa .hero-grid{position:relative; display:grid; grid-template-columns:1fr; align-items:start; gap:24px; padding:clamp(28px,5vw,56px) 0 0}
-.hero-pexa h1{font-size:clamp(46px,7.4vw,104px); font-weight:400; line-height:.94; letter-spacing:-.035em; color:var(--violet); text-wrap:balance}
+.hero-pexa .hero-grid{position:relative; display:grid; grid-template-columns:1fr; align-items:start; gap:24px; padding:clamp(16px,2.5vw,32px) 0 0}
+.hero-pexa > .wrap:not(.hero-grid){padding:0}   /* hlavní styl dává .hero .wrap 120 px shora – to byla ta mezera nad fotkou */
+.hero-pexa h1{font-size:clamp(46px,7.4vw,104px); font-weight:400; line-height:.94; letter-spacing:-.035em; color:var(--violet); white-space:nowrap}   /* velikost dopočítá skript, aby „Challenge" vyplnilo šířku */
 .hero-pexa h1 .rok{display:block; font-weight:300}
 .hero-pexa .meta{font-family:var(--font-display); font-weight:500; font-size:clamp(20px,2.4vw,30px); color:var(--violet); margin-top:22px}
 .hero-pexa .meta small{color:var(--ink-2); font-size:clamp(15px,1.4vw,18px); opacity:1}
 .hero-pexa .vol{background:var(--lime); color:var(--lime-ink); margin-top:14px; font-weight:700; font-size:15px}
-.hero-pexa .cta{margin-top:18px}
 .hero-pexa .cta .btn{padding:11px 18px; font-size:15px}
 
 /* hadice: jedna křivka, pět vrstev tahu = plastický 3D dojem bez rastru; kreslí se po načtení */
@@ -82,7 +82,7 @@ h3{font-weight:500}
 @keyframes nod{0%{transform:translate(-96%,-44.5%)} 35%{transform:translate(-96%,-44.5%) translateX(-22px) rotate(-3deg)} 70%{transform:translate(-96%,-44.5%) translateX(6px) rotate(2deg)} 100%{transform:translate(-96%,-44.5%)}}
 
 /* fotka jako karta pod nadpisem, přes ni tlačítko na minulé ročníky */
-.hero-card{position:relative; border-radius:var(--radius); overflow:hidden; aspect-ratio:16/7; min-height:280px; margin-top:clamp(18px,3vw,40px); box-shadow:var(--shadow); isolation:isolate}
+.hero-card{position:relative; border-radius:var(--radius); overflow:hidden; aspect-ratio:16/7; min-height:280px; margin-top:clamp(16px,2.4vw,32px); box-shadow:var(--shadow); isolation:isolate}
 .hero-card .hero-photos{position:absolute; inset:0; z-index:0}
 .hero-card .hero-photos img{transform:none}
 .hero-card::after{content:""; position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(180deg,rgba(75,50,208,.08),rgba(34,29,74,.45) 100%)}
@@ -90,8 +90,11 @@ h3{font-weight:500}
   background:rgba(255,255,255,.92); color:var(--violet); text-decoration:none; font-family:var(--font-display); font-weight:600; font-size:14px; padding:7px 14px 7px 8px; border-radius:999px; box-shadow:0 6px 18px rgba(0,0,0,.22); transition:transform .15s}
 .hero-card .play:hover{transform:translateY(-1px)}
 .hero-card .play i{width:28px; height:28px; border-radius:50%; background:var(--violet); display:grid; place-items:center}
-.hero-card .tag{position:absolute; right:18px; bottom:16px; z-index:2; color:#fff; font-family:var(--font-display); font-weight:500; font-size:15px; text-shadow:0 2px 10px rgba(0,0,0,.5)}
-.hero-card .dots{position:absolute; left:18px; bottom:18px; z-index:2; display:flex; gap:6px}
+/* tlačítka leží dole ve fotce, tečky vpravo dole */
+.hero-card .cta{position:absolute; left:18px; right:18px; bottom:18px; z-index:2; margin:0; gap:10px}
+.hero-card .cta .btn-ghost{color:#fff; border-color:rgba(255,255,255,.75); backdrop-filter:blur(6px); background:rgba(23,19,58,.18)}
+.hero-card .cta .btn-ghost:hover{background:rgba(255,255,255,.18)}
+.hero-card .dots{position:absolute; right:18px; bottom:22px; z-index:2; display:flex; gap:6px}
 .hero-card .dots i{width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.5)}
 .hero-card .dots i.on{background:#fff}
 
@@ -129,6 +132,7 @@ footer img{filter:brightness(0) invert(1); opacity:.9; height:26px}
   .tube{left:-6%; top:-4%; width:106%; height:108%}
   .hand{width:clamp(120px,32vw,160px)}
   .hero-card{aspect-ratio:4/3}
+  .hero-card .dots{bottom:auto; top:16px; right:16px}
   .hero-card .play{font-size:13px; padding:6px 12px 6px 7px} .hero-card .play i{width:24px; height:24px}
   .contact{width:calc(100% - 20px)}
   .contact .tube-wrap{width:70vw; height:70vw; left:auto; right:-25%; bottom:-30%; opacity:.6}
@@ -152,6 +156,7 @@ body.hero-foto .hero-pexa .meta small{font-weight:500; color:#fff}
 body.hero-foto .hero-pexa h1, body.hero-foto .hero-pexa .meta{color:#fff}
 body.hero-foto .hero-pexa .meta small{color:rgba(255,255,255,.88)}
 body.hero-foto .hero-pexa .cta .btn-lime{background:var(--lime); color:var(--lime-ink)}
+body.hero-foto .hero-pexa .cta{margin-top:18px}
 body.hero-foto .hero-pexa .cta .btn-ghost{color:#fff; border-color:rgba(255,255,255,.7)}
 body.hero-foto .hero-pexa .cta .btn-ghost:hover{background:rgba(255,255,255,.14)}
 body.hero-foto .hero-card{display:none}

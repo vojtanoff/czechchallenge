@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=2026-09-07c">
-<link rel="stylesheet" href="style-pexa.css?v=35">
+<link rel="stylesheet" href="style-pexa.css?v=36">
 </head>
 <body>
 
@@ -49,19 +49,18 @@
 <section class="hero hero-pexa" aria-label="Czech Challenge 2026">
   <div class="wrap hero-grid">
     <div class="hero-text">
-      <h1><span class="r1">Czech<span class="palec-box" id="palecBox" aria-hidden="true"><img class="palec-v" src="img/brand/palec-3d.png" alt=""></span></span><br>Challenge <span class="rok">2026</span></h1>
+      <h1><span class="r1">Czech<span class="palec-box" id="palecBox" aria-hidden="true"><img class="palec-v" src="img/brand/palec-3d.png" alt=""></span></span><br><span class="r2">Challenge</span> <span class="rok">2026</span></h1>
       <div class="meta">23 October 2026<small>Complex PCI Meeting · Pardubice · Czechia · welcome dinner 22 October</small></div>
       <span class="vol">Vol. 3 · Together again</span>
-      <div class="cta">
-        <a class="btn btn-lime" href="#contact">I'm interested</a>
-        <a class="btn btn-ghost" href="#program">See the program</a>
-      </div>
     </div>
   </div>
   <div class="wrap">
     <div class="hero-card">
       <div class="hero-photos" id="heroPhotos"></div>
-      <span class="tag">Complex PCI Meeting</span>
+      <div class="cta" id="heroCta">
+        <a class="btn btn-lime" href="#contact">I'm interested</a>
+        <a class="btn btn-ghost" href="#program">See the program</a>
+      </div>
       <div class="dots" id="heroDots" aria-hidden="true"></div>
     </div>
   </div>
@@ -260,7 +259,15 @@
   // varianta hero: ?hero=foto = fotografické hero (blend), jinak karta podle Pexy; volba se pamatuje
   (function(){ var q=/[?&]hero=(foto|pexa)/.exec(location.search), v=q?q[1]:"pexa";   // 2. verze = Pexa (výchozí), 3. verze = ?hero=foto
     if(v==="foto"){ document.body.classList.add("hero-foto"); var h=document.querySelector(".hero-pexa"), f=document.getElementById("heroPhotos"), d=document.getElementById("heroDots");
-      if(h&&f){ h.insertBefore(f,h.firstChild); } if(h&&d){ h.appendChild(d); } }
+      if(h&&f){ h.insertBefore(f,h.firstChild); } if(h&&d){ h.appendChild(d); }
+      var c=document.getElementById("heroCta"), t=document.querySelector(".hero-pexa .hero-text"); if(c&&t){ t.appendChild(c); } }
+    // nadpis přes celou šířku: „Challenge" = šířka bloku, palec doplní řádek „Czech" až k pravému okraji (stejně na mobilu i na PC)
+    (function(){ var h=document.querySelector(".hero-pexa h1"), r1=h&&h.querySelector(".r1"), r2=h&&h.querySelector(".r2"), box=document.getElementById("palecBox"); if(!h||!r2) return;
+      function fit(){ h.style.fontSize=""; var fs=parseFloat(getComputedStyle(h).fontSize), W=h.clientWidth; if(!W) return;
+        for(var i=0;i<3;i++){ var w=r2.getBoundingClientRect().width; if(!w) return; fs=fs*W/w; h.style.fontSize=fs+"px"; }
+        if(box&&r1){ var sb=W-r1.getBoundingClientRect().width-.12*fs; sb=Math.max(sb,fs*.9); box.style.width=sb+"px"; box.style.height="auto";
+          h.style.paddingTop=Math.max(0, sb*900/808-1.0*fs)+"px"; } }
+      fit(); if(document.fonts){ document.fonts.ready.then(fit); } addEventListener("resize",fit); })();
     document.querySelectorAll(".prepinac a").forEach(function(a){ a.classList.toggle("on",(a.dataset.v==="foto")===(v==="foto")); });
     // palec: s první fotkou vyskočí a dvakrát klepne, s druhou zmizí (stejné pravidlo jako na hlavním webu)
     (function(){ var b=document.getElementById("palecBox"); if(!b) return;
