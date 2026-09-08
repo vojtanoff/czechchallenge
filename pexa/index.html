@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CTO&amp;CHIP Czech Challenge Vol. 3 – 23 October 2026, Pardubice</title>
+<meta name="description" content="CTO&CHIP Czech Challenge – Complex PCI Meeting in Pardubice, Czechia. Live cases, Czech & international faculty, quick debate. Third edition, 23 October 2026.">
+<meta property="og:title" content="CTO&CHIP Czech Challenge Vol. 3 · 23.10.2026 · Pardubice">
+<meta property="og:description" content="Complex PCI Meeting – live cases, international faculty, quick debate. Together again">
+<meta property="og:image" content="img/brand/vizual-2026-sirka.png">
+<link rel="icon" href="../img/brand/FAV_Icon_CTO.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=2026-09-07c">
+<link rel="stylesheet" href="style-pexa.css?v=47">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="CTO&CHIP Czech Challenge – home">
+      <img src="../img/brand/CTO_CHIP_LOGO.svg" alt="CTO&CHIP Czech Challenge">
+    </a>
+    <ul class="menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#program">Program</a></li>
+      <li><a href="#faculty">Faculty</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#partners">Partners</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-primary" id="registerTop" href="#contact">I'm interested</a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<nav class="fullmenu" id="fullmenu" data-open="false" aria-label="Menu">
+  <button class="close" id="menuClose" aria-label="Close menu">×</button>
+  <a href="#about">About</a><a href="#program">Program</a><a href="#faculty">Faculty</a>
+  <a href="#gallery">Gallery</a><a href="#partners">Partners</a><a href="#contact">Contact</a>
+</nav>
+
+<div class="prepinac" aria-label="Varianta náhledu"><a href="?hero=pexa" data-v="pexa">Pexa</a><a href="?hero=foto" data-v="foto">Blend s fotkou</a></div>
+<main id="top">
+
+<!-- HERO: prolínající fotky z ročníků 2024 a 2025, přes ně vizuál 2026 -->
+<section class="hero hero-pexa" aria-label="Czech Challenge 2026">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <h1><span class="r1">Czech<span class="palec-box" id="palecBox" aria-hidden="true"><img class="palec-v" src="../img/brand/palec-3d.png" alt=""></span></span><br><span class="r2">Challenge</span> <span class="rok">2026</span></h1>
+      <div class="meta">23 October 2026<small>Complex PCI Meeting · Pardubice · Czechia · welcome dinner 22 October</small></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="hero-card">
+      <div class="hero-photos" id="heroPhotos"></div>
+      <span class="vol" id="heroVol">Vol. 3 · Together again</span>
+      <div class="cta" id="heroCta">
+        <a class="btn btn-lime" href="#contact">I'm interested</a>
+        <a class="btn btn-ghost" href="#program">See the program</a>
+      </div>
+      <div class="dots" id="heroDots" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid reveal">
+    <div>
+      <p class="eyebrow">About the meeting</p>
+      <h2>Science, sharing and friendship – third time in Pardubice.</h2>
+      <p style="margin-top:22px">After two successful editions, the CTO&amp;CHIP Czech Challenge returns for its third year as an international meeting that brings together leading experts and colleagues from across Europe and beyond.</p>
+      <p>Vol. 3 will once again combine live cases, focused sessions and open discussion with the spirit of collaboration and friendship that has defined the meeting from the start. New this year: a quick debate – multiple views on the road to becoming a CTO&nbsp;&amp;&nbsp;CHIP operator.</p>
+      <p>We'll start together with a welcome dinner on October&nbsp;22, followed by a full day of live cases, lectures, debate and shared learning on October&nbsp;23, 2026. And it's a meeting for the whole cath lab team – live cases are a team effort, and so is this day.</p>
+      <ul class="facts">
+        <li>Live cases</li><li>Czech &amp; 20+ international faculty</li><li>Quick debate</li><li>Whole cath lab team</li><li>One day, one room</li>
+      </ul>
+    </div>
+    <div>
+      <p class="eyebrow">Course directors &amp; team</p>
+      <div class="directors" id="directors"></div>
+      <p class="eyebrow" style="margin-top:26px">Scientific committee</p>
+      <div class="directors" id="committee"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section id="program" class="program">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Program</p>
+      <h2>Four sessions, live cases and one debate.</h2>
+      <p class="lead">Working draft – speakers and exact times will follow with the final program.</p>
+    </div>
+    <div class="days reveal" id="days"></div>
+    <div class="live reveal">
+      <b>Live cases</b>
+      <p id="liveCases"></p>
+    </div>
+    <div class="gal-foot">
+      <a class="btn btn-outline" href="#" aria-disabled="true">Scientific program (PDF) – coming soon</a>
+    </div>
+  </div>
+</section>
+
+<!-- FACULTY -->
+<section id="faculty">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Faculty</p>
+      <h2>Operators you know from the big stages – sitting next to you.</h2>
+    </div>
+    <div class="faculty-band reveal">
+      <div class="band-photos" id="facultyPhotos"></div>
+      <div>
+        <h3>Czech &amp; 20+ international faculty</h3>
+        <p id="facultyNote"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="gallery">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Previous editions</p>
+      <h2>What it looked like in 2024 and 2025.</h2>
+      <p class="lead">Real cath lab, real audience, real discussion. Photos by Lukáš Kaboň.</p>
+    </div>
+    <div class="grid reveal" id="galleryPreview"></div>
+    <div class="gal-foot">
+      <a class="btn btn-primary" href="gallery.html">All photos</a>
+      <span style="color:var(--ink-3)">51 photos from both editions</span>
+    </div>
+    <div class="video reveal" id="video" role="button" tabindex="0" aria-label="Play the Czech Challenge 2025 aftermovie">
+      <img src="../img/photos/2025/KAB_8040.jpg" alt="">
+      <div class="play"><span><svg width="30" height="30" viewBox="0 0 24 24" fill="#3D3F12"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="cap">Aftermovie · Czech Challenge 2025</div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section id="partners">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Partners</p>
+      <h2>This wouldn't be possible without you.</h2>
+    </div>
+    <div id="partners-tiers" class="reveal"></div>
+    <div class="thanks reveal">Thank you to all our partners for your continuous support. Together, we are shaping the future!</div>
+    <div class="tier patronage reveal">
+      <h3>Under the patronage of</h3>
+      <div class="logos" id="patronage"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / REGISTRATION -->
+<section id="contact" class="contact">
+  <div class="tube-wrap" id="tubeKontakt" aria-hidden="true" data-cil="#registerBtn">
+    <svg class="tube" viewBox="0 0 1741 665" aria-hidden="true">
+        <!-- jedna souvislá křivka; záplata = kousek prvního průchodu znovu navrch, aby smyčka křížila nad sebou bez švu -->
+        <g class="seg">
+          <defs><mask id="hk-mask" maskUnits="userSpaceOnUse" x="-300" y="-300" width="2400" height="1300"><path class="t-mask" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/></mask></defs>
+          <path class="t-shadow" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+          <path class="t-base" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+          <g mask="url(#hk-mask)">
+            <path class="t-body" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-dark" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-core" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-rim" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-mid" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-light" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-spec" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+          </g>
+        </g>
+        <g class="seg zaplata" mask="url(#hk-zaplata)" data-s="0.2347" data-w="0.0883">
+          <defs><mask id="hk-mask-z" maskUnits="userSpaceOnUse" x="-300" y="-300" width="2400" height="1300"><path class="t-mask" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/></mask><radialGradient id="hk-fade"><stop offset="0.5" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient><mask id="hk-zaplata" maskUnits="userSpaceOnUse" x="-300" y="-300" width="2400" height="1300"><circle cx="1066" cy="479" r="110" fill="url(#hk-fade)"/></mask></defs>
+          <path class="t-shadow" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+          <path class="t-base" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+          <g mask="url(#hk-mask-z)">
+            <path class="t-body" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-dark" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-core" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-rim" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-mid" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-light" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-spec" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+          </g>
+        </g>
+    </svg>
+    <img class="hand" src="../img/brand/ruka-3d.png" alt="" style="left:16.7%; top:41.8%">
+  </div>
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <p class="eyebrow">Interest &amp; contact</p>
+      <h2>Not invited yet? Tell us you're interested.</h2>
+      <p style="margin-top:18px">This year's meeting is by invitation. If you'd like to be part of the coming editions, let us know – your interest helps us scale the meeting according to demand in the years ahead. Thank you!</p>
+      <p><a class="btn btn-lime" id="registerBtn" href="#">I'm interested – send an e-mail</a></p>
+    </div>
+    <div class="card reveal">
+      <b>CTO&amp;CHIP Czech Challenge</b>
+      <span>Complex PCI Meeting · Vol. 3</span>
+      <span>23 October 2026 · Pardubice, Czechia</span>
+      <span>Organised by Kardiologické centrum AGEL, Pardubice</span>
+      <a id="mailLink" href="#">ctochip@czechchallenge.com</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 CTO&amp;CHIP Czech Challenge · Pardubice · Complex PCI Meeting</span>
+    <img src="../img/brand/CTO_CHIP_LOGO.svg" alt="">
+  </div>
+</footer>
+
+<script>
+/* Obsah (partneři, program, galerie, directors) je v content.json – příští ročník
+   se mění tam, ne v HTML. Texty odstavců jsou tady, ať je vidí i vyhledávače. */
+(function(){
+  var $=function(s){ return document.querySelector(s); };
+  // výřez fotky: kde má být ohnisko, když se ořízne (telefon vs. počítač); výchozí podle typu
+  var POS={};
+  function poz(im,src,vychozi){ im.style.objectPosition=(POS[src]||vychozi); }
+  function esc(t){ return String(t==null?"":t).replace(/[&<>"]/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+
+  // prolínání fotek: nová se objeví nad starou a stará se odebere až po dokončení přechodu,
+  // jinak by uprostřed přechodu (obě v polovině) prosvítal jen fialový podklad
+  var VRSTVA=1;
+  function prolni(ims,od,na){ ims[na].style.zIndex=++VRSTVA; ims[na].classList.add("on"); setTimeout(function(){ if(od!==na) ims[od].classList.remove("on"); },1800); }
+
+  // menu
+  var burger=$("#burger"), full=$("#fullmenu");
+  function menu(o){ full.dataset.open=o?"true":"false"; burger.setAttribute("aria-expanded",o?"true":"false"); document.body.style.overflow=o?"hidden":""; }
+  burger.addEventListener("click",function(){ menu(full.dataset.open!=="true"); });
+  $("#menuClose").addEventListener("click",function(){ menu(false); });
+  full.querySelectorAll("a").forEach(function(a){ a.addEventListener("click",function(){ menu(false); }); });
+
+  // jemné najetí sekcí – z viditelného stavu (jen posun), ať náhled i sdílený odkaz ukáže vše
+  if("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches){
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }); },{rootMargin:"0px 0px -8% 0px"});
+    document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
+  } else { document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("in"); }); }
+
+  // varianta hero: ?hero=foto = fotografické hero (blend), jinak karta podle Pexy; volba se pamatuje
+  (function(){ var q=/[?&]hero=(foto|pexa)/.exec(location.search), v=q?q[1]:"pexa";   // 2. verze = Pexa (výchozí), 3. verze = ?hero=foto
+    if(v==="foto"){ document.body.classList.add("hero-foto"); var h=document.querySelector(".hero-pexa"), f=document.getElementById("heroPhotos"), d=document.getElementById("heroDots");
+      if(h&&f){ h.insertBefore(f,h.firstChild); } if(h&&d){ h.appendChild(d); }
+      var c=document.getElementById("heroCta"), v=document.getElementById("heroVol"), t=document.querySelector(".hero-pexa .hero-text"); if(t){ if(v) t.appendChild(v); if(c) t.appendChild(c); } }
+    else { var k=document.querySelector(".hero-pexa .hero-card"), g=document.querySelector(".hero-pexa .hero-grid"); if(k&&g) g.appendChild(k); }   // Pexa: na PC nadpis vlevo, fotka vpravo
+    // nadpis přes celou šířku sloupce: „Challenge" = šířka bloku, palec doplní řádek „Czech" až k pravému okraji.
+    // Pexa na PC: textový blok (nadpis, Vol. 3, datum) je stejně vysoký jako fotka; fotka si vezme zbytek šířky (4:3), text se dopočítá iterací.
+    (function(){ var h=document.querySelector(".hero-pexa h1"), r1=h&&h.querySelector(".r1"), r2=h&&h.querySelector(".r2"), box=document.getElementById("palecBox"); if(!h||!r2) return;
+      var pexa=!document.body.classList.contains("hero-foto"), text=document.querySelector(".hero-pexa .hero-text"), card=document.querySelector(".hero-pexa .hero-card"),
+          vol=document.getElementById("heroVol"), meta=document.querySelector(".hero-pexa .meta"), cta=document.getElementById("heroCta");
+      function fitText(){ h.style.fontSize=""; h.style.paddingTop=""; if(box){ box.style.width=""; box.style.height=""; }
+        var fs=parseFloat(getComputedStyle(h).fontSize), W=h.clientWidth; if(!W) return;
+        for(var i=0;i<3;i++){ var w=r2.getBoundingClientRect().width; if(!w) return; fs=fs*W/w; h.style.fontSize=fs+"px"; }
+        if(box&&r1){ var sb=W-r1.getBoundingClientRect().width-.12*fs; sb=Math.max(sb,fs*.9); box.style.width=sb+"px"; box.style.height="auto";
+          h.style.paddingTop=Math.max(0, sb*900/808-1.0*fs)+"px"; } }
+      function fit(){
+        var pc=innerWidth>860;
+        if(!pexa && pc){ h.style.fontSize=""; h.style.paddingTop=""; if(box){ box.style.width=""; box.style.height=""; } return; }   // blend na PC: nadpis v normální velikosti
+        if(pexa && vol && meta && cta){ if(pc){ if(vol.nextElementSibling!==meta) text.insertBefore(vol,meta); } else if(vol.parentNode!==card){ card.insertBefore(vol,cta); } }
+        if(pexa && card && pc){
+          // hledá se šířka textového sloupce, při které je text stejně vysoký jako fotka 4:3 vedle něj (půlením intervalu – iterace by oscilovala)
+          var grid=text.parentNode, Wg=grid.clientWidth, gap=parseFloat(getComputedStyle(grid).columnGap)||0, lo=Wg*.34, hi=Wg*.6;
+          function zk(Wt){ var cw=Wg-gap-Wt; card.style.width=Math.round(cw)+"px"; card.style.height=Math.round(cw*3/4)+"px"; fitText(); return text.offsetHeight-cw*3/4; }
+          for(var k=0;k<9;k++){ var mid=(lo+hi)/2; if(zk(mid)>0) hi=mid; else lo=mid; }
+          zk(lo); card.style.height=text.offsetHeight+"px";
+        } else { if(card){ card.style.height=""; card.style.width=""; } fitText(); }
+      }
+      fit(); if(document.fonts){ document.fonts.ready.then(fit); } addEventListener("resize",fit); })();
+    document.querySelectorAll(".prepinac a").forEach(function(a){ a.classList.toggle("on",(a.dataset.v==="foto")===(v==="foto")); });
+    // palec: s první fotkou vyskočí a dvakrát klepne, s druhou zmizí (stejné pravidlo jako na hlavním webu)
+    (function(){ var b=document.getElementById("palecBox"); if(!b) return;
+      if(matchMedia("(prefers-reduced-motion: reduce)").matches){ b.classList.add("on"); return; }
+      setTimeout(function(){ b.classList.add("on"); },700);
+      var drz=false;   // během krátkého ukázání po návratu nahoru ho rotace fotek nevyhodí
+      document.addEventListener("herofoto",function(e){ if(!drz) b.classList.toggle("on", e.detail===0); });
+      // po odscrollování dolů a návratu nahoru palec znovu vyskočí a klepne a po 3,8 s zase zmizí
+      var byloDole=false, zpet=null;
+      addEventListener("scroll",function(){ var y=scrollY||pageYOffset; if(y>innerHeight*.6) byloDole=true;
+        else if(byloDole&&y<40){ byloDole=false; b.classList.remove("on"); clearTimeout(zpet); drz=true;
+          zpet=setTimeout(function(){ b.classList.add("on"); zpet=setTimeout(function(){ b.classList.remove("on"); drz=false; },3800); },350); } },{passive:true});
+    })();
+  })();
+  fetch("content.json",{cache:"no-store"}).then(function(r){ return r.json(); }).then(function(C){ C=JSON.parse(JSON.stringify(C).replace(/"img\//g,'"../img/'));
+    POS=C.pos||{};
+    // hero – prolínání fotek
+    var box=$("#heroPhotos"), dots=$("#heroDots");
+    // první fotka pevná, zbytek náhodný výběr z galerie (jen na šířku) + ostatních hero fotek – při každém načtení jiný
+    var zasoba=[].concat(C.hero.slice(1)), gal=[].concat(C.gallery["2025"]||[],C.gallery["2024"]||[]);
+    gal.forEach(function(g){ if(!g.vyska && !g.nehero && zasoba.indexOf(g.src)<0) zasoba.push(g.src); });
+    for(var z=zasoba.length-1; z>0; z--){ var r=Math.floor(Math.random()*(z+1)), t=zasoba[z]; zasoba[z]=zasoba[r]; zasoba[r]=t; }
+    var heroSez=[C.hero[0]].concat(zasoba.slice(0,9));
+    heroSez.forEach(function(src,i){
+      var im=new Image(); im.src=src; im.alt=""; if(i===0) im.className="on"; im.loading=i<3?"eager":"lazy"; im.decoding="async"; poz(im,src,"50% 40%"); box.appendChild(im);
+      var d=document.createElement("i"); if(i===0) d.className="on"; dots.appendChild(d);
+    });
+    var cur=0, imgs=box.children, ds=dots.children;
+    // další fotka se ukáže, až je stažená – jinak by při pomalém spojení blikla prázdná fialová
+    if(!matchMedia("(prefers-reduced-motion: reduce)").matches && imgs.length>1){
+      setInterval(function(){
+        var dalsi=(cur+1)%imgs.length, hlidac=0;
+        while(!(imgs[dalsi].complete&&imgs[dalsi].naturalWidth) && hlidac++<imgs.length) dalsi=(dalsi+1)%imgs.length;
+        if(dalsi===cur) return;
+        ds[cur].classList.remove("on"); prolni(imgs,cur,dalsi); cur=dalsi; ds[cur].classList.add("on"); document.dispatchEvent(new CustomEvent("herofoto",{detail:cur})); },5200);
+    }
+
+    // smyčka: po načtení se nakreslí, chvíli vydrží a zase se smotá; po návratu nahoru (scroll) znovu
+    (function(){
+      var sm=document.querySelector(".loop"); if(!sm) return;
+      var bezi=false, smotana=true, cas=null;
+      function nakresli(){ if(bezi) return; bezi=true; smotana=false; sm.classList.add("on");
+        cas=setTimeout(function(){ sm.classList.remove("on"); setTimeout(function(){ bezi=false; smotana=true; },2600); },2600+3400); }
+      setTimeout(nakresli,400);
+      var byloDole=false;
+      addEventListener("scroll",function(){
+        var y=scrollY||pageYOffset; if(y>innerHeight*0.6) byloDole=true;
+        else if(byloDole && y<40 && smotana){ byloDole=false; nakresli(); }
+      },{passive:true});
+    })();
+
+    // hadice s rukou: kreslí se skriptem, ruka jede na její špičce a dojede s ní; pak kývne při najetí na tlačítko a natáčí se za kurzorem
+    (function(){
+      var celky=document.querySelectorAll(".tube-wrap"); if(!celky.length) return;
+      var redukce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+      function ease(t){ return t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2; }
+      function useky(c){ return Array.prototype.map.call(c.querySelectorAll(".tube .seg:not(.zaplata)"),function(g){ return {g:g, cesty:g.querySelectorAll("path"), osa:g.querySelector(".t-base"), L:g.querySelector(".t-base").getTotalLength()}; }); }
+      // ruka má ukazovat prstem na tlačítko (data-cil): posune celou hadici tak, aby špička prstu skončila kousek vpravo od něj
+      function zamir(c){ var cil=c.dataset.cil&&document.querySelector(c.dataset.cil), svg=c.querySelector(".tube"), ruka=c.querySelector(".hand"); if(!cil||!svg||!ruka) return;
+        var us=useky(c), u=us[us.length-1];
+        function mer(){ var m=svg.getScreenCTM(), r=c.getBoundingClientRect(); if(!m) return null;
+          var p0=us[0].osa.getPointAtLength(0), p1=u.osa.getPointAtLength(u.L), top=Infinity, bot=-Infinity;
+          us.forEach(function(x){ var bb=x.osa.getBBox(); top=Math.min(top,bb.y); bot=Math.max(bot,bb.y+bb.height); });
+          return {sx:m.a*p0.x+m.e-r.left, tx:m.a*p1.x+m.e-r.left, ty:m.d*p1.y+m.f-r.top, top:m.d*top+m.f-r.top, bot:m.d*bot+m.f-r.top, W:r.width}; }
+        var hw=ruka.offsetWidth||160, rod=c.offsetParent.getBoundingClientRect(), b=cil.getBoundingClientRect();
+        var prstX=b.right-rod.left+14, prstY=b.top-rod.top+b.height/2, tipX=prstX+.75*hw, tipY=prstY+.07*hw;   // konec hadice je pod dlaní (78 % šířky ruky), špička prstu ~3 % od levého okraje
+        c.style.width=""; c.style.height=""; var q=mer(); if(!q) return;
+        // měřítko: začátek hadice na pravém okraji rámečku, smyčka nesmí vyjet nahoru ani dolů
+        var k=(rod.width-tipX)/Math.max(1,q.sx-q.tx);
+        if(q.ty-q.top>0) k=Math.min(k, tipY/(q.ty-q.top)); if(q.bot-q.ty>0) k=Math.min(k,(rod.height-tipY)/(q.bot-q.ty));
+        var W=Math.max(140, q.W*k); c.style.width=W+"px"; c.style.height=W+"px"; q=mer();
+        c.style.left=(tipX-q.tx)+"px"; c.style.top=(tipY-q.ty)+"px"; c.style.bottom="auto"; c.style.right="auto"; }
+      function umisti(c,e){                       // e = podíl nakreslené délky 0–1 přes všechny úseky; ruka jede na špičce
+        var svg=c.querySelector(".tube"), ruka=c.querySelector(".hand"), us=useky(c); if(!svg||!ruka||!us.length) return;
+        var Lc=us.reduce(function(a,u){ return a+u.L; },0), zb=e*Lc, pt=null;
+        us.forEach(function(u){ var eu=Math.max(0,Math.min(1,zb/u.L)); u.cesty.forEach(function(p){ p.style.strokeDashoffset=1-eu; });
+          if(pt===null && (zb<u.L || u===us[us.length-1])) pt=u.osa.getPointAtLength(Math.max(0,Math.min(u.L,zb))); zb-=u.L; });
+        // záplata: kousek prvního průchodu kolem křížení, odkrývá se spolu s hlavní křivkou (okno [a, a+w] přes stroke-dasharray)
+        Array.prototype.forEach.call(c.querySelectorAll(".tube .seg.zaplata"),function(g){ var w=+g.dataset.w, a=+g.dataset.s-w/2, vid=Math.max(0,Math.min(w,e-a));
+          Array.prototype.forEach.call(g.querySelectorAll("path"),function(p){ p.style.strokeDasharray=vid+" 1"; p.style.strokeDashoffset=-a; }); });
+        var m=svg.getScreenCTM(), r=c.getBoundingClientRect(); if(!m) return;
+        var x=m.a*pt.x+m.c*pt.y+m.e-r.left, y=m.b*pt.x+m.d*pt.y+m.f-r.top;
+        ruka.style.left=x+"px"; ruka.style.top=y+"px"; if(e>=1) ruka.style.setProperty("--uhel","0deg");
+      }
+      function kyv(h,tr){ if(redukce) return; h.classList.remove("nod"); h.classList.remove("nod2"); void h.offsetWidth; h.classList.add(tr||"nod"); }
+      function kresli(c,pak){
+        var svg=c.querySelector(".tube"), T=2600, t0;
+        if(redukce){ umisti(c,1); svg.classList.add("on"); c.querySelector(".hand").classList.add("dojela"); return; }
+        t0=performance.now();
+        var tik=setInterval(function(){ var t=Math.min(1,(performance.now()-t0)/T); umisti(c,ease(t));
+          if(t>=1){ clearInterval(tik); svg.classList.add("on"); c.querySelector(".hand").classList.add("dojela"); if(pak) pak(); } },16);
+      }
+      celky.forEach(function(c){ zamir(c); umisti(c,0); });
+      var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; var c=e.target, h=c.querySelector(".hand");
+        if(!c.dataset.jede){ c.dataset.jede=1; setTimeout(function(){ zamir(c); umisti(c,0); kresli(c,function(){ setTimeout(function(){ kyv(h,"nod2"); },250); }); },250); }   // poprvé: přijede a dvakrát ťukne
+        else if(h.classList.contains("dojela")){ setTimeout(function(){ kyv(h); },400); } }); },{threshold:.25});   // podruhé a dál: jen jednou ťukne
+      celky.forEach(function(c){ io.observe(c); });
+      setTimeout(function(){ var c=document.getElementById("tubeHero"); if(c&&!c.querySelector(".tube.on")&&!c.dataset.jede){ c.dataset.jede=1; kresli(c); } },2200);
+      addEventListener("resize",function(){ celky.forEach(function(c){ zamir(c); if(c.querySelector(".tube.on")) umisti(c,1); }); });
+      if(document.fonts&&document.fonts.ready) document.fonts.ready.then(function(){ celky.forEach(function(c){ zamir(c); if(c.querySelector(".tube.on")) umisti(c,1); }); });
+      if(redukce) return;
+      var ruceHero=document.querySelector("#tubeHero .hand"), ruceKontakt=document.querySelector("#tubeKontakt .hand");
+      document.querySelectorAll(".hero-pexa .cta .btn").forEach(function(b){ b.addEventListener("mouseenter",function(){ if(ruceHero&&ruceHero.classList.contains("dojela")) kyv(ruceHero); }); });
+      var reg=document.getElementById("registerBtn"); if(reg&&ruceKontakt) reg.addEventListener("mouseenter",function(){ if(ruceKontakt.classList.contains("dojela")) kyv(ruceKontakt); });
+      if(ruceHero && matchMedia("(pointer:fine)").matches){
+        var hero=document.querySelector(".hero-pexa"), tik=false;
+        hero.addEventListener("mousemove",function(ev){ if(tik||!ruceHero.classList.contains("dojela")||ruceHero.classList.contains("nod")) return; tik=true;
+          requestAnimationFrame(function(){ var r=hero.getBoundingClientRect(), dy=(ev.clientY-r.top)/r.height-.5; ruceHero.style.setProperty("--uhel",(dy*6).toFixed(2)+"deg"); tik=false; }); });
+        hero.addEventListener("mouseleave",function(){ ruceHero.style.setProperty("--uhel","0deg"); });
+      }
+    })();
+    // aktivní pilulka v navigaci podle sekce v záběru
+    (function(){
+      var odkazy=Array.prototype.slice.call(document.querySelectorAll(".menu a")), mapa={};
+      odkazy.forEach(function(a){ var id=(a.getAttribute("href")||"").slice(1); var sec=document.getElementById(id); if(sec) mapa[id]=a; });
+      var io2=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ odkazy.forEach(function(a){ a.classList.remove("on"); }); var a=mapa[e.target.id]; if(a) a.classList.add("on"); } }); },{rootMargin:"-40% 0px -55% 0px"});
+      Object.keys(mapa).forEach(function(id){ io2.observe(document.getElementById(id)); });
+    })();
+
+    // directors
+    // víc fotek u jednoho člověka = střídají se (prolnutím), první je výchozí; bez fotky monogram
+    function karta(d){
+      var fotky=d.photos||(d.photo?[d.photo]:[]);
+      var mono=d.name.split(/\s+/).map(function(x){ return x[0]; }).join("").slice(0,2);
+      // ohnisko „pan 42%" = fotka je široká, po zobrazení se pomalu projede zleva doprava (celý tým v řadě)
+      var pic=fotky.length ? fotky.map(function(f,i){ var p=POS[f]||"50% 25%", pan=/^pan\b/.test(p), py=pan?(p.split(/\s+/)[1]||"40%"):"";
+          return '<img src="'+esc(f)+'" alt="'+esc(d.name)+'" loading="lazy" style="object-position:'+esc(pan?"0% "+py:p)+(pan?";--py:"+esc(py):"")+'" class="'+(pan?"pan":"")+(i===0?" on":"")+'">'; }).join("")
+                           : '<span class="mono">'+esc(mono)+'</span>';
+      return '<div class="director"><div class="pic">'+pic+'</div><div><b>'+esc(d.name)+'</b><span>'+esc(d.role)+' · '+esc(d.org)+'</span></div></div>';
+    }
+    $("#directors").innerHTML=C.directors.map(karta).join("");
+    $("#committee").innerHTML=(C.committee||[]).map(karta).join("");
+    if(!matchMedia("(prefers-reduced-motion: reduce)").matches){
+      document.querySelectorAll(".director .pic").forEach(function(pic,i){
+        var ims=pic.children, k=0; if(ims.length<2) return;
+        setInterval(function(){ var d=(k+1)%ims.length; prolni(ims,k,d); k=d; }, 6000+i*900);
+      });
+    }
+
+    // program
+    $("#days").innerHTML=C.program.map(function(day){
+      return '<div class="day"><h3>'+esc(day.day)+'</h3><div class="date">'+esc(day.date)+'</div>'+day.items.map(function(it){
+        return '<div class="slot"><div class="t">'+esc(it.time)+'</div><div><b>'+esc(it.title)+'</b><p>'+esc(it.desc)+'</p></div></div>';
+      }).join("")+'</div>';
+    }).join("");
+    $("#liveCases").textContent=C.live_cases;
+    $("#facultyNote").textContent=C.faculty_note;
+    // panelové fotky se v sekci Faculty střídají stejně jako v hero
+    var fb=$("#facultyPhotos");
+    (C.faculty_photos||[]).forEach(function(src,i){ var im=new Image(); im.src=src; im.alt="Panel discussion at Czech Challenge"; im.loading="lazy"; if(i===0) im.className="on"; poz(im,src,"50% 40%"); fb.appendChild(im); });
+    if(!matchMedia("(prefers-reduced-motion: reduce)").matches && fb.children.length>1){
+      var fk=0; setInterval(function(){ var d=(fk+1)%fb.children.length; if(!fb.children[d].complete) return;
+        prolni(fb.children,fk,d); fk=d; },5600);
+    }
+
+    // galerie – náhled: 6 z 2025, 4 z 2024 + skupinová faculty 2024 (11 dlaždic + 1 vysoká = 3 plné řady)
+    var g=C.gallery, posl=g["2024"][g["2024"].length-1], pick=g["2025"].slice(0,6).map(function(p){ return [p,"2025"]; }).concat(g["2024"].slice(0,4).map(function(p){ return [p,"2024"]; })).concat([[posl,"2024"]]);
+    $("#galleryPreview").innerHTML=pick.map(function(x,i){
+      return '<a href="gallery.html#'+x[1]+'"'+(i===0?' class="tall"':'')+'><img src="'+esc(x[0].thumb)+'" alt="Czech Challenge '+x[1]+'" loading="lazy" style="object-position:'+esc(POS[x[0].src]||"50% 40%")+'"><span class="yr">'+x[1]+'</span></a>';
+    }).join("");
+
+    // partneři po úrovních
+    var tiers=Object.keys(C.partners);
+    $("#partners-tiers").innerHTML=tiers.map(function(t){
+      var cls=/general/i.test(t)?" general":"";
+      return '<div class="tier"><h3>'+esc(t)+'</h3><div class="logos'+cls+'">'+C.partners[t].map(function(p){
+        return '<div class="logo"><img src="'+esc(p.logo)+'" alt="'+esc(p.name)+'" loading="lazy"></div>';
+      }).join("")+'</div></div>';
+    }).join("");
+    $("#patronage").innerHTML=C.patronage.map(function(p){
+      return '<div class="logo"><img src="'+esc(p.logo)+'" alt="'+esc(p.name)+'" loading="lazy"></div>';
+    }).join("");
+
+    // registrace mailem
+    // letos je akce na pozvání – mail sbírá zájem, ne registrace
+    var mail="mailto:"+C.event.email+"?subject="+encodeURIComponent("Interested – CTO&CHIP Czech Challenge")
+      +"&body="+encodeURIComponent("Hello,\n\nI'm interested in the CTO&CHIP Czech Challenge.\n\nName:\nInstitution:\nCountry:\n\n---\nThis year's meeting is by invitation. Your interest helps us scale the meeting according to demand in the coming years – thank you for your interest!");
+    ["#registerBtn","#registerTop"].forEach(function(s){ $(s).href=mail; });
+    $("#mailLink").href="mailto:"+C.event.email;
+
+    // aftermovie – iframe až po kliknutí, ať se stránka nenačítá s YouTube
+    var v=$("#video");
+    function play(){ v.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+C.event.aftermovie+'?autoplay=1&rel=0" title="Czech Challenge 2025 aftermovie" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>'; }
+    v.addEventListener("click",play); v.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); play(); } });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+/* Designová varianta podle Figmy Miloše Pexy (CC_WEB_REDESIGN, 2026).
+   Načítá se PO style.css a jen přepisuje: světlý podklad, fialová typografie
+   v lehkém řezu, navigace v pilulkách, 3D „hadice" se signature rukou.
+   Obsah, pořadí sekcí, fotky a texty zůstávají z hlavní větve. */
+
+:root{
+  color-scheme:light;
+  --ground:#F1F1F4; --surface:#FFFFFF; --surface-2:#F7F7FA;
+  --ink:#221D4A; --ink-2:#4E4A6E; --ink-3:#7E7A98; --line:#DDDDE4;
+  --violet:#4B32D0; --violet-deep:#3320A6; --violet-soft:#E6E2FA;
+  --tube-dark:#2A1A85; --tube:#4B32D0; --tube-light:#7D68F4; --tube-spec:#FFFFFF;
+  --shadow:0 14px 40px rgba(34,29,74,.10);
+  --radius:22px;
+}
+/* Figma je jednobarevná světlá – tmavý režim tady vědomě nepřepíná */
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --ground:#F1F1F4; --surface:#FFFFFF; --surface-2:#F7F7FA;
+  --ink:#221D4A; --ink-2:#4E4A6E; --ink-3:#7E7A98; --line:#DDDDE4;
+  --violet:#4B32D0; --violet-deep:#3320A6; --violet-soft:#E6E2FA;
+  --lime:#F2FF9F; --lime-ink:#3D3F12; --shadow:0 14px 40px rgba(34,29,74,.10);
+}}
+:root[data-theme="dark"]{
+  --ground:#F1F1F4; --surface:#FFFFFF; --surface-2:#F7F7FA;
+  --ink:#221D4A; --ink-2:#4E4A6E; --ink-3:#7E7A98; --line:#DDDDE4;
+  --violet:#4B32D0; --violet-deep:#3320A6; --violet-soft:#E6E2FA;
+  --lime:#F2FF9F; --lime-ink:#3D3F12; --shadow:0 14px 40px rgba(34,29,74,.10);
+}
+
+/* ---------- typografie: lehký řez, fialová ---------- */
+h2{font-weight:400; color:var(--violet); letter-spacing:-.025em; font-size:clamp(34px,4.6vw,58px)}
+h3{font-weight:500}
+.eyebrow{display:inline-block; background:var(--violet); color:#fff; font-size:11.5px; letter-spacing:.1em; padding:5px 12px; border-radius:999px; margin-bottom:16px}
+.sec-head p.lead{color:var(--ink-2)}
+.btn{font-weight:600}
+.btn-lime{background:var(--violet); color:#fff}
+.btn-lime:hover{background:var(--violet-deep)}
+.btn-ghost{color:var(--violet); border-color:var(--violet)}
+.btn-ghost:hover{background:var(--violet-soft)}
+
+/* ---------- navigace v pilulkách ---------- */
+.nav{background:color-mix(in srgb,var(--ground) 86%,transparent); border-bottom:0}
+.menu{background:#fff; border-radius:999px; padding:5px; gap:2px; box-shadow:0 2px 12px rgba(34,29,74,.08)}
+.menu a{padding:8px 15px; border-radius:999px; font-size:14px; color:var(--ink-2); transition:background .2s, color .2s}
+.menu a:hover{background:var(--violet-soft); color:var(--violet)}
+.menu a.on{background:var(--violet); color:#fff}
+.nav-cta .btn{background:transparent; color:var(--violet); border-color:var(--violet); padding:11px 18px}
+.nav-cta .btn:hover{background:var(--violet); color:#fff}
+
+/* ---------- hero: text vlevo, hadice s rukou vpravo, fotka jako karta pod tím ---------- */
+.hero-pexa{background:var(--ground); color:var(--ink); min-height:0; display:block; overflow:hidden; padding:0 0 clamp(40px,6vw,72px)}
+.hero-pexa::after{display:none}
+.hero-pexa .hero-grid{position:relative; display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:start; gap:clamp(24px,3vw,44px); padding:clamp(16px,2.5vw,32px) 0 0}   /* šířku fotky (4:3, stejně vysoká jako text) nastaví skript */
+.hero-pexa .hero-grid .hero-card{margin-top:0; aspect-ratio:auto; min-height:0}
+.hero-pexa .hero-text .vol{margin:18px 0 0}
+.hero-pexa .hero-text .vol + .meta{margin-top:14px}
+.hero-pexa > .wrap:not(.hero-grid){padding:0}   /* hlavní styl dává .hero .wrap 120 px shora – to byla ta mezera nad fotkou */
+.hero-pexa h1{font-size:clamp(46px,7.4vw,104px); font-weight:400; line-height:.94; letter-spacing:-.035em; color:var(--violet); white-space:nowrap}   /* velikost dopočítá skript, aby „Challenge" vyplnilo šířku */
+.hero-pexa h1 .rok{display:block; font-weight:300}
+.hero-pexa .meta{font-family:var(--font-display); font-weight:500; font-size:clamp(20px,2.4vw,30px); color:var(--violet); margin-top:22px}
+.hero-pexa .meta small{color:var(--ink-2); font-size:clamp(15px,1.4vw,18px); opacity:1}
+.hero-pexa .vol{background:var(--lime); color:var(--lime-ink); margin-top:14px; font-weight:700; font-size:19px; padding:10px 20px}
+.hero-pexa .cta .btn{padding:11px 18px; font-size:15px}
+
+/* hadice: jedna křivka, pět vrstev tahu = plastický 3D dojem bez rastru; kreslí se po načtení */
+.tube-wrap{position:relative; z-index:0; pointer-events:none; align-self:stretch; min-height:300px; margin-bottom:-40px}
+.tube{position:absolute; left:-14%; top:-8%; width:126%; height:114%; overflow:visible}
+.tube path{fill:none; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:1; stroke-dashoffset:1}
+.tube .t-mask{stroke:#fff; stroke-width:53}
+.tube .t-mask-sir{stroke-width:120}
+.tube .t-shadow{stroke:#1A0F5C; stroke-width:66; opacity:.24; filter:blur(12px); transform:translate(14px,24px)}
+/* vrstvy podle průřezu Milošova renderu (shora): tmavá hrana → tělo → světlý pruh → syté tělo → tmavá spodní polovina → odlesk odspodu.
+   Vnitřní vrstvy jsou rozmazané a ořezané maskou tvaru hadice, takže vzniká plynulý přechod, ne pruhy. */
+.tube .t-base{stroke:#2A0E82; stroke-width:53}
+.tube .t-body{stroke:#5A1FE8; stroke-width:49; transform:translate(0,-1px)}
+.tube .t-dark{stroke:#3607A8; stroke-width:34; transform:translate(2px,9px); opacity:.95; filter:blur(5px)}
+.tube .t-core{stroke:#2A0399; stroke-width:16; transform:translate(4px,13px); opacity:.9; filter:blur(4px)}
+.tube .t-rim{stroke:#8A62E0; stroke-width:4; transform:translate(6px,19px); opacity:.55; filter:blur(1.2px)}
+.tube .t-mid{stroke:#8A55FA; stroke-width:24; transform:translate(-3px,-8px); opacity:.95; filter:blur(5px)}
+.tube .t-light{stroke:#CBA2FF; stroke-width:10; transform:translate(-6px,-14px); opacity:.95; filter:blur(2.2px)}
+.tube .t-spec{stroke:#F6F0FF; stroke-width:2.6; transform:translate(-7px,-16px); opacity:.85; filter:blur(.6px)}
+.contact .tube .t-base{stroke:#22157A} .contact .tube .t-body{stroke:#4A1BC8} .contact .tube .t-dark{stroke:#2E0794} .contact .tube .t-core{stroke:#230580}
+.hand{position:absolute; width:clamp(120px,13vw,190px); height:auto; transform:translate(-78%,-41%) rotate(var(--uhel,0deg));
+  transform-origin:78% 41%; transition:transform .12s linear}
+.hand.nod{animation:nod .8s cubic-bezier(.3,.9,.3,1.2)}
+.hand.nod2{animation:nod2 1.3s cubic-bezier(.4,.05,.3,1)}
+@keyframes nod2{0%{transform:translate(-78%,-41%)} 22%{transform:translate(-78%,-41%) translateX(-22px) rotate(-3deg)} 45%{transform:translate(-78%,-41%)} 68%{transform:translate(-78%,-41%) translateX(-22px) rotate(-3deg)} 100%{transform:translate(-78%,-41%)}}
+@keyframes nod{0%{transform:translate(-78%,-41%)} 35%{transform:translate(-78%,-41%) translateX(-22px) rotate(-3deg)} 70%{transform:translate(-78%,-41%) translateX(6px) rotate(2deg)} 100%{transform:translate(-78%,-41%)}}
+
+/* fotka jako karta pod nadpisem, přes ni tlačítko na minulé ročníky */
+.hero-card{position:relative; border-radius:var(--radius); overflow:hidden; aspect-ratio:16/7; min-height:280px; margin-top:clamp(16px,2.4vw,32px); box-shadow:var(--shadow); isolation:isolate}
+.hero-card .hero-photos{position:absolute; inset:0; z-index:0}
+.hero-card .hero-photos img{transform:none}
+.hero-card::after{content:""; position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(180deg,rgba(75,50,208,.08),rgba(34,29,74,.45) 100%)}
+.hero-card .play{position:absolute; right:14px; top:14px; z-index:2; display:inline-flex; align-items:center; gap:9px; white-space:nowrap;
+  background:rgba(255,255,255,.92); color:var(--violet); text-decoration:none; font-family:var(--font-display); font-weight:600; font-size:14px; padding:7px 14px 7px 8px; border-radius:999px; box-shadow:0 6px 18px rgba(0,0,0,.22); transition:transform .15s}
+.hero-card .play:hover{transform:translateY(-1px)}
+.hero-card .play i{width:28px; height:28px; border-radius:50%; background:var(--violet); display:grid; place-items:center}
+/* pilulka „Vol. 3" a tlačítka leží dole ve fotce, tečky vpravo dole */
+.hero-card .vol{position:absolute; left:18px; bottom:calc(18px + 42px + 12px); z-index:2; margin:0}
+@media (max-width:860px){ .hero-card .vol{bottom:auto; top:16px; left:16px} }
+.hero-card .cta{position:absolute; left:18px; right:18px; bottom:18px; z-index:2; margin:0; gap:10px}
+.hero-card .cta .btn-ghost{color:#fff; border-color:rgba(255,255,255,.75); backdrop-filter:blur(6px); background:rgba(23,19,58,.18)}
+.hero-card .cta .btn-ghost:hover{background:rgba(255,255,255,.18)}
+.hero-card .dots{position:absolute; right:18px; bottom:22px; z-index:2; display:flex; gap:6px}
+.hero-card .dots i{width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.5)}
+.hero-card .dots i.on{background:#fff}
+
+/* ---------- sekce: bílé karty na světlém podkladu ---------- */
+section{padding:clamp(40px,5.5vw,72px) 0}   /* menší mezery mezi sekcemi než na hlavním webu */
+.program{background:var(--ground)}
+.days{background:var(--surface); border-radius:var(--radius); padding:clamp(20px,3vw,36px); box-shadow:var(--shadow)}
+.day{border-top:0}
+.live{background:var(--violet)}
+.faculty-band{border-radius:var(--radius)}
+.gallery{background:var(--ground)}
+.grid a{border-radius:14px}
+.video .play span{background:#fff}
+.video .play svg{color:var(--violet)}
+.logo{border-color:transparent; box-shadow:0 2px 10px rgba(34,29,74,.06)}
+.director{border:0; box-shadow:0 2px 10px rgba(34,29,74,.06)}
+
+/* kontakt: fialový blok jako ve Figmě, hadice přijíždí zleva a ruka ukazuje na tlačítko */
+.contact{position:relative; overflow:hidden; background:var(--violet); border-radius:var(--radius); margin:0 auto; width:min(1180px,calc(100% - 40px))}
+.contact .eyebrow{background:#fff; color:var(--violet)}
+.contact h2{color:#fff; font-weight:400}
+.contact .btn-lime{background:var(--lime); color:#111}
+.contact .btn-lime:hover{background:#fff; color:var(--violet)}
+.contact .tube-wrap{position:absolute; left:34%; bottom:-10%; width:min(40vw,520px); height:min(40vw,520px); z-index:0}   /* left/top přepíše skript zamir() – ruka míří na tlačítko */
+.contact .tube .t-shadow{opacity:.35}
+.contact .contact-grid{position:relative; z-index:1}
+.contact .card{background:rgba(255,255,255,.12); backdrop-filter:blur(6px)}
+
+footer{padding:40px 0 48px}
+footer .wrap{background:var(--violet); color:#fff; border-radius:var(--radius); padding:28px 32px}
+footer img{filter:brightness(0) invert(1); opacity:.9; height:26px}
+
+@media (max-width:860px){
+  .hero-pexa .hero-grid{grid-template-columns:1fr; min-height:0; gap:14px} .hero-pexa .hero-grid .hero-card{aspect-ratio:4/3; max-width:none}
+  .tube-wrap{min-height:230px; margin:0 -20px 0 22%}
+  .tube{left:-6%; top:-4%; width:106%; height:108%}
+  .hand{width:clamp(120px,32vw,160px)}
+  .contact .tube-wrap{display:none}   /* na telefonu není pro hadici s rukou místo */
+  .hero-card{aspect-ratio:4/3}
+  .hero-card .dots{bottom:auto; top:16px; right:16px}
+  .hero-card .play{font-size:13px; padding:6px 12px 6px 7px} .hero-card .play i{width:24px; height:24px}
+  .contact{width:calc(100% - 20px)}
+  .contact .tube-wrap{width:70vw; height:70vw}
+}
+
+body{overflow-x:hidden}
+
+/* ---------- BLEND: fotografické hero z hlavní větve + typografie a hadice podle Pexy (body.hero-foto) ---------- */
+body.hero-foto .hero-pexa{position:relative; background:var(--violet-deep); color:#fff; min-height:clamp(560px,82vh,860px); padding:0 0 clamp(36px,5vw,56px); isolation:isolate; display:flex; flex-direction:column; justify-content:flex-end}
+body.hero-foto .hero-pexa > .hero-photos{position:absolute; inset:0; z-index:0}
+body.hero-foto .hero-pexa > .hero-photos img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1.6s ease; transform:scale(1.03)}
+body.hero-foto .hero-pexa > .hero-photos img.on{opacity:1}
+body.hero-foto .hero-pexa::before{content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background:linear-gradient(180deg, rgba(23,19,58,.18) 0%, rgba(23,19,58,.42) 45%, rgba(23,19,58,.92) 100%), linear-gradient(90deg, rgba(75,50,208,.55), rgba(75,50,208,0) 62%)}
+body.hero-foto .hero-pexa .hero-grid{position:relative; z-index:1; align-items:end; min-height:0; padding-top:0; width:min(1180px,calc(100% - 40px))}
+body.hero-foto .hero-pexa .hero-text{text-shadow:0 2px 14px rgba(23,19,58,.55)}
+body.hero-foto .hero-pexa h1{font-size:clamp(50px,7.4vw,104px); font-weight:800; letter-spacing:-.035em; line-height:.92}
+body.hero-foto .hero-pexa .hero-grid{grid-template-columns:1fr}
+body.hero-foto .hero-pexa h1 .rok{font-weight:800}
+body.hero-foto .hero-pexa .meta{font-weight:700}
+body.hero-foto .hero-pexa .meta small{font-weight:500; color:#fff}
+body.hero-foto .hero-pexa h1, body.hero-foto .hero-pexa .meta{color:#fff}
+body.hero-foto .hero-pexa .meta small{color:rgba(255,255,255,.88)}
+body.hero-foto .hero-pexa .cta .btn-lime{background:var(--lime); color:var(--lime-ink)}
+body.hero-foto .hero-pexa .cta{margin-top:18px}
+body.hero-foto .hero-pexa .cta .btn-ghost{color:#fff; border-color:rgba(255,255,255,.7)}
+body.hero-foto .hero-pexa .cta .btn-ghost:hover{background:rgba(255,255,255,.14)}
+body.hero-foto .hero-card{display:none}
+body.hero-foto .hero-pexa > .wrap:not(.hero-grid){display:none}   /* obal skryté karty měl z hlavního stylu 176 px vnitřního okraje */
+body.hero-foto .tube-wrap{z-index:1}
+body.hero-foto .tube .t-shadow{opacity:.35}
+body.hero-foto .hero-pexa .dots{position:absolute; right:22px; bottom:18px; z-index:2; display:flex; gap:6px}
+body.hero-foto .hero-pexa .dots i{width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.5)}
+body.hero-foto .hero-pexa .dots i.on{background:#fff}
+body.hero-foto .hero-pexa .prev{position:absolute; right:20px; bottom:44px; z-index:2; display:inline-flex; align-items:center; gap:9px; color:#fff; text-decoration:none; font-family:var(--font-display); font-weight:600; font-size:14px; background:rgba(255,255,255,.14); backdrop-filter:blur(8px); padding:7px 14px 7px 8px; border-radius:999px; border:1px solid rgba(255,255,255,.35)}
+body.hero-foto .hero-pexa .prev i{width:26px; height:26px; border-radius:50%; background:#fff; display:grid; place-items:center}
+body.hero-foto .nav{background:color-mix(in srgb,var(--ground) 92%,transparent)}
+.hero-pexa .prev{display:none}
+body.hero-foto .hero-pexa .prev{display:inline-flex}
+@media (max-width:860px){ body.hero-foto .hero-pexa{min-height:clamp(520px,74vh,720px)} body.hero-foto .tube-wrap{margin-top:-30px} }
+
+/* přepínač variant jen pro náhled – pryč před nasazením */
+.prepinac{position:fixed; left:50%; transform:translateX(-50%); bottom:14px; z-index:70; display:flex; gap:4px; background:rgba(34,29,74,.92); color:#fff; padding:5px; border-radius:999px; font:600 12.5px/1 var(--font-body); box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.prepinac a{color:#fff; text-decoration:none; padding:7px 12px; border-radius:999px; opacity:.75}
+.prepinac a.on{background:#fff; color:var(--violet); opacity:1}
+
+/* ---------- 3D levý palec (render z ChatGPT) v mezeře za „Czech" a nad „Challenge" – stejné jako na hlavním webu ---------- */
+.hero-pexa h1 .r1{position:relative; display:inline-block}
+.palec-box{position:absolute; left:calc(100% + .12em); bottom:-.06em; height:1.42em; aspect-ratio:808/900; pointer-events:none}
+.palec-box .palec-v{display:block; width:100%; height:100%; transform:scale(0) rotate(-10deg); transform-origin:38% 90%; transition:transform .3s ease-in}
+.palec-box.on .palec-v{transform:scale(1) rotate(0deg); transition:transform .75s cubic-bezier(.2,1.35,.3,1) .5s; animation:klep 1.2s 1.5s cubic-bezier(.4,.05,.3,1) forwards}
+@keyframes klep{0%{transform:scale(1) rotate(0deg)} 20%{transform:scale(1) rotate(22deg)} 42%{transform:scale(1) rotate(0deg)} 62%{transform:scale(1) rotate(22deg)} 84%{transform:scale(1) rotate(-3deg)} 100%{transform:scale(1) rotate(0deg)}}
+@media (prefers-reduced-motion:reduce){ .palec-box .palec-v{transition:none; animation:none; transform:none} }
