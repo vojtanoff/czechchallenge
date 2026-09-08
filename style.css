@@ -223,14 +223,14 @@ section{padding:clamp(64px,9vw,120px) 0}
 @media (max-width:860px){ .contact-grid{grid-template-columns:1fr} }
 /* 3D ruka ukazující na tlačítko: špička prstu je v ~30 % výšky obrázku, zápěstí vpravo; bez drop-shadow (Safari ho kreslí jako obdélník) */
 .ruka-cil{position:relative; display:inline-block; margin-top:8px}
-.ruka-cil .ruka{position:absolute; left:calc(100% + 12px); top:50%; width:clamp(130px,14vw,210px); height:auto; max-width:none; pointer-events:none;
+.ruka-cil .ruka{position:absolute; z-index:1; left:calc(100% + 12px); top:50%; width:clamp(130px,14vw,210px); height:auto; max-width:none; pointer-events:none;
   transform:translate(70px,-30%); opacity:0; transition:transform .7s cubic-bezier(.2,1.2,.3,1), opacity .4s}
 .ruka-cil .ruka.tu{transform:translate(0,-30%); opacity:1}
 .ruka-cil .ruka.klik{animation:ruka-klik .55s cubic-bezier(.3,.9,.3,1.2)}
 @keyframes ruka-klik{0%{transform:translate(0,-30%)} 40%{transform:translate(-16px,-30%) rotate(-3deg)} 100%{transform:translate(0,-30%)}}
 /* na telefonu je tlačítko přes celou šířku – ruka visí pod jeho pravým koncem a ukazuje šikmo nahoru (otáčí se kolem špičky prstu) */
 @media (max-width:700px){
-  .ruka-cil{margin-bottom:56px}
+  .ruka-cil{margin-bottom:78px}
   .ruka-cil .ruka{left:auto; right:-66px; top:calc(100% - 16px); width:110px; transform-origin:2% 30%; transform:rotate(40deg) translate(60px,0)}
   .ruka-cil .ruka.tu{transform:rotate(40deg)}
   .ruka-cil .ruka.klik{animation-name:ruka-klik-m}
