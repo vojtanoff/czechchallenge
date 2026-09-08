@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=2026-09-08a">
+<link rel="stylesheet" href="style.css?v=2026-09-08c">
 </head>
 <body>
 
@@ -164,7 +164,7 @@
       <p class="eyebrow">Interest &amp; contact</p>
       <h2>Not invited yet? Tell us you're interested.</h2>
       <p style="margin-top:18px">This year's meeting is by invitation. If you'd like to be part of the coming editions, let us know – your interest helps us scale the meeting according to demand in the years ahead. Thank you!</p>
-      <p><a class="btn btn-lime" id="registerBtn" href="#">I'm interested – send an e-mail</a></p>
+      <p class="ruka-cil"><a class="btn btn-lime" id="registerBtn" href="#">I'm interested – send an e-mail</a><img class="ruka" id="rukaKontakt" src="img/brand/ruka-3d.png" alt="" aria-hidden="true"></p>
     </div>
     <div class="card reveal">
       <b>CTO&amp;CHIP Czech Challenge</b>
@@ -254,6 +254,13 @@
       },{passive:true});
     })();
 
+    // 3D ruka u tlačítka v kontaktu: přijede zprava, když se sekce doscrolluje, „klikne" a pak klikne při každém najetí na tlačítko
+    (function(){ var r=document.getElementById("rukaKontakt"), b=document.getElementById("registerBtn"); if(!r||!b) return;
+      function klik(){ r.classList.remove("klik"); void r.offsetWidth; r.classList.add("klik"); }
+      if(matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)){ r.classList.add("tu"); }
+      else { var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; io.disconnect(); r.classList.add("tu"); setTimeout(klik,900); }); },{threshold:.6}); io.observe(b); }
+      b.addEventListener("mouseenter",function(){ if(r.classList.contains("tu")) klik(); });
+    })();
     // palec z původního webu vlevo nahoře v hero: vjede s první fotkou, dvakrát cukne, s druhou fotkou zajede; při dalším kole znovu
     (function(){ var b=document.getElementById("palecBox"); if(!b) return;
       if(matchMedia("(prefers-reduced-motion: reduce)").matches){ b.classList.add("on"); return; }
