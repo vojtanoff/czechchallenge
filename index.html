@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=2026-09-07c">
-<link rel="stylesheet" href="style-pexa.css?v=37">
+<link rel="stylesheet" href="style-pexa.css?v=39">
 </head>
 <body>
 
@@ -163,7 +163,7 @@
 
 <!-- CONTACT / REGISTRATION -->
 <section id="contact" class="contact">
-  <div class="tube-wrap" id="tubeKontakt" aria-hidden="true">
+  <div class="tube-wrap" id="tubeKontakt" aria-hidden="true" data-cil="#registerBtn">
     <svg class="tube" viewBox="0 0 900 760" aria-hidden="true">
         <g class="seg">
           <defs>
@@ -261,9 +261,12 @@
     if(v==="foto"){ document.body.classList.add("hero-foto"); var h=document.querySelector(".hero-pexa"), f=document.getElementById("heroPhotos"), d=document.getElementById("heroDots");
       if(h&&f){ h.insertBefore(f,h.firstChild); } if(h&&d){ h.appendChild(d); }
       var c=document.getElementById("heroCta"), v=document.getElementById("heroVol"), t=document.querySelector(".hero-pexa .hero-text"); if(t){ if(v) t.appendChild(v); if(c) t.appendChild(c); } }
+    else { var k=document.querySelector(".hero-pexa .hero-card"), g=document.querySelector(".hero-pexa .hero-grid"); if(k&&g) g.appendChild(k); }   // Pexa: na PC nadpis vlevo, fotka vpravo
     // nadpis přes celou šířku: „Challenge" = šířka bloku, palec doplní řádek „Czech" až k pravému okraji (stejně na mobilu i na PC)
     (function(){ var h=document.querySelector(".hero-pexa h1"), r1=h&&h.querySelector(".r1"), r2=h&&h.querySelector(".r2"), box=document.getElementById("palecBox"); if(!h||!r2) return;
-      function fit(){ h.style.fontSize=""; var fs=parseFloat(getComputedStyle(h).fontSize), W=h.clientWidth; if(!W) return;
+      function fit(){ h.style.fontSize=""; h.style.paddingTop=""; if(box){ box.style.width=""; box.style.height=""; }
+        if(document.body.classList.contains("hero-foto") && innerWidth>860) return;   // blend na PC: nadpis v normální velikosti, ať nezakrývá fotku
+        var fs=parseFloat(getComputedStyle(h).fontSize), W=h.clientWidth; if(!W) return;
         for(var i=0;i<3;i++){ var w=r2.getBoundingClientRect().width; if(!w) return; fs=fs*W/w; h.style.fontSize=fs+"px"; }
         if(box&&r1){ var sb=W-r1.getBoundingClientRect().width-.12*fs; sb=Math.max(sb,fs*.9); box.style.width=sb+"px"; box.style.height="auto";
           h.style.paddingTop=Math.max(0, sb*900/808-1.0*fs)+"px"; } }
@@ -274,6 +277,10 @@
       if(matchMedia("(prefers-reduced-motion: reduce)").matches){ b.classList.add("on"); return; }
       setTimeout(function(){ b.classList.add("on"); },700);
       document.addEventListener("herofoto",function(e){ b.classList.toggle("on", e.detail===0); });
+      // po odscrollování dolů a návratu nahoru palec znovu vyskočí a klepne (a s další fotkou zase zmizí)
+      var byloDole=false;
+      addEventListener("scroll",function(){ var y=scrollY||pageYOffset; if(y>innerHeight*.6) byloDole=true;
+        else if(byloDole&&y<40){ byloDole=false; b.classList.remove("on"); setTimeout(function(){ b.classList.add("on"); },350); } },{passive:true});
     })();
   })();
   fetch("content.json",{cache:"no-store"}).then(function(r){ return r.json(); }).then(function(C){
@@ -319,6 +326,13 @@
       var redukce=matchMedia("(prefers-reduced-motion: reduce)").matches;
       function ease(t){ return t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2; }
       function useky(c){ return Array.prototype.map.call(c.querySelectorAll(".tube .seg"),function(g){ return {g:g, cesty:g.querySelectorAll("path"), osa:g.querySelector(".t-base"), L:g.querySelector(".t-base").getTotalLength()}; }); }
+      // ruka má ukazovat prstem na tlačítko (data-cil): posune celou hadici tak, aby špička prstu skončila kousek vpravo od něj
+      function zamir(c){ var cil=c.dataset.cil&&document.querySelector(c.dataset.cil), svg=c.querySelector(".tube"), ruka=c.querySelector(".hand"); if(!cil||!svg||!ruka) return;
+        var us=useky(c), u=us[us.length-1], pt=u.osa.getPointAtLength(u.L), m=svg.getScreenCTM(); if(!m) return;
+        var r=c.getBoundingClientRect(), tipX=m.a*pt.x+m.c*pt.y+m.e-r.left, tipY=m.b*pt.x+m.d*pt.y+m.f-r.top;   // konec hadice v souřadnicích obalu
+        var hw=ruka.offsetWidth||200, rod=c.offsetParent.getBoundingClientRect(), b=cil.getBoundingClientRect();
+        var prstX=Math.min(b.right-rod.left+14, rod.width-.55*hw), prstY=b.top-rod.top+b.height/2;   // na úzkém displeji ať je vidět aspoň půlka ruky
+        c.style.left=(prstX+.93*hw-tipX)+"px"; c.style.top=(prstY+.09*hw-tipY)+"px"; c.style.bottom="auto"; c.style.right="auto"; }
       function umisti(c,e){                       // e = podíl nakreslené délky 0–1 přes všechny úseky; ruka jede na špičce
         var svg=c.querySelector(".tube"), ruka=c.querySelector(".hand"), us=useky(c); if(!svg||!ruka||!us.length) return;
         var Lc=us.reduce(function(a,u){ return a+u.L; },0), zb=e*Lc, pt=null;
@@ -335,12 +349,12 @@
         var tik=setInterval(function(){ var t=Math.min(1,(performance.now()-t0)/T); umisti(c,ease(t));
           if(t>=1){ clearInterval(tik); svg.classList.add("on"); c.querySelector(".hand").classList.add("dojela"); } },16);
       }
-      celky.forEach(function(c){ umisti(c,0); });
-      var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; var c=e.target; io.unobserve(c); setTimeout(function(){ kresli(c); },250); }); },{threshold:.25});
+      celky.forEach(function(c){ zamir(c); umisti(c,0); });
+      var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; var c=e.target; io.unobserve(c); setTimeout(function(){ zamir(c); umisti(c,0); kresli(c); },250); }); },{threshold:.25});
       celky.forEach(function(c){ io.observe(c); });
       setTimeout(function(){ var c=document.getElementById("tubeHero"); if(c&&!c.querySelector(".tube.on")&&!c.dataset.jede){ c.dataset.jede=1; kresli(c); } },2200);
-      addEventListener("resize",function(){ celky.forEach(function(c){ if(c.querySelector(".tube.on")) umisti(c,1); }); });
-      if(document.fonts&&document.fonts.ready) document.fonts.ready.then(function(){ celky.forEach(function(c){ if(c.querySelector(".tube.on")) umisti(c,1); }); });
+      addEventListener("resize",function(){ celky.forEach(function(c){ zamir(c); if(c.querySelector(".tube.on")) umisti(c,1); }); });
+      if(document.fonts&&document.fonts.ready) document.fonts.ready.then(function(){ celky.forEach(function(c){ zamir(c); if(c.querySelector(".tube.on")) umisti(c,1); }); });
       if(redukce) return;
       function kyv(h){ h.classList.remove("nod"); void h.offsetWidth; h.classList.add("nod"); }
       var ruceHero=document.querySelector("#tubeHero .hand"), ruceKontakt=document.querySelector("#tubeKontakt .hand");
