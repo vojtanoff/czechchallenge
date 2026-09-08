@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=2026-09-07c">
-<link rel="stylesheet" href="style-pexa.css?v=47">
+<link rel="stylesheet" href="style-pexa.css?v=49">
 </head>
 <body>
 
@@ -42,7 +42,6 @@
   <a href="#gallery">Gallery</a><a href="#partners">Partners</a><a href="#contact">Contact</a>
 </nav>
 
-<div class="prepinac" aria-label="Varianta náhledu"><a href="?hero=pexa" data-v="pexa">Pexa</a><a href="?hero=foto" data-v="foto">Blend s fotkou</a></div>
 <main id="top">
 
 <!-- HERO: prolínající fotky z ročníků 2024 a 2025, přes ně vizuál 2026 -->
@@ -202,7 +201,7 @@
       <p class="eyebrow">Interest &amp; contact</p>
       <h2>Not invited yet? Tell us you're interested.</h2>
       <p style="margin-top:18px">This year's meeting is by invitation. If you'd like to be part of the coming editions, let us know – your interest helps us scale the meeting according to demand in the years ahead. Thank you!</p>
-      <p><a class="btn btn-lime" id="registerBtn" href="#">I'm interested – send an e-mail</a></p>
+      <p class="ruka-cil"><a class="btn btn-lime" id="registerBtn" href="#">I'm interested – send an e-mail</a><img class="ruka" id="rukaKontakt" src="img/brand/ruka-3d.png" alt="" aria-hidden="true"></p>
     </div>
     <div class="card reveal">
       <b>CTO&amp;CHIP Czech Challenge</b>
@@ -251,16 +250,12 @@
     document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
   } else { document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("in"); }); }
 
-  // varianta hero: ?hero=foto = fotografické hero (blend), jinak karta podle Pexy; volba se pamatuje
-  (function(){ var q=/[?&]hero=(foto|pexa)/.exec(location.search), v=q?q[1]:"pexa";   // 2. verze = Pexa (výchozí), 3. verze = ?hero=foto
-    if(v==="foto"){ document.body.classList.add("hero-foto"); var h=document.querySelector(".hero-pexa"), f=document.getElementById("heroPhotos"), d=document.getElementById("heroDots");
-      if(h&&f){ h.insertBefore(f,h.firstChild); } if(h&&d){ h.appendChild(d); }
-      var c=document.getElementById("heroCta"), v=document.getElementById("heroVol"), t=document.querySelector(".hero-pexa .hero-text"); if(t){ if(v) t.appendChild(v); if(c) t.appendChild(c); } }
-    else { var k=document.querySelector(".hero-pexa .hero-card"), g=document.querySelector(".hero-pexa .hero-grid"); if(k&&g) g.appendChild(k); }   // Pexa: na PC nadpis vlevo, fotka vpravo
+  // hero podle Pexy: karta s fotkou jako druhý sloupec gridu (na PC nadpis vlevo, fotka vpravo; na mobilu pod sebou)
+  (function(){ var k=document.querySelector(".hero-pexa .hero-card"), g=document.querySelector(".hero-pexa .hero-grid"); if(k&&g) g.appendChild(k);
     // nadpis přes celou šířku sloupce: „Challenge" = šířka bloku, palec doplní řádek „Czech" až k pravému okraji.
     // Pexa na PC: textový blok (nadpis, Vol. 3, datum) je stejně vysoký jako fotka; fotka si vezme zbytek šířky (4:3), text se dopočítá iterací.
     (function(){ var h=document.querySelector(".hero-pexa h1"), r1=h&&h.querySelector(".r1"), r2=h&&h.querySelector(".r2"), box=document.getElementById("palecBox"); if(!h||!r2) return;
-      var pexa=!document.body.classList.contains("hero-foto"), text=document.querySelector(".hero-pexa .hero-text"), card=document.querySelector(".hero-pexa .hero-card"),
+      var pexa=true, text=document.querySelector(".hero-pexa .hero-text"), card=document.querySelector(".hero-pexa .hero-card"),
           vol=document.getElementById("heroVol"), meta=document.querySelector(".hero-pexa .meta"), cta=document.getElementById("heroCta");
       function fitText(){ h.style.fontSize=""; h.style.paddingTop=""; if(box){ box.style.width=""; box.style.height=""; }
         var fs=parseFloat(getComputedStyle(h).fontSize), W=h.clientWidth; if(!W) return;
@@ -269,7 +264,6 @@
           h.style.paddingTop=Math.max(0, sb*900/808-1.0*fs)+"px"; } }
       function fit(){
         var pc=innerWidth>860;
-        if(!pexa && pc){ h.style.fontSize=""; h.style.paddingTop=""; if(box){ box.style.width=""; box.style.height=""; } return; }   // blend na PC: nadpis v normální velikosti
         if(pexa && vol && meta && cta){ if(pc){ if(vol.nextElementSibling!==meta) text.insertBefore(vol,meta); } else if(vol.parentNode!==card){ card.insertBefore(vol,cta); } }
         if(pexa && card && pc){
           // hledá se šířka textového sloupce, při které je text stejně vysoký jako fotka 4:3 vedle něj (půlením intervalu – iterace by oscilovala)
@@ -280,7 +274,6 @@
         } else { if(card){ card.style.height=""; card.style.width=""; } fitText(); }
       }
       fit(); if(document.fonts){ document.fonts.ready.then(fit); } addEventListener("resize",fit); })();
-    document.querySelectorAll(".prepinac a").forEach(function(a){ a.classList.toggle("on",(a.dataset.v==="foto")===(v==="foto")); });
     // palec: s první fotkou vyskočí a dvakrát klepne, s druhou zmizí (stejné pravidlo jako na hlavním webu)
     (function(){ var b=document.getElementById("palecBox"); if(!b) return;
       if(matchMedia("(prefers-reduced-motion: reduce)").matches){ b.classList.add("on"); return; }
@@ -391,6 +384,14 @@
           requestAnimationFrame(function(){ var r=hero.getBoundingClientRect(), dy=(ev.clientY-r.top)/r.height-.5; ruceHero.style.setProperty("--uhel",(dy*6).toFixed(2)+"deg"); tik=false; }); });
         hero.addEventListener("mouseleave",function(){ ruceHero.style.setProperty("--uhel","0deg"); });
       }
+    })();
+    // 3D ruka u tlačítka v kontaktu (telefon, bez hadice): poprvé přijede a dvakrát ťukne, při dalším naskrolování a najetí ťukne jednou
+    (function(){ var r=document.getElementById("rukaKontakt"), b=document.getElementById("registerBtn"); if(!r||!b) return;
+      function klik(tr){ r.classList.remove("klik"); r.classList.remove("klik2"); void r.offsetWidth; r.classList.add(tr||"klik"); }
+      if(matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)){ r.classList.add("tu"); }
+      else { var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return;
+          if(!r.classList.contains("tu")){ r.classList.add("tu"); setTimeout(function(){ klik("klik2"); },900); } else { setTimeout(klik,300); } }); },{threshold:.6}); io.observe(b); }
+      b.addEventListener("mouseenter",function(){ if(r.classList.contains("tu")) klik(); });
     })();
     // aktivní pilulka v navigaci podle sekce v záběru
     (function(){
