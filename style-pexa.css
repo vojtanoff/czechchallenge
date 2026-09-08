@@ -79,7 +79,7 @@ h3{font-weight:500}
 .tube .t-light{stroke:#CBA2FF; stroke-width:10; transform:translate(-6px,-14px); opacity:.95; filter:blur(2.2px)}
 .tube .t-spec{stroke:#F6F0FF; stroke-width:2.6; transform:translate(-7px,-16px); opacity:.85; filter:blur(.6px)}
 .contact .tube .t-base{stroke:#22157A} .contact .tube .t-body{stroke:#4A1BC8} .contact .tube .t-dark{stroke:#2E0794} .contact .tube .t-core{stroke:#230580}
-.hand{position:absolute; width:clamp(150px,19vw,270px); height:auto; transform:translate(-96%,-44.5%) rotate(var(--uhel,0deg));
+.hand{position:absolute; width:clamp(110px,12vw,170px); height:auto; transform:translate(-96%,-44.5%) rotate(var(--uhel,0deg));
   transform-origin:96% 44.5%; filter:drop-shadow(0 16px 22px rgba(34,29,74,.25)); transition:transform .12s linear}
 .hand.nod{animation:nod .8s cubic-bezier(.3,.9,.3,1.2)}
 @keyframes nod{0%{transform:translate(-96%,-44.5%)} 35%{transform:translate(-96%,-44.5%) translateX(-22px) rotate(-3deg)} 70%{transform:translate(-96%,-44.5%) translateX(6px) rotate(2deg)} 100%{transform:translate(-96%,-44.5%)}}
@@ -137,6 +137,7 @@ footer img{filter:brightness(0) invert(1); opacity:.9; height:26px}
   .tube-wrap{min-height:230px; margin:0 -20px 0 22%}
   .tube{left:-6%; top:-4%; width:106%; height:108%}
   .hand{width:clamp(120px,32vw,160px)}
+  .contact .tube-wrap{display:none}   /* na telefonu není pro hadici s rukou místo */
   .hero-card{aspect-ratio:4/3}
   .hero-card .dots{bottom:auto; top:16px; right:16px}
   .hero-card .play{font-size:13px; padding:6px 12px 6px 7px} .hero-card .play i{width:24px; height:24px}
