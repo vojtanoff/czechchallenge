@@ -79,12 +79,12 @@ h3{font-weight:500}
 .tube .t-light{stroke:#CBA2FF; stroke-width:10; transform:translate(-6px,-14px); opacity:.95; filter:blur(2.2px)}
 .tube .t-spec{stroke:#F6F0FF; stroke-width:2.6; transform:translate(-7px,-16px); opacity:.85; filter:blur(.6px)}
 .contact .tube .t-base{stroke:#22157A} .contact .tube .t-body{stroke:#4A1BC8} .contact .tube .t-dark{stroke:#2E0794} .contact .tube .t-core{stroke:#230580}
-.hand{position:absolute; width:clamp(120px,13vw,190px); height:auto; transform:translate(-78%,-44.5%) rotate(var(--uhel,0deg));
-  transform-origin:78% 44.5%; transition:transform .12s linear}
+.hand{position:absolute; width:clamp(120px,13vw,190px); height:auto; transform:translate(-78%,-41%) rotate(var(--uhel,0deg));
+  transform-origin:78% 41%; transition:transform .12s linear}
 .hand.nod{animation:nod .8s cubic-bezier(.3,.9,.3,1.2)}
 .hand.nod2{animation:nod2 1.3s cubic-bezier(.4,.05,.3,1)}
-@keyframes nod2{0%{transform:translate(-78%,-44.5%)} 22%{transform:translate(-78%,-44.5%) translateX(-22px) rotate(-3deg)} 45%{transform:translate(-78%,-44.5%)} 68%{transform:translate(-78%,-44.5%) translateX(-22px) rotate(-3deg)} 100%{transform:translate(-78%,-44.5%)}}
-@keyframes nod{0%{transform:translate(-78%,-44.5%)} 35%{transform:translate(-78%,-44.5%) translateX(-22px) rotate(-3deg)} 70%{transform:translate(-78%,-44.5%) translateX(6px) rotate(2deg)} 100%{transform:translate(-78%,-44.5%)}}
+@keyframes nod2{0%{transform:translate(-78%,-41%)} 22%{transform:translate(-78%,-41%) translateX(-22px) rotate(-3deg)} 45%{transform:translate(-78%,-41%)} 68%{transform:translate(-78%,-41%) translateX(-22px) rotate(-3deg)} 100%{transform:translate(-78%,-41%)}}
+@keyframes nod{0%{transform:translate(-78%,-41%)} 35%{transform:translate(-78%,-41%) translateX(-22px) rotate(-3deg)} 70%{transform:translate(-78%,-41%) translateX(6px) rotate(2deg)} 100%{transform:translate(-78%,-41%)}}
 
 /* fotka jako karta pod nadpisem, přes ni tlačítko na minulé ročníky */
 .hero-card{position:relative; border-radius:var(--radius); overflow:hidden; aspect-ratio:16/7; min-height:280px; margin-top:clamp(16px,2.4vw,32px); box-shadow:var(--shadow); isolation:isolate}

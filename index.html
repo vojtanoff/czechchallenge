@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=2026-09-07c">
-<link rel="stylesheet" href="style-pexa.css?v=46">
+<link rel="stylesheet" href="style-pexa.css?v=47">
 </head>
 <body>
 
@@ -165,41 +165,36 @@
 <section id="contact" class="contact">
   <div class="tube-wrap" id="tubeKontakt" aria-hidden="true" data-cil="#registerBtn">
     <svg class="tube" viewBox="0 0 1741 665" aria-hidden="true">
+        <!-- jedna souvislá křivka; záplata = kousek prvního průchodu znovu navrch, aby smyčka křížila nad sebou bez švu -->
         <g class="seg">
-          <defs>
-            <mask id="maska-kontakt0" maskUnits="userSpaceOnUse" x="-300" y="-300" width="2400" height="1300"><path class="t-mask" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1156 204, 1178 245, 1180 291"/></mask>
-          </defs>
-          <path class="t-shadow" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1156 204, 1178 245, 1180 291"/>
-          <path class="t-base" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1156 204, 1178 245, 1180 291"/>
-          <g mask="url(#maska-kontakt-0)">
-            <path class="t-body" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1156 204, 1178 245, 1180 291"/>
-            <path class="t-dark" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1156 204, 1178 245, 1180 291"/>
-            <path class="t-core" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1156 204, 1178 245, 1180 291"/>
-            <path class="t-rim" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1156 204, 1178 245, 1180 291"/>
-            <path class="t-mid" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1156 204, 1178 245, 1180 291"/>
-            <path class="t-light" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1156 204, 1178 245, 1180 291"/>
-            <path class="t-spec" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1156 204, 1178 245, 1180 291"/>
+          <defs><mask id="hk-mask" maskUnits="userSpaceOnUse" x="-300" y="-300" width="2400" height="1300"><path class="t-mask" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/></mask></defs>
+          <path class="t-shadow" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+          <path class="t-base" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+          <g mask="url(#hk-mask)">
+            <path class="t-body" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-dark" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-core" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-rim" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-mid" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-light" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-spec" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
           </g>
         </g>
-        <g class="seg" mask="url(#maska-kontakt-1-nav)">
-          <defs>
-            <mask id="maska-kontakt-2" maskUnits="userSpaceOnUse" x="-300" y="-300" width="2400" height="1300"><path class="t-mask" pathLength="1" d="M1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 178 447, 102 484"/></mask>
-            <radialGradient id="maska-kontakt-2-fade"><stop offset="0.45" stop-color="#000"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
-            <mask id="maska-kontakt-2-nav" maskUnits="userSpaceOnUse" x="-300" y="-300" width="2400" height="1300"><path class="t-mask t-mask-sir" pathLength="1" d="M1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 178 447, 102 484"/><circle cx="1108" cy="178" r="105" fill="url(#maska-kontakt-1-fade)"/></mask>
-          </defs>
-          <path class="t-shadow" pathLength="1" d="M1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 178 447, 102 484"/>
-          <path class="t-base" pathLength="1" d="M1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 178 447, 102 484"/>
-          <g mask="url(#maska-kontakt-1)">
-            <path class="t-body" pathLength="1" d="M1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 178 447, 102 484"/>
-            <path class="t-dark" pathLength="1" d="M1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 178 447, 102 484"/>
-            <path class="t-core" pathLength="1" d="M1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 178 447, 102 484"/>
-            <path class="t-rim" pathLength="1" d="M1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 178 447, 102 484"/>
-            <path class="t-mid" pathLength="1" d="M1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 178 447, 102 484"/>
-            <path class="t-light" pathLength="1" d="M1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 178 447, 102 484"/>
-            <path class="t-spec" pathLength="1" d="M1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 178 447, 102 484"/>
+        <g class="seg zaplata" mask="url(#hk-zaplata)" data-s="0.2347" data-w="0.0883">
+          <defs><mask id="hk-mask-z" maskUnits="userSpaceOnUse" x="-300" y="-300" width="2400" height="1300"><path class="t-mask" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/></mask><radialGradient id="hk-fade"><stop offset="0.5" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient><mask id="hk-zaplata" maskUnits="userSpaceOnUse" x="-300" y="-300" width="2400" height="1300"><circle cx="1066" cy="479" r="110" fill="url(#hk-fade)"/></mask></defs>
+          <path class="t-shadow" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+          <path class="t-base" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+          <g mask="url(#hk-mask-z)">
+            <path class="t-body" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-dark" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-core" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-rim" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-mid" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-light" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-spec" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
           </g>
         </g>
-      </svg>
+    </svg>
     <img class="hand" src="img/brand/ruka-3d.png" alt="" style="left:16.7%; top:41.8%">
   </div>
   <div class="wrap contact-grid">
@@ -341,7 +336,7 @@
       var celky=document.querySelectorAll(".tube-wrap"); if(!celky.length) return;
       var redukce=matchMedia("(prefers-reduced-motion: reduce)").matches;
       function ease(t){ return t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2; }
-      function useky(c){ return Array.prototype.map.call(c.querySelectorAll(".tube .seg"),function(g){ return {g:g, cesty:g.querySelectorAll("path"), osa:g.querySelector(".t-base"), L:g.querySelector(".t-base").getTotalLength()}; }); }
+      function useky(c){ return Array.prototype.map.call(c.querySelectorAll(".tube .seg:not(.zaplata)"),function(g){ return {g:g, cesty:g.querySelectorAll("path"), osa:g.querySelector(".t-base"), L:g.querySelector(".t-base").getTotalLength()}; }); }
       // ruka má ukazovat prstem na tlačítko (data-cil): posune celou hadici tak, aby špička prstu skončila kousek vpravo od něj
       function zamir(c){ var cil=c.dataset.cil&&document.querySelector(c.dataset.cil), svg=c.querySelector(".tube"), ruka=c.querySelector(".hand"); if(!cil||!svg||!ruka) return;
         var us=useky(c), u=us[us.length-1];
@@ -350,7 +345,7 @@
           us.forEach(function(x){ var bb=x.osa.getBBox(); top=Math.min(top,bb.y); bot=Math.max(bot,bb.y+bb.height); });
           return {sx:m.a*p0.x+m.e-r.left, tx:m.a*p1.x+m.e-r.left, ty:m.d*p1.y+m.f-r.top, top:m.d*top+m.f-r.top, bot:m.d*bot+m.f-r.top, W:r.width}; }
         var hw=ruka.offsetWidth||160, rod=c.offsetParent.getBoundingClientRect(), b=cil.getBoundingClientRect();
-        var prstX=b.right-rod.left+14, prstY=b.top-rod.top+b.height/2, tipX=prstX+.75*hw, tipY=prstY+.09*hw;   // konec hadice je pod dlaní (78 % šířky ruky), špička prstu ~3 % od levého okraje
+        var prstX=b.right-rod.left+14, prstY=b.top-rod.top+b.height/2, tipX=prstX+.75*hw, tipY=prstY+.07*hw;   // konec hadice je pod dlaní (78 % šířky ruky), špička prstu ~3 % od levého okraje
         c.style.width=""; c.style.height=""; var q=mer(); if(!q) return;
         // měřítko: začátek hadice na pravém okraji rámečku, smyčka nesmí vyjet nahoru ani dolů
         var k=(rod.width-tipX)/Math.max(1,q.sx-q.tx);
@@ -362,6 +357,9 @@
         var Lc=us.reduce(function(a,u){ return a+u.L; },0), zb=e*Lc, pt=null;
         us.forEach(function(u){ var eu=Math.max(0,Math.min(1,zb/u.L)); u.cesty.forEach(function(p){ p.style.strokeDashoffset=1-eu; });
           if(pt===null && (zb<u.L || u===us[us.length-1])) pt=u.osa.getPointAtLength(Math.max(0,Math.min(u.L,zb))); zb-=u.L; });
+        // záplata: kousek prvního průchodu kolem křížení, odkrývá se spolu s hlavní křivkou (okno [a, a+w] přes stroke-dasharray)
+        Array.prototype.forEach.call(c.querySelectorAll(".tube .seg.zaplata"),function(g){ var w=+g.dataset.w, a=+g.dataset.s-w/2, vid=Math.max(0,Math.min(w,e-a));
+          Array.prototype.forEach.call(g.querySelectorAll("path"),function(p){ p.style.strokeDasharray=vid+" 1"; p.style.strokeDashoffset=-a; }); });
         var m=svg.getScreenCTM(), r=c.getBoundingClientRect(); if(!m) return;
         var x=m.a*pt.x+m.c*pt.y+m.e-r.left, y=m.b*pt.x+m.d*pt.y+m.f-r.top;
         ruka.style.left=x+"px"; ruka.style.top=y+"px"; if(e>=1) ruka.style.setProperty("--uhel","0deg");
