@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=2026-09-07w">
+<link rel="stylesheet" href="style.css?v=2026-09-08a">
 </head>
 <body>
 
@@ -191,8 +191,12 @@
 (function(){
   var $=function(s){ return document.querySelector(s); };
   // výřez fotky: kde má být ohnisko, když se ořízne (telefon vs. počítač); výchozí podle typu
-  var POS={};
+  var POS={}, KOMP={};
   function poz(im,src,vychozi){ im.style.objectPosition=(POS[src]||vychozi); }
+  // hero: ohnisko + zoom z editoru kompozice (_vyber/kompozice.html); mobil může mít vlastní hodnoty
+  function komp(im,src,vychozi){ var k=KOMP[src]; if(!k){ poz(im,src,vychozi); return; }
+    im.style.setProperty("--x",k.x+"%"); im.style.setProperty("--y",k.y+"%"); im.style.setProperty("--z",k.z||1);
+    if(k.mx!=null){ im.style.setProperty("--mx",k.mx+"%"); im.style.setProperty("--my",k.my+"%"); im.style.setProperty("--mz",k.mz||k.z||1); } }
   function esc(t){ return String(t==null?"":t).replace(/[&<>"]/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
 
   // prolínání fotek: nová se objeví nad starou a stará se odebere až po dokončení přechodu,
@@ -214,7 +218,7 @@
   } else { document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("in"); }); }
 
   fetch("content.json",{cache:"no-store"}).then(function(r){ return r.json(); }).then(function(C){
-    POS=C.pos||{};
+    POS=C.pos||{}; KOMP=C.kompozice||{};
     // hero – prolínání fotek
     var box=$("#heroPhotos"), dots=$("#heroDots");
     // první fotka pevná, zbytek náhodný výběr z galerie (jen na šířku) + ostatních hero fotek – při každém načtení jiný
@@ -223,7 +227,7 @@
     for(var z=zasoba.length-1; z>0; z--){ var r=Math.floor(Math.random()*(z+1)), t=zasoba[z]; zasoba[z]=zasoba[r]; zasoba[r]=t; }
     var heroSez=[C.hero[0]].concat(zasoba.slice(0,9));
     heroSez.forEach(function(src,i){
-      var im=new Image(); im.src=src; im.alt=""; if(i===0) im.className="on"; im.loading=i<3?"eager":"lazy"; im.decoding="async"; poz(im,src,"50% 40%"); box.appendChild(im);
+      var im=new Image(); im.src=src; im.alt=""; if(i===0) im.className="on"; im.loading=i<3?"eager":"lazy"; im.decoding="async"; komp(im,src,"50% 40%"); box.appendChild(im);
       var d=document.createElement("i"); if(i===0) d.className="on"; dots.appendChild(d);
     });
     var cur=0, imgs=box.children, ds=dots.children;

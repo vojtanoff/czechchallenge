@@ -11,6 +11,7 @@ launchd: com.vojtanoff.czechchallenge · http://127.0.0.1:8790
 """
 import functools
 import http.server
+import json
 import os
 import socketserver
 import subprocess
@@ -19,6 +20,7 @@ from pathlib import Path
 
 KOREN = Path(__file__).resolve().parent
 PORT = int(os.environ.get("CC_PORT", "8790"))
+OBSAH = KOREN / "content.json"
 
 
 def tailscale_ip():
@@ -42,6 +44,65 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     def log_message(self, *a):
         pass
+
+    # editor kompozice (_vyber/kompozice.html): uloží ohnisko a zoom fotek do content.json,
+    # případně rovnou commitne a pushne (GitHub Pages). Hlavička X-Vyber brání zápisu z cizí stránky.
+    def _json(self, kod, data):
+        telo = json.dumps(data, ensure_ascii=False).encode("utf-8")
+        self.send_response(kod)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(telo)))
+        self.end_headers()
+        self.wfile.write(telo)
+
+    def do_POST(self):
+        if self.headers.get("X-Vyber") != "1":
+            return self._json(403, {"chyba": "jen z editoru"})
+        try:
+            delka = int(self.headers.get("Content-Length") or 0)
+            data = json.loads(self.rfile.read(delka) or b"{}")
+            if self.path == "/kompozice":
+                return self._json(200, uloz_kompozici(data.get("kompozice") or {}))
+            if self.path == "/publikuj":
+                return self._json(200, publikuj())
+            return self._json(404, {"chyba": "neznámá cesta"})
+        except Exception as e:  # noqa: BLE001
+            return self._json(500, {"chyba": str(e)})
+
+
+def uloz_kompozici(komp):
+    """komp = {src: {x,y,z[,mx,my,mz]}}; pos[src] se drží v souladu (galerie, směřování výřezu)."""
+    obsah = json.loads(OBSAH.read_text(encoding="utf-8"))
+    cisty = {}
+    for src, k in komp.items():
+        if not isinstance(k, dict):
+            continue
+        z = {}
+        for kl in ("x", "y", "z", "mx", "my", "mz"):
+            if kl in k and k[kl] is not None:
+                z[kl] = round(float(k[kl]), 2)
+        if "x" in z and "y" in z:
+            cisty[src] = z
+            obsah.setdefault("pos", {})[src] = f"{z['x']:g}% {z['y']:g}%"
+    obsah["kompozice"] = cisty
+    tmp = OBSAH.with_suffix(".tmp")
+    tmp.write_text(json.dumps(obsah, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    tmp.replace(OBSAH)
+    return {"ok": True, "pocet": len(cisty)}
+
+
+def publikuj():
+    def git(*a):
+        r = subprocess.run(["git", *a], cwd=KOREN, capture_output=True, text=True, timeout=60)
+        if r.returncode:
+            raise RuntimeError((r.stderr or r.stdout).strip())
+        return r.stdout.strip()
+    git("add", "content.json")
+    if not git("status", "--porcelain", "content.json"):
+        return {"ok": True, "zprava": "nic nového k publikování"}
+    git("commit", "-q", "-m", "Kompozice fotek v hero (editor)")
+    git("push", "-q", "origin", "HEAD")
+    return {"ok": True, "zprava": "pushnuto – Pages se obnoví do pár minut", "commit": git("rev-parse", "--short", "HEAD")}
 
 
 class Server(socketserver.ThreadingTCPServer):
