@@ -333,7 +333,8 @@
 
     // hadice s rukou: kreslí se skriptem, ruka jede na její špičce a dojede s ní; pak kývne při najetí na tlačítko a natáčí se za kurzorem
     (function(){
-      var celky=document.querySelectorAll(".tube-wrap"); if(!celky.length) return;
+      // jen vykreslené obaly (na telefonu je hadice display:none – měření délky křivky by tam selhalo a shodilo zbytek skriptu)
+      var celky=Array.prototype.filter.call(document.querySelectorAll(".tube-wrap"),function(c){ return c.offsetParent!==null; }); if(!celky.length) return;
       var redukce=matchMedia("(prefers-reduced-motion: reduce)").matches;
       function ease(t){ return t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2; }
       function useky(c){ return Array.prototype.map.call(c.querySelectorAll(".tube .seg:not(.zaplata)"),function(g){ return {g:g, cesty:g.querySelectorAll("path"), osa:g.querySelector(".t-base"), L:g.querySelector(".t-base").getTotalLength()}; }); }
