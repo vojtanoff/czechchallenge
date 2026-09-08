@@ -182,11 +182,12 @@ section{padding:clamp(64px,9vw,120px) 0}
 /* ---------- galerie ---------- */
 .gallery{background:var(--surface)}
 .grid{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
-.grid a{position:relative; display:block; border-radius:14px; overflow:hidden; aspect-ratio:3/2; background:var(--surface-2)}
-.grid img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease}
-.grid a:hover img{transform:scale(1.04)}
-.grid .yr{position:absolute; left:10px; top:10px; background:rgba(23,19,58,.75); color:#fff; font-family:var(--font-display);
-  font-weight:700; font-size:12px; padding:4px 9px; border-radius:999px}
+.grid a{position:relative; display:block; border-radius:14px; overflow:hidden; aspect-ratio:3/2; background:var(--surface-2); isolation:isolate}
+.grid img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1.4s ease, transform .5s ease}
+.grid img.on{opacity:1}
+.grid a:hover img.on{transform:scale(1.04)}
+.grid .yr{position:absolute; z-index:9999; left:10px; top:10px; background:rgba(23,19,58,.75); color:#fff; font-family:var(--font-display);
+  font-weight:700; font-size:12px; padding:4px 9px; border-radius:999px}   /* nad rotujícími fotkami, které dostávají rostoucí z-index při prolnutí */
 .grid a.tall{grid-row:span 2; aspect-ratio:auto}
 .gal-foot{display:flex; flex-wrap:wrap; gap:12px; margin-top:22px; align-items:center}
 .video{position:relative; border-radius:var(--radius); overflow:hidden; aspect-ratio:16/9; background:#000; margin-top:40px; cursor:pointer}
