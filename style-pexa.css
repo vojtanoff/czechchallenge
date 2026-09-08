@@ -58,7 +58,7 @@ h3{font-weight:500}
 .hero-pexa h1 .rok{display:block; font-weight:300}
 .hero-pexa .meta{font-family:var(--font-display); font-weight:500; font-size:clamp(20px,2.4vw,30px); color:var(--violet); margin-top:22px}
 .hero-pexa .meta small{color:var(--ink-2); font-size:clamp(15px,1.4vw,18px); opacity:1}
-.hero-pexa .vol{background:var(--lime); color:var(--lime-ink); margin-top:14px; font-weight:700; font-size:15px}
+.hero-pexa .vol{background:var(--lime); color:var(--lime-ink); margin-top:14px; font-weight:700; font-size:19px; padding:10px 20px}
 .hero-pexa .cta .btn{padding:11px 18px; font-size:15px}
 
 /* hadice: jedna křivka, pět vrstev tahu = plastický 3D dojem bez rastru; kreslí se po načtení */
@@ -80,7 +80,7 @@ h3{font-weight:500}
 .tube .t-spec{stroke:#F6F0FF; stroke-width:2.6; transform:translate(-7px,-16px); opacity:.85; filter:blur(.6px)}
 .contact .tube .t-base{stroke:#22157A} .contact .tube .t-body{stroke:#4A1BC8} .contact .tube .t-dark{stroke:#2E0794} .contact .tube .t-core{stroke:#230580}
 .hand{position:absolute; width:clamp(120px,13vw,190px); height:auto; transform:translate(-78%,-44.5%) rotate(var(--uhel,0deg));
-  transform-origin:78% 44.5%; filter:drop-shadow(0 16px 22px rgba(34,29,74,.25)); transition:transform .12s linear}
+  transform-origin:78% 44.5%; transition:transform .12s linear}
 .hand.nod{animation:nod .8s cubic-bezier(.3,.9,.3,1.2)}
 .hand.nod2{animation:nod2 1.3s cubic-bezier(.4,.05,.3,1)}
 @keyframes nod2{0%{transform:translate(-78%,-44.5%)} 22%{transform:translate(-78%,-44.5%) translateX(-22px) rotate(-3deg)} 45%{transform:translate(-78%,-44.5%)} 68%{transform:translate(-78%,-44.5%) translateX(-22px) rotate(-3deg)} 100%{transform:translate(-78%,-44.5%)}}
@@ -123,8 +123,8 @@ section{padding:clamp(40px,5.5vw,72px) 0}   /* menší mezery mezi sekcemi než 
 .contact{position:relative; overflow:hidden; background:var(--violet); border-radius:var(--radius); margin:0 auto; width:min(1180px,calc(100% - 40px))}
 .contact .eyebrow{background:#fff; color:var(--violet)}
 .contact h2{color:#fff; font-weight:400}
-.contact .btn-lime{background:#fff; color:var(--violet)}
-.contact .btn-lime:hover{background:var(--lime); color:var(--lime-ink)}
+.contact .btn-lime{background:var(--lime); color:#111}
+.contact .btn-lime:hover{background:#fff; color:var(--violet)}
 .contact .tube-wrap{position:absolute; left:34%; bottom:-10%; width:min(40vw,520px); height:min(40vw,520px); z-index:0}   /* left/top přepíše skript zamir() – ruka míří na tlačítko */
 .contact .tube .t-shadow{opacity:.35}
 .contact .contact-grid{position:relative; z-index:1}
