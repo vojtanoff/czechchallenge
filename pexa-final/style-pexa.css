@@ -220,9 +220,9 @@ body{overflow-x:hidden}
    aby ta zůstala u tlačítka i po natočení */
 .zajem .katetr-box{position:absolute; left:calc(100% + 10px); top:50%;
   width:clamp(280px,36vw,560px); aspect-ratio:2200/779; transform-origin:3% 20%;
-  transform:translate(60px,-31%) rotate(-17deg); opacity:0;
+  transform:translate(60px,-16%) rotate(-17deg); opacity:0;
   transition:transform .7s cubic-bezier(.2,1.2,.3,1), opacity .4s; pointer-events:none}
-.zajem .katetr-box.tu{transform:translate(0,-31%) rotate(-17deg); opacity:1}
+.zajem .katetr-box.tu{transform:translate(0,-16%) rotate(-17deg); opacity:1}
 .zajem .katetr-box img{position:absolute; top:0; left:0; height:100%; width:auto; max-width:none;
   filter:none; opacity:1; transform:none}
 .zajem .katetr-box .ruka{transform-origin:97.71% 23.36%}
