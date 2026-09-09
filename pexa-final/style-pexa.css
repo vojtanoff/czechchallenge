@@ -134,6 +134,11 @@ section{padding:clamp(40px,5.5vw,72px) 0}   /* menší mezery mezi sekcemi než 
 .contact .contact-grid{position:relative; z-index:1}
 .contact .card{background:rgba(255,255,255,.12); backdrop-filter:blur(6px)}
 
+/* 3D hadice s rukou (Milošův high-res render) jako dekorace za logy partnerů – jako v jeho Figmě; ruka ukazuje na poslední řadu log, hadice odchází ze stránky vpravo, karty jsou nad ní */
+#partners{position:relative; overflow:hidden}
+#partners > .wrap{position:relative; z-index:1}
+.hadice-deco{position:absolute; z-index:0; pointer-events:none; right:-14%; bottom:16%; width:min(60vw,880px); height:auto; transform:rotate(-8deg)}
+@media (max-width:860px){ .hadice-deco{width:96vw; right:-38%; bottom:25%} }
 footer{padding:40px 0 48px}
 footer .wrap{background:var(--violet); color:#fff; border-radius:var(--radius); padding:28px 32px}
 footer img{filter:brightness(0) invert(1); opacity:.9; height:26px}
