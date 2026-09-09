@@ -217,9 +217,9 @@ body{overflow-x:hidden}
    Otáčí se přesně kolem středu zápěstí – změřeno z renderu (napojení x=682, y=182 z 2200×779),
    proto transform-origin 97.71 % 23.36 % a jen ±4°, aby v napojení nevznikl viditelný zlom. */
 .zajem .katetr-box{position:absolute; left:calc(100% + 10px); top:50%;
-  width:clamp(280px,36vw,560px); aspect-ratio:2200/779; transform:translate(60px,-40%); opacity:0;
+  width:clamp(280px,36vw,560px); aspect-ratio:2200/779; transform:translate(60px,-31%); opacity:0;
   transition:transform .7s cubic-bezier(.2,1.2,.3,1), opacity .4s; pointer-events:none}
-.zajem .katetr-box.tu{transform:translate(0,-40%); opacity:1}
+.zajem .katetr-box.tu{transform:translate(0,-31%); opacity:1}
 .zajem .katetr-box img{position:absolute; top:0; left:0; height:100%; width:auto; max-width:none;
   filter:none; opacity:1; transform:none}
 .zajem .katetr-box .ruka{transform-origin:97.71% 23.36%}
