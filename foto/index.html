@@ -7,7 +7,11 @@
 <meta name="description" content="CTO&CHIP Czech Challenge – Complex PCI Meeting in Pardubice, Czechia. Live cases, Czech & international faculty, quick debate. Third edition, 23 October 2026.">
 <meta property="og:title" content="CTO&CHIP Czech Challenge Vol. 3 · 23.10.2026 · Pardubice">
 <meta property="og:description" content="Complex PCI Meeting – live cases, international faculty, quick debate. Together again">
-<meta property="og:image" content="img/brand/vizual-2026-sirka.png">
+<meta property="og:image" content="https://vojtanoff.github.io/czechchallenge/img/brand/vizual-2026-sirka.png">
+<meta property="og:image:width" content="4574"><meta property="og:image:height" content="2580">
+<meta property="og:url" content="https://vojtanoff.github.io/czechchallenge/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../img/brand/favicon.ico" sizes="32x32">
 <link rel="icon" href="../img/brand/favicon-16.png" sizes="16x16" type="image/png">
 <link rel="icon" href="../img/brand/favicon-32.png" sizes="32x32" type="image/png">
@@ -15,10 +19,8 @@
 <link rel="apple-touch-icon" href="../img/brand/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="fonts/safiro.css">
-<link rel="stylesheet" href="style.css?v=2026-09-08a">
-<link rel="stylesheet" href="style-pexa.css?v=65">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=2026-09-08j">
 </head>
 <body>
 
@@ -28,6 +30,7 @@
       <img src="../img/brand/CTO_CHIP_LOGO.svg" alt="CTO&CHIP Czech Challenge">
     </a>
     <ul class="menu">
+      <li class="terc" aria-hidden="true"></li>
       <li><a href="#about">About</a></li>
       <li><a href="#program">Program</a></li>
       <li><a href="#faculty">Faculty</a></li>
@@ -50,24 +53,18 @@
 <main id="top">
 
 <!-- HERO: prolínající fotky z ročníků 2024 a 2025, přes ně vizuál 2026 -->
-<section class="hero hero-pexa" aria-label="Czech Challenge 2026">
-  <div class="wrap hero-grid">
-    <div class="hero-text">
-      <h1><img class="hadice-hero" src="../img/brand/hadice-ruka-hd-r.webp" alt="" aria-hidden="true"><span class="r1">Czech</span><br><span class="r2">Challenge</span> <span class="rok">2026</span></h1>
-      <div class="meta">23 October 2026<small>Complex PCI Meeting · Pardubice · Czechia · Welcome dinner 22 October</small></div>
-    </div>
-  </div>
+<section class="hero" aria-label="Czech Challenge 2026">
+  <div class="hero-photos" id="heroPhotos"></div>
   <div class="wrap">
-    <div class="hero-card">
-      <div class="hero-photos" id="heroPhotos"></div>
-      <span class="vol" id="heroVol">Vol. 3 · Together again</span>
-      <div class="cta" id="heroCta">
-        <a class="btn btn-lime" href="#contact">I'm interested</a>
-        <a class="btn btn-ghost" href="#program">See the program</a>
-      </div>
-      <div class="dots" id="heroDots" aria-hidden="true"></div>
+    <h1><span class="r1">Czech<span class="palec-box" id="palecBox" aria-hidden="true"><img class="palec-v" src="../img/brand/palec-3d.png" alt=""></span></span><br>Challenge</h1>
+    <span class="vol">Vol. 3 · Together again</span>
+    <div class="meta">23 October 2026<small>Complex PCI Meeting · Pardubice · Czechia · Welcome dinner 22 October</small></div>
+    <div class="cta">
+      <a class="btn btn-lime" href="#contact">I'm interested</a>
+      <a class="btn btn-ghost" href="#program">See the program</a>
     </div>
   </div>
+  <div class="dots" id="heroDots" aria-hidden="true"></div>
 </section>
 
 <!-- ABOUT -->
@@ -94,7 +91,6 @@
 
 <!-- PROGRAM -->
 <section id="program" class="program">
-  <img class="hadice-program" src="../img/brand/hadice-ruka-hd.webp" alt="" aria-hidden="true">
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow">Program</p>
@@ -168,13 +164,46 @@
 
 <!-- CONTACT / REGISTRATION -->
 <section id="contact" class="contact">
-  <img class="hadice-kontakt" id="hadiceKontakt" src="../img/brand/hadice-ruka-hd.webp" alt="" aria-hidden="true">
+  <div class="tube-wrap" id="tubeKontakt" aria-hidden="true" data-cil="#registerBtn">
+    <svg class="tube" viewBox="0 0 1741 665" aria-hidden="true">
+        <!-- jedna souvislá křivka; záplata = kousek prvního průchodu znovu navrch, aby smyčka křížila nad sebou bez švu -->
+        <g class="seg">
+          <defs><mask id="hk-mask" maskUnits="userSpaceOnUse" x="-300" y="-300" width="2400" height="1300"><path class="t-mask" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/></mask></defs>
+          <path class="t-shadow" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+          <path class="t-base" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+          <g mask="url(#hk-mask)">
+            <path class="t-body" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-dark" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-core" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-rim" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-mid" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-light" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-spec" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+          </g>
+        </g>
+        <g class="seg zaplata" mask="url(#hk-zaplata)" data-s="0.2347" data-w="0.0883">
+          <defs><mask id="hk-mask-z" maskUnits="userSpaceOnUse" x="-300" y="-300" width="2400" height="1300"><path class="t-mask" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/></mask><radialGradient id="hk-fade"><stop offset="0.5" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient><mask id="hk-zaplata" maskUnits="userSpaceOnUse" x="-300" y="-300" width="2400" height="1300"><circle cx="1066" cy="479" r="110" fill="url(#hk-fade)"/></mask></defs>
+          <path class="t-shadow" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+          <path class="t-base" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+          <g mask="url(#hk-mask-z)">
+            <path class="t-body" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-dark" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-core" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-rim" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-mid" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-light" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+            <path class="t-spec" pathLength="1" d="M1639 484 C1404 544, 1183 559, 1017 452 C819 321, 955 102, 1108 178 C1260 255, 1153 498, 940 527 C692 563, 500 405, 340 389 C241 381, 190 484, 102 484"/>
+          </g>
+        </g>
+    </svg>
+    <img class="hand" src="../img/brand/ruka-3d.png" alt="" style="left:16.7%; top:41.8%">
+  </div>
   <div class="wrap contact-grid">
     <div class="reveal">
       <p class="eyebrow">Interest &amp; contact</p>
       <h2>Not invited yet? Tell us you're interested.</h2>
       <p style="margin-top:18px">This year's meeting is by invitation. If you'd like to be part of the coming editions, let us know – your interest helps us scale the meeting according to demand in the years ahead. Thank you!</p>
-      <p class="ruka-cil"><a class="btn btn-lime" id="registerBtn" href="#">I'm interested – send an e-mail</a><img class="ruka" id="rukaKontakt" src="../img/brand/ruka-3d-hd.webp" alt="" aria-hidden="true"></p>
+      <p class="ruka-cil"><a class="btn btn-lime" id="registerBtn" href="#">I'm interested – send an e-mail</a><img class="ruka" id="rukaKontakt" src="../img/brand/ruka-3d.png" alt="" aria-hidden="true"></p>
     </div>
     <div class="card reveal">
       <b>CTO&amp;CHIP Czech Challenge</b>
@@ -201,8 +230,12 @@
 (function(){
   var $=function(s){ return document.querySelector(s); };
   // výřez fotky: kde má být ohnisko, když se ořízne (telefon vs. počítač); výchozí podle typu
-  var POS={};
+  var POS={}, KOMP={};
   function poz(im,src,vychozi){ im.style.objectPosition=(POS[src]||vychozi); }
+  // hero: ohnisko + zoom z editoru kompozice (_vyber/kompozice.html); mobil může mít vlastní hodnoty
+  function komp(im,src,vychozi){ var k=KOMP[src]; if(!k){ poz(im,src,vychozi); return; }
+    im.style.setProperty("--x",k.x+"%"); im.style.setProperty("--y",k.y+"%"); im.style.setProperty("--z",k.z||1);
+    if(k.mx!=null){ im.style.setProperty("--mx",k.mx+"%"); im.style.setProperty("--my",k.my+"%"); im.style.setProperty("--mz",k.mz||k.z||1); } }
   function esc(t){ return String(t==null?"":t).replace(/[&<>"]/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
 
   // prolínání fotek: nová se objeví nad starou a stará se odebere až po dokončení přechodu,
@@ -223,45 +256,8 @@
     document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
   } else { document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("in"); }); }
 
-  // hero podle Pexy: karta s fotkou jako druhý sloupec gridu (na PC nadpis vlevo, fotka vpravo; na mobilu pod sebou)
-  (function(){ var k=document.querySelector(".hero-pexa .hero-card"), g=document.querySelector(".hero-pexa .hero-grid"); if(k&&g) g.appendChild(k);
-    // nadpis přes celou šířku sloupce: „Challenge" = šířka bloku, palec doplní řádek „Czech" až k pravému okraji.
-    // Pexa na PC: textový blok (nadpis, Vol. 3, datum) je stejně vysoký jako fotka; fotka si vezme zbytek šířky (4:3), text se dopočítá iterací.
-    (function(){ var h=document.querySelector(".hero-pexa h1"), r1=h&&h.querySelector(".r1"), r2=h&&h.querySelector(".r2"), box=document.getElementById("palecBox"); if(!h||!r2) return;
-      var pexa=true, text=document.querySelector(".hero-pexa .hero-text"), card=document.querySelector(".hero-pexa .hero-card"),
-          vol=document.getElementById("heroVol"), meta=document.querySelector(".hero-pexa .meta"), cta=document.getElementById("heroCta");
-      function fitText(){ h.style.fontSize=""; h.style.paddingTop=""; if(box){ box.style.width=""; box.style.height=""; }
-        var fs=parseFloat(getComputedStyle(h).fontSize), W=h.clientWidth; if(!W) return;
-        for(var i=0;i<3;i++){ var w=r2.getBoundingClientRect().width; if(!w) return; fs=fs*W/w; h.style.fontSize=fs+"px"; }
-        if(box&&r1){ var sb=W-r1.getBoundingClientRect().width-.12*fs; sb=Math.max(sb,fs*.9); box.style.width=sb+"px"; box.style.height="auto";
-          h.style.paddingTop=Math.max(0, sb*900/808-1.0*fs)+"px"; } }
-      function fit(){
-        var pc=innerWidth>860;
-        if(pexa && vol && meta && vol.nextElementSibling!==meta){ text.insertBefore(vol,meta); }   // Vol. 3 zůstává pod nadpisem, nikdy ve fotce (i na mobilu)
-        if(pexa && card && pc){
-          // hledá se šířka textového sloupce, při které je text stejně vysoký jako fotka 4:3 vedle něj (půlením intervalu – iterace by oscilovala)
-          var grid=text.parentNode, Wg=grid.clientWidth, gap=parseFloat(getComputedStyle(grid).columnGap)||0, lo=Wg*.34, hi=Wg*.6;
-          function zk(Wt){ var cw=Wg-gap-Wt; card.style.width=Math.round(cw)+"px"; card.style.height=Math.round(cw*3/4)+"px"; fitText(); return text.offsetHeight-cw*3/4; }
-          for(var k=0;k<9;k++){ var mid=(lo+hi)/2; if(zk(mid)>0) hi=mid; else lo=mid; }
-          zk(lo); card.style.height=text.offsetHeight+"px";
-        } else { if(card){ card.style.height=""; card.style.width=""; } fitText(); }
-      }
-      fit(); if(document.fonts){ document.fonts.ready.then(fit); document.fonts.addEventListener("loadingdone",fit); } addEventListener("resize",fit); })();   // Safiro z vlastní domény může dojet až po prvním fit() – přepočítat i po každém donačtení fontu
-    // palec: s první fotkou vyskočí a dvakrát klepne, s druhou zmizí (stejné pravidlo jako na hlavním webu)
-    (function(){ var b=document.getElementById("palecBox"); if(!b) return;
-      if(matchMedia("(prefers-reduced-motion: reduce)").matches){ b.classList.add("on"); return; }
-      setTimeout(function(){ b.classList.add("on"); },700);
-      var drz=false;   // během krátkého ukázání po návratu nahoru ho rotace fotek nevyhodí
-      document.addEventListener("herofoto",function(e){ if(!drz) b.classList.toggle("on", e.detail===0); });
-      // po odscrollování dolů a návratu nahoru palec znovu vyskočí a klepne a po 3,8 s zase zmizí
-      var byloDole=false, zpet=null;
-      addEventListener("scroll",function(){ var y=scrollY||pageYOffset; if(y>innerHeight*.6) byloDole=true;
-        else if(byloDole&&y<40){ byloDole=false; b.classList.remove("on"); clearTimeout(zpet); drz=true;
-          zpet=setTimeout(function(){ b.classList.add("on"); zpet=setTimeout(function(){ b.classList.remove("on"); drz=false; },3800); },350); } },{passive:true});
-    })();
-  })();
   fetch("content.json",{cache:"no-store"}).then(function(r){ return r.json(); }).then(function(C){ C=JSON.parse(JSON.stringify(C).replace(/"img\//g,'"../img/'));
-    POS=C.pos||{};
+    POS=C.pos||{}; KOMP=C.kompozice||{};
     // hero – prolínání fotek
     var box=$("#heroPhotos"), dots=$("#heroDots");
     // první fotka pevná, zbytek náhodný výběr z galerie (jen na šířku) + ostatních hero fotek – při každém načtení jiný
@@ -270,7 +266,7 @@
     for(var z=zasoba.length-1; z>0; z--){ var r=Math.floor(Math.random()*(z+1)), t=zasoba[z]; zasoba[z]=zasoba[r]; zasoba[r]=t; }
     var heroSez=[C.hero[0]].concat(zasoba.slice(0,9));
     heroSez.forEach(function(src,i){
-      var im=new Image(); im.src=src; im.alt=""; if(i===0) im.className="on"; im.loading=i<3?"eager":"lazy"; im.decoding="async"; poz(im,src,"50% 40%"); box.appendChild(im);
+      var im=new Image(); im.src=src; im.alt=""; if(i===0) im.className="on"; im.loading=i<3?"eager":"lazy"; im.decoding="async"; komp(im,src,"50% 40%"); box.appendChild(im);
       var d=document.createElement("i"); if(i===0) d.className="on"; dots.appendChild(d);
     });
     var cur=0, imgs=box.children, ds=dots.children;
@@ -358,9 +354,18 @@
         hero.addEventListener("mouseleave",function(){ ruceHero.style.setProperty("--uhel","0deg"); });
       }
     })();
+    // limetkový terč v menu klouže na položku sekce, která je právě v záběru (jako pilulka ve větvi design-pexa)
+    (function(){
+      var menu=document.querySelector(".menu"), terc=menu&&menu.querySelector(".terc"); if(!menu||!terc) return;
+      var odkazy=Array.prototype.slice.call(menu.querySelectorAll("a")), mapa={}, akt=null;
+      odkazy.forEach(function(a){ var id=(a.getAttribute("href")||"").slice(1); if(document.getElementById(id)) mapa[id]=a; });
+      function posun(){ if(!akt){ terc.classList.remove("on"); return; } terc.style.left=akt.offsetLeft+"px"; terc.style.width=akt.offsetWidth+"px"; terc.classList.add("on"); }
+      var io3=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; odkazy.forEach(function(a){ a.classList.remove("on"); }); akt=mapa[e.target.id]||null; if(akt) akt.classList.add("on"); posun(); }); },{rootMargin:"-40% 0px -55% 0px"});
+      Object.keys(mapa).forEach(function(id){ io3.observe(document.getElementById(id)); });
+      addEventListener("scroll",function(){ if((scrollY||pageYOffset)<innerHeight*.5 && akt){ akt.classList.remove("on"); akt=null; posun(); } },{passive:true});   // nahoře v hero bez terče
+      addEventListener("resize",posun); if(document.fonts) document.fonts.ready.then(posun);
+    })();
     // 3D ruka u tlačítka v kontaktu (telefon, bez hadice): poprvé přijede a dvakrát ťukne, při dalším naskrolování a najetí ťukne jednou
-    (function(){ var h=document.getElementById("hadiceKontakt"), b=document.getElementById("registerBtn"); if(!h||!b) return;
-      b.addEventListener("mouseenter",function(){ h.classList.remove("kyv"); void h.offsetWidth; h.classList.add("kyv"); }); })();
     (function(){ var r=document.getElementById("rukaKontakt"), b=document.getElementById("registerBtn"); if(!r||!b) return;
       function klik(tr){ r.classList.remove("klik"); r.classList.remove("klik2"); void r.offsetWidth; r.classList.add(tr||"klik"); }
       if(matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)){ r.classList.add("tu"); }
@@ -368,14 +373,18 @@
           if(!r.classList.contains("tu")){ r.classList.add("tu"); setTimeout(function(){ klik("klik2"); },900); } else { setTimeout(klik,300); } }); },{threshold:.6}); io.observe(b); }
       b.addEventListener("mouseenter",function(){ if(r.classList.contains("tu")) klik(); });
     })();
-    // aktivní pilulka v navigaci podle sekce v záběru
-    (function(){
-      var odkazy=Array.prototype.slice.call(document.querySelectorAll(".menu a")), mapa={};
-      odkazy.forEach(function(a){ var id=(a.getAttribute("href")||"").slice(1); var sec=document.getElementById(id); if(sec) mapa[id]=a; });
-      var io2=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ odkazy.forEach(function(a){ a.classList.remove("on"); }); var a=mapa[e.target.id]; if(a) a.classList.add("on"); } }); },{rootMargin:"-40% 0px -55% 0px"});
-      Object.keys(mapa).forEach(function(id){ io2.observe(document.getElementById(id)); });
+    // palec z původního webu vlevo nahoře v hero: vjede s první fotkou, dvakrát cukne, s druhou fotkou zajede; při dalším kole znovu
+    (function(){ var b=document.getElementById("palecBox"); if(!b) return;
+      if(matchMedia("(prefers-reduced-motion: reduce)").matches){ b.classList.add("on"); return; }
+      setTimeout(function(){ b.classList.add("on"); },700);
+      var drz=false;   // během krátkého ukázání po návratu nahoru ho rotace fotek nevyhodí
+      document.addEventListener("herofoto",function(e){ if(!drz) b.classList.toggle("on", e.detail===0); });
+      // po odscrollování dolů a návratu nahoru palec znovu vyskočí a klepne a po 3,8 s zase zmizí
+      var byloDole=false, zpet=null;
+      addEventListener("scroll",function(){ var y=scrollY||pageYOffset; if(y>innerHeight*.6) byloDole=true;
+        else if(byloDole&&y<40){ byloDole=false; b.classList.remove("on"); clearTimeout(zpet); drz=true;
+          zpet=setTimeout(function(){ b.classList.add("on"); zpet=setTimeout(function(){ b.classList.remove("on"); drz=false; },3800); },350); } },{passive:true});
     })();
-
     // directors
     // víc fotek u jednoho člověka = střídají se (prolnutím), první je výchozí; bez fotky monogram
     function karta(d){
