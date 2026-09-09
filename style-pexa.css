@@ -43,10 +43,17 @@ h3{font-weight:500}
 .btn-ghost:hover{background:var(--ink); color:#fff}
 .facts li{background:transparent; border:1.5px solid var(--violet); color:var(--violet)}   /* štítky = obrysové pilulky jako ve Figmě (Czech Republic, CTO, Complex PCI) */
 
-/* ---------- navigace v pilulkách ---------- */
-.nav{background:color-mix(in srgb,var(--ground) 86%,transparent); border-bottom:0}
-.menu{background:#fff; border-radius:999px; padding:5px; gap:2px; box-shadow:none}
-.menu a{padding:8px 15px; border-radius:999px; font-size:14px; color:var(--ink-2); transition:background .2s, color .2s}
+/* ---------- navigace: plovoucí pilulka, jako na webu od Miloše a kodéra ----------
+   Celý panel je jedna oblá pilulka v barvě podkladu, uvnitř logo, menu a tlačítko;
+   pluje nad obsahem s odsazením od horní hrany (jejich rozměry: výška 67 px, boky 31 px). */
+.nav{background:transparent; border-bottom:0; padding-top:clamp(12px,2.2vw,26px); pointer-events:none}
+.nav .wrap{height:auto; pointer-events:auto; background:var(--ground); border:1px solid var(--line);
+  border-radius:999px; height:67px; padding-left:19px; padding-right:19px; gap:14px;
+  box-shadow:0 10px 30px rgba(34,29,74,.07); transition:box-shadow .3s}
+@media (min-width:861px){ .nav .wrap{padding-left:31px; padding-right:12px} }
+.nav.plyne .wrap{box-shadow:0 14px 40px rgba(34,29,74,.13)}
+.menu{background:transparent; border-radius:999px; padding:0; gap:2px; box-shadow:none}
+.menu a{display:inline-flex; align-items:center; height:47px; padding:0 18px; border-radius:999px; font-size:15px; color:var(--ink-2); transition:background .2s, color .2s}
 .menu a:hover{background:var(--violet-soft); color:var(--violet)}
 .menu a.on{background:var(--violet); color:#fff}
 .nav-cta .btn{background:transparent; color:var(--violet); border-color:var(--violet); padding:11px 18px}
@@ -136,7 +143,7 @@ section{padding:clamp(40px,5.5vw,72px) 0}   /* menší mezery mezi sekcemi než 
 .contact .contact-grid{position:relative; z-index:1}
 .contact .card{background:rgba(255,255,255,.12); backdrop-filter:blur(6px)}
 
-footer{padding:40px 0 48px}
+
 footer .wrap{background:var(--violet); color:#fff; border-radius:var(--radius); padding:28px 32px}
 footer img{filter:brightness(0) invert(1); opacity:.9; height:26px}
 
@@ -185,9 +192,24 @@ body{overflow-x:hidden}
 @keyframes ruka-klik-m{0%{transform:rotate(40deg)} 40%{transform:rotate(40deg) translate(-14px,0)} 100%{transform:rotate(40deg)}}
 @media (prefers-reduced-motion:reduce){ .ruka-cil .ruka{transition:none; animation:none} }
 
-footer{padding:34px 0 40px; color:var(--ink-3); font-size:14px}
-footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; align-items:center}
-footer img{height:22px; filter:grayscale(1); opacity:.7}
+/* ---------- patička podle jejich vzoru: fialový blok se zaoblením ---------- */
+footer{padding:clamp(60px,9vw,110px) 0 24px}
+footer .wrap{display:block}
+.pata-blok{background:var(--violet); color:#fff; border-radius:clamp(20px,2.4vw,28px);
+  padding:clamp(22px,4vw,58px) clamp(19px,4vw,58px) clamp(24px,3vw,40px)}
+.pata-hlava{display:flex; align-items:center; justify-content:space-between; gap:20px}
+.pata-hlava img{height:clamp(22px,2.4vw,30px); width:auto; filter:brightness(0) invert(1)}
+.pata-hlava p{margin:0; font-family:var(--font-display); font-weight:500; font-size:clamp(14px,2vw,23px); line-height:1}
+.pata-telo{display:grid; gap:clamp(34px,5vw,60px); margin-top:clamp(34px,5vw,56px)}
+@media (min-width:861px){ .pata-telo{grid-template-columns:1fr auto; align-items:start} }
+.pata-kontakt{list-style:none; margin:0; padding:0; display:grid; gap:14px; font-size:14px; line-height:1.5; color:rgba(255,255,255,.86)}
+.pata-kontakt a{color:#fff; text-decoration:underline; text-underline-offset:3px}
+.pata-menu ul{list-style:none; margin:0; padding:0; text-align:right; min-width:220px}
+.pata-menu li + li{border-top:1px solid rgba(255,255,255,.4)}
+.pata-menu a{display:block; padding:10px 0; color:#fff; text-decoration:none; font-size:13.5px; transition:opacity .2s}
+.pata-menu a:hover{opacity:.7}
+.pata-spodek{display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px 18px;
+  margin-top:clamp(30px,4vw,48px); font-size:12.8px; color:rgba(255,255,255,.72)}
 
 /* ---------- galerie – vlastní stránka ---------- */
 .page-head{padding:56px 0 26px}
