@@ -121,6 +121,8 @@ section{padding:clamp(40px,5.5vw,72px) 0}   /* menší mezery mezi sekcemi než 
 .video .play span{background:#fff}
 .video .play svg{color:var(--violet)}
 .logo{border-color:transparent; box-shadow:none}
+.logos.general .logo img[src*="euromedical"]{max-height:150px}   /* složené logo je vyšší než Terumo, ať je opticky stejně velké */
+.logo img[src*="Vamex"]{max-height:86px}                          /* samotný nápis, jinak by působil drobně */
 .director{border:0; box-shadow:none}
 
 /* kontakt: fialový blok jako ve Figmě, hadice přijíždí zleva a ruka ukazuje na tlačítko */
@@ -134,20 +136,6 @@ section{padding:clamp(40px,5.5vw,72px) 0}   /* menší mezery mezi sekcemi než 
 .contact .contact-grid{position:relative; z-index:1}
 .contact .card{background:rgba(255,255,255,.12); backdrop-filter:blur(6px)}
 
-/* 3D hadice s rukou (Milošův high-res render, zrcadlený: ruka vlevo ukazuje na obsah, hadice odchází vpravo ze stránky) */
-/* program: ruka míří na tlačítko s PDF programem, smyčka visí pod ním v dolním okraji sekce (jako u Miloše u karty s kávou) */
-.program{position:relative; overflow:hidden}
-.program > .wrap{position:relative; z-index:1}
-.hadice-program{position:absolute; z-index:0; pointer-events:none; left:33%; bottom:-2%; width:min(60vw,900px); height:auto}
-@media (min-width:861px){ .program{padding-bottom:210px} }
-@media (max-width:860px){ .hadice-program{display:none} }
-/* kontakt: render místo kreslené hadice, ruka u tlačítka, hadice za poloprůhlednou kartou ven vpravo */
-.hadice-kontakt{position:absolute; z-index:0; pointer-events:none; left:26%; bottom:3%; width:min(60%,820px); height:auto; transform-origin:8% 30%}
-@media (min-width:861px){ .contact{padding-bottom:calc(clamp(40px,5.5vw,72px) + 90px)} }   /* místo pro smyčku pod tlačítkem */
-.hadice-kontakt.kyv{animation:hadice-kyv .9s cubic-bezier(.4,.05,.3,1)}
-@keyframes hadice-kyv{0%{transform:none} 25%{transform:translateX(-14px) rotate(-2deg)} 50%{transform:none} 75%{transform:translateX(-14px) rotate(-2deg)} 100%{transform:none}}
-@media (max-width:860px){ .hadice-kontakt{display:none} }   /* na telefonu zůstává jen ruka pod tlačítkem */
-@media (prefers-reduced-motion:reduce){ .hadice-kontakt.kyv{animation:none} }
 footer{padding:40px 0 48px}
 footer .wrap{background:var(--violet); color:#fff; border-radius:var(--radius); padding:28px 32px}
 footer img{filter:brightness(0) invert(1); opacity:.9; height:26px}
@@ -220,4 +208,5 @@ footer img{height:22px; filter:grayscale(1); opacity:.7}
 .reveal.in{transform:none}
 
 
-@media (min-width:861px){ .ruka-cil .ruka{display:none} }
+/* ruka u tlačítka „I'm interested" – přijede a ťukne; katetr u ní není (Vojta 9. 9.: „ta ruka s katetrem takhle nefunguje") */
+@media (min-width:861px){ .contact{padding-bottom:calc(clamp(40px,5.5vw,72px) + 40px)} }

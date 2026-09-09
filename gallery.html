@@ -52,7 +52,7 @@
 (function(){
   var $=function(s){ return document.querySelector(s); };
   var vse=[], i=0;
-  fetch("content.json",{cache:"no-store"}).then(function(r){ return r.json(); }).then(function(C){ 
+  fetch("content.json",{cache:"no-store"}).then(function(r){ return r.json(); }).then(function(C){
     ["2025","2024"].forEach(function(y){
       var g=document.querySelector('.grid[data-year="'+y+'"]');
       C.gallery[y].forEach(function(p){

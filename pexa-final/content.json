@@ -134,12 +134,12 @@
     "logo": "img/logos/06_cardion.svg"
    },
    {
-    "name": "Vamex",
-    "logo": "img/logos/Vamex_logo green new.jpg"
-   },
-   {
     "name": "Boston Scientific",
     "logo": "img/logos/06_boston_scientfiic.svg"
+   },
+   {
+    "name": "Vamex",
+    "logo": "img/logos/Vamex_logo green new.jpg"
    },
    {
     "name": "Cordis",
