@@ -1,4 +1,7 @@
 #!/bin/zsh
+# POZOR: od 9. 9. 2026 je varianta pexa-final zároveň HLAVNÍ web v kořeni repa.
+# Tenhle skript plní jen pracovní kopii v pexa-final/. Když chceš změny z větve dostat
+# i na ostrý web, spusť ještě: ./pexa-final-do-korene.sh
 # Zkopíruje větev pexa-final (worktree ~/dev/czechchallenge-pexa-final) do složky pexa-final/ na main,
 # aby byla vidět na GitHub Pages: https://vojtanoff.github.io/czechchallenge/pexa-final/
 # Stejný princip jako pexa-sync.sh (viz ten pro komentáře) – navíc kopíruje fonts/ (Safiro, jen tahle
