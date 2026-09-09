@@ -246,6 +246,13 @@ footer .wrap{display:block}
 .pata-hlava img{height:clamp(30px,3.4vw,46px); width:auto}
 .pata-hlava p{margin:0; font-family:var(--font-display); font-weight:400; font-size:clamp(12px,1.9vw,23.4px); line-height:1}
 .pata-telo{margin-top:clamp(45px,4.4vw,56px); display:grid; gap:clamp(46px,6vw,80px)}
+/* na telefonu jako u nich: nejdřív odkazy a kontakty, velký nápis Czech Challenge až dole */
+@media (max-width:860px){
+  .pata-telo{display:flex; flex-direction:column; gap:0}
+  .pata-vpravo{order:1; gap:56px}
+  .pata-znak{order:2; margin-top:64px; font-size:76px}
+  .pata-menu ul{min-width:0}
+}
 @media (min-width:861px){ .pata-telo{grid-template-columns:minmax(0,1fr) auto; align-items:start} }
 /* velký nápis Czech Challenge vlevo dole, jako u nich */
 .pata-znak{margin:clamp(40px,7vw,93px) 0 0; font-family:var(--font-display); font-weight:500;
