@@ -46,7 +46,8 @@ h3{font-weight:500}
 /* ---------- navigace: plovoucí pilulka, jako na webu od Miloše a kodéra ----------
    Celý panel je jedna oblá pilulka v barvě podkladu, uvnitř logo, menu a tlačítko;
    pluje nad obsahem s odsazením od horní hrany (jejich rozměry: výška 67 px, boky 31 px). */
-.nav{background:transparent; border-bottom:0; padding-top:clamp(12px,2.2vw,26px); pointer-events:none}
+.nav{background:transparent; border-bottom:0; padding-top:clamp(12px,2.2vw,26px); pointer-events:none;
+  backdrop-filter:none; -webkit-backdrop-filter:none}   /* hlavní styl rozmazává celý pruh navigace; u nich má pilulka ostrý okraj a okolí zůstává čisté */
 .nav .wrap{height:67px; pointer-events:auto; background:var(--ground); border:0;
   border-radius:999px; padding-left:19px; padding-right:19px; gap:14px}
 @media (min-width:861px){ .nav .wrap{padding-left:31px; padding-right:31px} }   /* bez tlačítka vpravo sedí stejné odsazení z obou stran */
