@@ -200,22 +200,34 @@ body{overflow-x:hidden}
 @keyframes ruka-klik-m{0%{transform:rotate(40deg)} 40%{transform:rotate(40deg) translate(-14px,0)} 100%{transform:rotate(40deg)}}
 @media (prefers-reduced-motion:reduce){ .ruka-cil .ruka{transition:none; animation:none} }
 
-/* ---------- kontakt a patička v jednom fialovém bloku (jako u nich, ale s naším kontaktem) ---------- */
-.kontakt-cast{display:grid; gap:clamp(26px,4vw,44px)}
-@media (min-width:861px){ .kontakt-cast{grid-template-columns:minmax(0,1fr) minmax(320px,420px); align-items:start; gap:clamp(30px,5vw,64px)} }
-.kontakt-cast .eyebrow{background:#fff; color:var(--violet)}
-.kontakt-cast h2{color:#fff; font-weight:500; margin:0}
-.kontakt-cast p{color:rgba(255,255,255,.9); max-width:52ch}
-.kontakt-cast .card{background:rgba(255,255,255,.12); border-radius:18px; padding:clamp(18px,2.4vw,26px);
-  display:grid; gap:8px; color:#fff; font-size:14.5px; align-self:start}
-.kontakt-cast .card b{font-family:var(--font-display); font-weight:500; font-size:17px}
-.kontakt-cast .card a{color:#fff; text-decoration:underline; text-underline-offset:3px}
-.kontakt-cast .btn-lime{background:var(--lime); color:var(--lime-ink)}
-.kontakt-cast .btn-lime:hover{background:#fff; color:var(--violet)}
-.pata-cara{border:0; border-top:1px solid rgba(255,255,255,.3); margin:clamp(40px,6vw,72px) 0 clamp(28px,4vw,44px)}
+
+/* ---------- „I'm interested" nad patičkou – jejich sekce na podkladu, ne ve fialovém bloku ---------- */
+.zajem{background:var(--ground); padding:clamp(60px,8vw,100px) 0 clamp(30px,7vw,87px)}
+.zajem-grid{display:grid; gap:clamp(30px,5vw,44px)}
+@media (min-width:861px){ .zajem-grid{grid-template-columns:1fr 534px; align-items:start; gap:40px} }
+.zajem h2{margin:0; color:var(--violet); font-weight:500; letter-spacing:-.07em; line-height:.8;
+  font-size:clamp(42px,4.45vw,64px)}
+.zajem .zajem-lead{margin:clamp(24px,3vw,43px) 0 0; color:var(--violet); font-family:var(--font-display);
+  font-weight:500; letter-spacing:-.07em; line-height:.95; font-size:clamp(30px,3.4vw,46px); max-width:none}
+.zajem .eyebrow{margin-bottom:clamp(16px,2vw,26px)}
+.zajem .ruka-cil{margin:0; justify-self:start; position:relative}
+/* ruka ukazuje na tlačítko zleva (vpravo u okraje stránky by se nevešla) */
+.zajem .ruka-cil .ruka{left:auto; right:calc(100% + 14px); top:50%;
+  width:clamp(120px,12vw,180px); transform:translate(-60px,-30%) scaleX(-1); opacity:0}
+.zajem .ruka-cil .ruka.tu{transform:translate(0,-30%) scaleX(-1); opacity:1}
+.zajem .ruka-cil .ruka.klik{animation:zajem-klik .55s cubic-bezier(.3,.9,.3,1.2)}
+.zajem .ruka-cil .ruka.klik2{animation:zajem-klik2 1.1s cubic-bezier(.4,.05,.3,1)}
+@keyframes zajem-klik{0%{transform:translate(0,-30%) scaleX(-1)} 40%{transform:translate(16px,-30%) rotate(3deg) scaleX(-1)} 100%{transform:translate(0,-30%) scaleX(-1)}}
+@keyframes zajem-klik2{0%{transform:translate(0,-30%) scaleX(-1)} 25%{transform:translate(16px,-30%) rotate(3deg) scaleX(-1)} 50%{transform:translate(0,-30%) scaleX(-1)} 75%{transform:translate(16px,-30%) rotate(3deg) scaleX(-1)} 100%{transform:translate(0,-30%) scaleX(-1)}}
+@media (max-width:860px){ .zajem .ruka-cil .ruka{right:auto; left:calc(100% + 10px); transform:translate(60px,-30%); width:110px}
+  .zajem .ruka-cil .ruka.tu{transform:translate(0,-30%)} }
+@media (min-width:861px){ .zajem .ruka-cil{justify-self:end; margin-top:clamp(20px,5vw,64px)} }
+.zajem .btn-lime{background:var(--violet); color:#fff}
+.zajem .btn-lime:hover{background:var(--violet-deep)}
+.zajem .ruka-cil .ruka{filter:none; opacity:1}
 
 /* ---------- patička 1 : 1 podle jejich webu (rozměry z jejich CSS) ---------- */
-footer{padding:clamp(50px,7vw,90px) 0 24px}
+footer{padding:0 0 24px}
 footer .wrap{display:block}
 .pata-blok{background:var(--violet); color:#fff; border-radius:clamp(20px,2.4vw,28px);
   padding:clamp(18px,3vw,58px) clamp(19px,4vw,58px) clamp(24px,5vw,89px)}
