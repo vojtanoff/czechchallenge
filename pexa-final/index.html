@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="fonts/safiro.css">
 <link rel="stylesheet" href="style.css?v=2026-09-08a">
-<link rel="stylesheet" href="style-pexa.css?v=72">
+<link rel="stylesheet" href="style-pexa.css?v=74">
 </head>
 <body>
 
@@ -172,7 +172,7 @@
       <p class="eyebrow">Interest &amp; contact</p>
       <h2>Not invited yet? Tell us you're interested.</h2>
       <p class="zajem-lead">This year's meeting is by invitation. Tell us you're interested and we'll keep you in the loop for the coming editions.</p>
-    <p class="ruka-cil reveal"><a class="btn btn-lime" id="registerBtn" href="#">I'm interested – send an e-mail</a><img class="ruka" id="rukaKontakt" src="../img/brand/hadice-ruka-hd.webp" alt="" aria-hidden="true"></p>
+    <p class="ruka-cil reveal"><a class="btn btn-lime" id="registerBtn" href="#">I'm interested – send an e-mail</a><span class="katetr-box" aria-hidden="true"><img class="katetr" src="../img/brand/katetr-sam.webp" alt=""><img class="ruka" id="rukaKontakt" src="../img/brand/ruka-sama.webp" alt=""></span></p>
     </div>
   </div>
 </section>
@@ -379,11 +379,13 @@
     })();
     // 3D ruka u tlačítka v kontaktu (telefon, bez hadice): poprvé přijede a dvakrát ťukne, při dalším naskrolování a najetí ťukne jednou
     (function(){ var r=document.getElementById("rukaKontakt"), b=document.getElementById("registerBtn"); if(!r||!b) return;
+      // katetr přijede jako celek (.tu na obalu), ťuká jen ručička (.klik na obrázku ruky)
+      var box=r.closest(".katetr-box")||r;
       function klik(tr){ r.classList.remove("klik"); r.classList.remove("klik2"); void r.offsetWidth; r.classList.add(tr||"klik"); }
-      if(matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)){ r.classList.add("tu"); }
+      if(matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)){ box.classList.add("tu"); }
       else { var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return;
-          if(!r.classList.contains("tu")){ r.classList.add("tu"); setTimeout(function(){ klik("klik2"); },900); } else { setTimeout(klik,300); } }); },{threshold:.6}); io.observe(b); }
-      b.addEventListener("mouseenter",function(){ if(r.classList.contains("tu")) klik(); });
+          if(!box.classList.contains("tu")){ box.classList.add("tu"); setTimeout(function(){ klik("klik2"); },900); } else { setTimeout(klik,300); } }); },{threshold:.6}); io.observe(b); }
+      b.addEventListener("mouseenter",function(){ if(box.classList.contains("tu")) klik(); });
     })();
     // aktivní pilulka v navigaci podle sekce v záběru
     (function(){
