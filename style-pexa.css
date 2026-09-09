@@ -33,28 +33,28 @@
 /* ---------- typografie: lehký řez, fialová ---------- */
 h2{font-weight:500; color:var(--violet); letter-spacing:-.04em; font-size:clamp(34px,4.6vw,58px)}
 h3{font-weight:500}
-.eyebrow{display:inline-block; background:var(--violet); color:#fff; font-size:11.5px; letter-spacing:.1em; padding:5px 12px; border-radius:999px; margin-bottom:16px}
+.eyebrow{display:inline-block; background:var(--violet); color:#fff; font-family:var(--font-display); font-weight:500; font-size:11.5px; letter-spacing:.1em; padding:5px 12px; border-radius:999px; margin-bottom:16px}
 .sec-head p.lead{color:var(--ink-2)}
 .sec-head .eyebrow{justify-self:start}   /* .sec-head je grid – pilulka se jinak roztáhne přes celou šířku (bylo i na :8791) */
-.btn{font-weight:600}
+.btn{font-family:var(--font-display); font-weight:500; letter-spacing:-.01em}
 .btn-lime{background:var(--violet); color:#fff}
 .btn-lime:hover{background:var(--violet-deep)}
 .btn-ghost{color:var(--ink); border-color:var(--ink)}
 .btn-ghost:hover{background:var(--ink); color:#fff}
-.facts li{background:transparent; border:1.5px solid var(--violet); color:var(--violet)}   /* štítky = obrysové pilulky jako ve Figmě (Czech Republic, CTO, Complex PCI) */
+.facts li{background:#fff; border:1px solid var(--violet); color:var(--violet); font-family:var(--font-display); font-weight:400; font-size:13px; letter-spacing:-.01em}   /* štítky = obrysové pilulky jako ve Figmě (Czech Republic, CTO, Complex PCI) */
 
 /* ---------- navigace: plovoucí pilulka, jako na webu od Miloše a kodéra ----------
    Celý panel je jedna oblá pilulka v barvě podkladu, uvnitř logo, menu a tlačítko;
    pluje nad obsahem s odsazením od horní hrany (jejich rozměry: výška 67 px, boky 31 px). */
 .nav{background:transparent; border-bottom:0; padding-top:clamp(12px,2.2vw,26px); pointer-events:none}
-.nav .wrap{height:auto; pointer-events:auto; background:var(--ground); border:1px solid var(--line);
-  border-radius:999px; height:67px; padding-left:19px; padding-right:19px; gap:14px;
-  box-shadow:0 10px 30px rgba(34,29,74,.07); transition:box-shadow .3s}
-@media (min-width:861px){ .nav .wrap{padding-left:31px; padding-right:12px} }
-.nav.plyne .wrap{box-shadow:0 14px 40px rgba(34,29,74,.13)}
+.nav .wrap{height:67px; pointer-events:auto; background:var(--ground); border:0;
+  border-radius:999px; padding-left:19px; padding-right:19px; gap:14px}
+@media (min-width:861px){ .nav .wrap{padding-left:31px; padding-right:31px} }   /* bez tlačítka vpravo sedí stejné odsazení z obou stran */
 .menu{background:transparent; border-radius:999px; padding:0; gap:2px; box-shadow:none}
-.menu a{display:inline-flex; align-items:center; height:47px; padding:0 18px; border-radius:999px; font-size:15px; color:var(--ink-2); transition:background .2s, color .2s}
+.menu a{display:inline-flex; align-items:center; height:47px; padding:0 18px; border-radius:999px;
+  font-family:var(--font-display); font-weight:400; font-size:15px; letter-spacing:-.01em; color:var(--violet); transition:background .2s, color .2s}
 .menu a:hover{background:var(--violet-soft); color:var(--violet)}
+.nav .brand img{height:36px; width:auto}   /* jejich logo je jednořádkové, naše má pod tím CZECH CHALLENGE – při 28 px by se to slilo */
 .menu a.on{background:var(--violet); color:#fff}
 .nav-cta .btn{background:transparent; color:var(--violet); border-color:var(--violet); padding:11px 18px}
 .nav-cta .btn:hover{background:var(--violet); color:#fff}
@@ -71,7 +71,7 @@ h3{font-weight:500}
 .hero-pexa h1 .rok{display:block; font-weight:500}
 .hero-pexa .meta{font-family:var(--font-display); font-weight:500; font-size:clamp(20px,2.4vw,30px); color:var(--violet); margin-top:22px}
 .hero-pexa .meta small{color:var(--ink-2); font-size:clamp(15px,1.4vw,18px); opacity:1}
-.hero-pexa .vol{background:var(--lime); color:var(--lime-ink); margin-top:14px; font-weight:700; font-size:19px; padding:10px 20px}
+.hero-pexa .vol{background:var(--lime); color:var(--lime-ink); margin-top:14px; font-family:var(--font-display); font-weight:500; font-size:19px; letter-spacing:-.02em; padding:10px 20px}
 .hero-pexa .cta .btn{padding:11px 18px; font-size:15px}
 
 /* hadice: jedna křivka, pět vrstev tahu = plastický 3D dojem bez rastru; kreslí se po načtení */
