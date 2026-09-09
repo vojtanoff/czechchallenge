@@ -175,10 +175,15 @@ body{overflow-x:hidden}
    → škáluje s písmem, které dopočítává fit(). */
 .hero-pexa{overflow:visible}
 .hero-pexa h1{position:relative}
-.hadice-hero{position:absolute; z-index:2; pointer-events:none; width:6.3em; height:auto; right:-.1em; top:.2em;
-  transform:rotate(-45deg); transform-origin:100% 8%}
-.hero-pexa .hero-text .vol{margin-top:clamp(150px,17vw,265px)}   /* místo pro smyčku pod nadpisem */
-@media (max-width:860px){ .hadice-hero{width:6.6em} .hero-pexa .hero-text .vol{margin-top:52vw} }
+.hero-pexa h1 > span{position:relative; z-index:3}   /* písmo nadpisu leží PŘES ruku (jako u Miloše) */
+/* PC: hadice jde od ruky spíš doleva než dolů (-30°), aby smyčka zůstala u nadpisu a konec vyjel vlevo ze stránky – velká mezera pod nadpisem
+   by jinak přes fit() zúžila sloupec a zmenšila písmo i ruku. Ruka je nad fotkou (z-index), ale pod písmem nadpisu. */
+.hadice-hero{position:absolute; z-index:2; pointer-events:none; width:min(44vw,640px); max-width:none; height:auto; right:-.15em; top:.75em;   /* max-width:none – globální img{max-width:100%} by ji jinak srazilo na šířku nadpisu */
+  transform:rotate(-40deg); transform-origin:100% 8%}   /* velikost v px, ne v em: mezera pod nadpisem přes fit() zmenšuje písmo, ruka má zůstat velká */
+.hero-pexa .hero-text .vol{margin-top:clamp(170px,19vw,280px)}   /* místo pro smyčku pod nadpisem */
+.hero-pexa .hero-grid .hero-card{z-index:1}
+/* telefon: jako u Miloše – prst nahoru (-45°), smyčka pod nadpisem, datum až pod ní */
+@media (max-width:860px){ .hadice-hero{width:128vw; right:-.6em; top:.8em; transform:rotate(-45deg)} .hero-pexa .hero-text .vol{margin-top:78vw} }
 
 /* ---------- 3D levý palec (render z ChatGPT) v mezeře za „Czech" a nad „Challenge" – stejné jako na hlavním webu ---------- */
 .hero-pexa h1 .r1{position:relative; display:inline-block}
