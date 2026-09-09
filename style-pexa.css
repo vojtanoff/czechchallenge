@@ -48,14 +48,14 @@ h3{font-weight:500}
    pluje nad obsahem s odsazením od horní hrany (jejich rozměry: výška 67 px, boky 31 px). */
 .nav{background:transparent; border-bottom:0; padding-top:clamp(12px,2.2vw,26px); pointer-events:none;
   backdrop-filter:none; -webkit-backdrop-filter:none}   /* hlavní styl rozmazává celý pruh navigace; u nich má pilulka ostrý okraj a okolí zůstává čisté */
-.nav .wrap{height:67px; pointer-events:auto; background:var(--ground); border:0;
+.nav .wrap{height:78px; pointer-events:auto; background:var(--ground); border:0;
   border-radius:999px; padding-left:19px; padding-right:19px; gap:14px}
 @media (min-width:861px){ .nav .wrap{padding-left:31px; padding-right:31px} }   /* bez tlačítka vpravo sedí stejné odsazení z obou stran */
-.menu{background:transparent; border-radius:999px; padding:0; gap:2px; box-shadow:none}
-.menu a{display:inline-flex; align-items:center; height:47px; padding:0 18px; border-radius:999px;
-  font-family:var(--font-display); font-weight:400; font-size:15px; letter-spacing:-.01em; color:var(--violet); transition:background .2s, color .2s}
+.menu{background:transparent; border-radius:999px; padding:0; gap:4px; box-shadow:none; margin-left:auto}   /* jako u nich: logo vlevo, menu na pravé straně panelu */
+.menu a{display:inline-flex; align-items:center; height:47px; padding:0 22px; border-radius:999px;
+  font-family:var(--font-display); font-weight:400; font-size:17.65px; letter-spacing:-.01em; color:var(--violet); transition:background .2s, color .2s}
 .menu a:hover{background:var(--violet-soft); color:var(--violet)}
-.nav .brand img{height:36px; width:auto}   /* jejich logo je jednořádkové, naše má pod tím CZECH CHALLENGE – při 28 px by se to slilo */
+.nav .brand img{height:44px; width:auto}   /* jejich logo je jednořádkové, naše má pod tím CZECH CHALLENGE – při 28 px by se to slilo */
 .menu a.on{background:var(--violet); color:#fff}
 .nav-cta .btn{background:transparent; color:var(--violet); border-color:var(--violet); padding:11px 18px}
 .nav-cta .btn:hover{background:var(--violet); color:#fff}
