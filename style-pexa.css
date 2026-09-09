@@ -175,12 +175,6 @@ body{overflow-x:hidden}
 /* ---------- 3D levý palec (render z ChatGPT) v mezeře za „Czech" a nad „Challenge" – stejné jako na hlavním webu ---------- */
 .hero-pexa h1 .r1{position:relative; display:inline-block}
 .palec-box{position:absolute; left:calc(100% + .12em); bottom:-.06em; height:1.42em; aspect-ratio:808/900; pointer-events:none}
-/* Vinutý katetr napojený zespodu na palec: volný konec hadice je v obrázku na 29,9 % šířky
-   a 25,4 % výšky se sklonem -9°; zápěstí palce je dole uprostřed (54 % / 92 %). Katetr leží
-   POD palcem, takže konec hadice mizí v dlani. Naklonění dolů doprava, ať nezasahuje do nadpisu. */
-.katetr-palec{position:absolute; z-index:-1; left:-54%; top:96%; width:235%; max-width:none; height:auto;
-  transform:rotate(34deg); transform-origin:29.9% 25.4%; opacity:0; transition:opacity .5s .9s}
-.palec-box.on .katetr-palec{opacity:1}
 .palec-box .palec-v{display:block; width:100%; height:100%; transform:scale(0) rotate(-10deg); transform-origin:38% 90%; transition:transform .3s ease-in}
 .palec-box.on .palec-v{transform:scale(1) rotate(0deg); transition:transform .75s cubic-bezier(.2,1.35,.3,1) .5s; animation:klep 1.2s 1.5s cubic-bezier(.4,.05,.3,1) forwards}
 @keyframes klep{0%{transform:scale(1) rotate(0deg)} 20%{transform:scale(1) rotate(22deg)} 42%{transform:scale(1) rotate(0deg)} 62%{transform:scale(1) rotate(22deg)} 84%{transform:scale(1) rotate(-3deg)} 100%{transform:scale(1) rotate(0deg)}}
