@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="fonts/safiro.css">
 <link rel="stylesheet" href="style.css?v=2026-09-08a">
-<link rel="stylesheet" href="style-pexa.css?v=74">
+<link rel="stylesheet" href="style-pexa.css?v=76">
 </head>
 <body>
 
@@ -380,7 +380,7 @@
     // 3D ruka u tlačítka v kontaktu (telefon, bez hadice): poprvé přijede a dvakrát ťukne, při dalším naskrolování a najetí ťukne jednou
     (function(){ var r=document.getElementById("rukaKontakt"), b=document.getElementById("registerBtn"); if(!r||!b) return;
       // katetr přijede jako celek (.tu na obalu), ťuká jen ručička (.klik na obrázku ruky)
-      var box=r.closest(".katetr-box")||r;
+      var box=r.closest(".katetr-box")||r;   // katetr-box už tu není, .tu jde přímo na ruku
       function klik(tr){ r.classList.remove("klik"); r.classList.remove("klik2"); void r.offsetWidth; r.classList.add(tr||"klik"); }
       if(matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)){ box.classList.add("tu"); }
       else { var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return;
