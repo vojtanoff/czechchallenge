@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gallery – CTO&amp;CHIP Czech Challenge 2024 &amp; 2025</title>
+<link rel="icon" href="../img/brand/favicon.ico" sizes="32x32">
+<link rel="icon" href="../img/brand/favicon-16.png" sizes="16x16" type="image/png">
+<link rel="icon" href="../img/brand/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="../img/brand/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="../img/brand/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts/safiro.css">
+<link rel="stylesheet" href="style.css?v=2026-09-08a">
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="../img/brand/CTO_CHIP_LOGO.svg" alt="CTO&CHIP Czech Challenge"></a>
+    <ul class="menu">
+      <li><a href="index.html#about">About</a></li><li><a href="index.html#program">Program</a></li>
+      <li><a href="index.html#faculty">Faculty</a></li><li><a href="gallery.html">Gallery</a></li>
+      <li><a href="index.html#partners">Partners</a></li><li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta"><a class="btn btn-primary" href="index.html#contact">I'm interested</a></div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap page-head">
+    <p class="eyebrow">Previous editions</p>
+    <h1>Gallery</h1>
+    <p class="lead" style="color:var(--ink-2)">Photos by Lukáš Kaboň. Click any photo to open it.</p>
+  </div>
+  <div class="wrap year-block" id="y2025"><h2 id="2025">Czech Challenge 2025 · 7 November 2025</h2><div class="grid" data-year="2025"></div></div>
+  <div class="wrap year-block" id="y2024"><h2 id="2024">Czech Challenge 2024 · 15 November 2024</h2><div class="grid" data-year="2024"></div></div>
+</main>
+
+<div class="lightbox" id="lb" data-open="false" role="dialog" aria-modal="true" aria-label="Photo">
+  <button class="x" id="lbX" aria-label="Close">×</button>
+  <button class="prev" id="lbPrev" aria-label="Previous">‹</button>
+  <img id="lbImg" alt="">
+  <button class="next" id="lbNext" aria-label="Next">›</button>
+  <div class="cnt" id="lbCnt"></div>
+</div>
+
+<footer><div class="wrap"><span>© 2026 CTO&amp;CHIP Czech Challenge · Pardubice</span><a href="index.html" style="text-decoration:none">← Back to the meeting</a></div></footer>
+
+<script>
+(function(){
+  var $=function(s){ return document.querySelector(s); };
+  var vse=[], i=0;
+  fetch("content.json",{cache:"no-store"}).then(function(r){ return r.json(); }).then(function(C){ C=JSON.parse(JSON.stringify(C).replace(/"img\//g,'"../img/'));
+    ["2025","2024"].forEach(function(y){
+      var g=document.querySelector('.grid[data-year="'+y+'"]');
+      C.gallery[y].forEach(function(p){
+        var n=vse.length; vse.push(p.src);
+        var a=document.createElement("a"); a.href=p.src; a.dataset.i=n;
+        a.innerHTML='<img src="'+p.thumb+'" alt="Czech Challenge '+y+'" loading="lazy">';
+        a.addEventListener("click",function(e){ e.preventDefault(); open(n); });
+        g.appendChild(a);
+      });
+    });
+  });
+  var lb=$("#lb"), im=$("#lbImg"), cnt=$("#lbCnt");
+  function show(){ im.src=vse[i]; cnt.textContent=(i+1)+" / "+vse.length; }
+  function open(n){ i=n; show(); lb.dataset.open="true"; document.body.style.overflow="hidden"; }
+  function close(){ lb.dataset.open="false"; document.body.style.overflow=""; }
+  $("#lbX").addEventListener("click",close);
+  $("#lbPrev").addEventListener("click",function(){ i=(i-1+vse.length)%vse.length; show(); });
+  $("#lbNext").addEventListener("click",function(){ i=(i+1)%vse.length; show(); });
+  lb.addEventListener("click",function(e){ if(e.target===lb) close(); });
+  document.addEventListener("keydown",function(e){
+    if(lb.dataset.open!=="true") return;
+    if(e.key==="Escape") close(); if(e.key==="ArrowLeft") $("#lbPrev").click(); if(e.key==="ArrowRight") $("#lbNext").click();
+  });
+})();
+</script>
+</body>
+</html>
