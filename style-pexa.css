@@ -55,7 +55,13 @@ h3{font-weight:500}
 .menu a{display:inline-flex; align-items:center; height:47px; padding:0 22px; border-radius:999px;
   font-family:var(--font-display); font-weight:400; font-size:17.65px; letter-spacing:-.01em; color:var(--violet); transition:background .2s, color .2s}
 .menu a:hover{background:var(--violet-soft); color:var(--violet)}
-.nav .brand img{height:44px; width:auto}   /* jejich logo je jednořádkové, naše má pod tím CZECH CHALLENGE – při 28 px by se to slilo */
+.nav .brand img{height:44px; width:auto}
+/* ikona menu na telefonu: jen dvě tenké čárky přes celou šířku, jako u nich (54×37 px, 1px, rozestup 12 px) */
+.burger{width:54px; height:37px; position:relative; color:var(--violet)}
+.burger span{position:absolute; left:0; top:50%; width:100%; height:1px; margin:0; background:currentColor}
+.burger span:nth-child(1){transform:translateY(calc(-50% - 6px))}
+.burger span:nth-child(2){display:none}
+.burger span:nth-child(3){transform:translateY(calc(-50% + 6px))}   /* jejich logo je jednořádkové, naše má pod tím CZECH CHALLENGE – při 28 px by se to slilo */
 .menu a.on{background:var(--violet); color:#fff}
 .nav-cta .btn{background:transparent; color:var(--violet); border-color:var(--violet); padding:11px 18px}
 .nav-cta .btn:hover{background:var(--violet); color:#fff}
