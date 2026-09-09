@@ -175,6 +175,12 @@ body{overflow-x:hidden}
 /* ---------- 3D levý palec (render z ChatGPT) v mezeře za „Czech" a nad „Challenge" – stejné jako na hlavním webu ---------- */
 .hero-pexa h1 .r1{position:relative; display:inline-block}
 .palec-box{position:absolute; left:calc(100% + .12em); bottom:-.06em; height:1.42em; aspect-ratio:808/900; pointer-events:none}
+/* Vinutý katetr napojený zespodu na palec: volný konec hadice je v obrázku na 29,9 % šířky
+   a 25,4 % výšky se sklonem -9°; zápěstí palce je dole uprostřed (54 % / 92 %). Katetr leží
+   POD palcem, takže konec hadice mizí v dlani. Naklonění dolů doprava, ať nezasahuje do nadpisu. */
+.katetr-palec{position:absolute; z-index:-1; left:-54%; top:96%; width:235%; max-width:none; height:auto;
+  transform:rotate(34deg); transform-origin:29.9% 25.4%; opacity:0; transition:opacity .5s .9s}
+.palec-box.on .katetr-palec{opacity:1}
 .palec-box .palec-v{display:block; width:100%; height:100%; transform:scale(0) rotate(-10deg); transform-origin:38% 90%; transition:transform .3s ease-in}
 .palec-box.on .palec-v{transform:scale(1) rotate(0deg); transition:transform .75s cubic-bezier(.2,1.35,.3,1) .5s; animation:klep 1.2s 1.5s cubic-bezier(.4,.05,.3,1) forwards}
 @keyframes klep{0%{transform:scale(1) rotate(0deg)} 20%{transform:scale(1) rotate(22deg)} 42%{transform:scale(1) rotate(0deg)} 62%{transform:scale(1) rotate(22deg)} 84%{transform:scale(1) rotate(-3deg)} 100%{transform:scale(1) rotate(0deg)}}
@@ -225,15 +231,11 @@ body{overflow-x:hidden}
 .zajem .katetr-box.tu{transform:translate(0,-16%) rotate(-17deg); opacity:1}
 .zajem .katetr-box img{position:absolute; top:0; left:0; height:100%; width:auto; max-width:none;
   filter:none; opacity:1; transform:none}
-/* palec nahoru nasazený na volný konec katetru: konec je na 29,9 % šířky a 25,4 % výšky obrázku
-   katetru, hadice tam má sklon -9°; palec má zápěstí dole uprostřed (54 % / 92 %), proto ten posun */
-.zajem .katetr-box .ruka{left:16.5%; top:-46%; height:78%; width:auto; z-index:0;
-  transform:rotate(-9deg); transform-origin:54% 92%}
-.zajem .katetr-box .katetr{z-index:1}   /* hadice kreslí přes zápěstí, takže konec mizí v dlani */
+.zajem .katetr-box .ruka{transform-origin:97.71% 23.36%}
 .zajem .katetr-box .ruka.klik{animation:zajem-klik .6s cubic-bezier(.3,.9,.3,1.2)}
 .zajem .katetr-box .ruka.klik2{animation:zajem-klik2 1.2s cubic-bezier(.4,.05,.3,1)}
-@keyframes zajem-klik{0%{transform:rotate(-9deg)} 45%{transform:rotate(-15deg)} 100%{transform:rotate(-9deg)}}
-@keyframes zajem-klik2{0%{transform:rotate(-9deg)} 25%{transform:rotate(-15deg)} 50%{transform:rotate(-9deg)} 75%{transform:rotate(-15deg)} 100%{transform:rotate(-9deg)}}
+@keyframes zajem-klik{0%{transform:rotate(0)} 45%{transform:rotate(-4deg)} 100%{transform:rotate(0)}}
+@keyframes zajem-klik2{0%{transform:rotate(0)} 25%{transform:rotate(-4deg)} 50%{transform:rotate(0)} 75%{transform:rotate(-4deg)} 100%{transform:rotate(0)}}
 @media (prefers-reduced-motion:reduce){ .zajem .katetr-box .ruka{animation:none} }
 @media (max-width:860px){ .zajem .katetr-box{display:none} }
 
