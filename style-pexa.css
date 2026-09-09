@@ -167,6 +167,12 @@ footer img{filter:brightness(0) invert(1); opacity:.9; height:26px}
 
 body{overflow-x:hidden}
 
+/* ---------- pexa-final-2: hero jako u Miloše – nad názvem kongresu 3D ruka na hadici, prst míří na „Czech“; palec pryč ---------- */
+/* pás nad hero (padding gridu, ne textu – jinak by skript fit() zúžil sloupec a nadpis); smyčka vodorovně nad názvem jako u Miloše, ruka vpravo míří na fotku */
+.hero-pexa .hero-grid{padding-top:calc(clamp(16px,2.5vw,32px) + 220px)}
+.hadice-hero{position:absolute; z-index:2; pointer-events:none; left:-13%; top:10px; width:50%; height:auto; transform:rotate(7deg); transform-origin:88% 40%}
+@media (max-width:860px){ .hero-pexa .hero-grid{padding-top:48vw} .hadice-hero{left:-30vw; top:2vw; width:118vw; transform:rotate(6deg)} }
+
 /* ---------- 3D levý palec (render z ChatGPT) v mezeře za „Czech" a nad „Challenge" – stejné jako na hlavním webu ---------- */
 .hero-pexa h1 .r1{position:relative; display:inline-block}
 .palec-box{position:absolute; left:calc(100% + .12em); bottom:-.06em; height:1.42em; aspect-ratio:808/900; pointer-events:none}
