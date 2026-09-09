@@ -134,7 +134,7 @@ section{padding:clamp(40px,5.5vw,72px) 0}   /* menší mezery mezi sekcemi než 
 .director{border:0; box-shadow:none}
 
 /* kontakt: fialový blok jako ve Figmě, hadice přijíždí zleva a ruka ukazuje na tlačítko */
-.contact{position:relative; overflow:hidden; background:var(--violet); border-radius:var(--radius); margin:0 auto; width:min(1180px,calc(100% - 40px))}
+.contact{position:relative}
 .contact .eyebrow{background:#fff; color:var(--violet)}
 .contact h2{color:#fff; font-weight:500}
 .contact .btn-lime{background:var(--lime); color:#111}
@@ -146,7 +146,8 @@ section{padding:clamp(40px,5.5vw,72px) 0}   /* menší mezery mezi sekcemi než 
 
 
 footer .wrap{background:var(--violet); color:#fff; border-radius:var(--radius); padding:28px 32px}
-footer img{filter:brightness(0) invert(1); opacity:.9; height:26px}
+.pata-hlava img{filter:brightness(0) invert(1); opacity:.95}   /* jen logo; 3D ruka v kontaktu si musí nechat vlastní barvy */
+footer .ruka-cil img{filter:none; opacity:1}
 
 @media (max-width:860px){
   .hero-pexa .hero-grid{grid-template-columns:1fr; min-height:0; gap:14px} .hero-pexa .hero-grid .hero-card{aspect-ratio:4/3; max-width:none}
@@ -193,8 +194,22 @@ body{overflow-x:hidden}
 @keyframes ruka-klik-m{0%{transform:rotate(40deg)} 40%{transform:rotate(40deg) translate(-14px,0)} 100%{transform:rotate(40deg)}}
 @media (prefers-reduced-motion:reduce){ .ruka-cil .ruka{transition:none; animation:none} }
 
+/* ---------- kontakt a patička v jednom fialovém bloku (jako u nich, ale s naším kontaktem) ---------- */
+.kontakt-cast{display:grid; gap:clamp(26px,4vw,44px)}
+@media (min-width:861px){ .kontakt-cast{grid-template-columns:minmax(0,1fr) minmax(320px,420px); align-items:start; gap:clamp(30px,5vw,64px)} }
+.kontakt-cast .eyebrow{background:#fff; color:var(--violet)}
+.kontakt-cast h2{color:#fff; font-weight:500; margin:0}
+.kontakt-cast p{color:rgba(255,255,255,.9); max-width:52ch}
+.kontakt-cast .card{background:rgba(255,255,255,.12); border-radius:18px; padding:clamp(18px,2.4vw,26px);
+  display:grid; gap:8px; color:#fff; font-size:14.5px; align-self:start}
+.kontakt-cast .card b{font-family:var(--font-display); font-weight:500; font-size:17px}
+.kontakt-cast .card a{color:#fff; text-decoration:underline; text-underline-offset:3px}
+.kontakt-cast .btn-lime{background:var(--lime); color:var(--lime-ink)}
+.kontakt-cast .btn-lime:hover{background:#fff; color:var(--violet)}
+.pata-cara{border:0; border-top:1px solid rgba(255,255,255,.3); margin:clamp(40px,6vw,72px) 0 clamp(28px,4vw,44px)}
+
 /* ---------- patička podle jejich vzoru: fialový blok se zaoblením ---------- */
-footer{padding:clamp(60px,9vw,110px) 0 24px}
+footer{padding:clamp(50px,7vw,90px) 0 24px}
 footer .wrap{display:block}
 .pata-blok{background:var(--violet); color:#fff; border-radius:clamp(20px,2.4vw,28px);
   padding:clamp(22px,4vw,58px) clamp(19px,4vw,58px) clamp(24px,3vw,40px)}
