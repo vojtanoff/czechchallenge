@@ -49,7 +49,9 @@ h3{font-weight:500}
 .nav{background:transparent; border-bottom:0; padding-top:clamp(12px,2.2vw,26px); pointer-events:none;
   backdrop-filter:none; -webkit-backdrop-filter:none}   /* hlavní styl rozmazává celý pruh navigace; u nich má pilulka ostrý okraj a okolí zůstává čisté */
 .nav .wrap{height:78px; pointer-events:auto; background:var(--ground); border:0;
-  border-radius:999px; padding-left:19px; padding-right:19px; gap:14px}
+  border-radius:20px; padding-left:19px; padding-right:19px; gap:14px}
+/* u nich: rounded-[20px] a teprve od jejich lg (1024 px) rounded-full */
+@media (min-width:1024px){ .nav .wrap{border-radius:999px} }
 @media (min-width:861px){ .nav .wrap{padding-left:31px; padding-right:31px} }   /* bez tlačítka vpravo sedí stejné odsazení z obou stran */
 .menu{background:transparent; border-radius:999px; padding:0; gap:4px; box-shadow:none; margin-left:auto}   /* jako u nich: logo vlevo, menu na pravé straně panelu */
 .menu a{display:inline-flex; align-items:center; height:47px; padding:0 22px; border-radius:999px;
@@ -284,11 +286,11 @@ footer .wrap{display:block}
   background:url(img/icons/sipka-ven.svg) center/contain no-repeat; vertical-align:baseline}
 .pata-kontakt a:hover{opacity:.7}
 /* poslední řádek je u nich POD fialovým blokem, fialovým písmem na podkladu */
-.pata-spodek{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 18px;
+.pata-spodek{display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-end; gap:8px 18px;
   margin-top:clamp(15px,1.8vw,22px); padding:0 clamp(4px,2.4vw,28px) clamp(18px,2vw,24px);
   font-size:clamp(12px,1.4vw,17px); color:var(--violet)}
 @media (max-width:860px){
-  .pata-spodek{flex-direction:column; align-items:flex-start; gap:4px; font-size:12px}
+  .pata-spodek{font-size:12px}
 }
 
 /* ---------- galerie – vlastní stránka ---------- */
