@@ -98,7 +98,12 @@
     nadpisy.forEach(radky);
     nadpisy.forEach(function(h){ pozorovatel.observe(h); });
   }
-  if(document.fonts && document.fonts.ready) document.fonts.ready.then(spust); else spust();
+  // Počkáme na font, ale ne donekonečna – dokud se nadpis nerozseká, je neviditelný,
+  // a na stránce s padesáti fotkami umí fonts.ready dojet pozdě.
+  var spusteno=false;
+  function spustJednou(){ if(spusteno) return; spusteno=true; spust(); }
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(spustJednou);
+  setTimeout(spustJednou, 1200);
 
   // při změně šířky se text zalomí jinak – přepočítat, doběhnuté nadpisy nechat doběhnuté
   var t;

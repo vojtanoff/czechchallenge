@@ -125,7 +125,9 @@
       C.gallery[y].forEach(function(p){
         var n=vse.length; vse.push(p.src);
         var a=document.createElement("a"); a.href=p.src; a.dataset.i=n;
-        a.innerHTML='<img src="'+p.thumb+'" alt="Czech Challenge '+y+'" loading="lazy">';
+        // třída "on" je povinná: style.css drží .grid img na opacity:0 a rozsvítí
+        // až .grid img.on (hlavní stránka to dělá taky). Bez ní byla galerie prázdná.
+        a.innerHTML='<img class="on" src="'+p.thumb+'" alt="Czech Challenge '+y+'" loading="'+(n<8?"eager":"lazy")+'">';
         a.addEventListener("click",function(e){ e.preventDefault(); otevri(n); });
         g.appendChild(a);
       });
