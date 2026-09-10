@@ -153,7 +153,9 @@ section{padding:clamp(40px,5.5vw,72px) 0}   /* menší mezery mezi sekcemi než 
 .contact .card{background:rgba(255,255,255,.12); backdrop-filter:blur(6px)}
 
 
-footer .wrap{background:var(--violet); color:#fff; border-radius:var(--radius); padding:28px 32px}
+/* pozor: fialové pozadí patří jen .pata-blok – když bylo na footer .wrap, byl poslední řádek
+   (© 2026 … Design by pexxa creative) fialový text na fialovém pozadí, tedy neviditelný */
+footer .wrap{background:transparent; color:inherit; border-radius:0; padding:0}
 .pata-hlava img{filter:brightness(0) invert(1); opacity:.95}   /* jen logo; 3D ruka v kontaktu si musí nechat vlastní barvy */
 footer .ruka-cil img{filter:none; opacity:1}
 
@@ -283,8 +285,11 @@ footer .wrap{display:block}
 .pata-kontakt a:hover{opacity:.7}
 /* poslední řádek je u nich POD fialovým blokem, fialovým písmem na podkladu */
 .pata-spodek{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 18px;
-  margin-top:clamp(15px,1.8vw,22px); padding:0 clamp(4px,2.4vw,28px);
-  font-size:clamp(10px,1.4vw,17px); color:var(--violet)}
+  margin-top:clamp(15px,1.8vw,22px); padding:0 clamp(4px,2.4vw,28px) clamp(18px,2vw,24px);
+  font-size:clamp(12px,1.4vw,17px); color:var(--violet)}
+@media (max-width:860px){
+  .pata-spodek{flex-direction:column; align-items:flex-start; gap:4px; font-size:12px}
+}
 
 /* ---------- galerie – vlastní stránka ---------- */
 .page-head{padding:56px 0 26px}
