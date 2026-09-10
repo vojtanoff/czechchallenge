@@ -252,7 +252,14 @@ footer .wrap{display:block}
   .pata-vpravo{order:1; gap:56px}
   .pata-znak{order:2; margin-top:64px; font-size:76px}
   .pata-menu ul{min-width:0}
+  .pata-kontakt{max-width:none; text-align:right; align-self:flex-end}   /* justify-self v pružném sloupci neplatí, proto align-self */
+  .pata-kontakt li{text-align:right}
 }
+/* šipka zpět nahoru v pravém dolním rohu bloku, jako u nich */
+.pata-blok{position:relative}
+.nahoru{position:absolute; right:clamp(19px,4vw,58px); bottom:clamp(24px,5vw,89px); width:50px; height:50px; display:block}
+.nahoru img{width:100%; height:100%; display:block}
+@media (max-width:860px){ .nahoru{width:44px; height:44px; bottom:34px} }
 @media (min-width:861px){ .pata-telo{grid-template-columns:minmax(0,1fr) auto; align-items:start} }
 /* velký nápis Czech Challenge vlevo dole, jako u nich */
 .pata-znak{margin:clamp(40px,7vw,93px) 0 0; font-family:var(--font-display); font-weight:500;
