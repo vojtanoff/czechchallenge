@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="fonts/safiro.css">
 <link rel="stylesheet" href="style.css?v=2026-09-08a">
-<link rel="stylesheet" href="style-pexa.css?v=89">
+<link rel="stylesheet" href="style-pexa.css?v=90">
 </head>
 <body>
 
@@ -188,7 +188,6 @@
       </div>
       <div class="pata-telo">
         <p class="pata-znak"><span>Czech</span><span>Challenge</span></p>
-        <a class="nahoru" href="#top" aria-label="Zpět nahoru"><img src="../img/icons/sipka-nahoru.svg" alt=""></a>
         <div class="pata-vpravo">
           <nav class="pata-menu" aria-label="Footer navigation">
             <ul>
@@ -214,6 +213,8 @@
     </div>
   </div>
 </footer>
+
+<a class="nahoru" id="nahoru" href="#top" aria-label="Zpět nahoru"><img src="../img/icons/sipka-nahoru.svg" alt=""></a>
 
 <script>
 /* Obsah (partneři, program, galerie, directors) je v content.json – příští ročník
@@ -388,6 +389,13 @@
           if(!box.classList.contains("tu")){ box.classList.add("tu"); setTimeout(function(){ klik("klik2"); },900); } else { setTimeout(klik,300); } }); },{threshold:.6}); io.observe(b); }
       b.addEventListener("mouseenter",function(){ if(box.classList.contains("tu")) klik(); });
     })();
+    // plovoucí šipka zpět nahoru – objeví se, až se odroluje pod první obrazovku (stejně jako u nich)
+    (function(){ var t=document.getElementById("nahoru"); if(!t) return;
+      function stav(){ t.classList.toggle("vidno", (scrollY||pageYOffset) > innerHeight*0.6); }
+      addEventListener("scroll", stav, {passive:true}); stav();
+      t.addEventListener("click", function(e){ e.preventDefault(); scrollTo({top:0, behavior:"smooth"}); });
+    })();
+
     // aktivní pilulka v navigaci podle sekce v záběru
     (function(){
       var odkazy=Array.prototype.slice.call(document.querySelectorAll(".menu a")), mapa={};

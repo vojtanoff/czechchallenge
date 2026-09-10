@@ -255,11 +255,14 @@ footer .wrap{display:block}
   .pata-kontakt{max-width:none; text-align:right; align-self:flex-end}   /* justify-self v pružném sloupci neplatí, proto align-self */
   .pata-kontakt li{text-align:right}
 }
-/* šipka zpět nahoru v pravém dolním rohu bloku, jako u nich */
+/* plovoucí šipka zpět nahoru – jako u nich: pevně v pravém dolním rohu okna přes celou stránku,
+   objeví se až po odrolování a nad fialovou patičkou by splynula, proto tam dostane bílé kolečko */
 .pata-blok{position:relative}
-.nahoru{position:absolute; right:clamp(19px,4vw,58px); bottom:clamp(24px,5vw,89px); width:50px; height:50px; display:block}
+.nahoru{position:fixed; right:20px; bottom:24px; z-index:40; width:50px; height:50px; display:block;
+  opacity:0; pointer-events:none; transition:opacity .3s}
+.nahoru.vidno{opacity:1; pointer-events:auto}
 .nahoru img{width:100%; height:100%; display:block}
-@media (max-width:860px){ .nahoru{width:44px; height:44px; bottom:34px} }
+@media (min-width:861px){ .nahoru{right:60px} }
 @media (min-width:861px){ .pata-telo{grid-template-columns:minmax(0,1fr) auto; align-items:start} }
 /* velký nápis Czech Challenge vlevo dole, jako u nich */
 .pata-znak{margin:clamp(40px,7vw,93px) 0 0; font-family:var(--font-display); font-weight:500;
