@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="fonts/safiro.css">
 <link rel="stylesheet" href="style.css?v=2026-09-08a">
-<link rel="stylesheet" href="style-pexa.css?v=93">
+<link rel="stylesheet" href="style-pexa.css?v=94">
 </head>
 <body>
 
@@ -75,9 +75,9 @@
     <div>
       <p class="eyebrow">About the meeting</p>
       <h2>Science, sharing and friendship – third time in Pardubice.</h2>
-      <p style="margin-top:22px">After two successful editions, the CTO&amp;CHIP Czech Challenge returns for its third year as an international meeting that brings together leading experts and colleagues from across Europe and beyond.</p>
-      <p>Vol. 3 will once again combine live cases, focused sessions and open discussion with the spirit of collaboration and friendship that has defined the meeting from the start. New this year: a quick debate – multiple views on the road to becoming a CTO&nbsp;&amp;&nbsp;CHIP operator.</p>
-      <p>We'll start together with a welcome dinner on October&nbsp;22, followed by a full day of live cases, lectures, debate and shared learning on October&nbsp;23, 2026. And it's a meeting for the whole cath lab team – live cases are a team effort, and so is this day.</p>
+      <p class="nabih" style="margin-top:22px">After two successful editions, the CTO&amp;CHIP Czech Challenge returns for its third year as an international meeting that brings together leading experts and colleagues from across Europe and beyond.</p>
+      <p class="nabih">Vol. 3 will once again combine live cases, focused sessions and open discussion with the spirit of collaboration and friendship that has defined the meeting from the start. New this year: a quick debate – multiple views on the road to becoming a CTO&nbsp;&amp;&nbsp;CHIP operator.</p>
+      <p class="nabih">We'll start together with a welcome dinner on October&nbsp;22, followed by a full day of live cases, lectures, debate and shared learning on October&nbsp;23, 2026. And it's a meeting for the whole cath lab team – live cases are a team effort, and so is this day.</p>
       <ul class="facts">
         <li>Live cases</li><li>Czech &amp; 20+ international faculty</li><li>Quick debate</li><li>Whole cath lab team</li><li>One day, one room</li>
       </ul>
@@ -97,7 +97,7 @@
     <div class="sec-head reveal">
       <p class="eyebrow">Program</p>
       <h2>Four sessions, live cases and one debate.</h2>
-      <p class="lead">Working draft – speakers and exact times will follow with the final program.</p>
+      <p class="lead nabih">Working draft – speakers and exact times will follow with the final program.</p>
     </div>
     <div class="days reveal" id="days"></div>
     <div class="live reveal">
@@ -133,7 +133,7 @@
     <div class="sec-head reveal">
       <p class="eyebrow">Previous editions</p>
       <h2>What it looked like in 2024 and 2025.</h2>
-      <p class="lead">Real cath lab, real audience, real discussion. Photos by Lukáš Kaboň.</p>
+      <p class="lead nabih">Real cath lab, real audience, real discussion. Photos by Lukáš Kaboň.</p>
     </div>
     <div class="grid reveal" id="galleryPreview"></div>
     <div class="gal-foot">
@@ -171,7 +171,7 @@
     <div class="reveal">
       <p class="eyebrow">Interest &amp; contact</p>
       <h2>Not invited yet? Tell us you're interested.</h2>
-      <p class="zajem-lead">This year's meeting is by invitation. Tell us you're interested and we'll keep you in the loop for the coming editions.</p>
+      <p class="zajem-lead nabih">This year's meeting is by invitation. Tell us you're interested and we'll keep you in the loop for the coming editions.</p>
     <p class="ruka-cil reveal"><a class="btn btn-lime" id="registerBtn" href="#">I'm interested – send an e-mail</a><span class="katetr-box" aria-hidden="true"><img class="katetr" src="img/brand/katetr-sam.webp" alt=""><img class="ruka" id="rukaKontakt" src="img/brand/ruka-sama.webp" alt=""></span></p>
     </div>
   </div>
@@ -499,6 +499,54 @@
     function play(){ v.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+C.event.aftermovie+'?autoplay=1&rel=0" title="Czech Challenge 2025 aftermovie" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>'; }
     v.addEventListener("click",play); v.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); play(); } });
   });
+})();
+</script>
+<script>
+/* Nabíhání textu při skrolování – přesně jako na jejich webu: každé slovo je vlastní
+   <span>, ve výchozím stavu šedé #D9D9D9, a jak odstavec projíždí pod pomyslnou linkou
+   v 84,5 % výšky okna, slova se po řádcích rozsvěcují do fialové (přechod color .5s).
+   Změřeno v jejich buildu: odstavec začne nabíhat, jakmile jeho horní hrana linku
+   podleze, a je celý fialový, když ji podleze i jeho spodní hrana. Efekt je čistě
+   funkcí polohy scrollu, takže při rolování zpět zase pohasíná.
+   Bez JS (a při prefers-reduced-motion) zůstává text rovnou fialový. */
+(function(){
+  var bloky=[].slice.call(document.querySelectorAll("p.nabih"));
+  if(!bloky.length) return;
+  if(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  bloky.forEach(function(p){
+    if(p.children.length) return;              // odstavce s odkazem či obrázkem nesahat
+    var slova=p.textContent.split(" ");
+    p.textContent="";
+    p.__s=[];
+    slova.forEach(function(t,i){
+      if(i) p.appendChild(document.createTextNode(" "));
+      if(!t) return;
+      var sp=document.createElement("span"); sp.className="s"; sp.textContent=t;
+      p.appendChild(sp); p.__s.push(sp);
+    });
+    p.classList.add("nabih-on");
+  });
+  bloky=bloky.filter(function(p){ return p.__s && p.__s.length; });
+
+  var ceka=false;
+  function prepocitej(){
+    ceka=false;
+    var cara=innerHeight*0.845;
+    bloky.forEach(function(p){
+      var r=p.getBoundingClientRect();
+      var post=(cara-r.top)/Math.max(r.height,1);
+      if(post<0) post=0; if(post>1) post=1;
+      var n=Math.round(post*p.__s.length);
+      if(p.__n===n) return;
+      p.__n=n;
+      for(var i=0;i<p.__s.length;i++) p.__s[i].classList.toggle("tu", i<n);
+    });
+  }
+  function planuj(){ if(!ceka){ ceka=true; requestAnimationFrame(prepocitej); } }
+  addEventListener("scroll",planuj,{passive:true});
+  addEventListener("resize",planuj);
+  prepocitej();
 })();
 </script>
 </body>
