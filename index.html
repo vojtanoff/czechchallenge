@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="fonts/safiro.css">
 <link rel="stylesheet" href="style.css?v=2026-09-08a">
-<link rel="stylesheet" href="style-pexa.css?v=94">
+<link rel="stylesheet" href="style-pexa.css?v=98">
 </head>
 <body>
 
@@ -201,7 +201,7 @@
           </nav>
           <ul class="pata-kontakt">
             <li><a href="https://www.linkedin.com/company/czech-cto-chip-challenge/" target="_blank" rel="noopener">LinkedIn</a></li>
-            <li><a href="mailto:ctochip@czechchallenge.com">ctochip@czechchallenge.com</a></li>
+            <li><a id="mailLink" href="mailto:ctochip@czechchallenge.com">ctochip@czechchallenge.com</a></li>
             <li><a href="https://maps.google.com/?q=Kardiologick%C3%A9+centrum+AGEL+Kyjevsk%C3%A1+44+Pardubice" target="_blank" rel="noopener">KC AGEL Pardubice<br>Kyjevská 44, 532 03 Pardubice</a></li>
           </ul>
         </div>
@@ -426,7 +426,7 @@
     // program
     $("#days").innerHTML=C.program.map(function(day){
       return '<div class="day"><h3>'+esc(day.day)+'</h3><div class="date">'+esc(day.date)+'</div>'+day.items.map(function(it){
-        return '<div class="slot"><div class="t">'+esc(it.time)+'</div><div><b>'+esc(it.title)+'</b><p>'+esc(it.desc)+'</p></div></div>';
+        return '<div class="slot"><div class="t">'+esc(it.time)+'</div><div><b>'+esc(it.title)+'</b><p class="nabih">'+esc(it.desc)+'</p></div></div>';
       }).join("")+'</div>';
     }).join("");
     $("#liveCases").textContent=C.live_cases;
@@ -492,62 +492,18 @@
     var mail="mailto:"+C.event.email+"?subject="+encodeURIComponent("Interested – CTO&CHIP Czech Challenge")
       +"&body="+encodeURIComponent("Hello,\n\nI'm interested in the CTO&CHIP Czech Challenge.\n\nName:\nInstitution:\nCountry:\n\n---\nThis year's meeting is by invitation. Your interest helps us scale the meeting according to demand in the coming years – thank you for your interest!");
     ["#registerBtn","#registerTop"].forEach(function(s){ var el=$(s); if(el) el.href=mail; });   // #registerTop je od 9. 9. pryč z horního panelu
-    $("#mailLink").href="mailto:"+C.event.email;
+    var ml=$("#mailLink"); if(ml) ml.href="mailto:"+C.event.email;   // 9. 9. při přestavbě patičky prvek zmizel a výjimka shodila zbytek skriptu
 
     // aftermovie – iframe až po kliknutí, ať se stránka nenačítá s YouTube
-    var v=$("#video");
+    var v=$("#video"); if(v){
     function play(){ v.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+C.event.aftermovie+'?autoplay=1&rel=0" title="Czech Challenge 2025 aftermovie" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>'; }
-    v.addEventListener("click",play); v.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); play(); } });
+    v.addEventListener("click",play); v.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); play(); } }); }
+
+    // obsah z content.json je vykreslený – efekty si můžou vzít i to, co přibylo
+    document.dispatchEvent(new Event("obsah"));
   });
 })();
 </script>
-<script>
-/* Nabíhání textu při skrolování – přesně jako na jejich webu: každé slovo je vlastní
-   <span>, ve výchozím stavu šedé #D9D9D9, a jak odstavec projíždí pod pomyslnou linkou
-   v 84,5 % výšky okna, slova se po řádcích rozsvěcují do fialové (přechod color .5s).
-   Změřeno v jejich buildu: odstavec začne nabíhat, jakmile jeho horní hrana linku
-   podleze, a je celý fialový, když ji podleze i jeho spodní hrana. Efekt je čistě
-   funkcí polohy scrollu, takže při rolování zpět zase pohasíná.
-   Bez JS (a při prefers-reduced-motion) zůstává text rovnou fialový. */
-(function(){
-  var bloky=[].slice.call(document.querySelectorAll("p.nabih"));
-  if(!bloky.length) return;
-  if(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-  bloky.forEach(function(p){
-    if(p.children.length) return;              // odstavce s odkazem či obrázkem nesahat
-    var slova=p.textContent.split(" ");
-    p.textContent="";
-    p.__s=[];
-    slova.forEach(function(t,i){
-      if(i) p.appendChild(document.createTextNode(" "));
-      if(!t) return;
-      var sp=document.createElement("span"); sp.className="s"; sp.textContent=t;
-      p.appendChild(sp); p.__s.push(sp);
-    });
-    p.classList.add("nabih-on");
-  });
-  bloky=bloky.filter(function(p){ return p.__s && p.__s.length; });
-
-  var ceka=false;
-  function prepocitej(){
-    ceka=false;
-    var cara=innerHeight*0.845;
-    bloky.forEach(function(p){
-      var r=p.getBoundingClientRect();
-      var post=(cara-r.top)/Math.max(r.height,1);
-      if(post<0) post=0; if(post>1) post=1;
-      var n=Math.round(post*p.__s.length);
-      if(p.__n===n) return;
-      p.__n=n;
-      for(var i=0;i<p.__s.length;i++) p.__s[i].classList.toggle("tu", i<n);
-    });
-  }
-  function planuj(){ if(!ceka){ ceka=true; requestAnimationFrame(prepocitej); } }
-  addEventListener("scroll",planuj,{passive:true});
-  addEventListener("resize",planuj);
-  prepocitej();
-})();
-</script>
+<script src="efekty.js?v=98"></script>
 </body>
 </html>

@@ -14,25 +14,39 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="fonts/safiro.css">
 <link rel="stylesheet" href="style.css?v=2026-09-08a">
+<link rel="stylesheet" href="style-pexa.css?v=98">
 </head>
 <body>
+
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="img/brand/CTO_CHIP_LOGO.svg" alt="CTO&CHIP Czech Challenge"></a>
+    <a class="brand" href="index.html" aria-label="CTO&CHIP Czech Challenge – home">
+      <img src="img/brand/CTO_CHIP_LOGO.svg" alt="CTO&CHIP Czech Challenge">
+    </a>
     <ul class="menu">
-      <li><a href="index.html#about">About</a></li><li><a href="index.html#program">Program</a></li>
-      <li><a href="index.html#faculty">Faculty</a></li><li><a href="gallery.html">Gallery</a></li>
-      <li><a href="index.html#partners">Partners</a></li><li><a href="index.html#contact">Contact</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#program">Program</a></li>
+      <li><a href="index.html#faculty">Faculty</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="index.html#partners">Partners</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
     </ul>
-    <div class="nav-cta"><a class="btn btn-primary" href="index.html#contact">I'm interested</a></div>
+    <div class="nav-cta">
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
+<nav class="fullmenu" id="fullmenu" data-open="false" aria-label="Menu">
+  <button class="close" id="menuClose" aria-label="Close menu">×</button>
+  <a href="index.html#about">About</a><a href="index.html#program">Program</a><a href="index.html#faculty">Faculty</a>
+  <a href="gallery.html">Gallery</a><a href="index.html#partners">Partners</a><a href="index.html#contact">Contact</a>
+</nav>
 
-<main>
+<main id="top">
   <div class="wrap page-head">
     <p class="eyebrow">Previous editions</p>
     <h1>Gallery</h1>
-    <p class="lead" style="color:var(--ink-2)">Photos by Lukáš Kaboň. Click any photo to open it.</p>
+    <p class="lead nabih">Photos by Lukáš Kaboň. Click any photo to open it.</p>
   </div>
   <div class="wrap year-block" id="y2025"><h2 id="2025">Czech Challenge 2025 · 7 November 2025</h2><div class="grid" data-year="2025"></div></div>
   <div class="wrap year-block" id="y2024"><h2 id="2024">Czech Challenge 2024 · 15 November 2024</h2><div class="grid" data-year="2024"></div></div>
@@ -46,11 +60,64 @@
   <div class="cnt" id="lbCnt"></div>
 </div>
 
-<footer><div class="wrap"><span>© 2026 CTO&amp;CHIP Czech Challenge · Pardubice</span><a href="index.html" style="text-decoration:none">← Back to the meeting</a></div></footer>
+<footer>
+  <div class="wrap">
+    <div class="pata-blok">
+      <div class="pata-hlava">
+        <a href="index.html" aria-label="CTO&amp;CHIP Czech Challenge"><img src="img/brand/CTO_CHIP_LOGO.svg" alt="CTO&amp;CHIP Czech Challenge"></a>
+        <p>Complex PCI Meeting</p>
+      </div>
+      <div class="pata-telo">
+        <p class="pata-znak"><span>Czech</span><span>Challenge</span></p>
+        <div class="pata-vpravo">
+          <nav class="pata-menu" aria-label="Footer navigation">
+            <ul>
+              <li><a href="index.html#about">About</a></li>
+              <li><a href="index.html#program">Program</a></li>
+              <li><a href="gallery.html">Editions</a></li>
+              <li><a href="index.html#faculty">Faculty</a></li>
+              <li><a href="index.html#partners">Partners</a></li>
+              <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+          </nav>
+          <ul class="pata-kontakt">
+            <li><a href="https://www.linkedin.com/company/czech-cto-chip-challenge/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a id="mailLink" href="mailto:ctochip@czechchallenge.com">ctochip@czechchallenge.com</a></li>
+            <li><a href="https://maps.google.com/?q=Kardiologick%C3%A9+centrum+AGEL+Kyjevsk%C3%A1+44+Pardubice" target="_blank" rel="noopener">KC AGEL Pardubice<br>Kyjevská 44, 532 03 Pardubice</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="pata-spodek">
+      <span>© 2026 Czech Challenge · Design by pexxa creative</span>
+    </div>
+  </div>
+</footer>
+
+<a class="nahoru" id="nahoru" href="#top" aria-label="Zpět nahoru"><img src="img/icons/sipka-nahoru.svg" alt=""></a>
 
 <script>
+/* Galerie: dlaždice z content.json, lightbox, plus stejné chování jako na hlavní
+   stránce – celoobrazovkové menu, plovoucí šipka nahoru, nabíhání textu a dojezd
+   nadpisů. Skripty jsou tu schválně samostatně, ať je galerie na index.html nezávislá. */
 (function(){
   var $=function(s){ return document.querySelector(s); };
+
+  // celoobrazovkové menu
+  var burger=$("#burger"), full=$("#fullmenu");
+  function menu(o){ full.dataset.open=o?"true":"false"; burger.setAttribute("aria-expanded",o?"true":"false"); document.body.style.overflow=o?"hidden":""; }
+  burger.addEventListener("click",function(){ menu(full.dataset.open!=="true"); });
+  $("#menuClose").addEventListener("click",function(){ menu(false); });
+  full.querySelectorAll("a").forEach(function(a){ a.addEventListener("click",function(){ menu(false); }); });
+
+  // šipka zpět nahoru
+  (function(){ var t=$("#nahoru"); if(!t) return;
+    function stav(){ t.classList.toggle("vidno",(scrollY||pageYOffset)>innerHeight*0.6); }
+    addEventListener("scroll",stav,{passive:true}); stav();
+    t.addEventListener("click",function(e){ e.preventDefault(); scrollTo({top:0,behavior:"smooth"}); });
+  })();
+
+  // dlaždice a lightbox
   var vse=[], i=0;
   fetch("content.json",{cache:"no-store"}).then(function(r){ return r.json(); }).then(function(C){
     ["2025","2024"].forEach(function(y){
@@ -59,24 +126,25 @@
         var n=vse.length; vse.push(p.src);
         var a=document.createElement("a"); a.href=p.src; a.dataset.i=n;
         a.innerHTML='<img src="'+p.thumb+'" alt="Czech Challenge '+y+'" loading="lazy">';
-        a.addEventListener("click",function(e){ e.preventDefault(); open(n); });
+        a.addEventListener("click",function(e){ e.preventDefault(); otevri(n); });
         g.appendChild(a);
       });
     });
   });
   var lb=$("#lb"), im=$("#lbImg"), cnt=$("#lbCnt");
   function show(){ im.src=vse[i]; cnt.textContent=(i+1)+" / "+vse.length; }
-  function open(n){ i=n; show(); lb.dataset.open="true"; document.body.style.overflow="hidden"; }
-  function close(){ lb.dataset.open="false"; document.body.style.overflow=""; }
-  $("#lbX").addEventListener("click",close);
+  function otevri(n){ i=n; show(); lb.dataset.open="true"; document.body.style.overflow="hidden"; }
+  function zavri(){ lb.dataset.open="false"; document.body.style.overflow=""; }
+  $("#lbX").addEventListener("click",zavri);
   $("#lbPrev").addEventListener("click",function(){ i=(i-1+vse.length)%vse.length; show(); });
   $("#lbNext").addEventListener("click",function(){ i=(i+1)%vse.length; show(); });
-  lb.addEventListener("click",function(e){ if(e.target===lb) close(); });
+  lb.addEventListener("click",function(e){ if(e.target===lb) zavri(); });
   document.addEventListener("keydown",function(e){
     if(lb.dataset.open!=="true") return;
-    if(e.key==="Escape") close(); if(e.key==="ArrowLeft") $("#lbPrev").click(); if(e.key==="ArrowRight") $("#lbNext").click();
+    if(e.key==="Escape") zavri(); if(e.key==="ArrowLeft") $("#lbPrev").click(); if(e.key==="ArrowRight") $("#lbNext").click();
   });
 })();
 </script>
+<script src="efekty.js?v=98"></script>
 </body>
 </html>
