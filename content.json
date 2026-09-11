@@ -74,8 +74,12 @@
    "items": [
     {
      "time": "Evening",
-     "title": "Welcome dinner",
-     "desc": "Arrival, welcome and an informal evening for faculty and participants."
+     "title": "Welcome dinner at Everything",
+     "desc": "Arrival, welcome and an informal evening for faculty and participants – at Everything in Palác Hybský, nám. Republiky 56 in the centre of Pardubice.",
+     "odkaz": {
+      "text": "everything.cz",
+      "url": "https://www.everything.cz/"
+     }
     }
    ]
   },
@@ -107,15 +111,6 @@
      "time": "New this year",
      "title": "Quick debate",
      "desc": "Multiple views on the road to becoming a CTO & CHIP operator – short and sharp."
-    },
-    {
-     "time": "Evening",
-     "title": "Get-together at Everything",
-     "desc": "Music, food and the rest of the conversation at Everything in Palác Hybský, nám. Republiky 56 – a ten-minute walk from the venue.",
-     "odkaz": {
-      "text": "everything.cz",
-      "url": "https://www.everything.cz/"
-     }
     }
    ]
   }
