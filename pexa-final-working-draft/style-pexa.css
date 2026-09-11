@@ -304,7 +304,7 @@ body{overflow-x:hidden}
 /* ---------- „I'm interested" nad patičkou – jejich sekce na podkladu, ne ve fialovém bloku ---------- */
 .zajem{background:var(--ground); padding:clamp(60px,8vw,100px) 0 clamp(40px,7vw,87px)}
 .zajem-grid{display:grid; gap:clamp(30px,5vw,44px)}
-@media (min-width:1100px){ .zajem-grid{grid-template-columns:minmax(0,1fr); gap:0} }
+@media (min-width:861px){ .zajem-grid{grid-template-columns:minmax(0,1fr); gap:0} }
 .zajem h2{margin:0; color:var(--violet); font-weight:500; letter-spacing:-.07em; line-height:.8;
   font-size:clamp(42px,4.45vw,64px)}
 .zajem .zajem-lead{margin:clamp(20px,2.6vw,32px) 0 0; color:var(--ink-2); font-family:var(--font-body);
@@ -329,7 +329,7 @@ body{overflow-x:hidden}
 @keyframes zajem-klik{0%{transform:rotate(0)} 45%{transform:rotate(-4deg)} 100%{transform:rotate(0)}}
 @keyframes zajem-klik2{0%{transform:rotate(0)} 25%{transform:rotate(-4deg)} 50%{transform:rotate(0)} 75%{transform:rotate(-4deg)} 100%{transform:rotate(0)}}
 @media (prefers-reduced-motion:reduce){ .zajem .katetr-box .ruka{animation:none} }
-@media (max-width:1099px){ .zajem .katetr-box{display:none} }
+@media (max-width:860px){ .zajem .katetr-box{display:none} }
 
 .zajem .btn-lime{background:var(--violet); color:#fff}
 .zajem .btn-lime:hover{background:var(--violet-deep)}
@@ -345,7 +345,7 @@ footer .wrap{display:block}
 .pata-hlava p{margin:0; font-family:var(--font-display); font-weight:400; font-size:clamp(12px,1.9vw,23.4px); line-height:1}
 .pata-telo{margin-top:clamp(45px,4.4vw,56px); display:grid; gap:clamp(46px,6vw,80px)}
 /* na telefonu jako u nich: nejdřív odkazy a kontakty, velký nápis Czech Challenge až dole */
-@media (max-width:1099px){
+@media (max-width:860px){
   .pata-telo{display:flex; flex-direction:column; gap:0}
   .pata-vpravo{order:1; gap:56px}
   .pata-znak{order:2; margin-top:64px; font-size:76px}
@@ -360,16 +360,16 @@ footer .wrap{display:block}
   opacity:0; pointer-events:none; transition:opacity .3s}
 .nahoru.vidno{opacity:1; pointer-events:auto}
 .nahoru img{width:100%; height:100%; display:block}
-@media (min-width:1100px){ .nahoru{right:60px} }
-@media (min-width:1100px){ .pata-telo{grid-template-columns:minmax(0,1fr) auto; align-items:start} }
+@media (min-width:861px){ .nahoru{right:60px} }
+@media (min-width:861px){ .pata-telo{grid-template-columns:minmax(0,1fr) auto; align-items:start} }
 /* velký nápis Czech Challenge vlevo dole, jako u nich */
 .pata-znak{margin:clamp(40px,7vw,93px) 0 0; font-family:var(--font-display); font-weight:500;
   font-size:clamp(52px,7.51vw,108px); line-height:.8; letter-spacing:-.07em}
 .pata-znak span{display:block}
 .pata-vpravo{display:flex; flex-direction:column; gap:44px}
-@media (min-width:1100px){ .pata-vpravo{flex-direction:row-reverse; justify-content:flex-start; gap:clamp(30px,4.5vw,80px)} }
+@media (min-width:861px){ .pata-vpravo{flex-direction:row-reverse; justify-content:flex-start; gap:clamp(30px,4.5vw,80px)} }
 .pata-menu ul{list-style:none; margin:0; padding:0; text-align:right; min-width:200px}
-@media (min-width:1100px){ .pata-menu ul{width:210px} }
+@media (min-width:861px){ .pata-menu ul{width:210px} }
 .pata-menu li + li{border-top:1px solid rgba(255,255,255,.4)}
 .pata-menu a{display:block; padding:10px 0; color:#fff; text-decoration:none; font-size:12.8px; line-height:15px; transition:opacity .2s}
 .pata-menu a:hover{opacity:.7}
@@ -383,7 +383,7 @@ footer .wrap{display:block}
 .pata-spodek{display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-end; gap:8px 18px;
   margin-top:clamp(15px,1.8vw,22px); padding:0 clamp(4px,2.4vw,28px) clamp(18px,2vw,24px);
   font-size:clamp(12px,1.4vw,17px); color:var(--violet)}
-@media (max-width:1099px){
+@media (max-width:860px){
   .pata-spodek{font-size:12px}
 }
 
@@ -437,4 +437,4 @@ footer .wrap{display:block}
 
 
 /* ruka u tlačítka „I'm interested" – přijede a ťukne; katetr u ní není (Vojta 9. 9.: „ta ruka s katetrem takhle nefunguje") */
-@media (min-width:1100px){ .contact{padding-bottom:calc(clamp(40px,5.5vw,72px) + 40px)} }
+@media (min-width:861px){ .contact{padding-bottom:calc(clamp(40px,5.5vw,72px) + 40px)} }
