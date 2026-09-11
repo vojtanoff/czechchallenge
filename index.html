@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="fonts/safiro.css">
 <link rel="stylesheet" href="style.css?v=2026-09-08a">
-<link rel="stylesheet" href="style-pexa.css?v=101">
+<link rel="stylesheet" href="style-pexa.css?v=102">
 </head>
 <body>
 
@@ -510,7 +510,9 @@
     }).join("");
 
     // místo konání – fotky sálu se prolínají, přes ně jen název a odkaz do map
-    if(C.venue){
+    // podmínka na prvek, ne jen na data – předběžná verze webu sekci Venue nemá
+    // a výjimka by shodila zbytek vykreslování (stalo se to už u #mailLink)
+    if(C.venue && $("#venueNazev")){
       var v=C.venue, fotky=(v.fotky||[]).filter(Boolean);
       $("#venueNazev").textContent=v.nazev;
       $("#venueMapa").href=v.mapa;
