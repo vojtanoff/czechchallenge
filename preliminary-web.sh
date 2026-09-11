@@ -13,7 +13,7 @@
 # spadl na výchozí polohu. Odznak "working draft" tady není, ten přidává jen
 # pexa-final-working-draft.sh.
 set -e
-PIN=${1:-7d99d17}      # working draft z 11. 9. 2026: hero s katetrem, dvě kotvy pro PC, Venue
+PIN=${1:-7f2a36a}      # working draft z 11. 9. 2026: hero s katetrem, dve kotvy pro PC, Venue se tremi fotkami salu
 Z=~/dev/czechchallenge-pexa-final; C=~/dev/czechchallenge/preliminary-web
 mkdir -p "$C"
 for f in index.html gallery.html style.css style-pexa.css efekty.js content.json katetr.json; do
