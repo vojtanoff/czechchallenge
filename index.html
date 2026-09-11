@@ -270,12 +270,28 @@
   // Poloha katetru se bere z katetr.json, který píše editor-katetr.html.
   (function(){
     var k=document.querySelector(".hero-katetr"); if(!k) return;
+    // PC má dvě kotvy: 861 px (nejužší, kde ještě platí PC rozložení) a 1440 px.
+    // Mezi nimi se hodnoty dopočítají, mimo rozsah se drží krajní kotva.
+    var UZKY=861, SIROKY=1440;
+    function kotvy(v){
+      var u=v.pcUzky||v.pc||{}, s=v.pcSiroky||v.pc||{};
+      return [u,s];
+    }
+    function mez(a,b,t,vych){
+      var x=(a!=null?a:vych), y=(b!=null?b:vych);
+      return x+(y-x)*t;
+    }
     function pouzij(v){
       if(!v) return;
-      var pc=v.pc||{}, m=v.mobil||{};
+      var kde;
       // stejná hranice jako v CSS (861 px) – při 1024 se v pásu 861–1023 aplikoval
       // mobilní zoom na desktopové rozložení a katetr byl obrovský
-      var kde = innerWidth>860 ? pc : m;
+      if(innerWidth<=860){ kde = v.mobil||{}; }
+      else {
+        var kt=kotvy(v), t=Math.max(0, Math.min(1, (innerWidth-UZKY)/(SIROKY-UZKY)));
+        kde = { x:mez(kt[0].x,kt[1].x,t,0), y:mez(kt[0].y,kt[1].y,t,0),
+                zoom:mez(kt[0].zoom,kt[1].zoom,t,100), uhel:mez(kt[0].uhel,kt[1].uhel,t,34) };
+      }
       k.style.setProperty("--uhel", (kde.uhel!=null?kde.uhel:34)+"deg");
       k.style.setProperty("--zoom", (kde.zoom!=null?kde.zoom:100)/100);
       k.style.setProperty("--x", (kde.x||0)+"%");
@@ -294,7 +310,9 @@
       var tahne=false, zx=0, zy=0, px=0, py=0;
       k.addEventListener("pointerdown",function(e){
         tahne=true; k.setPointerCapture(e.pointerId); k.style.cursor="grabbing";
-        var v=window.__katetr||{}, kde=innerWidth>860?(v.pc||{}):(v.mobil||{});
+        var v=window.__katetr||{}, kde;
+        if(innerWidth<=860) kde=v.mobil||{};
+        else kde=(innerWidth<(UZKY+SIROKY)/2 ? (v.pcUzky||v.pc||{}) : (v.pcSiroky||v.pc||{}));
         px=kde.x||0; py=kde.y||0; zx=e.clientX; zy=e.clientY; e.preventDefault();
       });
       k.addEventListener("pointermove",function(e){
@@ -302,7 +320,8 @@
         var s=k.getBoundingClientRect().width||1;
         var nx=px+(e.clientX-zx)/s*100, ny=py+(e.clientY-zy)/s*100;
         k.style.setProperty("--x",nx+"%"); k.style.setProperty("--y",ny+"%");
-        parent.postMessage({__katetrTah:{pc:innerWidth>860, x:nx, y:ny}},"*");
+        // editor podle šířky pozná, kterou kotvu tažení mění
+        parent.postMessage({__katetrTah:{sirka:innerWidth, x:nx, y:ny}},"*");
       });
       k.addEventListener("pointerup",function(){ tahne=false; k.style.cursor="grab"; });
     }
