@@ -131,7 +131,7 @@ h3{font-weight:500}
    je z něj vrstva pod obsahem, ukotvená k hero bloku, takže při změně šířky drží
    poměr k nadpisu i k fotce a smyčka se fotky nedotkne. */
 .hero-vrstva{grid-area:katetr; position:static; z-index:0; pointer-events:none}
-.hero-katetr{position:relative; width:clamp(300px, 92%, 430px); margin:-2% auto 0;
+.hero-katetr{position:relative; width:360px; max-width:100%; margin:-8px auto 0;
   aspect-ratio:1536/1024; --x:0%; --y:0%; --zoom:1; --uhel:34deg}
 @media (min-width:861px){
   .hero-vrstva{position:absolute; inset:0}
@@ -140,6 +140,18 @@ h3{font-weight:500}
 .katetr-obal{width:100%; height:100%;
   transform:translate(var(--x), var(--y)) scale(var(--zoom)) scaleX(-1) rotate(var(--uhel))}
 .katetr-obal img{display:block; width:100%; height:100%; object-fit:contain}
+
+/* Na mobilu se v heru nic nezvětšuje ani nezmenšuje podle šířky okna: písmo,
+   odsazení i katetr mají pevné hodnoty, takže na 360 i na 780 px vypadá hero stejně.
+   Jediné, co se přizpůsobuje, je šířka obsahu a poměr stran fotky. */
+@media (max-width:860px){
+  .hero-blok{padding:20px 0 28px}
+  .hero-pexa h1{font-size:44px; line-height:.92}
+  .hero-datum{font-size:28px; margin-top:20px}
+  .hero-cta{margin-top:18px; gap:12px}
+  .hero-cta .btn{padding:13px 30px; font-size:15px}
+  .hero-pexa > .wrap:not(.hero-blok){padding-bottom:28px}
+}
 
 /* pás fotek v rámečku na šířku stránky, ne přes celou obrazovku */
 .hero-pas{position:relative; width:100%; aspect-ratio:21/9; overflow:hidden;
