@@ -42,6 +42,7 @@ pre{background:var(--ground); border:1px solid var(--linka); border-radius:10px;
 
 <div class="lista">
   <h1>Katetr v heru</h1>
+  <button class="tl" id="btnZnovu">Načíst znovu</button>
   <button class="tl" id="btnReset">Výchozí</button>
   <button class="tl plny" id="btnUlozit">Uložit / zkopírovat</button>
   <span class="stav" id="stav"></span>
@@ -51,11 +52,11 @@ pre{background:var(--ground); border:1px solid var(--linka); border-radius:10px;
   <div>
     <div class="ram">
       <h2>Počítač · 1440 px</h2>
-      <div class="okno" id="oknoPc"><iframe id="ramPc" src="index.html?editor=1"></iframe></div>
+      <div class="okno" id="oknoPc"><iframe id="ramPc"></iframe></div>
     </div>
     <div class="ram" style="margin-top:18px">
       <h2>Mobil · 390 px</h2>
-      <div class="okno" id="oknoMob"><iframe id="ramMob" src="index.html?editor=1"></iframe></div>
+      <div class="okno" id="oknoMob"><iframe id="ramMob"></iframe></div>
     </div>
   </div>
 
@@ -82,6 +83,15 @@ pre{background:var(--ground); border:1px solid var(--linka); border-radius:10px;
 <script>
 (function(){
   var $ = function(s){ return document.querySelector(s); };
+
+  // Náhledy se načítají s časovým razítkem, jinak by prohlížeč držel starou verzi
+  // stránky a Vojta by ladil katetr proti neaktuálnímu nadpisu.
+  function nactiNahledy(){
+    var t = Date.now();
+    $("#ramPc").src  = "index.html?editor=1&t=" + t;
+    $("#ramMob").src = "index.html?editor=1&t=" + t;
+    setTimeout(function(){ preskaluj(); posli(); }, 1200);
+  }
   var VYCHOZI = { pc:{x:0,y:0,zoom:100,uhel:34}, mobil:{x:0,y:0,zoom:100,uhel:34} };
   var stav = JSON.parse(JSON.stringify(VYCHOZI));
 
@@ -125,6 +135,8 @@ pre{background:var(--ground); border:1px solid var(--linka); border-radius:10px;
     $("#"+p[0]+"_n").addEventListener("change", function(e){ nastav(e.target.value); });
   });
 
+  $("#btnZnovu").addEventListener("click", function(){ nactiNahledy(); $("#stav").textContent = "náhledy načtené znovu"; });
+
   $("#btnReset").addEventListener("click", function(){
     stav = JSON.parse(JSON.stringify(VYCHOZI)); zmena();
   });
@@ -154,8 +166,8 @@ pre{background:var(--ground); border:1px solid var(--linka); border-radius:10px;
 
   fetch("katetr.json",{cache:"no-store"}).then(function(r){ return r.ok?r.json():null; })
     .then(function(v){ if(v){ stav = Object.assign(JSON.parse(JSON.stringify(VYCHOZI)), v); }
-      doPoli(); preskaluj(); setTimeout(posli, 900); })
-    .catch(function(){ doPoli(); preskaluj(); });
+      doPoli(); nactiNahledy(); })
+    .catch(function(){ doPoli(); nactiNahledy(); });
 })();
 </script>
 </body>
