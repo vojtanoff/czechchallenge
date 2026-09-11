@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="fonts/safiro.css">
 <link rel="stylesheet" href="style.css?v=2026-09-08a">
-<link rel="stylesheet" href="style-pexa.css?v=98">
+<link rel="stylesheet" href="style-pexa.css?v=99">
 </head>
 <body>
 
@@ -30,6 +30,7 @@
     <ul class="menu">
       <li><a href="#about">About</a></li>
       <li><a href="#program">Program</a></li>
+      <li><a href="#venue">Venue</a></li>
       <li><a href="#faculty">Faculty</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#partners">Partners</a></li>
@@ -42,7 +43,7 @@
 </header>
 <nav class="fullmenu" id="fullmenu" data-open="false" aria-label="Menu">
   <button class="close" id="menuClose" aria-label="Close menu">×</button>
-  <a href="#about">About</a><a href="#program">Program</a><a href="#faculty">Faculty</a>
+  <a href="#about">About</a><a href="#program">Program</a><a href="#venue">Venue</a><a href="#faculty">Faculty</a>
   <a href="#gallery">Gallery</a><a href="#partners">Partners</a><a href="#contact">Contact</a>
 </nav>
 
@@ -106,6 +107,25 @@
     </div>
     <div class="gal-foot">
       <a class="btn btn-outline" href="#" aria-disabled="true">Scientific program (PDF) – coming soon</a>
+    </div>
+  </div>
+</section>
+
+<!-- VENUE -->
+<section id="venue" class="venue">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Venue</p>
+      <h2>One hall, one room, an aeroplane overhead.</h2>
+      <p class="lead nabih">Everything happens in a single hall in the centre of Pardubice – lectures, live cases and the coffee in between. No parallel tracks, no running between buildings.</p>
+    </div>
+    <div class="venue-grid reveal">
+      <figure class="venue-foto"><img id="venueFoto" src="" alt="" loading="lazy"></figure>
+      <div class="venue-karta">
+        <h3 id="venueNazev"></h3>
+        <p class="venue-adresa" id="venueAdresa"></p>
+        <a class="btn btn-outline" id="venueMapa" href="#" target="_blank" rel="noopener">Open in maps</a>
+      </div>
     </div>
   </div>
 </section>
@@ -193,6 +213,7 @@
             <ul>
               <li><a href="#about">About</a></li>
               <li><a href="#program">Program</a></li>
+              <li><a href="#venue">Venue</a></li>
               <li><a href="#gallery">Editions</a></li>
               <li><a href="#faculty">Faculty</a></li>
               <li><a href="#partners">Partners</a></li>
@@ -426,7 +447,8 @@
     // program
     $("#days").innerHTML=C.program.map(function(day){
       return '<div class="day"><h3>'+esc(day.day)+'</h3><div class="date">'+esc(day.date)+'</div>'+day.items.map(function(it){
-        return '<div class="slot"><div class="t">'+esc(it.time)+'</div><div><b>'+esc(it.title)+'</b><p class="nabih">'+esc(it.desc)+'</p></div></div>';
+        var odkaz=it.odkaz ? '<a class="slot-odkaz" href="'+esc(it.odkaz.url)+'" target="_blank" rel="noopener">'+esc(it.odkaz.text)+'</a>' : '';
+        return '<div class="slot"><div class="t">'+esc(it.time)+'</div><div><b>'+esc(it.title)+'</b><p class="nabih">'+esc(it.desc)+'</p>'+odkaz+'</div></div>';
       }).join("")+'</div>';
     }).join("");
     $("#liveCases").textContent=C.live_cases;
@@ -487,6 +509,16 @@
       return '<div class="logo"><img src="'+esc(p.logo)+'" alt="'+esc(p.name)+'" loading="lazy"></div>';
     }).join("");
 
+    // místo konání
+    if(C.venue){
+      var v=C.venue;
+      $("#venueNazev").textContent=v.nazev;
+      $("#venueAdresa").innerHTML=[v.budova,v.ulice,v.mesto].filter(Boolean).map(esc).join("<br>");
+      $("#venueMapa").href=v.mapa;
+      var f=$("#venueFoto");
+      if(v.foto){ f.src=v.foto; f.alt=v.nazev+", "+v.budova; } else { f.closest("figure").remove(); }
+    }
+
     // registrace mailem
     // letos je akce na pozvání – mail sbírá zájem, ne registrace
     var mail="mailto:"+C.event.email+"?subject="+encodeURIComponent("Interested – CTO&CHIP Czech Challenge")
@@ -504,6 +536,6 @@
   });
 })();
 </script>
-<script src="efekty.js?v=98"></script>
+<script src="efekty.js?v=99"></script>
 </body>
 </html>
