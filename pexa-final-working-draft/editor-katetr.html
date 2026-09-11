@@ -55,6 +55,11 @@ pre{background:var(--ground); border:1px solid var(--linka); border-radius:10px;
       <div class="okno" id="oknoPc"><iframe id="ramPc"></iframe></div>
     </div>
     <div class="ram" style="margin-top:18px">
+      <h2>Počítač · 861 px — nejužší, kde ještě platí PC verze</h2>
+      <div class="okno" id="oknoMin"><iframe id="ramMin"></iframe></div>
+      <p class="napoveda">Tady se katetr vejde nejhůř. Co projde tady, projde všude.</p>
+    </div>
+    <div class="ram" style="margin-top:18px">
       <h2>Mobil · 390 px</h2>
       <div class="okno" id="oknoMob"><iframe id="ramMob"></iframe></div>
     </div>
@@ -89,6 +94,7 @@ pre{background:var(--ground); border:1px solid var(--linka); border-radius:10px;
   function nactiNahledy(){
     var t = Date.now();
     $("#ramPc").src  = "index.html?editor=1&t=" + t;
+    $("#ramMin").src = "index.html?editor=1&t=" + t;
     $("#ramMob").src = "index.html?editor=1&t=" + t;
     setTimeout(function(){ preskaluj(); posli(); }, 1200);
   }
@@ -108,6 +114,7 @@ pre{background:var(--ground); border:1px solid var(--linka); border-radius:10px;
   }
   function preskaluj(){
     zmensi("#ramPc","#oknoPc",1440,900,760);
+    zmensi("#ramMin","#oknoMin",861,820,700);
     zmensi("#ramMob","#oknoMob",390,900,720);
   }
   addEventListener("resize", preskaluj);
@@ -123,7 +130,7 @@ pre{background:var(--ground); border:1px solid var(--linka); border-radius:10px;
     $("#vypis").textContent = JSON.stringify(stav, null, 1);
   }
   function posli(){
-    [$("#ramPc"), $("#ramMob")].forEach(function(r){
+    [$("#ramPc"), $("#ramMin"), $("#ramMob")].forEach(function(r){
       try { r.contentWindow.postMessage({__katetr: stav}, "*"); } catch(e){}
     });
   }
