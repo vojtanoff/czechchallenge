@@ -314,18 +314,26 @@ footer .wrap{display:block}
 
 /* ---------- místo konání ---------- */
 .venue{padding:clamp(46px,6vw,84px) 0}
-.venue-grid{display:grid; gap:clamp(16px,2.4vw,28px); margin-top:clamp(24px,3vw,40px);
-  grid-template-columns:1fr}
-@media (min-width:861px){ .venue-grid{grid-template-columns:1.45fr 1fr; align-items:stretch} }
-.venue-foto{margin:0; border-radius:var(--radius); overflow:hidden; background:var(--surface-2);
-  aspect-ratio:3/2}
-.venue-foto img{display:block; width:100%; height:100%; object-fit:cover}
-.venue-karta{background:var(--surface); border:1px solid var(--violet); border-radius:var(--radius);
-  padding:clamp(22px,2.6vw,32px); display:flex; flex-direction:column; align-items:flex-start; gap:14px}
-.venue-karta h3{font-family:var(--font-display); font-weight:500; letter-spacing:-.03em;
-  font-size:clamp(24px,2.6vw,34px); line-height:1.05}
-.venue-adresa{margin:0; font-size:clamp(15px,1.5vw,17px); line-height:1.55}
-.venue-karta .btn{margin-top:auto}
+/* Fotky sálu se prolínají pod sebou; přes ně jde jen název v pilulce a odkaz do map,
+   proto je popisek uvnitř obrázku a ne vedle něj. */
+.venue-foto{position:relative; margin:clamp(24px,3vw,40px) 0 0; border-radius:var(--radius);
+  overflow:hidden; background:var(--surface-2); aspect-ratio:16/9}
+@media (max-width:700px){ .venue-foto{aspect-ratio:4/3} }
+.venue-vrstvy{position:absolute; inset:0}
+.venue-vrstvy img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  opacity:0; transition:opacity 1.4s ease}
+.venue-vrstvy img.on{opacity:1}
+.venue-popis{position:absolute; left:0; right:0; bottom:0; display:flex; align-items:center;
+  gap:clamp(10px,1.6vw,18px); flex-wrap:wrap; padding:clamp(16px,2.4vw,26px);
+  background:linear-gradient(to top, rgba(16,12,46,.62), rgba(16,12,46,0))}
+.venue-pilulka{background:var(--ground); color:var(--violet); border-radius:999px;
+  font-family:var(--font-display); font-weight:500; letter-spacing:-.02em;
+  font-size:clamp(17px,2vw,26px); padding:clamp(7px,1vw,12px) clamp(16px,2vw,26px)}
+.venue-mapa{color:#fff; text-decoration:none; font-size:clamp(13px,1.4vw,16px);
+  display:inline-flex; align-items:center; border-bottom:1px solid rgba(255,255,255,.5); padding-bottom:1px}
+.venue-mapa::after{content:""; display:inline-block; width:8px; height:8px; margin-left:8px;
+  background:url(../img/icons/sipka-ven.svg) center/contain no-repeat; filter:brightness(0) invert(1)}
+.venue-mapa:hover{opacity:.8}
 
 /* odkaz u bodu programu (páteční večer v Everything) */
 .slot-odkaz{display:inline-flex; align-items:center; margin-top:8px; font-size:14px; font-weight:500;

@@ -556,11 +556,14 @@
   }
  ],
  "venue": {
-  "nazev": "Sál Jana Kašpara",
-  "budova": "Krajský úřad Pardubického kraje",
-  "ulice": "Komenského náměstí 125",
-  "mesto": "532 11 Pardubice, Czechia",
+  "nazev": "Jan Kašpar Hall",
   "mapa": "https://maps.google.com/?q=Krajsk%C3%BD+%C3%BA%C5%99ad+Pardubick%C3%A9ho+kraje+Komensk%C3%A9ho+n%C3%A1m%C4%9Bst%C3%AD+125+Pardubice",
-  "foto": "img/photos/hero/hero-01.jpg"
+  "fotky": [
+   "img/photos/hero/hero-01.jpg",
+   "img/photos/2024/KAB_6811.jpg",
+   "img/photos/2025/KAB_7830.jpg",
+   "img/photos/2024/KAB_7339.jpg",
+   "img/photos/venue/realka-exterier.jpg"
+  ]
  }
 }
