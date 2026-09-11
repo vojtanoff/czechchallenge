@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="fonts/safiro.css">
 <link rel="stylesheet" href="style.css?v=2026-09-08a">
-<link rel="stylesheet" href="style-pexa.css?v=112">
+<link rel="stylesheet" href="style-pexa.css?v=115">
 </head>
 <body>
 
@@ -51,6 +51,9 @@
 
 <!-- HERO: název vlevo, katetr s rukou ukazující nahoru vpravo, fotky přes celou šíři pod tím -->
 <section class="hero hero-pexa" aria-label="Czech Challenge 2026">
+  <div class="hero-vrstva" aria-hidden="true">
+    <div class="hero-katetr"><div class="katetr-obal"><img src="img/brand/hero-3d.webp" alt=""></div></div>
+  </div>
   <div class="wrap hero-blok">
     <h1>Czech Challenge <span class="rok">2026</span></h1>
     <div class="hero-text">
@@ -59,9 +62,6 @@
         <a class="btn btn-lime" href="#program">Program</a>
         <a class="btn btn-ghost" href="#faculty">Faculty</a>
       </p>
-    </div>
-    <div class="hero-katetr" aria-hidden="true">
-      <img src="img/brand/hadice-ruka-hd.webp" alt="">
     </div>
   </div>
   <div class="wrap">
@@ -273,15 +273,11 @@
     function pouzij(v){
       if(!v) return;
       var pc=v.pc||{}, m=v.mobil||{};
-      k.style.setProperty("--sirka", (pc.sirka||152)+"%");
-      k.style.setProperty("--uhel", (pc.uhel||34)+"deg");
-      k.style.setProperty("--sirka-m", (m.sirka||74)+"%");
-      k.style.setProperty("--uhel-m", (m.uhel||30)+"deg");
-      k.style.setProperty("--top", (m.top!=null?m.top:20)+"%");
-      k.style.setProperty("--right", (m.right!=null?m.right:5)+"%");
-      var pc_ = innerWidth>860;
-      k.style.setProperty("--x", ((pc_?pc.x:m.x)||0)+"%");
-      k.style.setProperty("--y", ((pc_?pc.y:m.y)||0)+"%");
+      var kde = innerWidth>=1024 ? pc : m;
+      k.style.setProperty("--uhel", (kde.uhel!=null?kde.uhel:34)+"deg");
+      k.style.setProperty("--zoom", (kde.zoom!=null?kde.zoom:100)/100);
+      k.style.setProperty("--x", (kde.x||0)+"%");
+      k.style.setProperty("--y", (kde.y||0)+"%");
     }
     fetch("katetr.json",{cache:"no-store"}).then(function(r){ return r.ok?r.json():null; })
       .then(function(v){ window.__katetr=v; pouzij(v); addEventListener("resize",function(){ pouzij(window.__katetr); }); })

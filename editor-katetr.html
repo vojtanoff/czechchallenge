@@ -39,7 +39,7 @@ pre{background:var(--ground); border:1px solid var(--linka); border-radius:10px;
 <div class="lista">
   <h1>Katetr v heru</h1>
   <button class="tl" id="btnReset">Výchozí</button>
-  <button class="tl plny" id="btnUlozit">Uložit do webu</button>
+  <button class="tl plny" id="btnUlozit">Uložit / zkopírovat</button>
   <span class="stav" id="stav"></span>
 </div>
 
@@ -58,17 +58,15 @@ pre{background:var(--ground); border:1px solid var(--linka); border-radius:10px;
   <div>
     <div class="hodnoty">
       <h2>Počítač</h2>
-      <div class="radek"><label>šířka</label><input type="range" id="pc_sirka" min="60" max="320" step="1"><input type="number" id="pc_sirka_n"></div>
+      <div class="radek"><label>velikost</label><input type="range" id="pc_zoom" min="30" max="260" step="1"><input type="number" id="pc_zoom_n"></div>
       <div class="radek"><label>úhel</label><input type="range" id="pc_uhel" min="-90" max="90" step="1"><input type="number" id="pc_uhel_n"></div>
       <div class="radek"><label>vodorovně</label><input type="range" id="pc_x" min="-80" max="80" step="1"><input type="number" id="pc_x_n"></div>
       <div class="radek"><label>svisle</label><input type="range" id="pc_y" min="-80" max="80" step="1"><input type="number" id="pc_y_n"></div>
     </div>
     <div class="hodnoty" style="margin-top:18px">
       <h2>Mobil</h2>
-      <div class="radek"><label>šířka</label><input type="range" id="m_sirka" min="40" max="260" step="1"><input type="number" id="m_sirka_n"></div>
+      <div class="radek"><label>velikost</label><input type="range" id="m_zoom" min="30" max="260" step="1"><input type="number" id="m_zoom_n"></div>
       <div class="radek"><label>úhel</label><input type="range" id="m_uhel" min="-90" max="90" step="1"><input type="number" id="m_uhel_n"></div>
-      <div class="radek"><label>shora</label><input type="range" id="m_top" min="-40" max="90" step="1"><input type="number" id="m_top_n"></div>
-      <div class="radek"><label>zprava</label><input type="range" id="m_right" min="-60" max="70" step="1"><input type="number" id="m_right_n"></div>
       <div class="radek"><label>vodorovně</label><input type="range" id="m_x" min="-80" max="80" step="1"><input type="number" id="m_x_n"></div>
       <div class="radek"><label>svisle</label><input type="range" id="m_y" min="-80" max="80" step="1"><input type="number" id="m_y_n"></div>
       <pre id="vypis"></pre>
@@ -80,7 +78,7 @@ pre{background:var(--ground); border:1px solid var(--linka); border-radius:10px;
 <script>
 (function(){
   var $ = function(s){ return document.querySelector(s); };
-  var VYCHOZI = { pc:{x:0,y:0,sirka:152,uhel:34}, mobil:{x:0,y:0,sirka:74,uhel:30,top:20,right:5} };
+  var VYCHOZI = { pc:{x:0,y:0,zoom:100,uhel:34}, mobil:{x:0,y:0,zoom:100,uhel:34} };
   var stav = JSON.parse(JSON.stringify(VYCHOZI));
 
   // náhledy: iframe v plné šířce zmenšený na místo, které je k dispozici
@@ -96,9 +94,8 @@ pre{background:var(--ground); border:1px solid var(--linka); border-radius:10px;
   function preskaluj(){ zmensi("#ramPc","#oknoPc",1440,900); zmensi("#ramMob","#oknoMob",390,760); }
   addEventListener("resize", preskaluj);
 
-  var pole = [["pc_sirka","pc","sirka"],["pc_uhel","pc","uhel"],["pc_x","pc","x"],["pc_y","pc","y"],
-              ["m_sirka","mobil","sirka"],["m_uhel","mobil","uhel"],["m_top","mobil","top"],
-              ["m_right","mobil","right"],["m_x","mobil","x"],["m_y","mobil","y"]];
+  var pole = [["pc_zoom","pc","zoom"],["pc_uhel","pc","uhel"],["pc_x","pc","x"],["pc_y","pc","y"],
+              ["m_zoom","mobil","zoom"],["m_uhel","mobil","uhel"],["m_x","mobil","x"],["m_y","mobil","y"]];
 
   function doPoli(){
     pole.forEach(function(p){
@@ -124,12 +121,19 @@ pre{background:var(--ground); border:1px solid var(--linka); border-radius:10px;
     stav = JSON.parse(JSON.stringify(VYCHOZI)); zmena();
   });
 
+  // Na GitHub Pages není server, kam uložit – tam se hodnoty zkopírují do schránky
+  // a Vojta je pošle. Z náhledu na Macu se uloží rovnou do katetr.json.
   $("#btnUlozit").addEventListener("click", function(){
+    var text = JSON.stringify(stav);
     fetch("katetr.json", { method:"POST", headers:{"Content-Type":"application/json","X-Katetr":"1"},
-                           body: JSON.stringify(stav) })
+                           body: text })
       .then(function(r){ if(!r.ok) throw new Error("HTTP "+r.status); return r.json(); })
       .then(function(){ $("#stav").textContent = "uloženo " + new Date().toLocaleTimeString("cs-CZ"); })
-      .catch(function(e){ $("#stav").textContent = "uložení selhalo: " + e.message; });
+      .catch(function(){
+        (navigator.clipboard ? navigator.clipboard.writeText(text) : Promise.reject())
+          .then(function(){ $("#stav").textContent = "server tu není – hodnoty zkopírované, pošli mi je"; },
+                function(){ $("#stav").textContent = "server tu není – hodnoty jsou dole, opiš je"; });
+      });
   });
 
   // tažení přímo v náhledu
