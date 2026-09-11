@@ -1,0 +1,357 @@
+/* Designová varianta podle Figmy Miloše Pexy (CC_WEB_REDESIGN, 2026).
+   Odstíny, typografie a rámečky doladěny 9. 9. 2026 podle exportu nové Figmy (Czech_Challenge_web_2026):
+   podklad #F9F8F6, VŠECHEN text fialový #4B32D0 (jako u nich), karty bílé bez stínu, štítky jako obrysové pilulky, nadpisy Safiro Medium.
+   Načítá se PO style.css a jen přepisuje: světlý podklad, fialová typografie
+   v lehkém řezu, navigace v pilulkách, 3D „hadice" se signature rukou.
+   Obsah, pořadí sekcí, fotky a texty zůstávají z hlavní větve. */
+
+:root{
+  color-scheme:light;
+  --ground:#F9F8F6; --surface:#FFFFFF; --surface-2:#F3F1EC;
+  --ink:#4B32D0; --ink-2:#4B32D0; --ink-3:#4B32D0; --line:#E6E3DC;
+  --violet:#4B32D0; --violet-deep:#3320A6; --violet-soft:#E6E2FA;
+  --tube-dark:#2A1A85; --tube:#4B32D0; --tube-light:#7D68F4; --tube-spec:#FFFFFF;
+  --shadow:none;
+  --radius:18px;
+  /* Safiro = font z Figmy (od Miloše 9. 9. 2026, fonts/safiro.css); Bricolage jen jako záloha, než se webfont načte */
+  --font-display:"Safiro","Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+}
+/* Figma je jednobarevná světlá – tmavý režim tady vědomě nepřepíná */
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --ground:#F9F8F6; --surface:#FFFFFF; --surface-2:#F3F1EC;
+  --ink:#4B32D0; --ink-2:#4B32D0; --ink-3:#4B32D0; --line:#E6E3DC;
+  --violet:#4B32D0; --violet-deep:#3320A6; --violet-soft:#E6E2FA;
+  --lime:#F2FF9F; --lime-ink:#3D3F12; --shadow:none;
+}}
+:root[data-theme="dark"]{
+  --ground:#F9F8F6; --surface:#FFFFFF; --surface-2:#F3F1EC;
+  --ink:#4B32D0; --ink-2:#4B32D0; --ink-3:#4B32D0; --line:#E6E3DC;
+  --violet:#4B32D0; --violet-deep:#3320A6; --violet-soft:#E6E2FA;
+  --lime:#F2FF9F; --lime-ink:#3D3F12; --shadow:none;
+}
+
+/* ---------- typografie: lehký řez, fialová ---------- */
+h2{font-weight:500; color:var(--violet); letter-spacing:-.04em; font-size:clamp(34px,4.6vw,58px)}
+h3{font-weight:500}
+.eyebrow{display:inline-block; background:var(--violet); color:#fff; font-family:var(--font-display); font-weight:500; font-size:11.5px; letter-spacing:.1em; padding:5px 12px; border-radius:999px; margin-bottom:16px}
+.sec-head p.lead{color:var(--ink-2)}
+.sec-head .eyebrow{justify-self:start}   /* .sec-head je grid – pilulka se jinak roztáhne přes celou šířku (bylo i na :8791) */
+.btn{font-family:var(--font-display); font-weight:500; letter-spacing:-.01em}
+.btn-lime{background:var(--violet); color:#fff}
+.btn-lime:hover{background:var(--violet-deep)}
+.btn-ghost{color:var(--ink); border-color:var(--ink)}
+.btn-ghost:hover{background:var(--ink); color:#fff}
+.facts li{background:#fff; border:1px solid var(--violet); color:var(--violet); font-family:var(--font-display); font-weight:400; font-size:13px; letter-spacing:-.01em}   /* štítky = obrysové pilulky jako ve Figmě (Czech Republic, CTO, Complex PCI) */
+
+/* ---------- dojezd nadpisů (efekt jako na apple.com) ----------
+   Nadpis se rozdělí na řádky, každý řádek je v okénku s overflow:hidden a vyjíždí
+   zespodu s doběhem – cubic-bezier(.16,1,.3,1) je právě to „dojetí": rychlý start
+   a dlouhé měkké dosednutí. Řádky jdou po sobě s odstupem 90 ms.
+   Okénko má dole rezervu (padding + záporný margin), jinak by ořízlo bříška g, y, p. */
+.dojezd .dr{display:block; overflow:hidden; padding:.08em 0 .16em; margin:-.08em 0 -.16em}   /* line-height nadpisů je 1,05 – bez rezervy by okénko ořízlo bříška i horní dotažnice */
+.dojezd .dri{display:block; transform:translateY(110%); opacity:0;
+  transition:transform .95s cubic-bezier(.16,1,.3,1), opacity .6s ease;
+  transition-delay:calc(var(--i, 0) * 90ms)}
+.dojezd.tu .dri{transform:none; opacity:1}
+@media (prefers-reduced-motion:reduce){ .dojezd .dri{transform:none; opacity:1; transition:none} }
+
+/* ---------- nabíhání textu při skrolování (jejich efekt) ----------
+   Slova jsou samostatné <span>y; nerozsvícené jsou #D9D9D9 (změřeno u nich),
+   rozsvícené fialové, přechod color .5s. Řídí to skript v index.html podle
+   polohy odstavce vůči 84,5 % výšky okna. */
+.nabih-on .s{color:#D9D9D9; transition:color .5s}
+.nabih-on .s.tu{color:var(--violet)}
+
+/* ---------- navigace: plovoucí pilulka, jako na webu od Miloše a kodéra ----------
+   Celý panel je jedna oblá pilulka v barvě podkladu, uvnitř logo, menu a tlačítko;
+   pluje nad obsahem s odsazením od horní hrany (jejich rozměry: výška 67 px, boky 31 px). */
+.nav{background:transparent; border-bottom:0; padding-top:clamp(12px,2.2vw,26px); pointer-events:none;
+  backdrop-filter:none; -webkit-backdrop-filter:none}   /* hlavní styl rozmazává celý pruh navigace; u nich má pilulka ostrý okraj a okolí zůstává čisté */
+.nav .wrap{height:67px; pointer-events:auto; background:var(--ground); border:0;
+  border-radius:20px; padding-left:19px; padding-right:19px; gap:14px}
+/* u nich: rounded-[20px] a teprve od jejich lg (1024 px) rounded-full */
+@media (min-width:1024px){ .nav .wrap{border-radius:999px} }
+@media (min-width:861px){ .nav .wrap{padding-left:31px; padding-right:31px} }   /* bez tlačítka vpravo sedí stejné odsazení z obou stran */
+.menu{background:transparent; border-radius:999px; padding:0; gap:4px; box-shadow:none; margin-left:auto}   /* jako u nich: logo vlevo, menu na pravé straně panelu */
+.menu a{display:inline-flex; align-items:center; height:47px; padding:0 22px; border-radius:999px;
+  font-family:var(--font-display); font-weight:400; font-size:17.65px; letter-spacing:-.01em; color:var(--violet); transition:background .2s, color .2s}
+.menu a:hover{background:var(--violet-soft); color:var(--violet)}
+.nav .brand img{height:44px; width:auto}
+/* ikona menu na telefonu: jen dvě tenké čárky přes celou šířku, jako u nich (54×37 px, 1px, rozestup 12 px) */
+.burger{width:54px; height:37px; position:relative; color:var(--violet)}
+.burger span{position:absolute; left:0; top:50%; width:100%; height:1px; margin:0; background:currentColor}
+.burger span:nth-child(1){transform:translateY(calc(-50% - 6px))}
+.burger span:nth-child(2){display:none}
+.burger span:nth-child(3){transform:translateY(calc(-50% + 6px))}   /* jejich logo je jednořádkové, naše má pod tím CZECH CHALLENGE – při 28 px by se to slilo */
+.menu a.on{background:var(--violet); color:#fff}
+.nav-cta .btn{background:transparent; color:var(--violet); border-color:var(--violet); padding:11px 18px}
+.nav-cta .btn:hover{background:var(--violet); color:#fff}
+
+/* ---------- hero: text vlevo, hadice s rukou vpravo, fotka jako karta pod tím ---------- */
+.hero-pexa{background:var(--ground); color:var(--ink); min-height:0; display:block; overflow:hidden; padding:0 0 clamp(40px,6vw,72px)}
+.hero-pexa::after{display:none}
+.hero-pexa .hero-grid{position:relative; display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:start; gap:clamp(24px,3vw,44px); padding:clamp(16px,2.5vw,32px) 0 0}   /* šířku fotky (4:3, stejně vysoká jako text) nastaví skript */
+.hero-pexa .hero-grid .hero-card{margin-top:0; aspect-ratio:auto; min-height:0}
+.hero-pexa .hero-text .vol{margin:18px 0 0}
+.hero-pexa .hero-text .vol + .meta{margin-top:14px}
+.hero-pexa > .wrap:not(.hero-grid){padding:0}   /* hlavní styl dává .hero .wrap 120 px shora – to byla ta mezera nad fotkou */
+.hero-pexa h1{font-size:clamp(46px,7.4vw,104px); font-weight:500; line-height:.92; letter-spacing:-.045em; color:var(--violet); white-space:nowrap}   /* velikost dopočítá skript, aby „Challenge" vyplnilo šířku */
+.hero-pexa h1 .rok{display:block; font-weight:500}
+.hero-pexa .meta{font-family:var(--font-display); font-weight:500; font-size:clamp(20px,2.4vw,30px); color:var(--violet); margin-top:22px}
+.hero-pexa .meta small{color:var(--ink-2); font-size:clamp(15px,1.4vw,18px); opacity:1}
+.hero-pexa .vol{background:var(--lime); color:var(--lime-ink); margin-top:14px; font-family:var(--font-display); font-weight:500; font-size:19px; letter-spacing:-.02em; padding:10px 20px}
+.hero-pexa .cta .btn{padding:11px 18px; font-size:15px}
+
+/* hadice: jedna křivka, pět vrstev tahu = plastický 3D dojem bez rastru; kreslí se po načtení */
+.tube-wrap{position:relative; z-index:0; pointer-events:none; align-self:stretch; min-height:300px; margin-bottom:-40px}
+.tube{position:absolute; left:-14%; top:-8%; width:126%; height:114%; overflow:visible}
+.tube path{fill:none; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:1; stroke-dashoffset:1}
+.tube .t-mask{stroke:#fff; stroke-width:53}
+.tube .t-mask-sir{stroke-width:120}
+.tube .t-shadow{stroke:#1A0F5C; stroke-width:66; opacity:.24; filter:blur(12px); transform:translate(14px,24px)}
+/* vrstvy podle průřezu Milošova renderu (shora): tmavá hrana → tělo → světlý pruh → syté tělo → tmavá spodní polovina → odlesk odspodu.
+   Vnitřní vrstvy jsou rozmazané a ořezané maskou tvaru hadice, takže vzniká plynulý přechod, ne pruhy. */
+.tube .t-base{stroke:#2A0E82; stroke-width:53}
+.tube .t-body{stroke:#5A1FE8; stroke-width:49; transform:translate(0,-1px)}
+.tube .t-dark{stroke:#3607A8; stroke-width:34; transform:translate(2px,9px); opacity:.95; filter:blur(5px)}
+.tube .t-core{stroke:#2A0399; stroke-width:16; transform:translate(4px,13px); opacity:.9; filter:blur(4px)}
+.tube .t-rim{stroke:#8A62E0; stroke-width:4; transform:translate(6px,19px); opacity:.55; filter:blur(1.2px)}
+.tube .t-mid{stroke:#8A55FA; stroke-width:24; transform:translate(-3px,-8px); opacity:.95; filter:blur(5px)}
+.tube .t-light{stroke:#CBA2FF; stroke-width:10; transform:translate(-6px,-14px); opacity:.95; filter:blur(2.2px)}
+.tube .t-spec{stroke:#F6F0FF; stroke-width:2.6; transform:translate(-7px,-16px); opacity:.85; filter:blur(.6px)}
+.contact .tube .t-base{stroke:#22157A} .contact .tube .t-body{stroke:#4A1BC8} .contact .tube .t-dark{stroke:#2E0794} .contact .tube .t-core{stroke:#230580}
+.hand{position:absolute; width:clamp(120px,13vw,190px); height:auto; transform:translate(-80%,-45%) rotate(var(--uhel,0deg));
+  transform-origin:80% 45%; transition:transform .12s linear}
+.hand.nod{animation:nod .8s cubic-bezier(.3,.9,.3,1.2)}
+.hand.nod2{animation:nod2 1.3s cubic-bezier(.4,.05,.3,1)}
+@keyframes nod2{0%{transform:translate(-80%,-45%)} 22%{transform:translate(-80%,-45%) translateX(-22px) rotate(-3deg)} 45%{transform:translate(-80%,-45%)} 68%{transform:translate(-80%,-45%) translateX(-22px) rotate(-3deg)} 100%{transform:translate(-80%,-45%)}}
+@keyframes nod{0%{transform:translate(-80%,-45%)} 35%{transform:translate(-80%,-45%) translateX(-22px) rotate(-3deg)} 70%{transform:translate(-80%,-45%) translateX(6px) rotate(2deg)} 100%{transform:translate(-80%,-45%)}}
+
+/* fotka jako karta pod nadpisem, přes ni tlačítko na minulé ročníky */
+.hero-card{position:relative; border-radius:var(--radius); overflow:hidden; aspect-ratio:16/7; min-height:280px; margin-top:clamp(16px,2.4vw,32px); box-shadow:var(--shadow); isolation:isolate}
+.hero-card .hero-photos{position:absolute; inset:0; z-index:0}
+.hero-card .hero-photos img{transform:none}
+.hero-card::after{content:""; position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(180deg,rgba(75,50,208,.08),rgba(34,29,74,.45) 100%)}
+.hero-card .play{position:absolute; right:14px; top:14px; z-index:2; display:inline-flex; align-items:center; gap:9px; white-space:nowrap;
+  background:rgba(255,255,255,.92); color:var(--violet); text-decoration:none; font-family:var(--font-display); font-weight:600; font-size:14px; padding:7px 14px 7px 8px; border-radius:999px; box-shadow:0 6px 18px rgba(0,0,0,.22); transition:transform .15s}
+.hero-card .play:hover{transform:translateY(-1px)}
+.hero-card .play i{width:28px; height:28px; border-radius:50%; background:var(--violet); display:grid; place-items:center}
+/* tlačítka leží dole ve fotce, tečky vpravo dole */
+.hero-card .cta{position:absolute; left:18px; right:18px; bottom:18px; z-index:2; margin:0; gap:10px}
+.hero-card .cta .btn-ghost{color:#fff; border-color:rgba(255,255,255,.75); backdrop-filter:blur(6px); background:rgba(23,19,58,.18)}
+.hero-card .cta .btn-ghost:hover{background:rgba(255,255,255,.18)}
+.hero-card .dots{position:absolute; right:18px; bottom:22px; z-index:2; display:flex; gap:6px}
+.hero-card .dots i{width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.5)}
+.hero-card .dots i.on{background:#fff}
+
+.thanks{font-weight:400; font-size:clamp(15px,1.7vw,18px); line-height:1.5}   /* Vojta: v limetkové pilulce netučně */
+
+/* ---------- sekce: bílé karty na světlém podkladu ---------- */
+section{padding:clamp(40px,5.5vw,72px) 0}   /* menší mezery mezi sekcemi než na hlavním webu */
+.program{background:var(--ground)}
+.days{background:var(--surface); border-radius:var(--radius); padding:clamp(20px,3vw,36px); box-shadow:var(--shadow)}
+.day{border-top:0}
+.live{background:var(--violet)}
+.faculty-band{border-radius:var(--radius)}
+.gallery{background:var(--ground)}
+.grid a{border-radius:14px}
+.video .play span{background:#fff}
+.video .play svg{color:var(--violet)}
+.logo{border-color:transparent; box-shadow:none}
+.logos.general .logo img[src*="euromedical"]{max-height:150px}   /* složené logo je vyšší než Terumo, ať je opticky stejně velké */
+.logo img[src*="Vamex"]{max-height:86px}                          /* samotný nápis, jinak by působil drobně */
+.director{border:0; box-shadow:none}
+
+/* kontakt: fialový blok jako ve Figmě, hadice přijíždí zleva a ruka ukazuje na tlačítko */
+.contact{position:relative}
+.contact .eyebrow{background:#fff; color:var(--violet)}
+.contact h2{color:#fff; font-weight:500}
+.contact .btn-lime{background:var(--lime); color:#111}
+.contact .btn-lime:hover{background:#fff; color:var(--violet)}
+.contact .tube-wrap{position:absolute; left:34%; bottom:-10%; width:min(40vw,520px); height:min(40vw,520px); z-index:0}   /* left/top přepíše skript zamir() – ruka míří na tlačítko */
+.contact .tube .t-shadow{opacity:.35}
+.contact .contact-grid{position:relative; z-index:1}
+.contact .card{background:rgba(255,255,255,.12); backdrop-filter:blur(6px)}
+
+
+/* pozor: fialové pozadí patří jen .pata-blok – když bylo na footer .wrap, byl poslední řádek
+   (© 2026 … Design by pexxa creative) fialový text na fialovém pozadí, tedy neviditelný */
+footer .wrap{background:transparent; color:inherit; border-radius:0; padding:0}
+.pata-hlava img{filter:brightness(0) invert(1); opacity:.95}   /* jen logo; 3D ruka v kontaktu si musí nechat vlastní barvy */
+footer .ruka-cil img{filter:none; opacity:1}
+
+@media (max-width:860px){
+  .hero-pexa .hero-grid{grid-template-columns:1fr; min-height:0; gap:14px} .hero-pexa .hero-grid .hero-card{aspect-ratio:4/3; max-width:none}
+  .tube-wrap{min-height:230px; margin:0 -20px 0 22%}
+  .tube{left:-6%; top:-4%; width:106%; height:108%}
+  .hand{width:clamp(120px,32vw,160px)}
+  .contact .tube-wrap{display:none}   /* na telefonu není pro hadici s rukou místo */
+  .hero-card{aspect-ratio:4/3}
+  .hero-card .dots{bottom:auto; top:16px; right:16px}
+  .hero-card .play{font-size:13px; padding:6px 12px 6px 7px} .hero-card .play i{width:24px; height:24px}
+  .contact{width:calc(100% - 20px)}
+  .contact .tube-wrap{width:70vw; height:70vw}
+}
+
+body{overflow-x:hidden}
+
+/* ---------- 3D levý palec (render z ChatGPT) v mezeře za „Czech" a nad „Challenge" – stejné jako na hlavním webu ---------- */
+.hero-pexa h1 .r1{position:relative; display:inline-block}
+.palec-box{position:absolute; left:calc(100% + .12em); bottom:-.06em; height:1.42em; aspect-ratio:808/900; pointer-events:none}
+.palec-box .palec-v{display:block; width:100%; height:100%; transform:scale(0) rotate(-10deg); transform-origin:38% 90%; transition:transform .3s ease-in}
+.palec-box.on .palec-v{transform:scale(1) rotate(0deg); transition:transform .75s cubic-bezier(.2,1.35,.3,1) .5s; animation:klep 1.2s 1.5s cubic-bezier(.4,.05,.3,1) forwards}
+@keyframes klep{0%{transform:scale(1) rotate(0deg)} 20%{transform:scale(1) rotate(22deg)} 42%{transform:scale(1) rotate(0deg)} 62%{transform:scale(1) rotate(22deg)} 84%{transform:scale(1) rotate(-3deg)} 100%{transform:scale(1) rotate(0deg)}}
+@media (prefers-reduced-motion:reduce){ .palec-box .palec-v{transition:none; animation:none; transform:none} }
+
+/* ---------- kontakt na telefonu: bez hadice, jen 3D ruka pod tlačítkem (stejné chování jako katetr na PC) ---------- */
+/* 3D ruka ukazující na tlačítko: špička prstu je v ~30 % výšky obrázku, zápěstí vpravo; bez drop-shadow (Safari ho kreslí jako obdélník) */
+.ruka-cil{position:relative; display:inline-block; margin-top:8px}
+.ruka-cil .ruka{position:absolute; z-index:1; left:calc(100% + 12px); top:50%; width:clamp(130px,14vw,210px); height:auto; max-width:none; pointer-events:none;
+  transform:translate(70px,-30%); opacity:0; transition:transform .7s cubic-bezier(.2,1.2,.3,1), opacity .4s}
+.ruka-cil .ruka.tu{transform:translate(0,-30%); opacity:1}
+.ruka-cil .ruka.klik{animation:ruka-klik .55s cubic-bezier(.3,.9,.3,1.2)}
+@keyframes ruka-klik{0%{transform:translate(0,-30%)} 40%{transform:translate(-16px,-30%) rotate(-3deg)} 100%{transform:translate(0,-30%)}}
+.ruka-cil .ruka.klik2{animation:ruka-klik2 1.1s cubic-bezier(.4,.05,.3,1)}
+@keyframes ruka-klik2{0%{transform:translate(0,-30%)} 25%{transform:translate(-16px,-30%) rotate(-3deg)} 50%{transform:translate(0,-30%)} 75%{transform:translate(-16px,-30%) rotate(-3deg)} 100%{transform:translate(0,-30%)}}
+/* na telefonu je tlačítko přes celou šířku – ruka visí pod jeho pravým koncem a ukazuje šikmo nahoru (otáčí se kolem špičky prstu) */
+@media (max-width:700px){
+  .ruka-cil{margin-bottom:78px}
+  .ruka-cil .ruka{left:auto; right:-66px; top:calc(100% - 16px); width:110px; transform-origin:2% 30%; transform:rotate(40deg) translate(60px,0)}
+  .ruka-cil .ruka.tu{transform:rotate(40deg)}
+  .ruka-cil .ruka.klik{animation-name:ruka-klik-m}
+  .ruka-cil .ruka.klik2{animation-name:ruka-klik2-m}
+}
+@keyframes ruka-klik2-m{0%{transform:rotate(40deg)} 25%{transform:rotate(40deg) translate(-14px,0)} 50%{transform:rotate(40deg)} 75%{transform:rotate(40deg) translate(-14px,0)} 100%{transform:rotate(40deg)}}
+@keyframes ruka-klik-m{0%{transform:rotate(40deg)} 40%{transform:rotate(40deg) translate(-14px,0)} 100%{transform:rotate(40deg)}}
+@media (prefers-reduced-motion:reduce){ .ruka-cil .ruka{transition:none; animation:none} }
+
+
+/* ---------- „I'm interested" nad patičkou – jejich sekce na podkladu, ne ve fialovém bloku ---------- */
+.zajem{background:var(--ground); padding:clamp(60px,8vw,100px) 0 clamp(40px,7vw,87px)}
+.zajem-grid{display:grid; gap:clamp(30px,5vw,44px)}
+@media (min-width:861px){ .zajem-grid{grid-template-columns:minmax(0,1fr); gap:0} }
+.zajem h2{margin:0; color:var(--violet); font-weight:500; letter-spacing:-.07em; line-height:.8;
+  font-size:clamp(42px,4.45vw,64px)}
+.zajem .zajem-lead{margin:clamp(20px,2.6vw,32px) 0 0; color:var(--ink-2); font-family:var(--font-body);
+  font-weight:400; letter-spacing:0; line-height:1.5; font-size:clamp(16px,1.5vw,18px); max-width:52ch}
+.zajem .eyebrow{margin-bottom:clamp(16px,2vw,26px)}
+.zajem .ruka-cil{margin:clamp(28px,3.4vw,40px) 0 0; justify-self:start; position:relative}
+/* Vinutý katetr u tlačítka je rozdělený na dva obrázky: katetr leží staticky a hýbe se jen ručička.
+   Otáčí se přesně kolem středu zápěstí – změřeno z renderu (napojení x=682, y=182 z 2200×779),
+   proto transform-origin 97.71 % 23.36 % a jen ±4°, aby v napojení nevznikl viditelný zlom. */
+/* katetr přichází shora zprava a klesá doleva k tlačítku; otáčí se kolem špičky prstu,
+   aby ta zůstala u tlačítka i po natočení */
+.zajem .katetr-box{position:absolute; left:calc(100% + 10px); top:50%;
+  width:clamp(280px,36vw,560px); aspect-ratio:2200/779; transform-origin:3% 20%;
+  transform:translate(60px,-16%) rotate(-17deg); opacity:0;
+  transition:transform .7s cubic-bezier(.2,1.2,.3,1), opacity .4s; pointer-events:none}
+.zajem .katetr-box.tu{transform:translate(0,-16%) rotate(-17deg); opacity:1}
+.zajem .katetr-box img{position:absolute; top:0; left:0; height:100%; width:auto; max-width:none;
+  filter:none; opacity:1; transform:none}
+.zajem .katetr-box .ruka{transform-origin:97.71% 23.36%}
+.zajem .katetr-box .ruka.klik{animation:zajem-klik .6s cubic-bezier(.3,.9,.3,1.2)}
+.zajem .katetr-box .ruka.klik2{animation:zajem-klik2 1.2s cubic-bezier(.4,.05,.3,1)}
+@keyframes zajem-klik{0%{transform:rotate(0)} 45%{transform:rotate(-4deg)} 100%{transform:rotate(0)}}
+@keyframes zajem-klik2{0%{transform:rotate(0)} 25%{transform:rotate(-4deg)} 50%{transform:rotate(0)} 75%{transform:rotate(-4deg)} 100%{transform:rotate(0)}}
+@media (prefers-reduced-motion:reduce){ .zajem .katetr-box .ruka{animation:none} }
+@media (max-width:860px){ .zajem .katetr-box{display:none} }
+
+.zajem .btn-lime{background:var(--violet); color:#fff}
+.zajem .btn-lime:hover{background:var(--violet-deep)}
+.zajem .ruka-cil .ruka{filter:none; opacity:1}
+
+/* ---------- patička 1 : 1 podle jejich webu (rozměry z jejich CSS) ---------- */
+footer{padding:0 0 24px}
+footer .wrap{display:block}
+.pata-blok{background:var(--violet); color:#fff; border-radius:clamp(20px,2.4vw,28px);
+  padding:clamp(18px,3vw,58px) clamp(19px,4vw,58px) clamp(24px,5vw,89px)}
+.pata-hlava{display:flex; align-items:center; justify-content:space-between; gap:24px}
+.pata-hlava img{height:clamp(30px,3.4vw,46px); width:auto}
+.pata-hlava p{margin:0; font-family:var(--font-display); font-weight:400; font-size:clamp(12px,1.9vw,23.4px); line-height:1}
+.pata-telo{margin-top:clamp(45px,4.4vw,56px); display:grid; gap:clamp(46px,6vw,80px)}
+/* na telefonu jako u nich: nejdřív odkazy a kontakty, velký nápis Czech Challenge až dole */
+@media (max-width:860px){
+  .pata-telo{display:flex; flex-direction:column; gap:0}
+  .pata-vpravo{order:1; gap:56px}
+  .pata-znak{order:2; margin-top:64px; font-size:76px}
+  .pata-menu ul{min-width:0}
+  .pata-kontakt{max-width:none; text-align:right; align-self:flex-end}   /* justify-self v pružném sloupci neplatí, proto align-self */
+  .pata-kontakt li{text-align:right}
+}
+/* plovoucí šipka zpět nahoru – jako u nich: pevně v pravém dolním rohu okna přes celou stránku,
+   objeví se až po odrolování a nad fialovou patičkou by splynula, proto tam dostane bílé kolečko */
+.pata-blok{position:relative}
+.nahoru{position:fixed; right:20px; bottom:24px; z-index:40; width:50px; height:50px; display:block;
+  opacity:0; pointer-events:none; transition:opacity .3s}
+.nahoru.vidno{opacity:1; pointer-events:auto}
+.nahoru img{width:100%; height:100%; display:block}
+@media (min-width:861px){ .nahoru{right:60px} }
+@media (min-width:861px){ .pata-telo{grid-template-columns:minmax(0,1fr) auto; align-items:start} }
+/* velký nápis Czech Challenge vlevo dole, jako u nich */
+.pata-znak{margin:clamp(40px,7vw,93px) 0 0; font-family:var(--font-display); font-weight:500;
+  font-size:clamp(52px,7.51vw,108px); line-height:.8; letter-spacing:-.07em}
+.pata-znak span{display:block}
+.pata-vpravo{display:flex; flex-direction:column; gap:44px}
+@media (min-width:861px){ .pata-vpravo{flex-direction:row-reverse; justify-content:flex-start; gap:clamp(30px,4.5vw,80px)} }
+.pata-menu ul{list-style:none; margin:0; padding:0; text-align:right; min-width:200px}
+@media (min-width:861px){ .pata-menu ul{width:210px} }
+.pata-menu li + li{border-top:1px solid rgba(255,255,255,.4)}
+.pata-menu a{display:block; padding:10px 0; color:#fff; text-decoration:none; font-size:12.8px; line-height:15px; transition:opacity .2s}
+.pata-menu a:hover{opacity:.7}
+.pata-kontakt{list-style:none; margin:clamp(0px,2vw,24px) 0 0; padding:0; display:grid; gap:20px;
+  text-align:right; font-size:12.8px; line-height:1.15; max-width:230px; justify-self:end}
+.pata-kontakt a{color:#fff; text-decoration:none; transition:opacity .2s}
+.pata-kontakt a::after{content:""; display:inline-block; width:8px; height:8px; margin-left:8px;
+  background:url(../img/icons/sipka-ven.svg) center/contain no-repeat; vertical-align:baseline}
+.pata-kontakt a:hover{opacity:.7}
+/* poslední řádek je u nich POD fialovým blokem, fialovým písmem na podkladu */
+.pata-spodek{display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-end; gap:8px 18px;
+  margin-top:clamp(15px,1.8vw,22px); padding:0 clamp(4px,2.4vw,28px) clamp(18px,2vw,24px);
+  font-size:clamp(12px,1.4vw,17px); color:var(--violet)}
+@media (max-width:860px){
+  .pata-spodek{font-size:12px}
+}
+
+/* ---------- místo konání ---------- */
+.venue{padding:clamp(46px,6vw,84px) 0}
+.venue-grid{display:grid; gap:clamp(16px,2.4vw,28px); margin-top:clamp(24px,3vw,40px);
+  grid-template-columns:1fr}
+@media (min-width:861px){ .venue-grid{grid-template-columns:1.45fr 1fr; align-items:stretch} }
+.venue-foto{margin:0; border-radius:var(--radius); overflow:hidden; background:var(--surface-2);
+  aspect-ratio:3/2}
+.venue-foto img{display:block; width:100%; height:100%; object-fit:cover}
+.venue-karta{background:var(--surface); border:1px solid var(--violet); border-radius:var(--radius);
+  padding:clamp(22px,2.6vw,32px); display:flex; flex-direction:column; align-items:flex-start; gap:14px}
+.venue-karta h3{font-family:var(--font-display); font-weight:500; letter-spacing:-.03em;
+  font-size:clamp(24px,2.6vw,34px); line-height:1.05}
+.venue-adresa{margin:0; font-size:clamp(15px,1.5vw,17px); line-height:1.55}
+.venue-karta .btn{margin-top:auto}
+
+/* odkaz u bodu programu (páteční večer v Everything) */
+.slot-odkaz{display:inline-flex; align-items:center; margin-top:8px; font-size:14px; font-weight:500;
+  color:var(--violet); text-decoration:none; border-bottom:1px solid rgba(75,50,208,.4)}
+.slot-odkaz::after{content:""; display:inline-block; width:8px; height:8px; margin-left:7px;
+  background:url(../img/icons/sipka-ven.svg) center/contain no-repeat}
+.slot-odkaz:hover{opacity:.7}
+
+/* ---------- galerie – vlastní stránka ---------- */
+.page-head{padding:56px 0 26px}
+.page-head h1{font-size:clamp(40px,6vw,72px); font-weight:500; letter-spacing:-.04em}
+.year-block{padding:24px 0 48px}
+.year-block h2{font-size:clamp(26px,3vw,36px); margin-bottom:16px}
+.lightbox{position:fixed; inset:0; z-index:80; background:rgba(16,14,34,.94); display:none; align-items:center; justify-content:center}
+.lightbox[data-open="true"]{display:flex}
+.lightbox img{max-width:94vw; max-height:88vh; border-radius:10px; box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.lightbox button{position:absolute; top:50%; transform:translateY(-50%); width:56px; height:56px; border-radius:50%; border:0;
+  background:rgba(255,255,255,.14); color:#fff; font-size:26px; cursor:pointer}
+.lightbox .prev{left:16px} .lightbox .next{right:16px}
+.lightbox .x{top:16px; right:16px; transform:none; width:48px; height:48px}
+.lightbox .cnt{position:absolute; bottom:18px; left:50%; transform:translateX(-50%); color:#fff; font-family:var(--font-display); font-weight:700; opacity:.8}
+
+/* jemné najetí sekcí – z viditelného stavu, jen posun */
+.reveal{transform:translateY(18px); transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{transform:none}
+
+
+/* ruka u tlačítka „I'm interested" – přijede a ťukne; katetr u ní není (Vojta 9. 9.: „ta ruka s katetrem takhle nefunguje") */
+@media (min-width:861px){ .contact{padding-bottom:calc(clamp(40px,5.5vw,72px) + 40px)} }

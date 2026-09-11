@@ -1,0 +1,10 @@
+/* Safiro – webfont od Miloše Pexy (Dropbox 03_Vojta_podklady/01_Fonty, 9. 9. 2026), převedeno TTF → WOFF2.
+   Servíruje se z vlastní domény, žádná závislost na Google Fonts. */
+@font-face{font-family:"Safiro"; font-weight:400; font-style:normal; font-display:swap; src:url(safiro-regular.woff2) format("woff2")}
+@font-face{font-family:"Safiro"; font-weight:400; font-style:italic; font-display:swap; src:url(safiro-regularitalic.woff2) format("woff2")}
+@font-face{font-family:"Safiro"; font-weight:500; font-style:normal; font-display:swap; src:url(safiro-medium.woff2) format("woff2")}
+@font-face{font-family:"Safiro"; font-weight:500; font-style:italic; font-display:swap; src:url(safiro-mediumitalic.woff2) format("woff2")}
+@font-face{font-family:"Safiro"; font-weight:600; font-style:normal; font-display:swap; src:url(safiro-semibold.woff2) format("woff2")}
+@font-face{font-family:"Safiro"; font-weight:600; font-style:italic; font-display:swap; src:url(safiro-semibolditalic.woff2) format("woff2")}
+@font-face{font-family:"Safiro"; font-weight:700; font-style:normal; font-display:swap; src:url(safiro-bold.woff2) format("woff2")}
+@font-face{font-family:"Safiro"; font-weight:700; font-style:italic; font-display:swap; src:url(safiro-bolditalic.woff2) format("woff2")}
