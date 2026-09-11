@@ -51,13 +51,13 @@ pre{background:var(--ground); border:1px solid var(--linka); border-radius:10px;
 <div class="plocha">
   <div>
     <div class="ram">
-      <h2>Počítač · 1440 px</h2>
+      <h2>Počítač široký · 1440 px</h2>
       <div class="okno" id="oknoPc"><iframe id="ramPc"></iframe></div>
     </div>
     <div class="ram" style="margin-top:18px">
-      <h2>Počítač · 861 px — nejužší, kde ještě platí PC verze</h2>
+      <h2>Počítač úzký · 861 px — nejužší, kde ještě platí PC verze</h2>
       <div class="okno" id="oknoMin"><iframe id="ramMin"></iframe></div>
-      <p class="napoveda">Tady se katetr vejde nejhůř. Co projde tady, projde všude.</p>
+      <p class="napoveda">Nejužší PC rozložení – tady se katetr vejde nejhůř. Mezi 861 a 1440 px se hodnoty plynule dopočítají z obou kotev.</p>
     </div>
     <div class="ram" style="margin-top:18px">
       <h2>Mobil · 390 px</h2>
@@ -67,11 +67,19 @@ pre{background:var(--ground); border:1px solid var(--linka); border-radius:10px;
 
   <div class="ovladani-sloupec">
     <div class="hodnoty">
-      <h2>Počítač</h2>
-      <div class="radek"><label>velikost</label><input type="range" id="pc_zoom" min="30" max="260" step="1"><input type="number" id="pc_zoom_n"></div>
-      <div class="radek"><label>úhel</label><input type="range" id="pc_uhel" min="-90" max="90" step="1"><input type="number" id="pc_uhel_n"></div>
-      <div class="radek"><label>vodorovně</label><input type="range" id="pc_x" min="-80" max="80" step="1"><input type="number" id="pc_x_n"></div>
-      <div class="radek"><label>svisle</label><input type="range" id="pc_y" min="-80" max="80" step="1"><input type="number" id="pc_y_n"></div>
+      <h2>Počítač široký · 1440 px</h2>
+      <div class="radek"><label>velikost</label><input type="range" id="ps_zoom" min="30" max="260" step="1"><input type="number" id="ps_zoom_n"></div>
+      <div class="radek"><label>úhel</label><input type="range" id="ps_uhel" min="-90" max="90" step="1"><input type="number" id="ps_uhel_n"></div>
+      <div class="radek"><label>vodorovně</label><input type="range" id="ps_x" min="-80" max="80" step="1"><input type="number" id="ps_x_n"></div>
+      <div class="radek"><label>svisle</label><input type="range" id="ps_y" min="-80" max="80" step="1"><input type="number" id="ps_y_n"></div>
+    </div>
+    <div class="hodnoty" style="margin-top:18px">
+      <h2>Počítač úzký · 861 px</h2>
+      <div class="radek"><label>velikost</label><input type="range" id="pu_zoom" min="30" max="260" step="1"><input type="number" id="pu_zoom_n"></div>
+      <div class="radek"><label>úhel</label><input type="range" id="pu_uhel" min="-90" max="90" step="1"><input type="number" id="pu_uhel_n"></div>
+      <div class="radek"><label>vodorovně</label><input type="range" id="pu_x" min="-80" max="80" step="1"><input type="number" id="pu_x_n"></div>
+      <div class="radek"><label>svisle</label><input type="range" id="pu_y" min="-80" max="80" step="1"><input type="number" id="pu_y_n"></div>
+      <button class="tl" id="btnPrevzit" style="margin-top:6px">Převzít ze širokého</button>
     </div>
     <div class="hodnoty" style="margin-top:18px">
       <h2>Mobil</h2>
@@ -98,7 +106,9 @@ pre{background:var(--ground); border:1px solid var(--linka); border-radius:10px;
     $("#ramMob").src = "index.html?editor=1&t=" + t;
     setTimeout(function(){ preskaluj(); posli(); }, 1200);
   }
-  var VYCHOZI = { pc:{x:0,y:0,zoom:100,uhel:34}, mobil:{x:0,y:0,zoom:100,uhel:34} };
+  // PC má dvě kotvy – široký (1440) a úzký (861). Web mezi nimi hodnoty dopočítá.
+  var VYCHOZI = { pcSiroky:{x:0,y:0,zoom:100,uhel:34}, pcUzky:{x:0,y:0,zoom:100,uhel:34},
+                  mobil:{x:0,y:0,zoom:100,uhel:34} };
   var stav = JSON.parse(JSON.stringify(VYCHOZI));
 
   // náhledy: iframe v plné šířce zmenšený na místo, které je k dispozici
@@ -119,7 +129,8 @@ pre{background:var(--ground); border:1px solid var(--linka); border-radius:10px;
   }
   addEventListener("resize", preskaluj);
 
-  var pole = [["pc_zoom","pc","zoom"],["pc_uhel","pc","uhel"],["pc_x","pc","x"],["pc_y","pc","y"],
+  var pole = [["ps_zoom","pcSiroky","zoom"],["ps_uhel","pcSiroky","uhel"],["ps_x","pcSiroky","x"],["ps_y","pcSiroky","y"],
+              ["pu_zoom","pcUzky","zoom"],["pu_uhel","pcUzky","uhel"],["pu_x","pcUzky","x"],["pu_y","pcUzky","y"],
               ["m_zoom","mobil","zoom"],["m_uhel","mobil","uhel"],["m_x","mobil","x"],["m_y","mobil","y"]];
 
   function doPoli(){
@@ -140,6 +151,10 @@ pre{background:var(--ground); border:1px solid var(--linka); border-radius:10px;
     function nastav(v){ stav[p[1]][p[2]] = Math.round(+v||0); zmena(); }
     $("#"+p[0]).addEventListener("input", function(e){ nastav(e.target.value); });
     $("#"+p[0]+"_n").addEventListener("change", function(e){ nastav(e.target.value); });
+  });
+
+  $("#btnPrevzit").addEventListener("click", function(){
+    stav.pcUzky = JSON.parse(JSON.stringify(stav.pcSiroky)); zmena();
   });
 
   $("#btnZnovu").addEventListener("click", function(){ nactiNahledy(); $("#stav").textContent = "náhledy načtené znovu"; });
@@ -166,13 +181,20 @@ pre{background:var(--ground); border:1px solid var(--linka); border-radius:10px;
   // tažení přímo v náhledu
   addEventListener("message", function(e){
     if(!e.data || !e.data.__katetrTah) return;
-    var t = e.data.__katetrTah, kde = t.pc ? "pc" : "mobil";
+    var t = e.data.__katetrTah;
+    // šířka náhledu určuje kotvu: 390 = mobil, 861 = úzký, 1440 = široký
+    var kde = t.sirka<=860 ? "mobil" : (t.sirka < (861+1440)/2 ? "pcUzky" : "pcSiroky");
     stav[kde].x = Math.round(t.x); stav[kde].y = Math.round(t.y);
     zmena();
   });
 
   fetch("katetr.json",{cache:"no-store"}).then(function(r){ return r.ok?r.json():null; })
-    .then(function(v){ if(v){ stav = Object.assign(JSON.parse(JSON.stringify(VYCHOZI)), v); }
+    .then(function(v){
+      if(v){
+        // starší katetr.json měl jen "pc" – rozdělíme ho do obou kotev
+        if(v.pc && !v.pcSiroky && !v.pcUzky){ v = {pcSiroky:v.pc, pcUzky:v.pc, mobil:v.mobil}; }
+        stav = Object.assign(JSON.parse(JSON.stringify(VYCHOZI)), v);
+      }
       doPoli(); nactiNahledy(); })
     .catch(function(){ doPoli(); nactiNahledy(); });
 })();
