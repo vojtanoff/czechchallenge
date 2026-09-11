@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="fonts/safiro.css">
 <link rel="stylesheet" href="style.css?v=2026-09-08a">
-<link rel="stylesheet" href="style-pexa.css?v=103">
+<link rel="stylesheet" href="style-pexa.css?v=134">
 </head>
 <body>
 
@@ -31,6 +31,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#program">Program</a></li>
       <li><a href="#faculty">Faculty</a></li>
+      <li><a href="#venue">Venue</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#partners">Partners</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -42,28 +43,30 @@
 </header>
 <nav class="fullmenu" id="fullmenu" data-open="false" aria-label="Menu">
   <button class="close" id="menuClose" aria-label="Close menu">×</button>
-  <a href="#about">About</a><a href="#program">Program</a><a href="#faculty">Faculty</a>
+  <a href="#about">About</a><a href="#program">Program</a><a href="#faculty">Faculty</a><a href="#venue">Venue</a>
   <a href="#gallery">Gallery</a><a href="#partners">Partners</a><a href="#contact">Contact</a>
 </nav>
 
 <main id="top">
 
-<!-- HERO: prolínající fotky z ročníků 2024 a 2025, přes ně vizuál 2026 -->
+<!-- HERO: název vlevo, katetr s rukou ukazující nahoru vpravo, fotky přes celou šíři pod tím -->
 <section class="hero hero-pexa" aria-label="Czech Challenge 2026">
-  <div class="wrap hero-grid">
+  <div class="wrap hero-blok">
+    <div class="hero-vrstva" aria-hidden="true">
+      <div class="hero-katetr"><div class="katetr-obal"><img src="../img/brand/hero-3d.webp" alt=""></div></div>
+    </div>
+    <h1><span class="r1"><span>Czech</span> <span>Challenge</span></span> <span class="rok">2026</span></h1>
     <div class="hero-text">
-      <h1><span class="r1">Czech<span class="palec-box" id="palecBox" aria-hidden="true"><img class="palec-v" src="../img/brand/palec-3d.png" alt=""></span></span><br><span class="r2">Challenge</span> <span class="rok">2026</span></h1>
-      <div class="meta">23 October 2026<small>Complex PCI Meeting · Pardubice · Czechia · Welcome dinner 22 October</small></div>
+      <p class="hero-datum">23 October 2026<span>Pardubice · Czechia</span></p>
+      <p class="hero-cta">
+        <a class="btn btn-lime" href="#program">Program</a>
+        <a class="btn btn-ghost" href="#faculty">Faculty</a>
+      </p>
     </div>
   </div>
   <div class="wrap">
-    <div class="hero-card">
+    <div class="hero-pas">
       <div class="hero-photos" id="heroPhotos"></div>
-      <span class="vol" id="heroVol">Vol. 3 · Together again</span>
-      <div class="cta" id="heroCta">
-        <a class="btn btn-lime" href="#contact">I'm interested</a>
-        <a class="btn btn-ghost" href="#program">See the program</a>
-      </div>
       <div class="dots" id="heroDots" aria-hidden="true"></div>
     </div>
   </div>
@@ -127,6 +130,23 @@
   </div>
 </section>
 
+<!-- VENUE -->
+<section id="venue" class="venue">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Venue</p>
+      <h2>One hall, one room, an aeroplane overhead.</h2>
+      <p class="lead nabih">Everything happens in a single hall in the centre of Pardubice – lectures, live cases and the coffee in between. No parallel tracks, no running between buildings.</p>
+    </div>
+    <figure class="venue-foto reveal" id="venueFoto">
+      <div class="venue-vrstvy" id="venueVrstvy"></div>
+      <figcaption class="venue-popis">
+        <span class="venue-pilulka" id="venueNazev"></span>
+        <a class="venue-mapa" id="venueMapa" href="#" target="_blank" rel="noopener">Open in maps</a>
+      </figcaption>
+    </figure>
+  </div>
+</section>
 
 
 <!-- GALLERY -->
@@ -196,6 +216,7 @@
               <li><a href="#about">About</a></li>
               <li><a href="#program">Program</a></li>
               <li><a href="#faculty">Faculty</a></li>
+              <li><a href="#venue">Venue</a></li>
               <li><a href="#gallery">Editions</a></li>
               <li><a href="#partners">Partners</a></li>
               <li><a href="#contact">Contact</a></li>
@@ -245,42 +266,79 @@
     document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
   } else { document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("in"); }); }
 
-  // hero podle Pexy: karta s fotkou jako druhý sloupec gridu (na PC nadpis vlevo, fotka vpravo; na mobilu pod sebou)
-  (function(){ var k=document.querySelector(".hero-pexa .hero-card"), g=document.querySelector(".hero-pexa .hero-grid"); if(k&&g) g.appendChild(k);
-    // nadpis přes celou šířku sloupce: „Challenge" = šířka bloku, palec doplní řádek „Czech" až k pravému okraji.
-    // Pexa na PC: textový blok (nadpis, Vol. 3, datum) je stejně vysoký jako fotka; fotka si vezme zbytek šířky (4:3), text se dopočítá iterací.
-    (function(){ var h=document.querySelector(".hero-pexa h1"), r1=h&&h.querySelector(".r1"), r2=h&&h.querySelector(".r2"), box=document.getElementById("palecBox"); if(!h||!r2) return;
-      var pexa=true, text=document.querySelector(".hero-pexa .hero-text"), card=document.querySelector(".hero-pexa .hero-card"),
-          vol=document.getElementById("heroVol"), meta=document.querySelector(".hero-pexa .meta"), cta=document.getElementById("heroCta");
-      function fitText(){ h.style.fontSize=""; h.style.paddingTop=""; if(box){ box.style.width=""; box.style.height=""; }
-        var fs=parseFloat(getComputedStyle(h).fontSize), W=h.clientWidth; if(!W) return;
-        for(var i=0;i<3;i++){ var w=r2.getBoundingClientRect().width; if(!w) return; fs=fs*W/w; h.style.fontSize=fs+"px"; }
-        if(box&&r1){ var sb=W-r1.getBoundingClientRect().width-.12*fs; sb=Math.max(sb,fs*.9); box.style.width=sb+"px"; box.style.height="auto";
-          h.style.paddingTop=Math.max(0, sb*900/808-1.0*fs)+"px"; } }
-      function fit(){
-        var pc=innerWidth>860;
-        if(pexa && vol && meta && vol.nextElementSibling!==meta){ text.insertBefore(vol,meta); }   // Vol. 3 zůstává pod nadpisem, nikdy ve fotce (i na mobilu)
-        if(pexa && card && pc){
-          // hledá se šířka textového sloupce, při které je text stejně vysoký jako fotka 4:3 vedle něj (půlením intervalu – iterace by oscilovala)
-          var grid=text.parentNode, Wg=grid.clientWidth, gap=parseFloat(getComputedStyle(grid).columnGap)||0, lo=Wg*.34, hi=Wg*.6;
-          function zk(Wt){ var cw=Wg-gap-Wt; card.style.width=Math.round(cw)+"px"; card.style.height=Math.round(cw*3/4)+"px"; fitText(); return text.offsetHeight-cw*3/4; }
-          for(var k=0;k<9;k++){ var mid=(lo+hi)/2; if(zk(mid)>0) hi=mid; else lo=mid; }
-          zk(lo); card.style.height=text.offsetHeight+"px";
-        } else { if(card){ card.style.height=""; card.style.width=""; } fitText(); }
+  // Hero už nemá dopočítávaný nadpis ani palec – rozvržení drží CSS (viz .hero-blok).
+  // Poloha katetru se bere z katetr.json, který píše editor-katetr.html.
+  (function(){
+    var k=document.querySelector(".hero-katetr"); if(!k) return;
+    // PC má dvě kotvy: 861 px (nejužší, kde ještě platí PC rozložení) a 1440 px.
+    // Mezi nimi se hodnoty dopočítají, mimo rozsah se drží krajní kotva.
+    var UZKY=861, SIROKY=1440;
+    // CSS šířka katetru pro danou šířku okna – musí sedět s pravidlem ve style-pexa.css
+    function sirkaKatetru(vw){ return Math.min(900, vw-380); }
+    function kotvy(v){
+      var u=v.pcUzky||v.pc||{}, s=v.pcSiroky||v.pc||{};
+      return [u,s];
+    }
+    function mez(a,b,t,vych){
+      var x=(a!=null?a:vych), y=(b!=null?b:vych);
+      return x+(y-x)*t;
+    }
+    function pouzij(v){
+      if(!v) return;
+      var kde;
+      // stejná hranice jako v CSS (861 px) – při 1024 se v pásu 861–1023 aplikoval
+      // mobilní zoom na desktopové rozložení a katetr byl obrovský
+      if(innerWidth<=860){ kde = v.mobil||{}; }
+      else {
+        var kt=kotvy(v), u=kt[0], si=kt[1];
+        var t=Math.max(0, Math.min(1, (innerWidth-UZKY)/(SIROKY-UZKY)));
+        // Interpoluje se ve SKUTEČNÝCH PIXELECH, ne v procentech. CSS šířka katetru
+        // roste s oknem jen do 1280 px a pak se zastaví; kdyby se míchala procenta,
+        // ta křivka se s interpolací nasčítala, katetr byl uprostřed rozsahu větší
+        // než na obou kotvách a prst vylézal nahoru nad nadpis.
+        var wU=sirkaKatetru(UZKY), wS=sirkaKatetru(SIROKY);
+        var w=k.getBoundingClientRect().width || wU;
+        var zU=(u.zoom!=null?u.zoom:100), zS=(si.zoom!=null?si.zoom:100);
+        kde = {
+          zoom: mez(wU*zU, wS*zS, t, 0) / w,            // cílová velikost v px → zpět na %
+          x:    mez(wU*(u.x||0), wS*(si.x||0), t, 0) / w,
+          y:    mez(wU*(u.y||0), wS*(si.y||0), t, 0) / w,
+          uhel: mez(u.uhel, si.uhel, t, 34)
+        };
       }
-      fit(); if(document.fonts){ document.fonts.ready.then(fit); document.fonts.addEventListener("loadingdone",fit); } addEventListener("resize",fit); })();   // Safiro z vlastní domény může dojet až po prvním fit() – přepočítat i po každém donačtení fontu
-    // palec: s první fotkou vyskočí a dvakrát klepne, s druhou zmizí (stejné pravidlo jako na hlavním webu)
-    (function(){ var b=document.getElementById("palecBox"); if(!b) return;
-      if(matchMedia("(prefers-reduced-motion: reduce)").matches){ b.classList.add("on"); return; }
-      setTimeout(function(){ b.classList.add("on"); },700);
-      var drz=false;   // během krátkého ukázání po návratu nahoru ho rotace fotek nevyhodí
-      document.addEventListener("herofoto",function(e){ if(!drz) b.classList.toggle("on", e.detail===0); });
-      // po odscrollování dolů a návratu nahoru palec znovu vyskočí a klepne a po 3,8 s zase zmizí
-      var byloDole=false, zpet=null;
-      addEventListener("scroll",function(){ var y=scrollY||pageYOffset; if(y>innerHeight*.6) byloDole=true;
-        else if(byloDole&&y<40){ byloDole=false; b.classList.remove("on"); clearTimeout(zpet); drz=true;
-          zpet=setTimeout(function(){ b.classList.add("on"); zpet=setTimeout(function(){ b.classList.remove("on"); drz=false; },3800); },350); } },{passive:true});
-    })();
+      k.style.setProperty("--uhel", (kde.uhel!=null?kde.uhel:34)+"deg");
+      k.style.setProperty("--zoom", (kde.zoom!=null?kde.zoom:100)/100);
+      k.style.setProperty("--x", (kde.x||0)+"%");
+      k.style.setProperty("--y", (kde.y||0)+"%");
+    }
+    fetch("katetr.json",{cache:"no-store"}).then(function(r){ return r.ok?r.json():null; })
+      .then(function(v){ window.__katetr=v; pouzij(v); addEventListener("resize",function(){ pouzij(window.__katetr); }); })
+      .catch(function(){});
+    // editor posílá nové hodnoty zprávou, ať je vidět hned
+    addEventListener("message",function(e){
+      if(e.data && e.data.__katetr){ window.__katetr=e.data.__katetr; pouzij(e.data.__katetr); }
+    });
+    // v editoru jde katetrem táhnout myší; posun se hlásí zpátky nadřazené stránce
+    if(/[?&]editor=1/.test(location.search)){
+      k.style.pointerEvents="auto"; k.style.cursor="grab";
+      var tahne=false, zx=0, zy=0, px=0, py=0;
+      k.addEventListener("pointerdown",function(e){
+        tahne=true; k.setPointerCapture(e.pointerId); k.style.cursor="grabbing";
+        var v=window.__katetr||{}, kde;
+        if(innerWidth<=860) kde=v.mobil||{};
+        else kde=(innerWidth<(UZKY+SIROKY)/2 ? (v.pcUzky||v.pc||{}) : (v.pcSiroky||v.pc||{}));
+        px=kde.x||0; py=kde.y||0; zx=e.clientX; zy=e.clientY; e.preventDefault();
+      });
+      k.addEventListener("pointermove",function(e){
+        if(!tahne) return;
+        var s=k.getBoundingClientRect().width||1;
+        var nx=px+(e.clientX-zx)/s*100, ny=py+(e.clientY-zy)/s*100;
+        k.style.setProperty("--x",nx+"%"); k.style.setProperty("--y",ny+"%");
+        // editor podle šířky pozná, kterou kotvu tažení mění
+        parent.postMessage({__katetrTah:{sirka:innerWidth, x:nx, y:ny}},"*");
+      });
+      k.addEventListener("pointerup",function(){ tahne=false; k.style.cursor="grab"; });
+    }
   })();
   fetch("content.json",{cache:"no-store"}).then(function(r){ return r.json(); }).then(function(C){ C=JSON.parse(JSON.stringify(C).replace(/"img\//g,'"../img/'));
     POS=C.pos||{};
@@ -414,7 +472,7 @@
       var pic=fotky.length ? fotky.map(function(f,i){ var p=POS[f]||"50% 25%", pan=/^pan\b/.test(p), py=pan?(p.split(/\s+/)[1]||"40%"):"";
           return '<img src="'+esc(f)+'" alt="'+esc(d.name)+'" loading="lazy" style="object-position:'+esc(pan?"0% "+py:p)+(pan?";--py:"+esc(py):"")+'" class="'+(pan?"pan":"")+(i===0?" on":"")+'">'; }).join("")
                            : '<span class="mono">'+esc(mono)+'</span>';
-      return '<div class="director"><div class="pic">'+pic+'</div><div><b>'+esc(d.name)+'</b><span>'+esc(d.role)+' · '+esc(d.org)+'</span></div></div>';
+      return '<div class="director"><div class="pic">'+pic+'</div><div><b>'+esc(d.name)+'</b><span class="nabih">'+esc(d.role)+' · '+esc(d.org)+'</span></div></div>';
     }
     $("#directors").innerHTML=C.directors.map(karta).join("");
     $("#committee").innerHTML=(C.committee||[]).map(karta).join("");
@@ -531,6 +589,6 @@
   });
 })();
 </script>
-<script src="efekty.js?v=101"></script>
+<script src="efekty.js?v=106"></script>
 </body>
 </html>

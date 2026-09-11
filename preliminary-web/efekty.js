@@ -10,7 +10,7 @@
   var bloky=[];
 
   function priber(){
-  var nove=[].slice.call(document.querySelectorAll("p.nabih:not(.nabih-on)"));
+  var nove=[].slice.call(document.querySelectorAll(".nabih:not(.nabih-on)"));   // i span, třeba popisky u lidí v týmu
   nove.forEach(function(p){
     if(p.children.length) return;              // odstavce s odkazem či obrázkem nesahat
     var slova=p.textContent.split(" ");
