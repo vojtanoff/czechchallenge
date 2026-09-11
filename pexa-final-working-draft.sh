@@ -8,7 +8,7 @@
 set -e
 Z=~/dev/czechchallenge-pexa-final; C=~/dev/czechchallenge/pexa-final-working-draft
 mkdir -p "$C"
-for f in index.html gallery.html style.css style-pexa.css efekty.js content.json; do
+for f in index.html gallery.html style.css style-pexa.css efekty.js content.json katetr.json editor-katetr.html; do
   [ -f "$Z/$f" ] || continue
   python3 - "$Z/$f" "$C/$f" <<'PY'
 import sys
