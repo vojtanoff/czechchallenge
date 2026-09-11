@@ -152,9 +152,9 @@ h3{font-weight:500}
   .hero-blok{padding:20px 0 28px}
   /* nadpis má na telefonu zabrat skoro celou šířku – pevná velikost, ať nezoomuje */
   .hero-pexa h1{font-size:66px; line-height:.9; letter-spacing:-.05em; max-width:none}
-  .hero-datum{font-size:28px; margin-top:20px}
-  .hero-cta{margin-top:18px; gap:12px}
-  .hero-cta .btn{padding:13px 30px; font-size:15px}
+  .hero-datum{font-size:34px; margin-top:24px; letter-spacing:-.045em}
+  .hero-cta{margin-top:22px; gap:12px}
+  .hero-cta .btn{padding:16px 38px; font-size:18px}
   .hero-pexa > .wrap:not(.hero-blok){padding-bottom:28px}
 }
 
