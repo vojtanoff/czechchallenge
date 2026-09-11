@@ -67,19 +67,22 @@ h3{font-weight:500}
    pluje nad obsahem s odsazením od horní hrany (jejich rozměry: výška 67 px, boky 31 px). */
 .nav{background:transparent; border-bottom:0; padding-top:clamp(12px,2.2vw,26px); pointer-events:none;
   backdrop-filter:none; -webkit-backdrop-filter:none}   /* hlavní styl rozmazává celý pruh navigace; u nich má pilulka ostrý okraj a okolí zůstává čisté */
-/* burger drží až do 1100 px, aby navigace přepínala spolu s hero */
-@media (max-width:1099px){ .menu, .nav-cta .btn{display:none} .burger{display:block} }
-@media (min-width:1100px){ .menu{display:flex} .burger{display:none} }
+/* burger i hero přepínají na stejné šířce (861 px) */
+@media (max-width:860px){ .menu, .nav-cta .btn{display:none} .burger{display:block} }
+@media (min-width:861px){ .menu{display:flex} .burger{display:none} }
 .nav .wrap{height:67px; pointer-events:auto; background:var(--ground); border:0;
   border-radius:20px; padding-left:19px; padding-right:19px; gap:14px}
 /* u nich: rounded-[20px] a teprve od jejich lg (1024 px) rounded-full */
 @media (min-width:1024px){ .nav .wrap{border-radius:999px} }
-@media (min-width:1100px){ .nav .wrap{padding-left:31px; padding-right:31px} }   /* bez tlačítka vpravo sedí stejné odsazení z obou stran */
+@media (min-width:861px){ .nav .wrap{padding-left:31px; padding-right:31px} }   /* bez tlačítka vpravo sedí stejné odsazení z obou stran */
 .menu{background:transparent; border-radius:999px; padding:0; gap:4px; box-shadow:none; margin-left:auto}   /* jako u nich: logo vlevo, menu na pravé straně panelu */
 .menu a{display:inline-flex; align-items:center; height:47px; padding:0 22px; border-radius:999px;
   font-family:var(--font-display); font-weight:400; font-size:17.65px; letter-spacing:-.01em; color:var(--violet); transition:background .2s, color .2s}
 .menu a:hover{background:var(--violet-soft); color:var(--violet)}
+/* logo se nesmí v úzkém panelu smrsknout na nulu – při 870 px ho flex vytlačil pryč */
+.nav .brand{flex:none}
 .nav .brand img{height:44px; width:auto}
+@media (min-width:861px) and (max-width:1000px){ .menu a{padding:0 13px; font-size:16px} .menu{gap:0} }
 /* ikona menu na telefonu: jen dvě tenké čárky přes celou šířku, jako u nich (54×37 px, 1px, rozestup 12 px) */
 .burger{width:54px; height:37px; position:relative; color:var(--violet)}
 .burger span{position:absolute; left:0; top:50%; width:100%; height:1px; margin:0; background:currentColor}
@@ -107,16 +110,16 @@ h3{font-weight:500}
   grid-template-areas:"nadpis" "katetr" "text"}
 .hero-pexa h1{grid-area:nadpis; position:relative; z-index:2}
 .hero-text{grid-area:text; position:relative; z-index:2}
-@media (min-width:1100px){
+@media (min-width:861px){
   .hero-blok{grid-template-columns:minmax(0,1fr); grid-template-areas:"nadpis" "text"}
 }
 .hero-pexa h1{font-size:clamp(44px,7.4vw,104px); font-weight:500; line-height:.92; letter-spacing:-.045em;
   color:var(--violet); max-width:11ch}
 .hero-pexa h1 .rok{display:block}
-/* Do 1099 px se nadpis láme za slovem Czech, od 1100 px výš drží
+/* Do 860 px se nadpis láme za slovem Czech, od 861 px výš drží
    „Czech Challenge" na jednom řádku a láme se až před rokem. */
 .hero-pexa h1 .r1 span{display:block}
-@media (min-width:1100px){
+@media (min-width:861px){
   .hero-pexa h1{max-width:none}
   .hero-pexa h1 .r1{white-space:nowrap}
   .hero-pexa h1 .r1 span{display:inline}
@@ -132,8 +135,7 @@ h3{font-weight:500}
    a ne k oknu: při změně šířky drží stejný poměr k nadpisu i k fotce pod ním a smyčka
    se fotky nedotkne. Na mobilu je velikost omezená clampem, takže se pod určitou
    šířkou přestane zmenšovat. Proměnné --x, --y, --zoom, --uhel nastavuje editor. */
-/* Dva režimy. Zlom je na 1100 px: pod ním by desktopová kompozice byla přeplácaná,
-   nad ním by telefonní verze plavala v prázdnu. Pod zlomem platí
+/* Dva režimy se zlomem na 861 px, tam kde přepíná i navigace. Pod zlomem platí
    telefonní verze včetně burgeru v navigaci, ať nevznikne plné menu nad úzkým hero.
    Oba režimy mají pevné rozměry, nic se nepřepočítává podle šířky okna.
    Na mobilu je katetr běžný prvek mezi nadpisem a datem – šířka je pevná,
@@ -143,10 +145,14 @@ h3{font-weight:500}
 .hero-vrstva{grid-area:katetr; position:static; z-index:0; pointer-events:none}
 .hero-katetr{position:relative; width:360px; max-width:100%; margin:-8px 0 0;
   aspect-ratio:1536/1024; --x:0%; --y:0%; --zoom:1; --uhel:34deg}
-@media (min-width:1100px){
+@media (min-width:861px){
   .hero-vrstva{position:absolute; inset:0}
-  /* pevných 900 px v celém PC režimu – zlom je nastavený tak, aby se to všude vešlo */
-  .hero-katetr{position:absolute; right:-94px; bottom:-64px; margin:0; width:900px}
+  /* Pevných 900 px od 1280 px výš, tedy na všem, co je opravdu desktop. V pásu
+     861–1280 px se katetr přizpůsobí – jinak by přelezl přes nadpis a rukavici by
+     nahoře uřízl okraj sekce. Je to jediné místo v heru, kde se něco mění se šířkou
+     okna; bez toho by v tom pásu trčela telefonní kompozice v prázdném okně. */
+  .hero-katetr{position:absolute; right:-94px; bottom:-64px; margin:0;
+    width:min(900px, calc(100vw - 380px))}
 }
 .katetr-obal{width:100%; height:100%;
   transform:translate(var(--x), var(--y)) scale(var(--zoom)) scaleX(-1) rotate(var(--uhel))}
@@ -155,7 +161,7 @@ h3{font-weight:500}
 /* Na mobilu se v heru nic nezvětšuje ani nezmenšuje podle šířky okna: písmo,
    odsazení i katetr mají pevné hodnoty, takže na 360 i na 780 px vypadá hero stejně.
    Jediné, co se přizpůsobuje, je šířka obsahu a poměr stran fotky. */
-@media (max-width:1099px){
+@media (max-width:860px){
   .hero-blok{padding:20px 0 28px}
   /* nadpis má na telefonu zabrat skoro celou šířku – pevná velikost, ať nezoomuje */
   .hero-pexa h1{font-size:66px; line-height:.9; letter-spacing:-.05em; max-width:none}
@@ -168,7 +174,7 @@ h3{font-weight:500}
 /* pás fotek v rámečku na šířku stránky, ne přes celou obrazovku */
 .hero-pas{position:relative; width:100%; aspect-ratio:21/9; overflow:hidden;
   background:var(--surface-2); border-radius:var(--radius)}
-@media (max-width:1099px){ .hero-pas{aspect-ratio:4/3} }
+@media (max-width:860px){ .hero-pas{aspect-ratio:4/3} }
 .hero-pas .hero-photos{position:absolute; inset:0}
 .hero-pas .hero-photos img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
   opacity:0; transition:opacity 1.6s ease}
