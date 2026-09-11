@@ -87,63 +87,20 @@ h3{font-weight:500}
 .nav-cta .btn{background:transparent; color:var(--violet); border-color:var(--violet); padding:11px 18px}
 .nav-cta .btn:hover{background:var(--violet); color:#fff}
 
-/* ---------- hero: název vlevo, katetr s rukou ukazující nahoru vpravo, fotky přes celou šíři ----------
-   Rozvržení podle hotové stránky od kodéra: velký nadpis a pod ním datum a dvě tlačítka,
-   vpravo 3D katetr s rukou, vpravo dole kolečko previous editions, a teprve pod tím
-   pás fotek na celou šířku okna. */
-.hero-pexa{background:var(--ground); color:var(--violet); min-height:0; display:block; overflow:hidden; padding:0}
+/* ---------- hero: text vlevo, hadice s rukou vpravo, fotka jako karta pod tím ---------- */
+.hero-pexa{background:var(--ground); color:var(--ink); min-height:0; display:block; overflow:hidden; padding:0 0 clamp(40px,6vw,72px)}
 .hero-pexa::after{display:none}
-.hero-pexa > .wrap:not(.hero-blok){padding:0 0 clamp(28px,4vw,56px)}
-/* Na mobilu jde pořadí nadpis, katetr, kolečko, datum s tlačítky – stejně jako u nich.
-   Na širokém displeji je vlevo nadpis nad datem a katetr vyplňuje pravý sloupec. */
-/* Na mobilu leží katetr ZA nadpisem a ven kouká jen bílá rukavice, aby bylo poznat,
-   co to je. Na širokém displeji je vlevo nadpis nad datem a katetr vyplňuje pravou
-   polovinu; schválně přetéká přes okraj sekce, stejně jako u nich. */
-.hero-blok{position:relative; padding:clamp(20px,3vw,44px) 0 clamp(28px,4vw,64px);
-  display:grid; grid-template-columns:minmax(0,1fr); align-items:start;
-  grid-template-areas:"nadpis" "text"}
-.hero-pexa h1{grid-area:nadpis; position:relative; z-index:2}
-.hero-text{grid-area:text; position:relative; z-index:2}
-@media (min-width:861px){
-  .hero-blok{grid-template-columns:minmax(0,1.02fr) minmax(0,1fr); gap:0 clamp(16px,2vw,34px);
-    grid-template-areas:"nadpis katetr" "text katetr"}
-  .hero-katetr{grid-area:katetr}
-}
-.hero-pexa h1{font-size:clamp(44px,7.4vw,104px); font-weight:500; line-height:.92; letter-spacing:-.045em;
-  color:var(--violet); max-width:11ch}
-.hero-pexa h1 .rok{display:block}
-@media (min-width:861px){ .hero-pexa h1{max-width:none} }
-.hero-datum{margin:clamp(20px,3vw,52px) 0 0; font-family:var(--font-display); font-weight:500;
-  font-size:clamp(28px,3.6vw,46px); letter-spacing:-.04em; line-height:1.02; color:var(--violet)}
-.hero-datum span{display:block}
-.hero-cta{display:flex; gap:12px; flex-wrap:wrap; margin:clamp(18px,2.4vw,30px) 0 0}
-.hero-cta .btn{padding:13px 30px; font-size:clamp(15px,1.5vw,17px)}
-
-/* Katetr s rukou: zdroj je vodorovný, ruka vlevo a ukazuje doleva. Zrcadlením ji
-   dostaneme doprava, pak se natáčí, aby prst mířil vzhůru. Pozor: po scaleX(-1)
-   se obrací i smysl otáčení, takže kladný úhel točí proti směru hodin. */
-.hero-katetr{position:relative; margin:0; pointer-events:none; align-self:center}
-.hero-katetr img{display:block; width:152%; margin-left:-14%; height:auto; max-width:none;
-  transform:scaleX(-1) rotate(34deg); transform-origin:50% 50%}
-@media (max-width:860px){
-  .hero-blok{padding-bottom:clamp(20px,4vw,32px)}
-  /* Katetr leží za nadpisem: smyčka se schová za písmena, ven kouká hlavně bílá
-     rukavice vpravo nahoře. Posunout se dá trojicí top/right/width. */
-  .hero-katetr{position:absolute; z-index:1; top:20%; right:5%; width:74%; margin:0}
-  .hero-katetr img{width:100%; margin:0; transform:scaleX(-1) rotate(30deg)}
-}
-
-/* pás fotek v rámečku na šířku stránky, ne přes celou obrazovku */
-.hero-pas{position:relative; width:100%; aspect-ratio:21/9; overflow:hidden;
-  background:var(--surface-2); border-radius:var(--radius)}
-@media (max-width:860px){ .hero-pas{aspect-ratio:4/3} }
-.hero-pas .hero-photos{position:absolute; inset:0}
-.hero-pas .hero-photos img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
-  opacity:0; transition:opacity 1.6s ease}
-.hero-pas .hero-photos img.on{opacity:1}
-.hero-pas .dots{position:absolute; right:clamp(14px,2vw,26px); bottom:clamp(14px,2vw,26px); display:flex; gap:7px; z-index:3}
-.hero-pas .dots i{width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.5)}
-.hero-pas .dots i.on{background:#fff}
+.hero-pexa .hero-grid{position:relative; display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:start; gap:clamp(24px,3vw,44px); padding:clamp(16px,2.5vw,32px) 0 0}   /* šířku fotky (4:3, stejně vysoká jako text) nastaví skript */
+.hero-pexa .hero-grid .hero-card{margin-top:0; aspect-ratio:auto; min-height:0}
+.hero-pexa .hero-text .vol{margin:18px 0 0}
+.hero-pexa .hero-text .vol + .meta{margin-top:14px}
+.hero-pexa > .wrap:not(.hero-grid){padding:0}   /* hlavní styl dává .hero .wrap 120 px shora – to byla ta mezera nad fotkou */
+.hero-pexa h1{font-size:clamp(46px,7.4vw,104px); font-weight:500; line-height:.92; letter-spacing:-.045em; color:var(--violet); white-space:nowrap}   /* velikost dopočítá skript, aby „Challenge" vyplnilo šířku */
+.hero-pexa h1 .rok{display:block; font-weight:500}
+.hero-pexa .meta{font-family:var(--font-display); font-weight:500; font-size:clamp(20px,2.4vw,30px); color:var(--violet); margin-top:22px}
+.hero-pexa .meta small{color:var(--ink-2); font-size:clamp(15px,1.4vw,18px); opacity:1}
+.hero-pexa .vol{background:var(--lime); color:var(--lime-ink); margin-top:14px; font-family:var(--font-display); font-weight:500; font-size:19px; letter-spacing:-.02em; padding:10px 20px}
+.hero-pexa .cta .btn{padding:11px 18px; font-size:15px}
 
 /* hadice: jedna křivka, pět vrstev tahu = plastický 3D dojem bez rastru; kreslí se po načtení */
 .tube-wrap{position:relative; z-index:0; pointer-events:none; align-self:stretch; min-height:300px; margin-bottom:-40px}
