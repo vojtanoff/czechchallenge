@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="fonts/safiro.css">
 <link rel="stylesheet" href="style.css?v=2026-09-08a">
-<link rel="stylesheet" href="style-pexa.css?v=100">
+<link rel="stylesheet" href="style-pexa.css?v=101">
 </head>
 <body>
 
@@ -30,8 +30,8 @@
     <ul class="menu">
       <li><a href="#about">About</a></li>
       <li><a href="#program">Program</a></li>
-      <li><a href="#venue">Venue</a></li>
       <li><a href="#faculty">Faculty</a></li>
+      <li><a href="#venue">Venue</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#partners">Partners</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -43,7 +43,7 @@
 </header>
 <nav class="fullmenu" id="fullmenu" data-open="false" aria-label="Menu">
   <button class="close" id="menuClose" aria-label="Close menu">×</button>
-  <a href="#about">About</a><a href="#program">Program</a><a href="#venue">Venue</a><a href="#faculty">Faculty</a>
+  <a href="#about">About</a><a href="#program">Program</a><a href="#faculty">Faculty</a><a href="#venue">Venue</a>
   <a href="#gallery">Gallery</a><a href="#partners">Partners</a><a href="#contact">Contact</a>
 </nav>
 
@@ -111,25 +111,6 @@
   </div>
 </section>
 
-<!-- VENUE -->
-<section id="venue" class="venue">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">Venue</p>
-      <h2>One hall, one room, an aeroplane overhead.</h2>
-      <p class="lead nabih">Everything happens in a single hall in the centre of Pardubice – lectures, live cases and the coffee in between. No parallel tracks, no running between buildings.</p>
-    </div>
-    <div class="venue-grid reveal">
-      <figure class="venue-foto"><img id="venueFoto" src="" alt="" loading="lazy"></figure>
-      <div class="venue-karta">
-        <h3 id="venueNazev"></h3>
-        <p class="venue-adresa" id="venueAdresa"></p>
-        <a class="btn btn-outline" id="venueMapa" href="#" target="_blank" rel="noopener">Open in maps</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FACULTY -->
 <section id="faculty">
   <div class="wrap">
@@ -146,6 +127,25 @@
     </div>
   </div>
 </section>
+
+<!-- VENUE -->
+<section id="venue" class="venue">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Venue</p>
+      <h2>One hall, one room, an aeroplane overhead.</h2>
+      <p class="lead nabih">Everything happens in a single hall in the centre of Pardubice – lectures, live cases and the coffee in between. No parallel tracks, no running between buildings.</p>
+    </div>
+    <figure class="venue-foto reveal" id="venueFoto">
+      <div class="venue-vrstvy" id="venueVrstvy"></div>
+      <figcaption class="venue-popis">
+        <span class="venue-pilulka" id="venueNazev"></span>
+        <a class="venue-mapa" id="venueMapa" href="#" target="_blank" rel="noopener">Open in maps</a>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
 
 <!-- GALLERY -->
 <section id="gallery" class="gallery">
@@ -213,9 +213,9 @@
             <ul>
               <li><a href="#about">About</a></li>
               <li><a href="#program">Program</a></li>
+              <li><a href="#faculty">Faculty</a></li>
               <li><a href="#venue">Venue</a></li>
               <li><a href="#gallery">Editions</a></li>
-              <li><a href="#faculty">Faculty</a></li>
               <li><a href="#partners">Partners</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
@@ -509,14 +509,26 @@
       return '<div class="logo"><img src="'+esc(p.logo)+'" alt="'+esc(p.name)+'" loading="lazy"></div>';
     }).join("");
 
-    // místo konání
+    // místo konání – fotky sálu se prolínají, přes ně jen název a odkaz do map
     if(C.venue){
-      var v=C.venue;
+      var v=C.venue, fotky=(v.fotky||[]).filter(Boolean);
       $("#venueNazev").textContent=v.nazev;
-      $("#venueAdresa").innerHTML=[v.budova,v.ulice,v.mesto].filter(Boolean).map(esc).join("<br>");
       $("#venueMapa").href=v.mapa;
-      var f=$("#venueFoto");
-      if(v.foto){ f.src=v.foto; f.alt=v.nazev+", "+v.budova; } else { f.closest("figure").remove(); }
+      var vrstvy=$("#venueVrstvy");
+      if(!fotky.length){ $("#venueFoto").remove(); }
+      else {
+        vrstvy.innerHTML=fotky.map(function(src,i){
+          return '<img src="'+esc(src)+'" alt="'+esc(v.nazev)+'"'+(i?' loading="lazy"':'')+(i===0?' class="on"':'')+'>';
+        }).join("");
+        var obrazky=vrstvy.querySelectorAll("img"), kde=0;
+        if(fotky.length>1 && !matchMedia("(prefers-reduced-motion: reduce)").matches){
+          setInterval(function(){
+            obrazky[kde].classList.remove("on");
+            kde=(kde+1)%obrazky.length;
+            obrazky[kde].classList.add("on");
+          },5200);
+        }
+      }
     }
 
     // registrace mailem
@@ -536,6 +548,6 @@
   });
 })();
 </script>
-<script src="efekty.js?v=99"></script>
+<script src="efekty.js?v=101"></script>
 </body>
 </html>
