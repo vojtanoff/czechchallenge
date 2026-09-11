@@ -273,6 +273,8 @@
     // PC má dvě kotvy: 861 px (nejužší, kde ještě platí PC rozložení) a 1440 px.
     // Mezi nimi se hodnoty dopočítají, mimo rozsah se drží krajní kotva.
     var UZKY=861, SIROKY=1440;
+    // CSS šířka katetru pro danou šířku okna – musí sedět s pravidlem ve style-pexa.css
+    function sirkaKatetru(vw){ return Math.min(900, vw-380); }
     function kotvy(v){
       var u=v.pcUzky||v.pc||{}, s=v.pcSiroky||v.pc||{};
       return [u,s];
@@ -288,9 +290,21 @@
       // mobilní zoom na desktopové rozložení a katetr byl obrovský
       if(innerWidth<=860){ kde = v.mobil||{}; }
       else {
-        var kt=kotvy(v), t=Math.max(0, Math.min(1, (innerWidth-UZKY)/(SIROKY-UZKY)));
-        kde = { x:mez(kt[0].x,kt[1].x,t,0), y:mez(kt[0].y,kt[1].y,t,0),
-                zoom:mez(kt[0].zoom,kt[1].zoom,t,100), uhel:mez(kt[0].uhel,kt[1].uhel,t,34) };
+        var kt=kotvy(v), u=kt[0], si=kt[1];
+        var t=Math.max(0, Math.min(1, (innerWidth-UZKY)/(SIROKY-UZKY)));
+        // Interpoluje se ve SKUTEČNÝCH PIXELECH, ne v procentech. CSS šířka katetru
+        // roste s oknem jen do 1280 px a pak se zastaví; kdyby se míchala procenta,
+        // ta křivka se s interpolací nasčítala, katetr byl uprostřed rozsahu větší
+        // než na obou kotvách a prst vylézal nahoru nad nadpis.
+        var wU=sirkaKatetru(UZKY), wS=sirkaKatetru(SIROKY);
+        var w=k.getBoundingClientRect().width || wU;
+        var zU=(u.zoom!=null?u.zoom:100), zS=(si.zoom!=null?si.zoom:100);
+        kde = {
+          zoom: mez(wU*zU, wS*zS, t, 0) / w,            // cílová velikost v px → zpět na %
+          x:    mez(wU*(u.x||0), wS*(si.x||0), t, 0) / w,
+          y:    mez(wU*(u.y||0), wS*(si.y||0), t, 0) / w,
+          uhel: mez(u.uhel, si.uhel, t, 34)
+        };
       }
       k.style.setProperty("--uhel", (kde.uhel!=null?kde.uhel:34)+"deg");
       k.style.setProperty("--zoom", (kde.zoom!=null?kde.zoom:100)/100);
