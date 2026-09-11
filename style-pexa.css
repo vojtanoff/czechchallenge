@@ -101,7 +101,7 @@ h3{font-weight:500}
    polovinu; schválně přetéká přes okraj sekce, stejně jako u nich. */
 .hero-blok{position:relative; z-index:1; padding:clamp(20px,3vw,44px) 0 clamp(28px,4vw,64px);
   display:grid; grid-template-columns:minmax(0,1fr); align-items:start;
-  grid-template-areas:"nadpis" "text"}
+  grid-template-areas:"nadpis" "katetr" "text"}
 .hero-pexa h1{grid-area:nadpis; position:relative; z-index:2}
 .hero-text{grid-area:text; position:relative; z-index:2}
 @media (min-width:861px){
@@ -116,36 +116,30 @@ h3{font-weight:500}
   .hero-pexa h1 .r1{white-space:nowrap}
 }
 /* na mobilu musí být pod nadpisem místo na katetr – datum a místo začínají až za ním */
-@media (max-width:860px){ .hero-text{margin-top:var(--misto-katetr, 24vw)} }
 .hero-datum{margin:clamp(20px,3vw,52px) 0 0; font-family:var(--font-display); font-weight:500;
   font-size:clamp(28px,3.6vw,46px); letter-spacing:-.04em; line-height:1.02; color:var(--violet)}
 .hero-datum span{display:block}
 .hero-cta{display:flex; gap:12px; flex-wrap:wrap; margin:clamp(18px,2.4vw,30px) 0 0}
 .hero-cta .btn{padding:13px 30px; font-size:clamp(15px,1.5vw,17px)}
 
-/* Katetr s rukou přesně podle hotové stránky od kodéra (projekt cc-naplneny):
-   vrstva pod obsahem, zarovnaná na střed s maximem 1440 px, uvnitř box s pevnými
-   rozměry a obrázek otočený o 147,84° a převrácený svisle. Čísla jsou opsaná
-   z jejich buildu, včetně zlomů na 1024 a 1440 px.
-   Proměnné --x, --y, --zoom, --uhel jsou doladění navrch (editor-katetr.html). */
-.hero-vrstva{position:absolute; inset:0; margin:0 auto; max-width:1440px; z-index:0; pointer-events:none}
-.hero-katetr{position:absolute; display:flex; align-items:center; justify-content:center;
-  top:-82px; left:-311px; width:875px; height:798px;
-  --x:0%; --y:0%; --zoom:1; --uhel:34deg}
-/* Rozměry boxu jsou opsané z jejich buildu, natočení je naše: zdroj má ruku vlevo
-   a míří doleva, zrcadlením ji dostaneme doprava a úhel ji zvedne vzhůru.
-   Po scaleX(-1) se obrací smysl otáčení, takže kladný úhel točí proti směru hodin. */
-.katetr-obal{width:728px; height:485.333px;
+/* Katetr s rukou. Vrstva leží uvnitř hero bloku, takže se katetr vztahuje k obsahu
+   a ne k oknu: při změně šířky drží stejný poměr k nadpisu i k fotce pod ním a smyčka
+   se fotky nedotkne. Na mobilu je velikost omezená clampem, takže se pod určitou
+   šířkou přestane zmenšovat. Proměnné --x, --y, --zoom, --uhel nastavuje editor. */
+/* Na mobilu je katetr běžný prvek mezi nadpisem a datem – šířka je omezená clampem,
+   takže se pod 300 px přestane zmenšovat a nad 430 px zvětšovat. Na širokém displeji
+   je z něj vrstva pod obsahem, ukotvená k hero bloku, takže při změně šířky drží
+   poměr k nadpisu i k fotce a smyčka se fotky nedotkne. */
+.hero-vrstva{grid-area:katetr; position:static; z-index:0; pointer-events:none}
+.hero-katetr{position:relative; width:clamp(300px, 92%, 430px); margin:-2% auto 0;
+  aspect-ratio:1536/1024; --x:0%; --y:0%; --zoom:1; --uhel:34deg}
+@media (min-width:861px){
+  .hero-vrstva{position:absolute; inset:0}
+  .hero-katetr{position:absolute; right:-8%; bottom:-14%; width:min(74%, 980px); margin:0}
+}
+.katetr-obal{width:100%; height:100%;
   transform:translate(var(--x), var(--y)) scale(var(--zoom)) scaleX(-1) rotate(var(--uhel))}
-.katetr-obal img{display:block; width:100%; height:100%; object-fit:cover}
-@media (min-width:1024px){
-  .hero-katetr{top:-13.82vw; left:1.11vw; width:105.99vw; height:96.75vw}
-  .katetr-obal{width:88.23vw; height:58.82vw}
-}
-@media (min-width:1440px){
-  .hero-katetr{top:-199px; left:16px; width:1526px; height:1393px}
-  .katetr-obal{width:1270.464px; height:846.976px}
-}
+.katetr-obal img{display:block; width:100%; height:100%; object-fit:contain}
 
 /* pás fotek v rámečku na šířku stránky, ne přes celou obrazovku */
 .hero-pas{position:relative; width:100%; aspect-ratio:21/9; overflow:hidden;
