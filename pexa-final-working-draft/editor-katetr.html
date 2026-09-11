@@ -17,12 +17,16 @@ h1{font-size:17px; margin:0}
 .tl:hover{background:var(--violet-soft)}
 .tl.plny{background:var(--violet); color:#fff}
 .stav{margin-left:auto; font-size:13px; color:var(--tlum)}
-.plocha{display:grid; grid-template-columns:1fr 420px; gap:18px; padding:18px; align-items:start}
+.plocha{display:grid; grid-template-columns:1fr 380px; gap:18px; padding:18px; align-items:start}
+.ovladani-sloupec{position:sticky; top:64px; max-height:calc(100vh - 80px); overflow:auto}
 @media (max-width:1200px){.plocha{grid-template-columns:1fr}}
 .ram{background:#fff; border:1px solid var(--linka); border-radius:14px; overflow:hidden}
 .ram h2{font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--tlum);
   margin:0; padding:10px 14px; border-bottom:1px solid var(--linka)}
 .ram .okno{position:relative; overflow:hidden}
+/* iframe má svoji plnou šířku (1440 px) a jen se zmenšuje transformem – kdyby zůstal
+   v toku, roztáhl by sloupec a ovládání vpravo by vyjelo mimo obrazovku */
+.ram iframe{position:absolute; top:0; left:0}
 .ram iframe{border:0; display:block; transform-origin:0 0}
 .napoveda{font-size:13px; color:var(--tlum); padding:12px 14px; border-top:1px solid var(--linka)}
 .hodnoty{background:#fff; border:1px solid var(--linka); border-radius:14px; padding:14px}
@@ -55,7 +59,7 @@ pre{background:var(--ground); border:1px solid var(--linka); border-radius:10px;
     </div>
   </div>
 
-  <div>
+  <div class="ovladani-sloupec">
     <div class="hodnoty">
       <h2>Počítač</h2>
       <div class="radek"><label>velikost</label><input type="range" id="pc_zoom" min="30" max="260" step="1"><input type="number" id="pc_zoom_n"></div>
@@ -82,16 +86,20 @@ pre{background:var(--ground); border:1px solid var(--linka); border-radius:10px;
   var stav = JSON.parse(JSON.stringify(VYCHOZI));
 
   // náhledy: iframe v plné šířce zmenšený na místo, které je k dispozici
-  function zmensi(id, okno, w, h){
+  // Náhled ukazuje jen oblast hera – celá stránka není potřeba a zabírala by výšku,
+  // kvůli které by při pohledu na mobil zmizelo ovládání.
+  function zmensi(id, okno, w, h, vidno){
     var r = $(id), o = $(okno);
     r.style.width = w+"px"; r.style.height = h+"px";
-    // náhled se jen zmenšuje, nikdy nezvětšuje – mobil by se jinak roztáhl přes celý sloupec
     var k = Math.min(1, o.clientWidth / w);
     r.style.transform = "scale("+k+")";
-    r.style.marginLeft = Math.max(0, (o.clientWidth - w*k) / 2) + "px";
-    o.style.height = (h*k)+"px";
+    r.style.left = Math.max(0, (o.clientWidth - w*k) / 2) + "px";
+    o.style.height = ((vidno||h)*k)+"px";
   }
-  function preskaluj(){ zmensi("#ramPc","#oknoPc",1440,900); zmensi("#ramMob","#oknoMob",390,760); }
+  function preskaluj(){
+    zmensi("#ramPc","#oknoPc",1440,900,760);
+    zmensi("#ramMob","#oknoMob",390,900,720);
+  }
   addEventListener("resize", preskaluj);
 
   var pole = [["pc_zoom","pc","zoom"],["pc_uhel","pc","uhel"],["pc_x","pc","x"],["pc_y","pc","y"],
