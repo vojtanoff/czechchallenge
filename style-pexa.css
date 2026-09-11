@@ -67,11 +67,14 @@ h3{font-weight:500}
    pluje nad obsahem s odsazením od horní hrany (jejich rozměry: výška 67 px, boky 31 px). */
 .nav{background:transparent; border-bottom:0; padding-top:clamp(12px,2.2vw,26px); pointer-events:none;
   backdrop-filter:none; -webkit-backdrop-filter:none}   /* hlavní styl rozmazává celý pruh navigace; u nich má pilulka ostrý okraj a okolí zůstává čisté */
+/* burger drží až do 1180 px, aby navigace přepínala spolu s hero */
+@media (max-width:1179px){ .menu, .nav-cta .btn{display:none} .burger{display:block} }
+@media (min-width:1180px){ .menu{display:flex} .burger{display:none} }
 .nav .wrap{height:67px; pointer-events:auto; background:var(--ground); border:0;
   border-radius:20px; padding-left:19px; padding-right:19px; gap:14px}
 /* u nich: rounded-[20px] a teprve od jejich lg (1024 px) rounded-full */
 @media (min-width:1024px){ .nav .wrap{border-radius:999px} }
-@media (min-width:1170px){ .nav .wrap{padding-left:31px; padding-right:31px} }   /* bez tlačítka vpravo sedí stejné odsazení z obou stran */
+@media (min-width:1180px){ .nav .wrap{padding-left:31px; padding-right:31px} }   /* bez tlačítka vpravo sedí stejné odsazení z obou stran */
 .menu{background:transparent; border-radius:999px; padding:0; gap:4px; box-shadow:none; margin-left:auto}   /* jako u nich: logo vlevo, menu na pravé straně panelu */
 .menu a{display:inline-flex; align-items:center; height:47px; padding:0 22px; border-radius:999px;
   font-family:var(--font-display); font-weight:400; font-size:17.65px; letter-spacing:-.01em; color:var(--violet); transition:background .2s, color .2s}
@@ -104,16 +107,16 @@ h3{font-weight:500}
   grid-template-areas:"nadpis" "katetr" "text"}
 .hero-pexa h1{grid-area:nadpis; position:relative; z-index:2}
 .hero-text{grid-area:text; position:relative; z-index:2}
-@media (min-width:1170px){
+@media (min-width:1180px){
   .hero-blok{grid-template-columns:minmax(0,1fr); grid-template-areas:"nadpis" "text"}
 }
 .hero-pexa h1{font-size:clamp(44px,7.4vw,104px); font-weight:500; line-height:.92; letter-spacing:-.045em;
   color:var(--violet); max-width:11ch}
 .hero-pexa h1 .rok{display:block}
-/* Do dvojnásobku šířky telefonu se nadpis láme za slovem Czech, od 780 px výš drží
+/* Do 1179 px se nadpis láme za slovem Czech, od 1180 px výš drží
    „Czech Challenge" na jednom řádku a láme se až před rokem. */
 .hero-pexa h1 .r1 span{display:block}
-@media (min-width:1170px){
+@media (min-width:1180px){
   .hero-pexa h1{max-width:none}
   .hero-pexa h1 .r1{white-space:nowrap}
   .hero-pexa h1 .r1 span{display:inline}
@@ -129,14 +132,18 @@ h3{font-weight:500}
    a ne k oknu: při změně šířky drží stejný poměr k nadpisu i k fotce pod ním a smyčka
    se fotky nedotkne. Na mobilu je velikost omezená clampem, takže se pod určitou
    šířkou přestane zmenšovat. Proměnné --x, --y, --zoom, --uhel nastavuje editor. */
-/* Na mobilu je katetr běžný prvek mezi nadpisem a datem – šířka je omezená clampem,
+/* Dva režimy a nic mezi tím. Zlom je na 1180 px, což je šířka, ve které se obsah
+   přestane zužovat – teprve tam se pevná desktopová kompozice vejde. Pod ním platí
+   telefonní verze včetně burgeru v navigaci, ať nevznikne plné menu nad úzkým hero.
+   Oba režimy mají pevné rozměry, nic se nepřepočítává podle šířky okna.
+   Na mobilu je katetr běžný prvek mezi nadpisem a datem – šířka je pevná,
    takže se pod 300 px přestane zmenšovat a nad 430 px zvětšovat. Na širokém displeji
    je z něj vrstva pod obsahem, ukotvená k hero bloku, takže při změně šířky drží
    poměr k nadpisu i k fotce a smyčka se fotky nedotkne. */
 .hero-vrstva{grid-area:katetr; position:static; z-index:0; pointer-events:none}
 .hero-katetr{position:relative; width:360px; max-width:100%; margin:-8px 0 0;
   aspect-ratio:1536/1024; --x:0%; --y:0%; --zoom:1; --uhel:34deg}
-@media (min-width:1170px){
+@media (min-width:1180px){
   .hero-vrstva{position:absolute; inset:0}
   /* pevná velikost i poloha v pixelech – katetr se s šířkou okna nemění */
   .hero-katetr{position:absolute; right:-94px; bottom:-64px; margin:0; width:900px}
@@ -148,7 +155,7 @@ h3{font-weight:500}
 /* Na mobilu se v heru nic nezvětšuje ani nezmenšuje podle šířky okna: písmo,
    odsazení i katetr mají pevné hodnoty, takže na 360 i na 780 px vypadá hero stejně.
    Jediné, co se přizpůsobuje, je šířka obsahu a poměr stran fotky. */
-@media (max-width:1169px){
+@media (max-width:1179px){
   .hero-blok{padding:20px 0 28px}
   /* nadpis má na telefonu zabrat skoro celou šířku – pevná velikost, ať nezoomuje */
   .hero-pexa h1{font-size:66px; line-height:.9; letter-spacing:-.05em; max-width:none}
@@ -161,7 +168,7 @@ h3{font-weight:500}
 /* pás fotek v rámečku na šířku stránky, ne přes celou obrazovku */
 .hero-pas{position:relative; width:100%; aspect-ratio:21/9; overflow:hidden;
   background:var(--surface-2); border-radius:var(--radius)}
-@media (max-width:1169px){ .hero-pas{aspect-ratio:4/3} }
+@media (max-width:1179px){ .hero-pas{aspect-ratio:4/3} }
 .hero-pas .hero-photos{position:absolute; inset:0}
 .hero-pas .hero-photos img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
   opacity:0; transition:opacity 1.6s ease}
@@ -248,7 +255,7 @@ footer .wrap{background:transparent; color:inherit; border-radius:0; padding:0}
 .pata-hlava img{filter:brightness(0) invert(1); opacity:.95}   /* jen logo; 3D ruka v kontaktu si musí nechat vlastní barvy */
 footer .ruka-cil img{filter:none; opacity:1}
 
-@media (max-width:1169px){
+@media (max-width:1179px){
   .hero-pexa .hero-grid{grid-template-columns:1fr; min-height:0; gap:14px} .hero-pexa .hero-grid .hero-card{aspect-ratio:4/3; max-width:none}
   .tube-wrap{min-height:230px; margin:0 -20px 0 22%}
   .tube{left:-6%; top:-4%; width:106%; height:108%}
@@ -297,7 +304,7 @@ body{overflow-x:hidden}
 /* ---------- „I'm interested" nad patičkou – jejich sekce na podkladu, ne ve fialovém bloku ---------- */
 .zajem{background:var(--ground); padding:clamp(60px,8vw,100px) 0 clamp(40px,7vw,87px)}
 .zajem-grid{display:grid; gap:clamp(30px,5vw,44px)}
-@media (min-width:1170px){ .zajem-grid{grid-template-columns:minmax(0,1fr); gap:0} }
+@media (min-width:1180px){ .zajem-grid{grid-template-columns:minmax(0,1fr); gap:0} }
 .zajem h2{margin:0; color:var(--violet); font-weight:500; letter-spacing:-.07em; line-height:.8;
   font-size:clamp(42px,4.45vw,64px)}
 .zajem .zajem-lead{margin:clamp(20px,2.6vw,32px) 0 0; color:var(--ink-2); font-family:var(--font-body);
@@ -322,7 +329,7 @@ body{overflow-x:hidden}
 @keyframes zajem-klik{0%{transform:rotate(0)} 45%{transform:rotate(-4deg)} 100%{transform:rotate(0)}}
 @keyframes zajem-klik2{0%{transform:rotate(0)} 25%{transform:rotate(-4deg)} 50%{transform:rotate(0)} 75%{transform:rotate(-4deg)} 100%{transform:rotate(0)}}
 @media (prefers-reduced-motion:reduce){ .zajem .katetr-box .ruka{animation:none} }
-@media (max-width:1169px){ .zajem .katetr-box{display:none} }
+@media (max-width:1179px){ .zajem .katetr-box{display:none} }
 
 .zajem .btn-lime{background:var(--violet); color:#fff}
 .zajem .btn-lime:hover{background:var(--violet-deep)}
@@ -338,7 +345,7 @@ footer .wrap{display:block}
 .pata-hlava p{margin:0; font-family:var(--font-display); font-weight:400; font-size:clamp(12px,1.9vw,23.4px); line-height:1}
 .pata-telo{margin-top:clamp(45px,4.4vw,56px); display:grid; gap:clamp(46px,6vw,80px)}
 /* na telefonu jako u nich: nejdřív odkazy a kontakty, velký nápis Czech Challenge až dole */
-@media (max-width:1169px){
+@media (max-width:1179px){
   .pata-telo{display:flex; flex-direction:column; gap:0}
   .pata-vpravo{order:1; gap:56px}
   .pata-znak{order:2; margin-top:64px; font-size:76px}
@@ -353,16 +360,16 @@ footer .wrap{display:block}
   opacity:0; pointer-events:none; transition:opacity .3s}
 .nahoru.vidno{opacity:1; pointer-events:auto}
 .nahoru img{width:100%; height:100%; display:block}
-@media (min-width:1170px){ .nahoru{right:60px} }
-@media (min-width:1170px){ .pata-telo{grid-template-columns:minmax(0,1fr) auto; align-items:start} }
+@media (min-width:1180px){ .nahoru{right:60px} }
+@media (min-width:1180px){ .pata-telo{grid-template-columns:minmax(0,1fr) auto; align-items:start} }
 /* velký nápis Czech Challenge vlevo dole, jako u nich */
 .pata-znak{margin:clamp(40px,7vw,93px) 0 0; font-family:var(--font-display); font-weight:500;
   font-size:clamp(52px,7.51vw,108px); line-height:.8; letter-spacing:-.07em}
 .pata-znak span{display:block}
 .pata-vpravo{display:flex; flex-direction:column; gap:44px}
-@media (min-width:1170px){ .pata-vpravo{flex-direction:row-reverse; justify-content:flex-start; gap:clamp(30px,4.5vw,80px)} }
+@media (min-width:1180px){ .pata-vpravo{flex-direction:row-reverse; justify-content:flex-start; gap:clamp(30px,4.5vw,80px)} }
 .pata-menu ul{list-style:none; margin:0; padding:0; text-align:right; min-width:200px}
-@media (min-width:1170px){ .pata-menu ul{width:210px} }
+@media (min-width:1180px){ .pata-menu ul{width:210px} }
 .pata-menu li + li{border-top:1px solid rgba(255,255,255,.4)}
 .pata-menu a{display:block; padding:10px 0; color:#fff; text-decoration:none; font-size:12.8px; line-height:15px; transition:opacity .2s}
 .pata-menu a:hover{opacity:.7}
@@ -376,7 +383,7 @@ footer .wrap{display:block}
 .pata-spodek{display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-end; gap:8px 18px;
   margin-top:clamp(15px,1.8vw,22px); padding:0 clamp(4px,2.4vw,28px) clamp(18px,2vw,24px);
   font-size:clamp(12px,1.4vw,17px); color:var(--violet)}
-@media (max-width:1169px){
+@media (max-width:1179px){
   .pata-spodek{font-size:12px}
 }
 
@@ -430,4 +437,4 @@ footer .wrap{display:block}
 
 
 /* ruka u tlačítka „I'm interested" – přijede a ťukne; katetr u ní není (Vojta 9. 9.: „ta ruka s katetrem takhle nefunguje") */
-@media (min-width:1170px){ .contact{padding-bottom:calc(clamp(40px,5.5vw,72px) + 40px)} }
+@media (min-width:1180px){ .contact{padding-bottom:calc(clamp(40px,5.5vw,72px) + 40px)} }
