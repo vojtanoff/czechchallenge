@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="fonts/safiro.css">
 <link rel="stylesheet" href="style.css?v=2026-09-08a">
-<link rel="stylesheet" href="style-pexa.css?v=133">
+<link rel="stylesheet" href="style-pexa.css?v=134">
 </head>
 <body>
 
@@ -273,7 +273,9 @@
     function pouzij(v){
       if(!v) return;
       var pc=v.pc||{}, m=v.mobil||{};
-      var kde = innerWidth>=1024 ? pc : m;
+      // stejná hranice jako v CSS (861 px) – při 1024 se v pásu 861–1023 aplikoval
+      // mobilní zoom na desktopové rozložení a katetr byl obrovský
+      var kde = innerWidth>860 ? pc : m;
       k.style.setProperty("--uhel", (kde.uhel!=null?kde.uhel:34)+"deg");
       k.style.setProperty("--zoom", (kde.zoom!=null?kde.zoom:100)/100);
       k.style.setProperty("--x", (kde.x||0)+"%");
