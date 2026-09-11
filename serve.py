@@ -11,6 +11,7 @@ launchd: com.vojtanoff.czechchallenge · http://127.0.0.1:8790
 """
 import functools
 import http.server
+import json
 import os
 import socketserver
 import subprocess
@@ -35,6 +36,30 @@ def tailscale_ip():
 
 
 class Handler(http.server.SimpleHTTPRequestHandler):
+    def do_POST(self):
+        """Uložení polohy katetru z editoru. Hlavička X-Katetr brání tomu, aby to
+        šlo vyvolat formulářem z cizí stránky; editor ji posílá."""
+        telo = self.rfile.read(int(self.headers.get("Content-Length") or 0))
+        if self.path.split("?")[0] != "/katetr.json":
+            return self.send_error(404)
+        if self.headers.get("X-Katetr") != "1":
+            return self.send_error(403, "missing X-Katetr header")
+        try:
+            data = json.loads(telo.decode("utf-8"))
+            assert isinstance(data, dict) and "pc" in data and "mobil" in data
+        except Exception:
+            return self.send_error(400, "not a katetr payload")
+        cil = KOREN / "katetr.json"
+        docasny = cil.with_suffix(".tmp")
+        docasny.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
+        docasny.replace(cil)
+        odpoved = json.dumps({"ok": True}).encode()
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Content-Length", str(len(odpoved)))
+        self.end_headers()
+        self.wfile.write(odpoved)
+
     def end_headers(self):
         # formulář se po každém přegenerování mění, ať prohlížeč nedrží starý
         self.send_header("Cache-Control", "no-store")

@@ -122,15 +122,21 @@ h3{font-weight:500}
 /* Katetr s rukou: zdroj je vodorovný, ruka vlevo a ukazuje doleva. Zrcadlením ji
    dostaneme doprava, pak se natáčí, aby prst mířil vzhůru. Pozor: po scaleX(-1)
    se obrací i smysl otáčení, takže kladný úhel točí proti směru hodin. */
-.hero-katetr{position:relative; margin:0; pointer-events:none; align-self:center}
-.hero-katetr img{display:block; width:152%; margin-left:-14%; height:auto; max-width:none;
-  transform:scaleX(-1) rotate(34deg); transform-origin:50% 50%}
+/* Polohu katetru drží proměnné – nastavuje je katetr.json přes editor-katetr.html,
+   takže se dá doladit bez zásahu do CSS. Výchozí hodnoty jsou tady jako záloha. */
+.hero-katetr{position:relative; margin:0; pointer-events:none; align-self:center;
+  --sirka:152%; --uhel:34deg; --x:0px; --y:0px}
+.hero-katetr img{display:block; width:var(--sirka); margin-left:calc((100% - var(--sirka)) / 2);
+  height:auto; max-width:none;
+  transform:translate(var(--x), var(--y)) scaleX(-1) rotate(var(--uhel)); transform-origin:50% 50%}
 @media (max-width:860px){
   .hero-blok{padding-bottom:clamp(20px,4vw,32px)}
   /* Katetr leží za nadpisem: smyčka se schová za písmena, ven kouká hlavně bílá
      rukavice vpravo nahoře. Posunout se dá trojicí top/right/width. */
-  .hero-katetr{position:absolute; z-index:1; top:20%; right:5%; width:74%; margin:0}
-  .hero-katetr img{width:100%; margin:0; transform:scaleX(-1) rotate(30deg)}
+  .hero-katetr{position:absolute; z-index:1; top:var(--top,20%); right:var(--right,5%);
+    width:var(--sirka-m,74%); margin:0}
+  .hero-katetr img{width:100%; margin:0;
+    transform:translate(var(--x), var(--y)) scaleX(-1) rotate(var(--uhel-m,30deg))}
 }
 
 /* pás fotek v rámečku na šířku stránky, ne přes celou obrazovku */

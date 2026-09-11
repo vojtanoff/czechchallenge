@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="fonts/safiro.css">
 <link rel="stylesheet" href="style.css?v=2026-09-08a">
-<link rel="stylesheet" href="style-pexa.css?v=110">
+<link rel="stylesheet" href="style-pexa.css?v=112">
 </head>
 <body>
 
@@ -267,6 +267,48 @@
   } else { document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("in"); }); }
 
   // Hero už nemá dopočítávaný nadpis ani palec – rozvržení drží CSS (viz .hero-blok).
+  // Poloha katetru se bere z katetr.json, který píše editor-katetr.html.
+  (function(){
+    var k=document.querySelector(".hero-katetr"); if(!k) return;
+    function pouzij(v){
+      if(!v) return;
+      var pc=v.pc||{}, m=v.mobil||{};
+      k.style.setProperty("--sirka", (pc.sirka||152)+"%");
+      k.style.setProperty("--uhel", (pc.uhel||34)+"deg");
+      k.style.setProperty("--sirka-m", (m.sirka||74)+"%");
+      k.style.setProperty("--uhel-m", (m.uhel||30)+"deg");
+      k.style.setProperty("--top", (m.top!=null?m.top:20)+"%");
+      k.style.setProperty("--right", (m.right!=null?m.right:5)+"%");
+      var pc_ = innerWidth>860;
+      k.style.setProperty("--x", ((pc_?pc.x:m.x)||0)+"%");
+      k.style.setProperty("--y", ((pc_?pc.y:m.y)||0)+"%");
+    }
+    fetch("katetr.json",{cache:"no-store"}).then(function(r){ return r.ok?r.json():null; })
+      .then(function(v){ window.__katetr=v; pouzij(v); addEventListener("resize",function(){ pouzij(window.__katetr); }); })
+      .catch(function(){});
+    // editor posílá nové hodnoty zprávou, ať je vidět hned
+    addEventListener("message",function(e){
+      if(e.data && e.data.__katetr){ window.__katetr=e.data.__katetr; pouzij(e.data.__katetr); }
+    });
+    // v editoru jde katetrem táhnout myší; posun se hlásí zpátky nadřazené stránce
+    if(/[?&]editor=1/.test(location.search)){
+      k.style.pointerEvents="auto"; k.style.cursor="grab";
+      var tahne=false, zx=0, zy=0, px=0, py=0;
+      k.addEventListener("pointerdown",function(e){
+        tahne=true; k.setPointerCapture(e.pointerId); k.style.cursor="grabbing";
+        var v=window.__katetr||{}, kde=innerWidth>860?(v.pc||{}):(v.mobil||{});
+        px=kde.x||0; py=kde.y||0; zx=e.clientX; zy=e.clientY; e.preventDefault();
+      });
+      k.addEventListener("pointermove",function(e){
+        if(!tahne) return;
+        var s=k.getBoundingClientRect().width||1;
+        var nx=px+(e.clientX-zx)/s*100, ny=py+(e.clientY-zy)/s*100;
+        k.style.setProperty("--x",nx+"%"); k.style.setProperty("--y",ny+"%");
+        parent.postMessage({__katetrTah:{pc:innerWidth>860, x:nx, y:ny}},"*");
+      });
+      k.addEventListener("pointerup",function(){ tahne=false; k.style.cursor="grab"; });
+    }
+  })();
   fetch("content.json",{cache:"no-store"}).then(function(r){ return r.json(); }).then(function(C){
     POS=C.pos||{};
     // hero – prolínání fotek
