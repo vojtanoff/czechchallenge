@@ -74,8 +74,12 @@
    "items": [
     {
      "time": "Evening",
-     "title": "Welcome dinner",
-     "desc": "Arrival, welcome and an informal evening for faculty and participants."
+     "title": "Welcome dinner at Everything",
+     "desc": "Arrival, welcome and an informal evening for faculty and participants – at Everything in Palác Hybský, nám. Republiky 56 in the centre of Pardubice.",
+     "odkaz": {
+      "text": "everything.cz",
+      "url": "https://www.everything.cz/"
+     }
     }
    ]
   },
@@ -162,12 +166,6 @@
    {
     "name": "Inlab",
     "logo": "img/logos/Inlab_logo_v2.svg"
-   }
-  ],
-  "Partners": [
-   {
-    "name": "Promedica",
-    "logo": "img/logos/07_Promedica.svg"
    }
   ]
  },
@@ -550,5 +548,15 @@
     "img/photos/stipal-2.jpg"
    ]
   }
- ]
+ ],
+ "venue": {
+  "nazev": "Jan Kašpar Hall",
+  "mapa": "https://maps.google.com/?q=Krajsk%C3%BD+%C3%BA%C5%99ad+Pardubick%C3%A9ho+kraje+Komensk%C3%A9ho+n%C3%A1m%C4%9Bst%C3%AD+125+Pardubice",
+  "fotky": [
+   "img/photos/2025/KAB_7830.jpg",
+   "img/photos/2024/KAB_6811.jpg",
+   "img/photos/2024/KAB_7118.jpg",
+   "img/photos/hero/hero-01.jpg"
+  ]
+ }
 }
