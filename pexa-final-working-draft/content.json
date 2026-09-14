@@ -183,12 +183,12 @@
    "logo": "img/logos/Patronage_Pardubicky_kraj.svg"
   },
   {
-   "name": "Hospitals of the Pardubice Region",
-   "logo": "img/logos/Patronage_nemocnice_pardubickeho_kraje.svg"
-  },
-  {
    "name": "KC AGEL Pardubice",
    "logo": "img/logos/Patronage_agel_kardiologické_centrum.svg"
+  },
+  {
+   "name": "Hospitals of the Pardubice Region",
+   "logo": "img/logos/Patronage_nemocnice_pardubickeho_kraje.svg"
   }
  ],
  "gallery": {
