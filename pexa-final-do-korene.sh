@@ -4,7 +4,9 @@
 # Cesty se z ../img/ vrací na img/, fonty se kopírují celé.
 set -e
 Z=~/dev/czechchallenge-pexa-final; C=~/dev/czechchallenge
-for f in index.html gallery.html style.css style-pexa.css content.json; do
+# katetr.json musí do kořene taky – bez něj hero spadne na výchozí polohu z CSS
+# a katetr je jinde než ve working draftu (chybělo to tu od zavedení editoru)
+for f in index.html gallery.html style.css style-pexa.css content.json katetr.json; do
   python3 - "$Z/$f" "$C/$f" <<'PY'
 import sys
 src,dst=sys.argv[1],sys.argv[2]; s=open(src,encoding="utf-8").read()
