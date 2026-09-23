@@ -132,6 +132,16 @@
         g.appendChild(a);
       });
     });
+    // Skok na ročník (#2025 / #2024 z dlaždic na hlavní stránce). Prohlížeč se
+    // o něj pokusí hned po načtení HTML, jenže dlaždice tou dobou ještě nejsou
+    // a stránka je krátká – zůstalo se nahoře a vypadalo to, že klik nic neudělal.
+    // Pozor: id začíná číslicí, querySelector("#2024") je neplatný selektor,
+    // proto getElementById.
+    var rok = location.hash.replace("#", "");
+    if(rok){
+      var cil = document.getElementById(rok);
+      if(cil) requestAnimationFrame(function(){ cil.scrollIntoView({block:"start"}); });
+    }
   });
   var lb=$("#lb"), im=$("#lbImg"), cnt=$("#lbCnt");
   function show(){ im.src=vse[i]; cnt.textContent=(i+1)+" / "+vse.length; }
