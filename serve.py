@@ -16,6 +16,7 @@ import os
 import socketserver
 import subprocess
 import threading
+import time
 from pathlib import Path
 
 KOREN = Path(__file__).resolve().parent
@@ -74,6 +75,31 @@ class Server(socketserver.ThreadingTCPServer):
     daemon_threads = True
 
 
+def pripoj_tailnet_pozdeji(h, servery):
+    """Zkoušet tailnet adresu dál, když při startu ještě nebyla.
+
+    Po restartu Mac mini naběhne launchd dřív než Tailscale. Adresa se zjišťovala
+    jen jednou, takže server zůstal viset na localhostu a na náhled se nedalo dostat
+    z telefonu ani z jiného stroje – a nikdo si toho nevšiml, dokud to Vojta
+    nepotřeboval ukázat (23. 9. 2026). Proto se o ni pokoušíme dál na pozadí.
+    """
+    def zkousej():
+        for _ in range(120):          # zhruba hodina, pak nemá smysl zkoušet dál
+            time.sleep(30)
+            ip = tailscale_ip()
+            if not ip:
+                continue
+            try:
+                s = Server((ip, PORT), h)
+            except OSError:
+                return                # už tam někdo poslouchá, nic neřešíme
+            servery.append(s)
+            threading.Thread(target=s.serve_forever, daemon=True).start()
+            print(f"tailnet adresa naskočila později: http://{ip}:{PORT}", flush=True)
+            return
+    threading.Thread(target=zkousej, daemon=True).start()
+
+
 if __name__ == "__main__":
     KOREN.mkdir(parents=True, exist_ok=True)
     h = functools.partial(Handler, directory=str(KOREN))
@@ -91,6 +117,8 @@ if __name__ == "__main__":
             print(f"na {a} se nedá poslouchat: {e}")
     if not servery:
         raise SystemExit("žádnou adresu se nepodařilo obsadit")
+    if not ip:
+        pripoj_tailnet_pozdeji(h, servery)
     for s in servery[1:]:
         threading.Thread(target=s.serve_forever, daemon=True).start()
     servery[0].serve_forever()
