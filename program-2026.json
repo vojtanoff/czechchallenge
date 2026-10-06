@@ -327,7 +327,7 @@
  "faculty": [
   {
    "id": "benabdessalem",
-   "name": "M. Aymen Ben Abdessalem",
+   "name": "Mohamed Aymen Ben Abdessalem",
    "country": "Tunisia",
    "countryCode": "TUN",
    "photo": null,
@@ -586,24 +586,6 @@
    ]
   },
   {
-   "id": "kaluzna",
-   "name": "Marta Kaluzna",
-   "country": "Poland",
-   "countryCode": "POL",
-   "photo": null,
-   "tags": [],
-   "roles": [
-    {
-     "role": "Chair",
-     "session": 3
-    },
-    {
-     "role": "Speaker",
-     "session": 3
-    }
-   ]
-  },
-  {
    "id": "kanovsky",
    "name": "Jan Kaňovský",
    "country": "Czechia",
@@ -628,6 +610,24 @@
     {
      "role": "Discussant",
      "session": 2
+    }
+   ]
+  },
+  {
+   "id": "kaluzna",
+   "name": "Marta Kałużna-Oleksy",
+   "country": "Poland",
+   "countryCode": "POL",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Chair",
+     "session": 3
+    },
+    {
+     "role": "Speaker",
+     "session": 3
     }
    ]
   },

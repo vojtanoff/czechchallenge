@@ -53,11 +53,20 @@
     ESP:'<rect width="30" height="20" fill="#aa151b"/><rect y="5" width="30" height="10" fill="#f1bf00"/>',
     GBR:'<rect width="30" height="20" fill="#012169"/><path d="M0 0l30 20M30 0L0 20" stroke="#fff" stroke-width="4"/><path d="M0 0l30 20M30 0L0 20" stroke="#c8102e" stroke-width="1.5"/><path d="M15 0v20M0 10h30" stroke="#fff" stroke-width="6"/><path d="M15 0v20M0 10h30" stroke="#c8102e" stroke-width="3.5"/>',
     ISR:'<rect width="30" height="20" fill="#fff"/><rect y="2.5" width="30" height="3" fill="#0038b8"/><rect y="14.5" width="30" height="3" fill="#0038b8"/><path d="M15 6l3.5 6h-7zM15 14l3.5-6h-7z" fill="none" stroke="#0038b8" stroke-width=".9"/>',
+    BEL:pruhy(["#000","#fdda24","#ef3340"],true),
     GRE:pruhy(["#0d5eaf","#fff","#0d5eaf","#fff","#0d5eaf","#fff","#0d5eaf","#fff","#0d5eaf"])+'<rect width="11" height="11.1" fill="#0d5eaf"/><path d="M5.5 0v11.1M0 5.6h11" stroke="#fff" stroke-width="2.2"/>'
   };
-  function vlajka(kod, zeme){
+  var pulenych=0;
+  function vlajka(kod, zeme, kodNar, narodnost){
     if(!VLAJKY[kod]) return "";
-    return '<svg class="fa-vlajka" viewBox="0 0 30 20" width="22" height="15" role="img" aria-label="'+esc(zeme)+'"><title>'+esc(zeme)+'</title>'+VLAJKY[kod]+'</svg>';
+    if(!kodNar || !VLAJKY[kodNar] || kodNar===kod)
+      return '<svg class="fa-vlajka" viewBox="0 0 30 20" width="22" height="15" role="img" aria-label="'+esc(zeme)+'"><title>'+esc(zeme)+'</title>'+VLAJKY[kod]+'</svg>';
+    // půlená úhlopříčně: vlevo nahoře národnost, vpravo dole země pracoviště (Vojta 6. 10.)
+    var id="fa-pul-"+(++pulenych), popis=narodnost+" / "+zeme;
+    return '<svg class="fa-vlajka" viewBox="0 0 30 20" width="22" height="15" role="img" aria-label="'+esc(popis)+'"><title>'+esc(popis)+'</title>'
+      +'<defs><clipPath id="'+id+'a"><polygon points="0,0 30,0 0,20"/></clipPath><clipPath id="'+id+'b"><polygon points="30,0 30,20 0,20"/></clipPath></defs>'
+      +'<g clip-path="url(#'+id+'a)">'+VLAJKY[kodNar]+'</g><g clip-path="url(#'+id+'b)">'+VLAJKY[kod]+'</g>'
+      +'<path d="M30 0L0 20" stroke="#fff" stroke-width="1"/></svg>';
   }
 
   var cache={};
@@ -204,7 +213,7 @@
       h.push('<li'+(i>=MOBIL_PRVNICH?' class="fa-dalsi"':'')+'><div class="fa-text">'
         +'<p class="fa-jmeno">'+esc(f.name)+'</p>'
         +'<p class="fa-popis">'+roleText(f).map(function(t){ return '<span>'+esc(t)+'</span>'; }).join("")+'</p>'
-        +'<p class="fa-zeme">'+(sVlajkou?vlajka(f.countryCode, f.country):'')+'<span>'+esc(f.country)+'</span></p></div></li>');
+        +'<p class="fa-zeme">'+(sVlajkou?vlajka(f.countryCode, f.country, f.nationalityCode, f.nationality):'')+'<span>'+esc(f.country)+'</span></p></div></li>');
     });
     h.push('</ul>'+(clenove.length>MOBIL_PRVNICH?'<button type="button" class="fa-vic">Load more</button>':'')+'</div>');
     el.innerHTML=h.join("");
