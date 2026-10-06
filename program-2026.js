@@ -206,18 +206,16 @@
     // Vlajky: data-flags="1" na prvku; pro náhled přebije ?vlajky=1 / ?vlajky=0 v adrese.
     var vl=/[?&]vlajky=(\d)/.exec(location.search), sVlajkou=vl ? vl[1]==="1" : el.dataset.flags==="1";
     var clenove=D.faculty||[];
-    var MOBIL_PRVNICH=6;   // na telefonu se ukáže šest a tlačítko „Load more“, jako v návrhu
     var h=['<div class="fa-clenove'+(sVlajkou?" s-vlajkou":"")+'"><h3 class="fa-h">'+clenove.length+' faculty members</h3><ul class="fa-seznam">'];
     clenove.forEach(function(f,i){
-      h.push('<li'+(i>=MOBIL_PRVNICH?' class="fa-dalsi"':'')+'><div class="fa-text">'
+      h.push('<li><div class="fa-text">'
         +'<p class="fa-jmeno">'+esc(f.name)+'</p>'
         +'<p class="fa-popis">'+roleText(f).map(function(t){ return '<span>'+esc(t)+'</span>'; }).join("")+'</p>'
         +'<p class="fa-zeme">'+zeme(f, sVlajkou)+'</p></div></li>');
     });
-    h.push('</ul>'+(clenove.length>MOBIL_PRVNICH?'<button type="button" class="fa-vic">Load more</button>':'')+'</div>');
+    // Vojta 6. 10.: na telefonu hned všichni, bez „Load more“ z návrhu
+    h.push('</ul></div>');
     el.innerHTML=h.join("");
-    var vic=el.querySelector(".fa-vic");
-    if(vic) vic.addEventListener("click",function(){ el.querySelector(".fa-seznam").classList.add("vse"); vic.remove(); });
   }
 
   /* ================================================================ start */

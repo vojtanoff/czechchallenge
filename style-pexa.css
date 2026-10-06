@@ -444,3 +444,6 @@ footer .wrap{display:block}
 
 /* ruka u tlačítka „I'm interested" – přijede a ťukne; katetr u ní není (Vojta 9. 9.: „ta ruka s katetrem takhle nefunguje") */
 @media (min-width:861px){ .contact{padding-bottom:calc(clamp(40px,5.5vw,72px) + 40px)} }
+
+/* kotvy z menu (i z mobilního): sekce nesmí zajet pod plovoucí hlavičku */
+section[id], main[id]{scroll-margin-top:clamp(84px,9vw,110px)}

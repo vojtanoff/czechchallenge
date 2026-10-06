@@ -364,8 +364,8 @@
   {
    "id": "andreka",
    "name": "Judit Andréka",
-   "country": "Hungary",
-   "countryCode": "HUN",
+   "country": "Austria",
+   "countryCode": "AUT",
    "photo": null,
    "tags": [],
    "roles": [
@@ -373,7 +373,9 @@
      "role": "Discussant",
      "session": 1
     }
-   ]
+   ],
+   "nationality": "Hungary",
+   "nationalityCode": "HUN"
   },
   {
    "id": "avramovic",
@@ -442,8 +444,8 @@
   {
    "id": "0gwpcie82vqxg29zgoxy",
    "name": "Giuseppe Caliendo",
-   "country": "Italy",
-   "countryCode": "ITA",
+   "country": "Poland",
+   "countryCode": "POL",
    "photo": null,
    "tags": [],
    "roles": [
@@ -451,7 +453,9 @@
      "role": "Speaker",
      "session": 2
     }
-   ]
+   ],
+   "nationality": "Italy",
+   "nationalityCode": "ITA"
   },
   {
    "id": "cocoi",
@@ -474,8 +478,8 @@
   {
    "id": "colletti",
    "name": "Giuseppe Colletti",
-   "country": "Italy",
-   "countryCode": "ITA",
+   "country": "Belgium",
+   "countryCode": "BEL",
    "photo": null,
    "tags": [],
    "roles": [
@@ -487,7 +491,9 @@
      "role": "Discussant",
      "session": 4
     }
-   ]
+   ],
+   "nationality": "Italy",
+   "nationalityCode": "ITA"
   },
   {
    "id": "cerny",

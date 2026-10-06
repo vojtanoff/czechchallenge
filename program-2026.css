@@ -176,7 +176,6 @@
 .fa-vic{display:inline-flex; align-items:center; justify-content:center; height:41px; margin-top:47px; padding:0 24px; border:0; border-radius:999px;
   background:var(--cc-v); color:#fff; font-size:16px; transition:background .2s}
 .fa-vic:hover{background:var(--violet-deep,#3320A6)}
-@media (max-width:860px){ .fa-seznam:not(.vse) li.fa-dalsi{display:none} }
 @media (min-width:861px){
   .fa-clenove{margin-top:clamp(56px,6vw,88px)}
   .fa-seznam{margin-top:66px; grid-template-columns:1fr 1fr; gap:42px 41px}
@@ -184,3 +183,6 @@
   .fa-vic{display:none}
 }
 @media (min-width:1024px){ .fa-seznam{grid-template-columns:1fr 1fr 1fr} }
+
+/* podstránky program.html a faculty.html: odstup obsahu od fialové patičky */
+.podstranka{padding-bottom:clamp(80px,10vw,140px)}
