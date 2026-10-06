@@ -20,7 +20,7 @@
   function ikona(soubor, w, h){ return '<img src="'+IKONY+soubor+'" width="'+w+'" height="'+h+'" alt="" aria-hidden="true" loading="lazy">'; }
   var IKONA={
     vlevo:ikona("sipka-vlevo.svg",31,25), vpravo:ikona("sipka-vpravo.svg",31,25),
-    kava:ikona("kava.svg",109,109), obed:ikona("obed.svg",109,109), hudba:ikona("hudba.svg",109,109),
+    kava:ikona("kava.svg",109,109), obed:ikona("obed.svg",109,109), saxofon:ikona("saxofon.svg",109,109),
     ven:'<svg viewBox="0 0 10 10" width="9" height="9" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8 8 2M3.5 2H8v4.5"/></svg>'
   };
 
@@ -135,7 +135,8 @@
     // den bez sessions (čtvrtek): jen společenské bloky
     function denBezSessionsHtml(d){
       return '<div class="pr-spolecenske">'+d.blocks.map(function(b){
-        return '<div class="pr-pauza pr-spol"><span class="pr-kava">'+IKONA.hudba+'</span><p class="pr-cas">'+esc(b.time||cas(b))+'</p><h3>'+esc(b.title)+'</h3>'
+        // Vojta 6. 10.: příbor a saxofon vedle sebe
+        return '<div class="pr-pauza pr-spol"><span class="pr-kava pr-ikony">'+IKONA.obed+IKONA.saxofon+'</span><p class="pr-cas">'+esc(b.time||cas(b))+'</p><h3>'+esc(b.title)+'</h3>'
           +(b.location?'<p class="pr-kde">'+esc(b.location)+'</p>':'')
           +(b.note?'<p class="pr-pozn">'+esc(b.note)+'</p>':'')
           +(b.url?'<a class="pr-odkaz" href="'+esc(b.url)+'" target="_blank" rel="noopener">'+esc(b.url.replace(/^https?:\/\/(www\.)?/,"").replace(/\/$/,""))+' '+IKONA.ven+'</a>':'')

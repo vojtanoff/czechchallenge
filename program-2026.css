@@ -142,6 +142,15 @@
   .pr-pauza h3{margin-top:21px; max-width:640px; font-size:clamp(72px,7.6vw,110px)}
   .pr-pauza .pr-cas{padding-right:220px}
 }
+/* večeře: příbor a saxofon vedle sebe (Vojta 6. 10.) */
+/* na telefonu nad textem – vedle nadpisu by ho dvě ikony překryly */
+.pr-kava.pr-ikony{position:static; display:flex; gap:8px; width:auto; height:auto; margin:-27px 0 18px}
+.pr-kava.pr-ikony img{width:60px; height:60px}
+@media (min-width:861px){
+  .pr-kava.pr-ikony{position:absolute; margin:0; gap:16px; width:234px; height:109px}
+  .pr-kava.pr-ikony img{width:109px; height:109px}
+  .pr-spol .pr-cas{padding-right:340px}
+}
 /* čtvrtek: žádné sessions, jen večeře – stejná karta, text navíc */
 .pr-spol .pr-kde,.pr-spol .pr-pozn{margin-top:22px; font-size:18px; line-height:1.3; max-width:52ch; font-weight:400}
 .pr-spol .pr-pozn{margin-top:10px}
