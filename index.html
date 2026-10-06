@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="fonts/safiro.css">
 <link rel="stylesheet" href="style.css?v=2026-09-08a">
 <link rel="stylesheet" href="style-pexa.css?v=134">
+<link rel="stylesheet" href="program-2026.css?v=1">
 </head>
 <body>
 
@@ -94,39 +95,26 @@
   </div>
 </section>
 
-<!-- PROGRAM -->
+<!-- PROGRAM – kreslí program-2026.js z program-2026.json (generuje brain-tools z Desku) -->
 <section id="program" class="program">
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow">Program</p>
       <h2>Four sessions, live cases and one debate.</h2>
-      <p class="lead nabih">Working draft – speakers and exact times will follow with the final program.</p>
+      <p class="lead nabih">Pick a day and a session – chairs, panel, live cases and lectures are below. Minor changes may still occur.</p>
     </div>
-    <div class="days reveal" id="days"></div>
-    <div class="live reveal">
-      <b>Live cases</b>
-      <p id="liveCases"></p>
-    </div>
-    <div class="gal-foot">
-      <a class="btn btn-outline" href="#" aria-disabled="true">Scientific program (PDF) – coming soon</a>
-    </div>
+    <div class="reveal" data-cc-program data-src="program-2026.json" data-day="fri"></div>
   </div>
 </section>
 
-<!-- FACULTY -->
+<!-- FACULTY – kreslí program-2026.js z program-2026.json -->
 <section id="faculty">
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow">Faculty</p>
       <h2>Operators you know from the big stages – sitting next to you.</h2>
     </div>
-    <div class="faculty-band reveal">
-      <div class="band-photos" id="facultyPhotos"></div>
-      <div>
-        <h3>Czech &amp; 20+ international faculty</h3>
-        <p id="facultyNote"></p>
-      </div>
-    </div>
+    <div class="reveal" data-cc-faculty data-src="program-2026.json"></div>
   </div>
 </section>
 
@@ -483,22 +471,7 @@
       });
     }
 
-    // program
-    $("#days").innerHTML=C.program.map(function(day){
-      return '<div class="day"><h3>'+esc(day.day)+'</h3><div class="date">'+esc(day.date)+'</div>'+day.items.map(function(it){
-        var odkaz=it.odkaz ? '<a class="slot-odkaz" href="'+esc(it.odkaz.url)+'" target="_blank" rel="noopener">'+esc(it.odkaz.text)+'</a>' : '';
-        return '<div class="slot"><div class="t">'+esc(it.time)+'</div><div><b>'+esc(it.title)+'</b><p class="nabih">'+esc(it.desc)+'</p>'+odkaz+'</div></div>';
-      }).join("")+'</div>';
-    }).join("");
-    $("#liveCases").textContent=C.live_cases;
-    $("#facultyNote").textContent=C.faculty_note;
-    // panelové fotky se v sekci Faculty střídají stejně jako v hero
-    var fb=$("#facultyPhotos");
-    (C.faculty_photos||[]).forEach(function(src,i){ var im=new Image(); im.src=src; im.alt="Panel discussion at Czech Challenge"; im.loading="lazy"; if(i===0) im.className="on"; poz(im,src,"50% 40%"); fb.appendChild(im); });
-    if(!matchMedia("(prefers-reduced-motion: reduce)").matches && fb.children.length>1){
-      var fk=0; setInterval(function(){ var d=(fk+1)%fb.children.length; if(!fb.children[d].complete) return;
-        prolni(fb.children,fk,d); fk=d; },5600);
-    }
+    // program a faculty kreslí program-2026.js (data z Desku přes generátor), tady už nic
 
     // galerie – náhled: 11 dlaždic (1 vysoká) = 3 plné řady ve 4 sloupcích; poloha dál drží svůj ročník
     // (6× 2025, 5× 2024), ale fotka v ní se čas od času nepravidelně vymění za jinou z celého ročníku –
@@ -590,5 +563,6 @@
 })();
 </script>
 <script src="efekty.js?v=106"></script>
+<script src="program-2026.js?v=1"></script>
 </body>
 </html>
