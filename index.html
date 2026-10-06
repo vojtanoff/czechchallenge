@@ -19,7 +19,6 @@
 <link rel="stylesheet" href="fonts/safiro.css">
 <link rel="stylesheet" href="style.css?v=2026-09-08a">
 <link rel="stylesheet" href="style-pexa.css?v=134">
-<link rel="stylesheet" href="program-2026.css?v=3">
 </head>
 <body>
 
@@ -95,29 +94,43 @@
   </div>
 </section>
 
-<!-- PROGRAM – kreslí program-2026.js z program-2026.json (generuje brain-tools z Desku) -->
+<!-- PROGRAM -->
 <section id="program" class="program">
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow">Program</p>
       <h2>4 sessions, 4 live cases, unlimited debate.</h2>
-      <p class="lead nabih">Pick a day and a session – chairs, discussants, live cases and lectures are below. Minor changes may still occur.</p>
+      <p class="lead nabih">The day at a glance. Chairs, discussants, live cases and lectures are in the detailed program.</p>
     </div>
-    <div class="reveal" data-cc-program data-src="program-2026.json" data-day="fri"></div>
-    <div class="pr-pdf reveal">
-      <a href="Scientific_Program_2026.pdf" download><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v9M4.5 7.5 8 11l3.5-3.5M2.5 13.5h11"/></svg>Download program (PDF)</a>
+    <div class="days reveal" id="days"></div>
+    <div class="live reveal">
+      <b>Live cases</b>
+      <p id="liveCases"></p>
+    </div>
+    <div class="gal-foot">
+      <a class="btn btn-primary" href="program.html">Detailed program</a>
+      <a class="btn btn-outline" href="Scientific_Program_2026.pdf" target="_blank" rel="noopener">Download program (PDF)</a>
     </div>
   </div>
 </section>
 
-<!-- FACULTY – kreslí program-2026.js z program-2026.json -->
+<!-- FACULTY -->
 <section id="faculty">
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow">Faculty</p>
       <h2>Operators you know from the big stages – sitting next to you.</h2>
     </div>
-    <div class="reveal" data-cc-faculty data-src="program-2026.json" data-flags="1"></div>
+    <div class="faculty-band reveal">
+      <div class="band-photos" id="facultyPhotos"></div>
+      <div>
+        <h3>Czech &amp; 20+ international faculty</h3>
+        <p id="facultyNote"></p>
+      </div>
+    </div>
+    <div class="gal-foot">
+      <a class="btn btn-primary" href="faculty.html">All faculty</a>
+    </div>
   </div>
 </section>
 
@@ -474,7 +487,22 @@
       });
     }
 
-    // program a faculty kreslí program-2026.js (data z Desku přes generátor), tady už nic
+    // program
+    $("#days").innerHTML=C.program.map(function(day){
+      return '<div class="day"><h3>'+esc(day.day)+'</h3><div class="date">'+esc(day.date)+'</div>'+day.items.map(function(it){
+        var odkaz=it.odkaz ? '<a class="slot-odkaz" href="'+esc(it.odkaz.url)+'" target="_blank" rel="noopener">'+esc(it.odkaz.text)+'</a>' : '';
+        return '<div class="slot"><div class="t">'+esc(it.time)+'</div><div><b>'+esc(it.title)+'</b><p class="nabih">'+esc(it.desc)+'</p>'+odkaz+'</div></div>';
+      }).join("")+'</div>';
+    }).join("");
+    $("#liveCases").textContent=C.live_cases;
+    $("#facultyNote").textContent=C.faculty_note;
+    // panelové fotky se v sekci Faculty střídají stejně jako v hero
+    var fb=$("#facultyPhotos");
+    (C.faculty_photos||[]).forEach(function(src,i){ var im=new Image(); im.src=src; im.alt="Panel discussion at Czech Challenge"; im.loading="lazy"; if(i===0) im.className="on"; poz(im,src,"50% 40%"); fb.appendChild(im); });
+    if(!matchMedia("(prefers-reduced-motion: reduce)").matches && fb.children.length>1){
+      var fk=0; setInterval(function(){ var d=(fk+1)%fb.children.length; if(!fb.children[d].complete) return;
+        prolni(fb.children,fk,d); fk=d; },5600);
+    }
 
     // galerie – náhled: 11 dlaždic (1 vysoká) = 3 plné řady ve 4 sloupcích; poloha dál drží svůj ročník
     // (6× 2025, 5× 2024), ale fotka v ní se čas od času nepravidelně vymění za jinou z celého ročníku –
@@ -566,6 +594,5 @@
 })();
 </script>
 <script src="efekty.js?v=106"></script>
-<script src="program-2026.js?v=3"></script>
 </body>
 </html>
