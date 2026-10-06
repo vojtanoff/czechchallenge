@@ -373,9 +373,7 @@
      "role": "Discussant",
      "session": 1
     }
-   ],
-   "nationality": "Hungary",
-   "nationalityCode": "HUN"
+   ]
   },
   {
    "id": "avramovic",
@@ -453,9 +451,7 @@
      "role": "Speaker",
      "session": 2
     }
-   ],
-   "nationality": "Italy",
-   "nationalityCode": "ITA"
+   ]
   },
   {
    "id": "cocoi",
@@ -491,9 +487,7 @@
      "role": "Discussant",
      "session": 4
     }
-   ],
-   "nationality": "Italy",
-   "nationalityCode": "ITA"
+   ]
   },
   {
    "id": "cerny",

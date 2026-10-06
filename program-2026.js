@@ -194,11 +194,9 @@
       return role+(s.length?" · "+(s.length>1?"Sessions ":"Session ")+s.join(", "):"");
     });
   }
-  // Vojta 6. 10.: kdo pracuje jinde než v zemi své národnosti → „Italy / working in Poland“, každá země se svou vlajkou
+  // Vojta 6. 10.: jen země pracoviště a její vlajka, národnost se nezobrazuje
   function zeme(f, sVlajkou){
-    var prac=(sVlajkou?vlajka(f.countryCode, f.country):'')+'<span>'+esc(f.country)+'</span>';
-    if(!f.nationalityCode || f.nationalityCode===f.countryCode) return prac;
-    return (sVlajkou?vlajka(f.nationalityCode, f.nationality):'')+'<span>'+esc(f.nationality)+'</span><span class="fa-jinde">/ working in</span>'+prac;
+    return (sVlajkou?vlajka(f.countryCode, f.country):'')+'<span>'+esc(f.country)+'</span>';
   }
 
   function kresliFaculty(el, D){
