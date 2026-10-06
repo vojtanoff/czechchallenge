@@ -55,7 +55,7 @@
    ]
   },
   {
-   "name": "Cath lab nursing team",
+   "name": "Cath Lab Nursing Team",
    "role": "Live cases, logistics, hospitality",
    "org": "KC AGEL Pardubice",
    "photos": [
@@ -74,7 +74,7 @@
    "items": [
     {
      "time": "Evening",
-     "title": "Welcome dinner at Everything",
+     "title": "Welcome Dinner at Everything",
      "desc": "Arrival, welcome and an informal evening for faculty and participants – at Everything in Palác Hybský, nám. Republiky 56 in the centre of Pardubice.",
      "odkaz": {
       "text": "everything.cz",
@@ -94,22 +94,22 @@
     },
     {
      "time": "Session 2",
-     "title": "CTO & CHIP update 2026",
+     "title": "CTO & CHIP Update 2026",
      "desc": "New techniques, devices, imaging and calcium tools – and the data of the past year."
     },
     {
      "time": "Session 3",
-     "title": "MCS-protected PCI",
+     "title": "MCS-Protected PCI",
      "desc": "Who needs support, which device, which access – and what to do when it goes wrong."
     },
     {
      "time": "Session 4",
-     "title": "CTO & CHIP beyond the cath lab",
+     "title": "CTO & CHIP Beyond the Cath Lab",
      "desc": "What shapes an operator – the unconventional aspects of cath lab work. Including two live cases: Puerto Rico and Pardubice."
     },
     {
      "time": "New this year",
-     "title": "Quick debate",
+     "title": "Quick Debate",
      "desc": "Multiple views on the road to becoming a CTO & CHIP operator – short and sharp."
     }
    ]

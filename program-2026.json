@@ -13,7 +13,7 @@
    "blocks": [
     {
      "time": "Evening",
-     "title": "Welcome dinner",
+     "title": "Welcome Dinner",
      "location": "Everything, Palác Hybský, nám. Republiky 56, Pardubice",
      "url": "https://www.everything.cz/",
      "note": "Arrival, welcome and an informal evening for faculty and participants.",
@@ -94,28 +94,28 @@
        "minutes": 5
       },
       {
-       "title": "Road 3: Online Materials and Self-study",
+       "title": "Road 3: Online Materials and Self-Study",
        "speakers": [
         "benabdessalem"
        ],
        "minutes": 5
       },
       {
-       "title": "The proctor's view: what actually makes a CTO operator",
+       "title": "The Proctor's View: What Actually Makes a CTO Operator",
        "speakers": [
         "boukhris"
        ],
        "minutes": 5
       },
       {
-       "title": "Growing fellows: the mentor's view",
+       "title": "Growing Fellows: The Mentor's View",
        "speakers": [
         "postu"
        ],
        "minutes": 5
       },
       {
-       "title": "Moderator of the block + Referee summary: which road, for whom?",
+       "title": "Moderator of the Block + Referee Summary: Which Road, for Whom?",
        "speakers": [
         "kala"
        ],
@@ -158,14 +158,14 @@
        "minutes": 12
       },
       {
-       "title": "Strategies and techniques in CTO-PCI Going Viral",
+       "title": "Strategies and Techniques in CTO-PCI Going Viral",
        "speakers": [
         "harb"
        ],
        "minutes": 12
       },
       {
-       "title": "Up-to-date Use of CCTA for CTO&Complex PCI",
+       "title": "Up-to-Date Use of CCTA for CTO & Complex PCI",
        "speakers": [
         "0gwpcie82vqxg29zgoxy",
         "opolski"
@@ -173,7 +173,7 @@
        "minutes": 12
       },
       {
-       "title": "Less Metal, More Strategy, and Lots of Unknown (DCBs in complex lesions)",
+       "title": "Less Metal, More Strategy, and Lots of Unknown (DCBs in Complex Lesions)",
        "speakers": [
         "baldovsky"
        ],
@@ -185,7 +185,7 @@
      "type": "session",
      "number": 3,
      "label": "Session 3",
-     "title": "MCS protected PCI",
+     "title": "MCS-Protected PCI",
      "from": "12:00",
      "to": "13:00",
      "chairs": [
@@ -203,7 +203,7 @@
      "liveCases": [],
      "lectures": [
       {
-       "title": "Impella in elective high-risk PCI: The Poznań Experience vs. Evidence",
+       "title": "Impella in Elective High-Risk PCI: The Poznań Experience vs. Evidence",
        "speakers": [
         "kaluzna"
        ],
@@ -217,7 +217,7 @@
        "minutes": 10
       },
       {
-       "title": "What Impella-PL Registry Taught Me about Protected-PCI",
+       "title": "What Impella-PL Registry Taught Me About Protected PCI",
        "speakers": [
         "pietrasik"
        ],
@@ -249,7 +249,7 @@
      "type": "session",
      "number": 4,
      "label": "Session 4",
-     "title": "Beyond the Cathlab",
+     "title": "Beyond the Cath Lab",
      "from": "13:45",
      "to": "16:30",
      "chairs": [
@@ -307,7 +307,7 @@
        "minutes": 10
       },
       {
-       "title": "Rewind: 20 years of loving and teaching CTO PCI",
+       "title": "Rewind: 20 Years of Loving and Teaching CTO PCI",
        "speakers": [
         "kalnins"
        ],
@@ -678,7 +678,7 @@
    "tags": [],
    "roles": [
     {
-     "role": "Cath lab coordinator",
+     "role": "Cath Lab coordinator",
      "session": null
     }
    ]

@@ -98,7 +98,7 @@
       h.push('</div></div>');
 
       if((s.liveCases||[]).length){
-        h.push('<h3 class="pr-h">Live cases</h3><div class="pr-live">');
+        h.push('<h3 class="pr-h">Live Cases</h3><div class="pr-live">');
         s.liveCases.forEach(function(lc){
           var ops=(lc.operators||[]).map(jmeno);
           h.push('<article class="pr-karta">'
