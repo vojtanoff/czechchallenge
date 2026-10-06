@@ -13,26 +13,52 @@
   "use strict";
 
   function esc(t){ return String(t==null?"":t).replace(/[&<>"]/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
-  // monogram místo chybějící fotky: první písmena prvního a posledního slova (bez „M.“ a podobných zkratek)
-  function mono(jmeno){
-    var casti=String(jmeno||"").split(/\s+/).filter(function(x){ return x && !/^\p{Lu}\.$/u.test(x) && !/^[„"(]/.test(x); });
-    if(!casti.length) return "";
-    return (casti[0][0]+(casti.length>1?casti[casti.length-1][0]:"")).toUpperCase();
-  }
-  function portret(f, trida){
-    return f.photo
-      ? '<img src="'+esc(f.photo)+'" alt="'+esc(f.name)+'" loading="lazy" decoding="async">'
-      : '<span class="'+trida+'" aria-hidden="true">'+esc(mono(f.name))+'</span>';
-  }
   var redukce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // ikony kreslené ručně v barvě textu (currentColor), ať jdou na bílou i fialovou kartu
+  // ikony jsou Milošovy soubory z návrhu (img/ikony/, převzaté z testovacího webu); oběd je dokreslený stejným tahem
+  var IKONY=(document.currentScript&&document.currentScript.dataset.ikony)||"img/ikony/";
+  function ikona(soubor, w, h){ return '<img src="'+IKONY+soubor+'" width="'+w+'" height="'+h+'" alt="" aria-hidden="true" loading="lazy">'; }
   var IKONA={
-    vlevo:'<svg viewBox="0 0 31 25" width="31" height="25" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M29 12.5H3M12 3.5 3 12.5l9 9"/></svg>',
-    vpravo:'<svg viewBox="0 0 31 25" width="31" height="25" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12.5h26M19 3.5l9 9-9 9"/></svg>',
-    kava:'<svg viewBox="0 0 109 109" width="109" height="109" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 44h52v22a22 22 0 0 1-22 22H44a22 22 0 0 1-22-22z"/><path d="M74 50h7a10 10 0 0 1 0 20h-7"/><path d="M18 98h66"/><path d="M39 32c0-6 6-6 6-12s-6-6-6-12M53 32c0-6 6-6 6-12s-6-6-6-12"/></svg>',
+    vlevo:ikona("sipka-vlevo.svg",31,25), vpravo:ikona("sipka-vpravo.svg",31,25),
+    kava:ikona("kava.svg",109,109), obed:ikona("obed.svg",109,109),
     ven:'<svg viewBox="0 0 10 10" width="9" height="9" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8 8 2M3.5 2H8v4.5"/></svg>'
   };
+
+  // vlajky: vlastní zjednodušené SVG (poměr 3:2, viewBox 0 0 30 20) v jednotném stylu, žádné emoji ani CDN
+  function hvezda(cx,cy,r,n,barva){
+    n=n||5; var b=[]; for(var i=0;i<n*2;i++){ var a=Math.PI/n*i-Math.PI/2, k=i%2?r*.42:r; b.push((cx+Math.cos(a)*k).toFixed(2)+","+(cy+Math.sin(a)*k).toFixed(2)); }
+    return '<polygon points="'+b.join(" ")+'" fill="'+barva+'"/>';
+  }
+  function pruhy(barvy, svisle){ // rovnoměrné pruhy
+    var n=barvy.length, d=(svisle?30:20)/n;
+    return barvy.map(function(c,i){ return svisle?'<rect x="'+(i*d)+'" y="0" width="'+d+'" height="20" fill="'+c+'"/>':'<rect x="0" y="'+(i*d)+'" width="30" height="'+d+'" fill="'+c+'"/>'; }).join("");
+  }
+  var VLAJKY={
+    CZE:pruhy(["#fff","#d7141a"])+'<polygon points="0,0 15,10 0,20" fill="#11457e"/>',
+    SVK:pruhy(["#fff","#0b4ea2","#ee1c25"])+'<path d="M6.5 6h7v7.2c0 2.3-2.2 3.6-3.5 4.3C8.7 16.8 6.5 15.5 6.5 13.2z" fill="#ee1c25" stroke="#fff" stroke-width=".7"/><path d="M10 7.6v6.4M8 9.4h4M8.4 11.2h3.2" stroke="#fff" stroke-width="1"/><path d="M7.6 14.6c.6-.9 1.5-1.3 2.4-1.3s1.8.4 2.4 1.3c-.6.9-1.5 1.4-2.4 1.4s-1.8-.5-2.4-1.4z" fill="#0b4ea2"/>',
+    POL:pruhy(["#fff","#dc143c"]),
+    ROU:pruhy(["#002b7f","#fcd116","#ce1126"],true),
+    ITA:pruhy(["#009246","#fff","#ce2b37"],true),
+    AUT:pruhy(["#ed2939","#fff","#ed2939"]),
+    GER:pruhy(["#000","#dd0000","#ffce00"]),
+    HUN:pruhy(["#ce2939","#fff","#477050"]),
+    SLO:pruhy(["#fff","#005da4","#ed1c24"])+'<path d="M6 4.2h5v4.2c0 1.8-1.4 2.9-2.5 3.5C7.4 11.3 6 10.2 6 8.4z" fill="#005da4" stroke="#fff" stroke-width=".5"/><path d="M6.6 9.6l1.3-1.9.6.8 1-1.6 1 1.6.6-.8 1.3 1.9c-.4 1-1.3 1.6-2.4 2.1-1.1-.5-2-1.1-2.4-2.1z" fill="#fff"/>',
+    TUN:'<rect width="30" height="20" fill="#e70013"/><circle cx="15" cy="10" r="5.6" fill="#fff"/><circle cx="15" cy="10" r="4.2" fill="#e70013"/><circle cx="16" cy="10" r="3.4" fill="#fff"/>'+hvezda(16.6,10,2,5,"#e70013"),
+    AUS:'<rect width="30" height="20" fill="#00008b"/><path d="M0 0l15 10M15 0L0 10" stroke="#fff" stroke-width="2.2"/><path d="M0 0l15 10M15 0L0 10" stroke="#cf142b" stroke-width=".8"/><path d="M7.5 0v10M0 5h15" stroke="#fff" stroke-width="3"/><path d="M7.5 0v10M0 5h15" stroke="#cf142b" stroke-width="1.6"/>'+hvezda(7.5,15.5,2.4,7,"#fff")+hvezda(22.5,4.2,1.5,7,"#fff")+hvezda(18.5,9,1.5,7,"#fff")+hvezda(26.5,8.2,1.5,7,"#fff")+hvezda(22.5,16.2,1.5,7,"#fff")+hvezda(24.2,11,1,5,"#fff"),
+    PRI:pruhy(["#ed0000","#fff","#ed0000","#fff","#ed0000"])+'<polygon points="0,0 17,10 0,20" fill="#0050f0"/>'+hvezda(5.6,10,3.2,5,"#fff"),
+    LAT:'<rect width="30" height="20" fill="#9e3039"/><rect y="8" width="30" height="4" fill="#fff"/>',
+    EST:pruhy(["#0072ce","#000","#fff"]),
+    SWE:'<rect width="30" height="20" fill="#006aa7"/><path d="M10 0v20M0 10h30" stroke="#fecc00" stroke-width="4"/>',
+    SUI:'<rect width="30" height="20" fill="#d52b1e"/><path d="M15 5v10M10 10h10" stroke="#fff" stroke-width="3"/>',
+    ESP:'<rect width="30" height="20" fill="#aa151b"/><rect y="5" width="30" height="10" fill="#f1bf00"/>',
+    GBR:'<rect width="30" height="20" fill="#012169"/><path d="M0 0l30 20M30 0L0 20" stroke="#fff" stroke-width="4"/><path d="M0 0l30 20M30 0L0 20" stroke="#c8102e" stroke-width="1.5"/><path d="M15 0v20M0 10h30" stroke="#fff" stroke-width="6"/><path d="M15 0v20M0 10h30" stroke="#c8102e" stroke-width="3.5"/>',
+    ISR:'<rect width="30" height="20" fill="#fff"/><rect y="2.5" width="30" height="3" fill="#0038b8"/><rect y="14.5" width="30" height="3" fill="#0038b8"/><path d="M15 6l3.5 6h-7zM15 14l3.5-6h-7z" fill="none" stroke="#0038b8" stroke-width=".9"/>',
+    GRE:pruhy(["#0d5eaf","#fff","#0d5eaf","#fff","#0d5eaf","#fff","#0d5eaf","#fff","#0d5eaf"])+'<rect width="11" height="11.1" fill="#0d5eaf"/><path d="M5.5 0v11.1M0 5.6h11" stroke="#fff" stroke-width="2.2"/>'
+  };
+  function vlajka(kod, zeme){
+    if(!VLAJKY[kod]) return "";
+    return '<svg class="fa-vlajka" viewBox="0 0 30 20" width="22" height="15" role="img" aria-label="'+esc(zeme)+'"><title>'+esc(zeme)+'</title>'+VLAJKY[kod]+'</svg>';
+  }
 
   var cache={};
   function nacti(src){
@@ -63,7 +89,7 @@
       var h=[];
       h.push('<div class="pr-hlava"><div class="pr-hlava-l"><p class="pr-cas">'+esc(cas(s))+'</p>'
         +'<h3 class="pr-titul"><span>'+esc(s.label||("Session "+s.number))+'</span><span>'+esc(s.title)+'</span></h3></div>'
-        +'<div class="pr-hlava-p">'+skupina("Chairs", s.chairs||[])+skupina("Panel", s.panel||[]));
+        +'<div class="pr-hlava-p">'+skupina("Chairs", s.chairs||[])+skupina("Discussants", s.discussants||[]));
       var male=[];
       if((s.provokers||[]).length) male.push(skupina(s.provokers.length>1?"Provokers":"Provoker", s.provokers));
       if((s.coordinators||[]).length) male.push(skupina(s.coordinators.length>1?"Session coordinators":"Session coordinator", s.coordinators));
@@ -91,7 +117,7 @@
         s.lectures.forEach(function(p,i){
           var rec=(p.speakers||[]).map(jmeno);
           h.push('<article class="pr-prednaska'+(i===0?" on":"")+'"><span class="pr-cislo" aria-hidden="true">'+(i+1)+'</span><h4>Lecture</h4>'
-            +'<div class="pr-telo"><p class="pr-nazev'+(s.topicsHidden?" tba":"")+'">'+esc(p.title)+'</p>'
+            +'<div class="pr-telo"><p class="pr-nazev">'+esc(p.title)+'</p>'
             +'<p class="pr-recnik">'+(rec.length?esc(rec.join(" & ")):'<span class="pr-tba">Speaker to be announced</span>')
             +(p.minutes?'<small>'+p.minutes+' min</small>':'')+'</p></div></article>');
         });
@@ -100,14 +126,15 @@
       }
 
       var pz=pauzaPo(d, s);
-      // hrnek jen tam, kde se opravdu něco pije nebo jí (ne u Closing Remarks)
-      if(pz) h.push('<div class="pr-pauza">'+(/coffee|break|lunch|dinner/i.test(pz.title)?'<span class="pr-kava">'+IKONA.kava+'</span>':'')+'<p class="pr-cas">'+esc(cas(pz))+'</p><h3>'+esc(pz.title)+'</h3></div>');
+      // ikona podle druhu přestávky: Milošův hrnek u kávy, příbor u oběda, u Closing Remarks nic
+      if(pz){ var ik=/coffee/i.test(pz.title)?IKONA.kava:/lunch|dinner/i.test(pz.title)?IKONA.obed:"";
+        h.push('<div class="pr-pauza">'+(ik?'<span class="pr-kava">'+ik+'</span>':'')+'<p class="pr-cas">'+esc(cas(pz))+'</p><h3>'+esc(pz.title)+'</h3></div>'); }
       return h.join("");
     }
     // den bez sessions (čtvrtek): jen společenské bloky
     function denBezSessionsHtml(d){
       return '<div class="pr-spolecenske">'+d.blocks.map(function(b){
-        return '<div class="pr-pauza pr-spol"><p class="pr-cas">'+esc(b.time||cas(b))+'</p><h3>'+esc(b.title)+'</h3>'
+        return '<div class="pr-pauza pr-spol"><span class="pr-kava">'+IKONA.obed+'</span><p class="pr-cas">'+esc(b.time||cas(b))+'</p><h3>'+esc(b.title)+'</h3>'
           +(b.location?'<p class="pr-kde">'+esc(b.location)+'</p>':'')
           +(b.note?'<p class="pr-pozn">'+esc(b.note)+'</p>':'')
           +(b.url?'<a class="pr-odkaz" href="'+esc(b.url)+'" target="_blank" rel="noopener">'+esc(b.url.replace(/^https?:\/\/(www\.)?/,"").replace(/\/$/,""))+' '+IKONA.ven+'</a>':'')
@@ -159,7 +186,7 @@
 
   /* ================================================================ FACULTY */
   function roleText(f){
-    // „Chair · Session 4“; stejná role ve více sessions se slije: „Panel · Sessions 1, 3“
+    // „Chair · Session 4“; stejná role ve více sessions se slije: „Discussant · Sessions 1, 3“
     var podle={}; (f.roles||[]).forEach(function(r){ (podle[r.role]=podle[r.role]||[]).push(r.session); });
     return Object.keys(podle).map(function(role){
       var s=podle[role].filter(function(x){ return x!=null; });
@@ -167,26 +194,17 @@
     });
   }
   function kresliFaculty(el, D){
-    var vsichni=D.faculty||[];
-    var reditele=vsichni.filter(function(f){ return (f.tags||[]).indexOf("Course director")>=0; });
-    var clenove=vsichni.filter(function(f){ return reditele.indexOf(f)<0; });
+    // Vojta 6. 10.: bez fotek i zástupných, bez bloku Course directors (jsou na hlavní straně), jen jméno, role a stát.
+    // Vlajky: data-flags="1" na prvku; pro náhled přebije ?vlajky=1 / ?vlajky=0 v adrese.
+    var vl=/[?&]vlajky=(\d)/.exec(location.search), sVlajkou=vl ? vl[1]==="1" : el.dataset.flags==="1";
+    var clenove=D.faculty||[];
     var MOBIL_PRVNICH=6;   // na telefonu se ukáže šest a tlačítko „Load more“, jako v návrhu
-    var h=[];
-    if(reditele.length){
-      h.push('<div class="fa-reditele"><h3 class="fa-h">Course directors</h3><div class="fa-karty">');
-      reditele.forEach(function(f){
-        h.push('<article class="fa-karta"><div class="fa-foto">'+portret(f,"fa-mono fa-mono-velky")+'<span class="fa-stitek">'+esc(f.tags[0])+'</span></div>'
-          +'<div class="fa-telo"><h4>'+esc(f.name)+'</h4>'+(f.affiliation?'<p class="fa-org">'+esc(f.affiliation)+'</p>':'')
-          +'<div class="fa-radek"><p>'+esc(f.country)+'</p><p class="fa-role">'+roleText(f).map(esc).join("<br>")+'</p></div></div></article>');
-      });
-      h.push('</div></div>');
-    }
-    h.push('<div class="fa-clenove"><h3 class="fa-h">'+clenove.length+' faculty members</h3><ul class="fa-seznam">');
+    var h=['<div class="fa-clenove'+(sVlajkou?" s-vlajkou":"")+'"><h3 class="fa-h">'+clenove.length+' faculty members</h3><ul class="fa-seznam">'];
     clenove.forEach(function(f,i){
-      h.push('<li'+(i>=MOBIL_PRVNICH?' class="fa-dalsi"':'')+'><div class="fa-kolo">'+portret(f,"fa-mono")+'</div><div class="fa-text">'
+      h.push('<li'+(i>=MOBIL_PRVNICH?' class="fa-dalsi"':'')+'><div class="fa-text">'
         +'<p class="fa-jmeno">'+esc(f.name)+'</p>'
         +'<p class="fa-popis">'+roleText(f).map(function(t){ return '<span>'+esc(t)+'</span>'; }).join("")+'</p>'
-        +'<p class="fa-zeme">'+esc(f.country)+'</p></div></li>');
+        +'<p class="fa-zeme">'+(sVlajkou?vlajka(f.countryCode, f.country):'')+'<span>'+esc(f.country)+'</span></p></div></li>');
     });
     h.push('</ul>'+(clenove.length>MOBIL_PRVNICH?'<button type="button" class="fa-vic">Load more</button>':'')+'</div>');
     el.innerHTML=h.join("");

@@ -43,7 +43,7 @@
       "will",
       "sobieszek"
      ],
-     "panel": [
+     "discussants": [
       "kala",
       "postu",
       "andreka",
@@ -78,7 +78,6 @@
        "ivus": "tomasov"
       }
      ],
-     "topicsHidden": false,
      "lectures": [
       {
        "title": "Road 1: Fellowship",
@@ -141,15 +140,15 @@
       "achim",
       "benabdessalem"
      ],
-     "panel": [
+     "discussants": [
       "pawluczuk",
       "kaucak",
-      "novobilsky"
+      "novobilsky",
+      "cerny"
      ],
      "provokers": [],
      "coordinators": [],
      "liveCases": [],
-     "topicsHidden": false,
      "lectures": [
       {
        "title": "Symptoms Matter: The Endpoint That Counts (ORBITA-CTO, EURO-CTO)",
@@ -193,7 +192,7 @@
       "kaluzna",
       "varvarovsky"
      ],
-     "panel": [
+     "discussants": [
       "pietrasik",
       "matejka",
       "kral",
@@ -202,7 +201,6 @@
      "provokers": [],
      "coordinators": [],
      "liveCases": [],
-     "topicsHidden": false,
      "lectures": [
       {
        "title": "Impella in elective high-risk PCI: The Poznań Experience vs. Evidence",
@@ -258,11 +256,11 @@
       "novotny",
       "laanmets"
      ],
-     "panel": [
+     "discussants": [
       "colletti",
       "kanovsky",
       "boukhris",
-      "cerny"
+      "tomasov"
      ],
      "provokers": [
       "harb"
@@ -293,24 +291,23 @@
        "ivus": null
       }
      ],
-     "topicsHidden": true,
      "lectures": [
       {
-       "title": "Topic to be announced",
+       "title": "Musician & Complex PCI Operator: Timing, Tension, Touch",
        "speakers": [
         "avramovic"
        ],
        "minutes": 10
       },
       {
-       "title": "Topic to be announced",
+       "title": "The Operator's Adrenaline Rush",
        "speakers": [
         "opolski"
        ],
        "minutes": 10
       },
       {
-       "title": "Topic to be announced",
+       "title": "Rewind: 20 years of loving and teaching CTO PCI",
        "speakers": [
         "kalnins"
        ],
@@ -335,7 +332,6 @@
    "countryCode": "TUN",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
      "role": "Speaker",
@@ -354,7 +350,6 @@
    "countryCode": "ROU",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
      "role": "Speaker",
@@ -373,10 +368,9 @@
    "countryCode": "HUN",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
-     "role": "Panel",
+     "role": "Discussant",
      "session": 1
     }
    ]
@@ -388,7 +382,6 @@
    "countryCode": "SLO",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
      "role": "Provoker",
@@ -407,7 +400,6 @@
    "countryCode": "SVK",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
      "role": "Speaker",
@@ -422,7 +414,6 @@
    "countryCode": "ITA",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
      "role": "Speaker",
@@ -437,14 +428,13 @@
    "countryCode": "TUN",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
      "role": "Speaker",
      "session": 1
     },
     {
-     "role": "Panel",
+     "role": "Discussant",
      "session": 4
     }
    ]
@@ -456,7 +446,6 @@
    "countryCode": "ITA",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
      "role": "Speaker",
@@ -471,10 +460,9 @@
    "countryCode": "ROU",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
-     "role": "Panel",
+     "role": "Discussant",
      "session": 1
     },
     {
@@ -490,14 +478,13 @@
    "countryCode": "ITA",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
      "role": "Live case operator",
      "session": 1
     },
     {
-     "role": "Panel",
+     "role": "Discussant",
      "session": 4
     }
    ]
@@ -509,11 +496,10 @@
    "countryCode": "CZE",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
-     "role": "Panel",
-     "session": 4
+     "role": "Discussant",
+     "session": 2
     }
    ]
   },
@@ -524,7 +510,6 @@
    "countryCode": "AUS",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
      "role": "Live case operator",
@@ -539,7 +524,6 @@
    "countryCode": "AUT",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
      "role": "Speaker",
@@ -558,10 +542,9 @@
    "countryCode": "CZE",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
-     "role": "Panel",
+     "role": "Discussant",
      "session": 3
     },
     {
@@ -577,10 +560,9 @@
    "countryCode": "CZE",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
-     "role": "Panel",
+     "role": "Discussant",
      "session": 1
     },
     {
@@ -596,7 +578,6 @@
    "countryCode": "LAT",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
      "role": "Speaker",
@@ -611,7 +592,6 @@
    "countryCode": "POL",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
      "role": "Chair",
@@ -630,10 +610,9 @@
    "countryCode": "CZE",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
-     "role": "Panel",
+     "role": "Discussant",
      "session": 4
     }
    ]
@@ -645,10 +624,9 @@
    "countryCode": "CZE",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
-     "role": "Panel",
+     "role": "Discussant",
      "session": 2
     }
    ]
@@ -658,12 +636,11 @@
    "name": "Aleš Král",
    "country": "Czechia",
    "countryCode": "CZE",
-   "photo": "img/photos/kral-1.jpg",
+   "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
-     "role": "Panel",
+     "role": "Discussant",
      "session": 3
     },
     {
@@ -679,11 +656,24 @@
    "countryCode": "EST",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
      "role": "Chair",
      "session": 4
+    }
+   ]
+  },
+  {
+   "id": "41umzeal6gmv1tj40t7o",
+   "name": "Tomáš Lazarák",
+   "country": "Czechia",
+   "countryCode": "CZE",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Cath lab coordinator",
+     "session": null
     }
    ]
   },
@@ -694,10 +684,9 @@
    "countryCode": "CZE",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
-     "role": "Panel",
+     "role": "Discussant",
      "session": 3
     }
    ]
@@ -709,10 +698,9 @@
    "countryCode": "CZE",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
-     "role": "Panel",
+     "role": "Discussant",
      "session": 2
     }
    ]
@@ -722,11 +710,10 @@
    "name": "Vojtěch Novotný",
    "country": "Czechia",
    "countryCode": "CZE",
-   "photo": "img/photos/vojta-portret.jpg",
+   "photo": null,
    "tags": [
     "Course director"
    ],
-   "affiliation": "KC AGEL Pardubice",
    "roles": [
     {
      "role": "Session coordinator",
@@ -745,7 +732,6 @@
    "countryCode": "POL",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
      "role": "Speaker",
@@ -764,10 +750,9 @@
    "countryCode": "POL",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
-     "role": "Panel",
+     "role": "Discussant",
      "session": 2
     }
    ]
@@ -779,10 +764,9 @@
    "countryCode": "POL",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
-     "role": "Panel",
+     "role": "Discussant",
      "session": 3
     },
     {
@@ -798,10 +782,9 @@
    "countryCode": "ROU",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
-     "role": "Panel",
+     "role": "Discussant",
      "session": 1
     },
     {
@@ -817,7 +800,6 @@
    "countryCode": "CZE",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
      "role": "Speaker",
@@ -832,7 +814,6 @@
    "countryCode": "POL",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
      "role": "Speaker",
@@ -847,7 +828,6 @@
    "countryCode": "AUT",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
      "role": "Live case operator",
@@ -862,7 +842,6 @@
    "countryCode": "POL",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
      "role": "Chair",
@@ -875,9 +854,8 @@
    "name": "Roman Štípal",
    "country": "Czechia",
    "countryCode": "CZE",
-   "photo": "img/photos/stipal-1.jpg",
+   "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
      "role": "Speaker",
@@ -894,13 +872,16 @@
    "name": "Pavol Tomašov",
    "country": "Czechia",
    "countryCode": "CZE",
-   "photo": "img/photos/tomasov-2.jpg",
+   "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
      "role": "IVUS commentator",
      "session": 1
+    },
+    {
+     "role": "Discussant",
+     "session": 4
     }
    ]
   },
@@ -911,7 +892,6 @@
    "countryCode": "PRI",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
      "role": "Live case operator",
@@ -924,11 +904,10 @@
    "name": "Ivo Varvařovský",
    "country": "Czechia",
    "countryCode": "CZE",
-   "photo": "img/photos/ivos-1.jpg",
+   "photo": null,
    "tags": [
     "Course director"
    ],
-   "affiliation": "KC AGEL Pardubice",
    "roles": [
     {
      "role": "Chair",
@@ -943,7 +922,6 @@
    "countryCode": "AUT",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
      "role": "Chair",
@@ -958,7 +936,6 @@
    "countryCode": "GER",
    "photo": null,
    "tags": [],
-   "affiliation": null,
    "roles": [
     {
      "role": "Live case operator",

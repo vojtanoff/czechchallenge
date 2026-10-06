@@ -1,8 +1,0 @@
-{
- "_poznamka": "id z Desku → portrét v repu. Přednost má img/faculty/<id>.jpg, tahle mapa je pro fotky, které už v repu leží jinde. Čte to generátor (brain-tools/czech-challenge-program-a-commitmenty.py), ne web.",
- "novotny": "img/photos/vojta-portret.jpg",
- "varvarovsky": "img/photos/ivos-1.jpg",
- "kral": "img/photos/kral-1.jpg",
- "tomasov": "img/photos/tomasov-2.jpg",
- "stipal": "img/photos/stipal-1.jpg"
-}
