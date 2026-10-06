@@ -125,7 +125,7 @@
         h.push('<h3 class="pr-h">Lectures</h3><div class="pr-pas-obal"><div class="pr-pas" tabindex="0" aria-label="Lectures – scroll sideways" style="scroll-padding-inline:'+Math.round(el.getBoundingClientRect().left)+'px">');
         s.lectures.forEach(function(p,i){
           var rec=(p.speakers||[]).map(jmeno);
-          h.push('<article class="pr-prednaska'+(i===0?" on":"")+'"><span class="pr-cislo" aria-hidden="true">'+(i+1)+'</span><h4>Lecture</h4>'
+          h.push('<article class="pr-prednaska"><span class="pr-cislo" aria-hidden="true">'+(i+1)+'</span><h4>Lecture</h4>'
             +'<div class="pr-telo"><p class="pr-nazev">'+esc(p.title)+'</p>'
             +'<p class="pr-recnik">'+(rec.length?esc(rec.join(" & ")):'<span class="pr-tba">Speaker to be announced</span>')
             +(p.minutes?'<small>'+p.minutes+' min</small>':'')+'</p></div></article>');

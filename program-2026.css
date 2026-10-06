@@ -101,7 +101,7 @@
 .pr-prednaska{position:relative; isolation:isolate; overflow:hidden; flex:0 0 auto; scroll-snap-align:start; display:flex; flex-direction:column;
   width:calc(100% - 23px); min-height:352px; border-radius:19px; padding:41px 25px 47px 30px; background:#fff; color:var(--cc-v); transition:color .3s}
 .pr-prednaska::before{content:""; position:absolute; inset:0; z-index:-1; background:var(--cc-v); transform:scaleX(0); transform-origin:left; transition:transform .5s cubic-bezier(0,0,.2,1)}
-.pr-prednaska.on{background:var(--cc-v); color:#fff}
+/* Vojta 6. 10.: první přednáška není trvale zvýrazněná (na rozdíl od Milošova návrhu), barví se jen při najetí jako ostatní */
 @media (hover:hover){ .pr-prednaska:hover{color:#fff} .pr-prednaska:hover::before{transform:scaleX(1)} }
 .pr-cislo{position:absolute; top:32px; right:25px; display:grid; place-items:center; width:48px; height:48px; border-radius:50%;
   border:1px solid currentColor; font-size:22px; line-height:1}
