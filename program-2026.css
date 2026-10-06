@@ -44,6 +44,11 @@
 .pr-skupina p span{display:block}
 .pr-hlava-p > .pr-skupina:first-child h4{margin-top:55px}
 .pr-skupiny-2{display:grid; gap:0 24px}
+/* Dvojice (Provoker / Session coordinator): nadpisy sdílí řádek přes subgrid, takže při zalomeném
+   nadpisu sedí čára i jména v obou sloupcích na stejné úrovni; text nadpisu se drží dole u čáry. */
+.pr-skupiny-2{grid-template-rows:auto auto}
+.pr-skupiny-2 .pr-skupina{display:grid; grid-row:span 2; grid-template-rows:subgrid}
+.pr-skupiny-2 .pr-skupina h4{display:flex; align-items:flex-end}
 .pr-hlava-p::after{content:""; display:block; margin-top:33px; border-top:1px solid var(--cc-line)}
 @media (min-width:861px){
   .pr-detail{margin-top:clamp(72px,9vw,130px)}
