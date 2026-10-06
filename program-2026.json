@@ -36,7 +36,7 @@
      "type": "session",
      "number": 1,
      "label": "Session 1",
-     "title": "Road to CTO&CHIP",
+     "title": "Road to CTO & CHIP",
      "from": "08:30",
      "to": "10:30",
      "chairs": [
@@ -133,7 +133,7 @@
      "type": "session",
      "number": 2,
      "label": "Session 2",
-     "title": "CTO&CHIP Update 2026",
+     "title": "CTO & CHIP Update 2026",
      "from": "11:00",
      "to": "12:00",
      "chairs": [
@@ -424,8 +424,8 @@
   {
    "id": "boukhris",
    "name": "Marouane Boukhris",
-   "country": "Tunisia",
-   "countryCode": "TUN",
+   "country": "France",
+   "countryCode": "FRA",
    "photo": null,
    "tags": [],
    "roles": [
@@ -759,7 +759,7 @@
   },
   {
    "id": "pietrasik",
-   "name": "Arek Pietrasik",
+   "name": "Arkadiusz Pietrasik",
    "country": "Poland",
    "countryCode": "POL",
    "photo": null,

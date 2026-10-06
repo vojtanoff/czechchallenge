@@ -39,6 +39,7 @@
     POL:pruhy(["#fff","#dc143c"]),
     ROU:pruhy(["#002b7f","#fcd116","#ce1126"],true),
     ITA:pruhy(["#009246","#fff","#ce2b37"],true),
+    FRA:pruhy(["#002395","#fff","#ed2939"],true),
     AUT:pruhy(["#ed2939","#fff","#ed2939"]),
     GER:pruhy(["#000","#dd0000","#ffce00"]),
     HUN:pruhy(["#ce2939","#fff","#477050"]),
