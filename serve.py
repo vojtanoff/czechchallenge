@@ -16,6 +16,7 @@ import os
 import socketserver
 import subprocess
 import threading
+import time
 from pathlib import Path
 
 KOREN = Path(__file__).resolve().parent
@@ -37,6 +38,30 @@ def tailscale_ip():
 
 
 class Handler(http.server.SimpleHTTPRequestHandler):
+    def do_POST(self):
+        """Uložení polohy katetru z editoru. Hlavička X-Katetr brání tomu, aby to
+        šlo vyvolat formulářem z cizí stránky; editor ji posílá."""
+        telo = self.rfile.read(int(self.headers.get("Content-Length") or 0))
+        if self.path.split("?")[0] != "/katetr.json":
+            return self.send_error(404)
+        if self.headers.get("X-Katetr") != "1":
+            return self.send_error(403, "missing X-Katetr header")
+        try:
+            data = json.loads(telo.decode("utf-8"))
+            assert isinstance(data, dict) and "pc" in data and "mobil" in data
+        except Exception:
+            return self.send_error(400, "not a katetr payload")
+        cil = KOREN / "katetr.json"
+        docasny = cil.with_suffix(".tmp")
+        docasny.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
+        docasny.replace(cil)
+        odpoved = json.dumps({"ok": True}).encode()
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Content-Length", str(len(odpoved)))
+        self.end_headers()
+        self.wfile.write(odpoved)
+
     def end_headers(self):
         # formulář se po každém přegenerování mění, ať prohlížeč nedrží starý
         self.send_header("Cache-Control", "no-store")
@@ -110,6 +135,31 @@ class Server(socketserver.ThreadingTCPServer):
     daemon_threads = True
 
 
+def pripoj_tailnet_pozdeji(h, servery):
+    """Zkoušet tailnet adresu dál, když při startu ještě nebyla.
+
+    Po restartu Mac mini naběhne launchd dřív než Tailscale. Adresa se zjišťovala
+    jen jednou, takže server zůstal viset na localhostu a na náhled se nedalo dostat
+    z telefonu ani z jiného stroje – a nikdo si toho nevšiml, dokud to Vojta
+    nepotřeboval ukázat (23. 9. 2026). Proto se o ni pokoušíme dál na pozadí.
+    """
+    def zkousej():
+        for _ in range(120):          # zhruba hodina, pak nemá smysl zkoušet dál
+            time.sleep(30)
+            ip = tailscale_ip()
+            if not ip:
+                continue
+            try:
+                s = Server((ip, PORT), h)
+            except OSError:
+                return                # už tam někdo poslouchá, nic neřešíme
+            servery.append(s)
+            threading.Thread(target=s.serve_forever, daemon=True).start()
+            print(f"tailnet adresa naskočila později: http://{ip}:{PORT}", flush=True)
+            return
+    threading.Thread(target=zkousej, daemon=True).start()
+
+
 if __name__ == "__main__":
     KOREN.mkdir(parents=True, exist_ok=True)
     h = functools.partial(Handler, directory=str(KOREN))
@@ -127,6 +177,8 @@ if __name__ == "__main__":
             print(f"na {a} se nedá poslouchat: {e}")
     if not servery:
         raise SystemExit("žádnou adresu se nepodařilo obsadit")
+    if not ip:
+        pripoj_tailnet_pozdeji(h, servery)
     for s in servery[1:]:
         threading.Thread(target=s.serve_forever, daemon=True).start()
     servery[0].serve_forever()

@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="fonts/safiro.css">
 <link rel="stylesheet" href="style.css?v=2026-09-08a">
-<link rel="stylesheet" href="style-pexa.css?v=134">
+<link rel="stylesheet" href="style-pexa.css?v=136">
 </head>
 <body>
 
@@ -29,8 +29,8 @@
     </a>
     <ul class="menu">
       <li><a href="#about">About</a></li>
-      <li><a href="#program">Program</a></li>
-      <li><a href="#faculty">Faculty</a></li>
+      <li><a href="program.html">Program</a></li>
+      <li><a href="faculty.html">Faculty</a></li>
       <li><a href="#venue">Venue</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#partners">Partners</a></li>
@@ -43,7 +43,7 @@
 </header>
 <nav class="fullmenu" id="fullmenu" data-open="false" aria-label="Menu">
   <button class="close" id="menuClose" aria-label="Close menu">×</button>
-  <a href="#about">About</a><a href="#program">Program</a><a href="#faculty">Faculty</a><a href="#venue">Venue</a>
+  <a href="#about">About</a><a href="program.html">Program</a><a href="faculty.html">Faculty</a><a href="#venue">Venue</a>
   <a href="#gallery">Gallery</a><a href="#partners">Partners</a><a href="#contact">Contact</a>
 </nav>
 
@@ -59,8 +59,8 @@
     <div class="hero-text">
       <p class="hero-datum">23 October 2026<span>Pardubice · Czechia</span></p>
       <p class="hero-cta">
-        <a class="btn btn-lime" href="#program">Program</a>
-        <a class="btn btn-ghost" href="#faculty">Faculty</a>
+        <a class="btn btn-lime" href="program.html">Program</a>
+        <a class="btn btn-ghost" href="faculty.html">Faculty</a>
       </p>
     </div>
   </div>
@@ -82,7 +82,7 @@
       <p class="nabih">Vol. 3 will once again combine live cases, focused sessions and open discussion with the spirit of collaboration and friendship that has defined the meeting from the start. New this year: a quick debate – multiple views on the road to becoming a CTO&nbsp;&amp;&nbsp;CHIP operator.</p>
       <p class="nabih">We'll start together with a welcome dinner on October&nbsp;22, followed by a full day of live cases, lectures, debate and shared learning on October&nbsp;23, 2026. And it's a meeting for the whole cath lab team – live cases are a team effort, and so is this day.</p>
       <ul class="facts">
-        <li>Live cases</li><li>Czech &amp; 20+ international faculty</li><li>Quick debate</li><li>Whole cath lab team</li><li>One day, one room</li>
+        <li>Live cases</li><li>Czech &amp; 20+ international faculty</li><li>Quick Debate</li><li>Whole cath lab team</li><li>One day, one room</li>
       </ul>
     </div>
     <div>
@@ -99,8 +99,8 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow">Program</p>
-      <h2>Four sessions, live cases and one debate.</h2>
-      <p class="lead nabih">Working draft – speakers and exact times will follow with the final program.</p>
+      <h2>4 sessions, 4 live cases, unlimited debate.</h2>
+      <p class="lead nabih">The day at a glance. Chairs, discussants, live cases and lectures are in the detailed program.</p>
     </div>
     <div class="days reveal" id="days"></div>
     <div class="live reveal">
@@ -108,7 +108,8 @@
       <p id="liveCases"></p>
     </div>
     <div class="gal-foot">
-      <a class="btn btn-outline" href="#" aria-disabled="true">Scientific program (PDF) – coming soon</a>
+      <a class="btn btn-primary" href="program.html">Detailed program</a>
+      <a class="btn btn-outline" href="Scientific_Program_2026.pdf" target="_blank" rel="noopener">Download program (PDF)</a>
     </div>
   </div>
 </section>
@@ -126,6 +127,9 @@
         <h3>Czech &amp; 20+ international faculty</h3>
         <p id="facultyNote"></p>
       </div>
+    </div>
+    <div class="gal-foot">
+      <a class="btn btn-primary" href="faculty.html">All faculty</a>
     </div>
   </div>
 </section>
@@ -214,8 +218,8 @@
           <nav class="pata-menu" aria-label="Footer navigation">
             <ul>
               <li><a href="#about">About</a></li>
-              <li><a href="#program">Program</a></li>
-              <li><a href="#faculty">Faculty</a></li>
+              <li><a href="program.html">Program</a></li>
+              <li><a href="faculty.html">Faculty</a></li>
               <li><a href="#venue">Venue</a></li>
               <li><a href="#gallery">Editions</a></li>
               <li><a href="#partners">Partners</a></li>
@@ -258,7 +262,21 @@
   function menu(o){ full.dataset.open=o?"true":"false"; burger.setAttribute("aria-expanded",o?"true":"false"); document.body.style.overflow=o?"hidden":""; }
   burger.addEventListener("click",function(){ menu(full.dataset.open!=="true"); });
   $("#menuClose").addEventListener("click",function(){ menu(false); });
-  full.querySelectorAll("a").forEach(function(a){ a.addEventListener("click",function(){ menu(false); }); });
+  // odkaz z menu: nejdřív menu zavřít (vrátí rolování stránky), pak teprve dojet na kotvu;
+  // scrollIntoView respektuje scroll-margin-top, takže sekce nezajede pod hlavičku
+  full.querySelectorAll("a").forEach(function(a){ a.addEventListener("click",function(e){
+    var h=a.getAttribute("href")||"", cil=h.charAt(0)==="#" && h.length>1 ? document.getElementById(h.slice(1)) : null;
+    menu(false);
+    if(!cil) return;
+    e.preventDefault();
+    history.replaceState(null,"",h);
+    setTimeout(function(){
+      cil.scrollIntoView({behavior:"smooth", block:"start"});
+      // pojistka: plynulé rolování hned po zavření menu umí telefon zahodit, pak se dojede rovnou
+      setTimeout(function(){ var y=cil.getBoundingClientRect().top, m=parseFloat(getComputedStyle(cil).scrollMarginTop)||0;
+        if(Math.abs(y-m)>40) cil.scrollIntoView({behavior:"instant", block:"start"}); },900);
+    },60);
+  }); });
 
   // jemné najetí sekcí – z viditelného stavu (jen posun), ať náhled i sdílený odkaz ukáže vše
   if("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches){
@@ -587,6 +605,15 @@
     // obsah z content.json je vykreslený – efekty si můžou vzít i to, co přibylo
     document.dispatchEvent(new Event("obsah"));
   });
+
+  // příchod s kotvou (např. z podstránky na index.html#contact): obsah se po načtení ještě skládá
+  // z content.json a obrázků, takže prohlížečem nastavená pozice ujede – po načtení ji dorovnat
+  if(location.hash.length>1){
+    var cilK=document.getElementById(location.hash.slice(1));
+    if(cilK) addEventListener("load",function(){ [100,700].forEach(function(t){ setTimeout(function(){
+      var m=parseFloat(getComputedStyle(cilK).scrollMarginTop)||0;
+      if(Math.abs(cilK.getBoundingClientRect().top-m)>40) cilK.scrollIntoView({behavior:"instant", block:"start"}); },t); }); });
+  }
 })();
 </script>
 <script src="efekty.js?v=106"></script>

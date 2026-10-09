@@ -1,0 +1,200 @@
+/* Program a Faculty 2026 – styl komponent z program-2026.js.
+   Rozměry jsou z testovacího webu Miloše (pexxa) a kodéra: Safiro Medium, fialová #4B32D0
+   na podkladu #F9F8F6, bílé karty bez stínu, pilulky, limetková karta přestávky #F2FF9F.
+   Jejich zlom „lg" je 1024 px; tady přepínáme na 861 px, kde přepíná celá stránka
+   (navigace, hero), a tři sloupce faculty až od 1024 px.
+   Soubor je samostatný: jediné, co bere z okolí, jsou proměnné --violet, --ground, --lime,
+   --font-display – a když chybí, má vlastní náhrady. */
+
+[data-cc-program],[data-cc-faculty],.pr-pdf{
+  --cc-v:var(--violet,#4B32D0); --cc-cream:var(--ground,#F9F8F6); --cc-lime:var(--lime,#F2FF9F);
+  --cc-soft:var(--violet-soft,#E6E2FA); --cc-line:rgba(75,50,208,.5);
+  --cc-font:var(--font-display,"Safiro","Helvetica Neue",Arial,sans-serif);
+  font-family:var(--cc-font); font-weight:500; color:var(--cc-v); line-height:1.1;
+  min-height:120px}
+/* resety přes :where(), ať mají nulovou specificitu a třídy níž je bez boje přebijí */
+:where([data-cc-program],[data-cc-faculty]) p{margin:0; max-width:none}
+:where([data-cc-program],[data-cc-faculty]) :where(h3,h4){margin:0; font-family:var(--cc-font); font-weight:500; text-wrap:initial}
+:where([data-cc-program],[data-cc-faculty]) button{font-family:var(--cc-font); font-weight:500; cursor:pointer; -webkit-tap-highlight-color:transparent}
+[data-cc-program] button:focus-visible,[data-cc-faculty] button:focus-visible,.pr-pas:focus-visible,.pr-odkaz:focus-visible{outline:3px solid var(--cc-v); outline-offset:3px}
+.pr-tba{opacity:.55; font-style:italic}
+.pr-chyba{opacity:.7}
+
+/* ---------- přepínače dnů a sessions: pilulky přes celou šířku ---------- */
+.pr-dny,.pr-sessions{display:grid; grid-auto-flow:column; grid-auto-columns:1fr}
+.pr-dny{gap:13px} .pr-sessions{gap:4px; margin-top:41px}
+.pr-dny button,.pr-sessions button{width:100%; border-radius:999px; border:1px solid var(--cc-v); background:var(--cc-cream); color:var(--cc-v);
+  padding:0 6px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; transition:background .3s, color .3s}
+.pr-dny button{height:41px; font-size:15px} .pr-sessions button{height:32px; font-size:12px}
+.pr-dny button[aria-pressed="true"],.pr-sessions button[aria-pressed="true"]{background:var(--cc-v); color:#fff}
+@media (hover:hover){ .pr-dny button:not([aria-pressed="true"]):hover,.pr-sessions button:not([aria-pressed="true"]):hover{background:var(--cc-v); color:#fff} }
+@media (min-width:861px){
+  .pr-dny{gap:19px} .pr-sessions{gap:15px; margin-top:51px}
+  .pr-dny button{height:88px; font-size:clamp(26px,2.4vw,34.6px)} .pr-sessions button{height:69px; font-size:clamp(20px,1.8vw,26px)}
+}
+
+/* ---------- hlavička session: čas a název vlevo, lidé vpravo ---------- */
+.pr-detail{margin-top:66px}
+.pr-cas{font-size:20px; line-height:.885; letter-spacing:0}
+.pr-titul{margin-top:12px; font-size:60px; line-height:.885; letter-spacing:-.02em}
+.pr-titul span{display:block}
+.pr-titul span + span{margin-top:.04em}
+.pr-skupina h4{font-size:20px; line-height:.885; margin-top:33px; padding-top:33px; border-top:1px solid var(--cc-line)}
+.pr-skupina p{margin-top:7px; font-size:26px; line-height:1.1}
+.pr-skupina p span{display:block}
+.pr-hlava-p > .pr-skupina:first-child h4{margin-top:55px}
+.pr-skupiny-2{display:grid; gap:0 24px}
+/* Dvojice (Provoker / Session coordinator): nadpisy sdílí řádek přes subgrid, takže při zalomeném
+   nadpisu sedí čára i jména v obou sloupcích na stejné úrovni; text nadpisu se drží dole u čáry. */
+.pr-skupiny-2{grid-template-rows:auto auto}
+.pr-skupiny-2 .pr-skupina{display:grid; grid-row:span 2; grid-template-rows:subgrid}
+.pr-skupiny-2 .pr-skupina h4{display:flex; align-items:flex-end}
+.pr-hlava-p::after{content:""; display:block; margin-top:33px; border-top:1px solid var(--cc-line)}
+@media (min-width:861px){
+  .pr-detail{margin-top:clamp(72px,9vw,130px)}
+  .pr-hlava{display:grid; grid-template-columns:1fr 1fr; gap:21px; align-items:start}
+  .pr-cas{font-size:30px}
+  .pr-titul{margin-top:41px; font-size:clamp(60px,6vw,85px)}
+  .pr-hlava-p{padding-top:3px}
+  .pr-skupina h4{font-size:30px; margin-top:0; padding:0 0 17px; border-top:0; border-bottom:1px solid var(--cc-line)}
+  .pr-skupina p{margin-top:12px; font-size:clamp(30px,2.8vw,40px)}
+  .pr-hlava-p > .pr-skupina:first-child h4{margin-top:0}
+  .pr-hlava-p > * + *{margin-top:clamp(40px,4.6vw,66px)}
+  .pr-skupiny-2{grid-template-columns:1fr 1fr; gap:0 21px}
+  .pr-skupiny-2 .pr-skupina p{font-size:clamp(24px,2vw,28px)}
+  .pr-hlava-p::after{display:none}
+}
+@media (min-width:861px) and (max-width:1023px){ .pr-skupiny-2{grid-template-columns:1fr} .pr-skupiny-2 > * + *{margin-top:40px} }
+
+/* ---------- mezititulky Live cases / Lectures ---------- */
+.pr-h{margin-top:56px; font-size:40px; line-height:1; letter-spacing:-.04em}
+@media (min-width:861px){ .pr-h{margin-top:clamp(80px,10vw,148px); font-size:51px; letter-spacing:-.05em} }
+
+/* ---------- live cases: bílé karty, při najetí se zleva zalijí fialovou ---------- */
+.pr-live{display:grid; gap:5px; margin-top:38px}
+.pr-karta{position:relative; isolation:isolate; overflow:hidden; border-radius:23px; background:#fff; color:var(--cc-v);
+  min-height:236px; padding:35px 16px 30px 33px; transition:color .3s}
+.pr-karta::before{content:""; position:absolute; inset:0; z-index:-1; background:var(--cc-v); transform:scaleX(0); transform-origin:left; transition:transform .5s cubic-bezier(0,0,.2,1)}
+@media (hover:hover){ .pr-karta:hover{color:#fff} .pr-karta:hover::before{transform:scaleX(1)} }
+.pr-pilulka{position:absolute; top:31px; right:27px; display:inline-flex; align-items:center; height:26px; padding:0 12px; border-radius:999px;
+  border:1px solid var(--cc-v); background:#fff; color:var(--cc-v); font-size:12.9px; white-space:nowrap}
+.pr-karta h4{font-size:20px; line-height:.885; padding-right:110px}
+.pr-misto{margin-top:27px; max-width:267px; font-size:20px; line-height:.885}
+.pr-ops{margin-top:32px; max-width:230px}
+.pr-ops p:first-child{font-size:19.5px; line-height:1}
+.pr-ops p + p{margin-top:5px; font-size:12px; line-height:14px}
+.pr-ivus{opacity:.8}
+/* Remote transmission u času session (Radar 9. 10.), stejná pilulka jako země u live casu */
+.pr-stitek{display:inline-flex; align-items:center; height:22px; margin-left:10px; padding:0 10px; border-radius:999px; border:1px solid var(--cc-v);
+  font-size:12px; line-height:1; vertical-align:middle; white-space:nowrap}
+@media (min-width:861px){ .pr-stitek{height:30px; padding:0 14px; font-size:16px} }
+@media (min-width:861px){
+  .pr-live{grid-template-columns:1fr 1fr; gap:21px; margin-top:35px}
+  .pr-karta{min-height:356px; padding:50px 40px 44px 58px}
+  .pr-pilulka{top:47px; right:42px; height:39px; padding:0 20px; font-size:19.4px}
+  .pr-karta h4{font-size:30px; padding-right:200px}
+  .pr-misto{margin-top:46px; max-width:513px; font-size:30px}
+  .pr-ops{margin-top:62px; max-width:529px}
+  .pr-ops p:first-child{font-size:24px}
+  .pr-ops p + p{font-size:14.7px; line-height:17px}
+}
+@media (prefers-reduced-motion:reduce){ .pr-karta,.pr-karta::before,.pr-prednaska,.pr-prednaska::before{transition:none} }
+
+/* ---------- přednášky: vodorovný pás karet, první fialová, ostatní bílé ----------
+   Pás přetéká z rámečku stránky až k okrajům okna (jako u nich), karty se chytají na levý okraj rámečku. */
+.pr-pas-obal{margin-top:22px}
+.pr-pas{display:flex; gap:21px; overflow-x:auto; scroll-snap-type:x mandatory;
+  margin:0 calc(50% - 50vw); padding:0 calc(50vw - 50%) 4px;
+  scrollbar-width:none; -ms-overflow-style:none; overscroll-behavior-x:contain}
+.pr-pas::-webkit-scrollbar{display:none}
+.pr-prednaska{position:relative; isolation:isolate; overflow:hidden; flex:0 0 auto; scroll-snap-align:start; display:flex; flex-direction:column;
+  width:calc(100% - 23px); min-height:352px; border-radius:19px; padding:41px 25px 47px 30px; background:#fff; color:var(--cc-v); transition:color .3s}
+.pr-prednaska::before{content:""; position:absolute; inset:0; z-index:-1; background:var(--cc-v); transform:scaleX(0); transform-origin:left; transition:transform .5s cubic-bezier(0,0,.2,1)}
+/* Vojta 6. 10.: první přednáška není trvale zvýrazněná (na rozdíl od Milošova návrhu), barví se jen při najetí jako ostatní */
+@media (hover:hover){ .pr-prednaska:hover{color:#fff} .pr-prednaska:hover::before{transform:scaleX(1)} }
+.pr-cislo{position:absolute; top:32px; right:25px; display:grid; place-items:center; width:48px; height:48px; border-radius:50%;
+  border:1px solid currentColor; font-size:22px; line-height:1}
+.pr-prednaska h4{font-size:40px; line-height:.9; letter-spacing:-.07em; padding-right:60px}
+.pr-telo{margin-top:auto; padding-top:28px}
+.pr-nazev{font-size:28px; line-height:1.02; letter-spacing:-.015em; text-wrap:pretty}
+.pr-recnik{margin-top:12px; font-size:19px; line-height:1.1}
+.pr-recnik small{display:inline-block; margin-left:.6em; font-size:13px; opacity:.6; white-space:nowrap}
+.pr-sipky{display:flex; justify-content:flex-end; gap:16px; margin-top:35px}
+.pr-sipka{border:0; background:none; padding:6px; color:var(--cc-v); display:grid; place-items:center; transition:opacity .2s}
+.pr-sipka img{display:block; width:25px; height:20px}
+.pr-sipka:disabled{opacity:.3; pointer-events:none}
+@media (hover:hover){ .pr-sipka:not(:disabled):hover{opacity:.7} }
+@media (min-width:861px){
+  .pr-pas-obal{margin-top:46px}
+  .pr-prednaska{width:314px; min-height:335px; padding:39px 24px 44px 28px}
+  .pr-cislo{top:30px; right:24px; width:46px; height:46px}
+  .pr-prednaska h4{font-size:38px}
+  .pr-recnik{margin-top:15px}
+  .pr-sipky{gap:20px; margin-top:64px}
+  .pr-sipka img{width:31px; height:25px}
+}
+
+/* ---------- přestávka po session: limetková karta s hrnkem ---------- */
+.pr-pauza{position:relative; margin-top:35px; min-height:351px; border-radius:20px; background:var(--cc-lime); color:var(--cc-v); padding:67px 23px 40px}
+.pr-kava{position:absolute; top:65px; right:34px; width:60px; height:60px}
+.pr-kava img{display:block; width:100%; height:100%}
+.pr-pauza h3{margin-top:12px; max-width:290px; font-size:60px; line-height:.885; letter-spacing:-.07em}
+.pr-pauza .pr-cas{padding-right:80px}
+@media (min-width:861px){
+  .pr-pauza{margin-top:79px; min-height:393px; border-radius:31px; padding:67px 28px 56px}
+  .pr-kava{top:98px; right:86px; width:109px; height:109px}
+  .pr-pauza h3{margin-top:21px; max-width:640px; font-size:clamp(72px,7.6vw,110px)}
+  .pr-pauza .pr-cas{padding-right:220px}
+}
+/* večeře: příbor a saxofon vedle sebe (Vojta 6. 10.) */
+/* na telefonu nad textem – vedle nadpisu by ho dvě ikony překryly */
+.pr-kava.pr-ikony{position:static; display:flex; gap:8px; width:auto; height:auto; margin:-27px 0 18px}
+.pr-kava.pr-ikony img{width:60px; height:60px}
+@media (min-width:861px){
+  .pr-kava.pr-ikony{position:absolute; margin:0; gap:16px; width:234px; height:109px}
+  .pr-kava.pr-ikony img{width:109px; height:109px}
+  .pr-spol .pr-cas{padding-right:340px}
+}
+/* čtvrtek: žádné sessions, jen večeře – stejná karta, text navíc */
+.pr-spol .pr-kde,.pr-spol .pr-pozn{margin-top:22px; font-size:18px; line-height:1.3; max-width:52ch; font-weight:400}
+.pr-spol .pr-pozn{margin-top:10px}
+.pr-odkaz{display:inline-flex; align-items:center; gap:7px; margin-top:22px; color:inherit; text-decoration:none; font-size:16px; border-bottom:1px solid var(--cc-line); padding-bottom:1px}
+.pr-odkaz:hover{opacity:.7}
+@media (min-width:861px){ .pr-spol .pr-kde,.pr-spol .pr-pozn{font-size:21px} .pr-odkaz{font-size:18px} }
+
+/* ---------- tlačítko „Download program (PDF)“ – pilulka jako v návrhu ---------- */
+.pr-pdf{display:flex; justify-content:center; margin-top:48px}
+.pr-pdf a{display:inline-flex; align-items:center; gap:10px; height:41px; padding:0 22px; border-radius:999px; background:var(--cc-v); color:#fff;
+  font-family:var(--cc-font); font-weight:500; font-size:16px; text-decoration:none; border:1px solid var(--cc-v); transition:background .25s, color .25s}
+.pr-pdf a svg{width:16px; height:16px}
+@media (hover:hover){ .pr-pdf a:hover{background:var(--cc-cream); color:var(--cc-v)} }
+@media (min-width:861px){ .pr-pdf{margin-top:72px} .pr-pdf a{height:56px; padding:0 30px; font-size:20px} .pr-pdf a svg{width:18px; height:18px} }
+
+/* ================================================================ FACULTY */
+.fa-h{font-size:42px; line-height:.8; letter-spacing:-.07em}
+@media (min-width:861px){ .fa-h{font-size:clamp(44px,4.45vw,64px)} }
+
+/* členové: jméno, role v programu, stát (volitelně s vlajkou); bez fotek */
+.fa-clenove{margin-top:48px}
+.fa-seznam{list-style:none; margin:28px 0 0; padding:0; display:grid; gap:34px}
+.fa-seznam li{border-top:1px solid var(--cc-line); padding-top:18px}
+.fa-text{min-width:0}
+.fa-jmeno{font-size:22.3px; line-height:.9; letter-spacing:-.07em}
+.fa-popis{margin-top:13px; font-size:13.4px; line-height:1; letter-spacing:-.07em}
+.fa-popis span{display:block}
+.fa-popis span + span{margin-top:6px}
+.fa-zeme{display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:17px; font-size:13.4px; line-height:1; letter-spacing:-.07em}
+.fa-vlajka{flex:none; width:22px; height:15px; border-radius:3px; box-shadow:inset 0 0 0 1px rgba(75,50,208,.18)}
+.fa-vic{display:inline-flex; align-items:center; justify-content:center; height:41px; margin-top:47px; padding:0 24px; border:0; border-radius:999px;
+  background:var(--cc-v); color:#fff; font-size:16px; transition:background .2s}
+.fa-vic:hover{background:var(--violet-deep,#3320A6)}
+@media (min-width:861px){
+  .fa-clenove{margin-top:clamp(56px,6vw,88px)}
+  .fa-seznam{margin-top:66px; grid-template-columns:1fr 1fr; gap:42px 41px}
+  .fa-seznam li{padding-top:22px}
+  .fa-vic{display:none}
+}
+@media (min-width:1024px){ .fa-seznam{grid-template-columns:1fr 1fr 1fr} }
+
+/* podstránky program.html a faculty.html: odstup obsahu od fialové patičky */
+.podstranka{padding-bottom:clamp(80px,10vw,140px)}

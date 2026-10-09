@@ -1,0 +1,976 @@
+{
+ "generated": "2026-10-10",
+ "event": {
+  "name": "CTO&CHIP Czech Challenge 2026",
+  "date": "2026-10-23",
+  "venue": "Jan Kašpar Hall, Pardubice"
+ },
+ "days": [
+  {
+   "id": "thu",
+   "label": "Thursday",
+   "date": "22 October 2026",
+   "blocks": [
+    {
+     "time": "Evening",
+     "title": "Welcome Dinner",
+     "location": "Everything, Palác Hybský, nám. Republiky 56, Pardubice",
+     "url": "https://www.everything.cz/",
+     "note": "Arrival, welcome and an informal evening for faculty and participants.",
+     "type": "social"
+    }
+   ]
+  },
+  {
+   "id": "fri",
+   "label": "Friday",
+   "date": "23 October 2026",
+   "blocks": [
+    {
+     "type": "break",
+     "from": "08:15",
+     "to": "08:30",
+     "title": "Registration & Welcome Coffee"
+    },
+    {
+     "type": "session",
+     "number": 1,
+     "label": "Session 1",
+     "title": "Road to CTO & CHIP",
+     "from": "08:30",
+     "to": "10:30",
+     "chairs": [
+      "laanmets",
+      "sobieszek",
+      "kala"
+     ],
+     "discussants": [
+      "postu",
+      "andreka",
+      "pleva",
+      "kalnins"
+     ],
+     "provokers": [
+      "avramovic"
+     ],
+     "coordinators": [
+      "novotny"
+     ],
+     "liveCases": [
+      {
+       "title": "Live Case 1",
+       "location": "Remote transmission from The Prince Charles Hospital, Brisbane",
+       "country": "Australia",
+       "remote": true,
+       "operators": [
+        "dautov"
+       ],
+       "ivus": null
+      },
+      {
+       "title": "Live Case 2",
+       "location": "KC AGEL Pardubice",
+       "country": "Czechia",
+       "remote": false,
+       "operators": [
+        "woitek",
+        "colletti"
+       ],
+       "ivus": "tomasov",
+       "localCoordinator": "kral"
+      }
+     ],
+     "remote": true,
+     "lectures": [
+      {
+       "title": "Road 1: Fellowship",
+       "speakers": [
+        "achim"
+       ],
+       "minutes": 5
+      },
+      {
+       "title": "Road 2: Proctoring",
+       "speakers": [
+        "stipal"
+       ],
+       "minutes": 5
+      },
+      {
+       "title": "Road 3: Online Materials and Self-Study",
+       "speakers": [
+        "benabdessalem"
+       ],
+       "minutes": 5
+      },
+      {
+       "title": "The Proctor's View: What Actually Makes a CTO Operator",
+       "speakers": [
+        "boukhris"
+       ],
+       "minutes": 5
+      },
+      {
+       "title": "Growing Fellows: The Mentor's View",
+       "speakers": [
+        "postu"
+       ],
+       "minutes": 5
+      },
+      {
+       "title": "Referee: Which Road, for Whom?",
+       "speakers": [
+        "kala"
+       ],
+       "minutes": 5
+      }
+     ]
+    },
+    {
+     "type": "break",
+     "from": "10:30",
+     "to": "11:00",
+     "title": "Coffee Break & Networking"
+    },
+    {
+     "type": "session",
+     "number": 2,
+     "label": "Session 2",
+     "title": "CTO & CHIP Update 2026",
+     "from": "11:00",
+     "to": "12:00",
+     "chairs": [
+      "achim",
+      "benabdessalem"
+     ],
+     "discussants": [
+      "pawluczuk",
+      "barbero",
+      "novobilsky",
+      "cerny"
+     ],
+     "provokers": [],
+     "coordinators": [],
+     "liveCases": [],
+     "remote": false,
+     "lectures": [
+      {
+       "title": "Symptoms Matter: The Endpoint That Counts",
+       "speakers": [
+        "barbero"
+       ],
+       "minutes": 12
+      },
+      {
+       "title": "Strategies and Techniques in CTO-PCI Going Viral",
+       "speakers": [
+        "harb"
+       ],
+       "minutes": 12
+      },
+      {
+       "title": "Up-to-Date Use of CCTA for CTO & Complex PCI",
+       "speakers": [
+        "0gwpcie82vqxg29zgoxy",
+        "opolski"
+       ],
+       "minutes": 12
+      },
+      {
+       "title": "DCB in Complex PCI: Less Metal, More Strategy, and Lots of Unknown",
+       "speakers": [
+        "baldovsky"
+       ],
+       "minutes": 12
+      }
+     ]
+    },
+    {
+     "type": "session",
+     "number": 3,
+     "label": "Session 3",
+     "title": "MCS-Protected PCI",
+     "from": "12:00",
+     "to": "13:00",
+     "chairs": [
+      "kaluzna",
+      "varvarovsky"
+     ],
+     "discussants": [
+      "pietrasik",
+      "matejka",
+      "kral",
+      "7mrwb85v6whmip7h5zi4"
+     ],
+     "provokers": [],
+     "coordinators": [],
+     "liveCases": [],
+     "remote": false,
+     "lectures": [
+      {
+       "title": "Impella in Elective High-Risk PCI: The Poznań Experience vs. Evidence",
+       "speakers": [
+        "kaluzna"
+       ],
+       "minutes": 10
+      },
+      {
+       "title": "Vascular Access for MCS",
+       "speakers": [
+        "sacha"
+       ],
+       "minutes": 10
+      },
+      {
+       "title": "What Impella-PL Registry Taught Me About Protected PCI",
+       "speakers": [
+        "pietrasik"
+       ],
+       "minutes": 10
+      },
+      {
+       "title": "Plan B: Protected PCI with iVAC",
+       "speakers": [
+        "hlinomaz"
+       ],
+       "minutes": 10
+      },
+      {
+       "title": "Knowing When to Wean: It Doesn't End in the Cath Lab",
+       "speakers": [
+        "rob"
+       ],
+       "minutes": 10
+      }
+     ]
+    },
+    {
+     "type": "break",
+     "from": "13:00",
+     "to": "13:45",
+     "title": "Lunch Break"
+    },
+    {
+     "type": "session",
+     "number": 4,
+     "label": "Session 4",
+     "title": "Beyond the Cath Lab",
+     "from": "13:45",
+     "to": "16:30",
+     "chairs": [
+      "novotny",
+      "will"
+     ],
+     "discussants": [
+      "colletti",
+      "jirous",
+      "boukhris",
+      "tomasov"
+     ],
+     "provokers": [
+      "harb"
+     ],
+     "coordinators": [
+      "kral"
+     ],
+     "liveCases": [
+      {
+       "title": "Live Case 4",
+       "location": "Remote transmission from Puerto Rico",
+       "country": "Puerto Rico",
+       "remote": true,
+       "operators": [
+        "trinidad"
+       ],
+       "ivus": null
+      },
+      {
+       "title": "Live Case 3",
+       "location": "KC AGEL Pardubice",
+       "country": "Czechia",
+       "remote": false,
+       "operators": [
+        "schwarz",
+        "cocoi"
+       ],
+       "ivus": "stipal",
+       "localCoordinator": "41umzeal6gmv1tj40t7o"
+      }
+     ],
+     "remote": true,
+     "lectures": [
+      {
+       "title": "Musician & Complex PCI Operator: Timing, Tension, Touch",
+       "speakers": [
+        "avramovic"
+       ],
+       "minutes": 10
+      },
+      {
+       "title": "The Operator's Adrenaline Rush",
+       "speakers": [
+        "opolski"
+       ],
+       "minutes": 10
+      },
+      {
+       "title": "Rewind: 20 Years of Loving and Teaching CTO PCI",
+       "speakers": [
+        "kalnins"
+       ],
+       "minutes": 15
+      }
+     ]
+    },
+    {
+     "type": "break",
+     "from": "16:30",
+     "to": "16:45",
+     "title": "Closing Remarks & Adjourn"
+    }
+   ]
+  }
+ ],
+ "faculty": [
+  {
+   "id": "benabdessalem",
+   "name": "Mohamed Aymen Ben Abdessalem",
+   "country": "Tunisia",
+   "countryCode": "TUN",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Speaker",
+     "session": 1
+    },
+    {
+     "role": "Chair",
+     "session": 2
+    }
+   ]
+  },
+  {
+   "id": "achim",
+   "name": "Alexandru Achim",
+   "country": "Romania",
+   "countryCode": "ROU",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Speaker",
+     "session": 1
+    },
+    {
+     "role": "Chair",
+     "session": 2
+    }
+   ]
+  },
+  {
+   "id": "andreka",
+   "name": "Judit Andréka",
+   "country": "Austria",
+   "countryCode": "AUT",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Discussant",
+     "session": 1
+    }
+   ]
+  },
+  {
+   "id": "avramovic",
+   "name": "Jurij Avramovič",
+   "country": "Slovenia",
+   "countryCode": "SLO",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Provoker",
+     "session": 1
+    },
+    {
+     "role": "Speaker",
+     "session": 4
+    }
+   ]
+  },
+  {
+   "id": "baldovsky",
+   "name": "Ľudovít Baldovský",
+   "country": "Slovakia",
+   "countryCode": "SVK",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Speaker",
+     "session": 2
+    }
+   ]
+  },
+  {
+   "id": "barbero",
+   "name": "Umberto Barbero",
+   "country": "Italy",
+   "countryCode": "ITA",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Discussant",
+     "session": 2
+    },
+    {
+     "role": "Speaker",
+     "session": 2
+    }
+   ]
+  },
+  {
+   "id": "7mrwb85v6whmip7h5zi4",
+   "name": "Ivo Bernát",
+   "country": "Czechia",
+   "countryCode": "CZE",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Discussant",
+     "session": 3
+    }
+   ]
+  },
+  {
+   "id": "boukhris",
+   "name": "Marouane Boukhris",
+   "country": "France",
+   "countryCode": "FRA",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Speaker",
+     "session": 1
+    },
+    {
+     "role": "Discussant",
+     "session": 4
+    }
+   ]
+  },
+  {
+   "id": "0gwpcie82vqxg29zgoxy",
+   "name": "Giuseppe Caliendo",
+   "country": "Poland",
+   "countryCode": "POL",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Speaker",
+     "session": 2
+    }
+   ]
+  },
+  {
+   "id": "cocoi",
+   "name": "Mihai Cocoi",
+   "country": "Romania",
+   "countryCode": "ROU",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Live case operator",
+     "session": 4
+    }
+   ]
+  },
+  {
+   "id": "colletti",
+   "name": "Giuseppe Colletti",
+   "country": "Belgium",
+   "countryCode": "BEL",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Live case operator",
+     "session": 1
+    },
+    {
+     "role": "Discussant",
+     "session": 4
+    }
+   ]
+  },
+  {
+   "id": "cerny",
+   "name": "Jindřich Černý",
+   "country": "Czechia",
+   "countryCode": "CZE",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Discussant",
+     "session": 2
+    }
+   ]
+  },
+  {
+   "id": "dautov",
+   "name": "Rustem Dautov",
+   "country": "Australia",
+   "countryCode": "AUS",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Live case operator",
+     "session": 1
+    }
+   ]
+  },
+  {
+   "id": "harb",
+   "name": "Stefan Harb",
+   "country": "Austria",
+   "countryCode": "AUT",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Speaker",
+     "session": 2
+    },
+    {
+     "role": "Provoker",
+     "session": 4
+    }
+   ]
+  },
+  {
+   "id": "hlinomaz",
+   "name": "Ota Hlinomaz",
+   "country": "Czechia",
+   "countryCode": "CZE",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Speaker",
+     "session": 3
+    }
+   ]
+  },
+  {
+   "id": "jirous",
+   "name": "Štěpán Jirouš",
+   "country": "Czechia",
+   "countryCode": "CZE",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Discussant",
+     "session": 4
+    }
+   ]
+  },
+  {
+   "id": "kala",
+   "name": "Petr Kala",
+   "country": "Czechia",
+   "countryCode": "CZE",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Chair",
+     "session": 1
+    },
+    {
+     "role": "Speaker",
+     "session": 1
+    }
+   ]
+  },
+  {
+   "id": "kalnins",
+   "name": "Artis Kalniņš",
+   "country": "Latvia",
+   "countryCode": "LAT",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Discussant",
+     "session": 1
+    },
+    {
+     "role": "Speaker",
+     "session": 4
+    }
+   ]
+  },
+  {
+   "id": "kaluzna",
+   "name": "Marta Kałużna-Oleksy",
+   "country": "Poland",
+   "countryCode": "POL",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Chair",
+     "session": 3
+    },
+    {
+     "role": "Speaker",
+     "session": 3
+    }
+   ]
+  },
+  {
+   "id": "kral",
+   "name": "Aleš Král",
+   "country": "Czechia",
+   "countryCode": "CZE",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Local coordinator",
+     "session": 1
+    },
+    {
+     "role": "Discussant",
+     "session": 3
+    },
+    {
+     "role": "Session coordinator",
+     "session": 4
+    }
+   ]
+  },
+  {
+   "id": "laanmets",
+   "name": "Peep Laanmets",
+   "country": "Estonia",
+   "countryCode": "EST",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Chair",
+     "session": 1
+    }
+   ]
+  },
+  {
+   "id": "41umzeal6gmv1tj40t7o",
+   "name": "Tomáš Lazarák",
+   "country": "Czechia",
+   "countryCode": "CZE",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Cath Lab coordinator",
+     "session": null
+    },
+    {
+     "role": "Local coordinator",
+     "session": 4
+    }
+   ]
+  },
+  {
+   "id": "matejka",
+   "name": "Jan Matějka",
+   "country": "Czechia",
+   "countryCode": "CZE",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Discussant",
+     "session": 3
+    }
+   ]
+  },
+  {
+   "id": "novobilsky",
+   "name": "Kamil Novobílský",
+   "country": "Czechia",
+   "countryCode": "CZE",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Discussant",
+     "session": 2
+    }
+   ]
+  },
+  {
+   "id": "novotny",
+   "name": "Vojtěch Novotný",
+   "country": "Czechia",
+   "countryCode": "CZE",
+   "photo": null,
+   "tags": [
+    "Course director"
+   ],
+   "roles": [
+    {
+     "role": "Session coordinator",
+     "session": 1
+    },
+    {
+     "role": "Chair",
+     "session": 4
+    }
+   ]
+  },
+  {
+   "id": "opolski",
+   "name": "Maksymilian Opolski",
+   "country": "Poland",
+   "countryCode": "POL",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Speaker",
+     "session": 2
+    },
+    {
+     "role": "Speaker",
+     "session": 4
+    }
+   ]
+  },
+  {
+   "id": "pawluczuk",
+   "name": "Piotr Pawluczuk",
+   "country": "Poland",
+   "countryCode": "POL",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Discussant",
+     "session": 2
+    }
+   ]
+  },
+  {
+   "id": "pietrasik",
+   "name": "Arkadiusz Pietrasik",
+   "country": "Poland",
+   "countryCode": "POL",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Discussant",
+     "session": 3
+    },
+    {
+     "role": "Speaker",
+     "session": 3
+    }
+   ]
+  },
+  {
+   "id": "pleva",
+   "name": "Leoš Pleva",
+   "country": "Czechia",
+   "countryCode": "CZE",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Discussant",
+     "session": 1
+    }
+   ]
+  },
+  {
+   "id": "postu",
+   "name": "Marin Postu",
+   "country": "Romania",
+   "countryCode": "ROU",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Discussant",
+     "session": 1
+    },
+    {
+     "role": "Speaker",
+     "session": 1
+    }
+   ]
+  },
+  {
+   "id": "rob",
+   "name": "Daniel Rob",
+   "country": "Czechia",
+   "countryCode": "CZE",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Speaker",
+     "session": 3
+    }
+   ]
+  },
+  {
+   "id": "sacha",
+   "name": "Jerzy Sacha",
+   "country": "Poland",
+   "countryCode": "POL",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Speaker",
+     "session": 3
+    }
+   ]
+  },
+  {
+   "id": "schwarz",
+   "name": "Konstantin Schwarz",
+   "country": "Austria",
+   "countryCode": "AUT",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Live case operator",
+     "session": 4
+    }
+   ]
+  },
+  {
+   "id": "sobieszek",
+   "name": "Grzegorz Sobieszek",
+   "country": "Poland",
+   "countryCode": "POL",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Chair",
+     "session": 1
+    }
+   ]
+  },
+  {
+   "id": "stipal",
+   "name": "Roman Štípal",
+   "country": "Czechia",
+   "countryCode": "CZE",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Speaker",
+     "session": 1
+    },
+    {
+     "role": "IVUS commentator",
+     "session": 4
+    }
+   ]
+  },
+  {
+   "id": "tomasov",
+   "name": "Pavol Tomašov",
+   "country": "Czechia",
+   "countryCode": "CZE",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "IVUS commentator",
+     "session": 1
+    },
+    {
+     "role": "Discussant",
+     "session": 4
+    }
+   ]
+  },
+  {
+   "id": "trinidad",
+   "name": "Ricardo Santiago Trinidad",
+   "country": "Puerto Rico",
+   "countryCode": "PRI",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Live case operator",
+     "session": 4
+    }
+   ]
+  },
+  {
+   "id": "varvarovsky",
+   "name": "Ivo Varvařovský",
+   "country": "Czechia",
+   "countryCode": "CZE",
+   "photo": null,
+   "tags": [
+    "Course director"
+   ],
+   "roles": [
+    {
+     "role": "Chair",
+     "session": 3
+    }
+   ]
+  },
+  {
+   "id": "will",
+   "name": "Maximilian Will",
+   "country": "Austria",
+   "countryCode": "AUT",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Chair",
+     "session": 4
+    }
+   ]
+  },
+  {
+   "id": "woitek",
+   "name": "Felix J. Woitek",
+   "country": "Germany",
+   "countryCode": "GER",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Live case operator",
+     "session": 1
+    }
+   ]
+  }
+ ]
+}
