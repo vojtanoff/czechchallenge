@@ -84,6 +84,10 @@
 .pr-ops p:first-child{font-size:19.5px; line-height:1}
 .pr-ops p + p{margin-top:5px; font-size:12px; line-height:14px}
 .pr-ivus{opacity:.8}
+/* Remote transmission u času session (Radar 9. 10.), stejná pilulka jako země u live casu */
+.pr-stitek{display:inline-flex; align-items:center; height:22px; margin-left:10px; padding:0 10px; border-radius:999px; border:1px solid var(--cc-v);
+  font-size:12px; line-height:1; vertical-align:middle; white-space:nowrap}
+@media (min-width:861px){ .pr-stitek{height:30px; padding:0 14px; font-size:16px} }
 @media (min-width:861px){
   .pr-live{grid-template-columns:1fr 1fr; gap:21px; margin-top:35px}
   .pr-karta{min-height:356px; padding:50px 40px 44px 58px}

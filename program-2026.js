@@ -89,7 +89,7 @@
     }
     function sessionHtml(d, s){
       var h=[];
-      h.push('<div class="pr-hlava"><div class="pr-hlava-l"><p class="pr-cas">'+esc(cas(s))+'</p>'
+      h.push('<div class="pr-hlava"><div class="pr-hlava-l"><p class="pr-cas">'+esc(cas(s))+(s.remote?' <span class="pr-stitek">Live Cases</span>':'')+'</p>'
         +'<h3 class="pr-titul"><span>'+esc(s.label||("Session "+s.number))+'</span><span>'+esc(s.title)+'</span></h3></div>'
         +'<div class="pr-hlava-p">'+skupina("Chairs", s.chairs||[])+skupina("Discussants", s.discussants||[]));
       var male=[];
@@ -107,6 +107,7 @@
             +'<h4>'+esc(lc.title)+'</h4><p class="pr-misto">'+esc(lc.location)+'</p>'
             +'<div class="pr-ops"><p>'+(ops.length>1?"Operators":"Operator")+'</p><p>'+(ops.length?esc(ops.join(", ")):'<span class="pr-tba">To be announced</span>')+'</p>'
             +(lc.ivus?'<p class="pr-ivus">IVUS commentary · '+esc(jmeno(lc.ivus))+'</p>':'')
+            +(lc.localCoordinator||lc.localCoordinatorName?'<p class="pr-ivus">Local coordinator: '+esc(lc.localCoordinator?jmeno(lc.localCoordinator):lc.localCoordinatorName)+'</p>':'')
             +'</div></article>');
         });
         h.push('</div>');

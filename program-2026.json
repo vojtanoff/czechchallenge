@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-06",
+ "generated": "2026-10-10",
  "event": {
   "name": "CTO&CHIP Czech Challenge 2026",
   "date": "2026-10-23",
@@ -40,14 +40,15 @@
      "from": "08:30",
      "to": "10:30",
      "chairs": [
-      "will",
-      "sobieszek"
+      "laanmets",
+      "sobieszek",
+      "kala"
      ],
      "discussants": [
-      "kala",
       "postu",
       "andreka",
-      "cocoi"
+      "pleva",
+      "kalnins"
      ],
      "provokers": [
       "avramovic"
@@ -58,7 +59,7 @@
      "liveCases": [
       {
        "title": "Live Case 1",
-       "location": "The Prince Charles Hospital, Brisbane",
+       "location": "Remote transmission from The Prince Charles Hospital, Brisbane",
        "country": "Australia",
        "remote": true,
        "operators": [
@@ -75,9 +76,11 @@
         "woitek",
         "colletti"
        ],
-       "ivus": "tomasov"
+       "ivus": "tomasov",
+       "localCoordinator": "kral"
       }
      ],
+     "remote": true,
      "lectures": [
       {
        "title": "Road 1: Fellowship",
@@ -115,7 +118,7 @@
        "minutes": 5
       },
       {
-       "title": "Moderator of the Block + Referee Summary: Which Road, for Whom?",
+       "title": "Referee: Which Road, for Whom?",
        "speakers": [
         "kala"
        ],
@@ -142,16 +145,17 @@
      ],
      "discussants": [
       "pawluczuk",
-      "kaucak",
+      "barbero",
       "novobilsky",
       "cerny"
      ],
      "provokers": [],
      "coordinators": [],
      "liveCases": [],
+     "remote": false,
      "lectures": [
       {
-       "title": "Symptoms Matter: The Endpoint That Counts (ORBITA-CTO, EURO-CTO)",
+       "title": "Symptoms Matter: The Endpoint That Counts",
        "speakers": [
         "barbero"
        ],
@@ -173,7 +177,7 @@
        "minutes": 12
       },
       {
-       "title": "Less Metal, More Strategy, and Lots of Unknown (DCBs in Complex Lesions)",
+       "title": "DCB in Complex PCI: Less Metal, More Strategy, and Lots of Unknown",
        "speakers": [
         "baldovsky"
        ],
@@ -196,11 +200,12 @@
       "pietrasik",
       "matejka",
       "kral",
-      "hlinomaz"
+      "7mrwb85v6whmip7h5zi4"
      ],
      "provokers": [],
      "coordinators": [],
      "liveCases": [],
+     "remote": false,
      "lectures": [
       {
        "title": "Impella in Elective High-Risk PCI: The Poznań Experience vs. Evidence",
@@ -210,7 +215,7 @@
        "minutes": 10
       },
       {
-       "title": "Vascular Access for Impella",
+       "title": "Vascular Access for MCS",
        "speakers": [
         "sacha"
        ],
@@ -224,14 +229,14 @@
        "minutes": 10
       },
       {
-       "title": "Plan B: Protected PCI with iVac",
+       "title": "Plan B: Protected PCI with iVAC",
        "speakers": [
         "hlinomaz"
        ],
        "minutes": 10
       },
       {
-       "title": "Knowing When to Wean: It Rarely Ends in the Cath Lab",
+       "title": "Knowing When to Wean: It Doesn't End in the Cath Lab",
        "speakers": [
         "rob"
        ],
@@ -254,11 +259,11 @@
      "to": "16:30",
      "chairs": [
       "novotny",
-      "laanmets"
+      "will"
      ],
      "discussants": [
       "colletti",
-      "kanovsky",
+      "jirous",
       "boukhris",
       "tomasov"
      ],
@@ -270,17 +275,6 @@
      ],
      "liveCases": [
       {
-       "title": "Live Case 3",
-       "location": "KC AGEL Pardubice",
-       "country": "Czechia",
-       "remote": false,
-       "operators": [
-        "schwarz",
-        "cocoi"
-       ],
-       "ivus": "stipal"
-      },
-      {
        "title": "Live Case 4",
        "location": "Remote transmission from Puerto Rico",
        "country": "Puerto Rico",
@@ -289,8 +283,21 @@
         "trinidad"
        ],
        "ivus": null
+      },
+      {
+       "title": "Live Case 3",
+       "location": "KC AGEL Pardubice",
+       "country": "Czechia",
+       "remote": false,
+       "operators": [
+        "schwarz",
+        "cocoi"
+       ],
+       "ivus": "stipal",
+       "localCoordinator": "41umzeal6gmv1tj40t7o"
       }
      ],
+     "remote": true,
      "lectures": [
       {
        "title": "Musician & Complex PCI Operator: Timing, Tension, Touch",
@@ -416,8 +423,26 @@
    "tags": [],
    "roles": [
     {
+     "role": "Discussant",
+     "session": 2
+    },
+    {
      "role": "Speaker",
      "session": 2
+    }
+   ]
+  },
+  {
+   "id": "7mrwb85v6whmip7h5zi4",
+   "name": "Ivo Bernát",
+   "country": "Czechia",
+   "countryCode": "CZE",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Discussant",
+     "session": 3
     }
    ]
   },
@@ -461,10 +486,6 @@
    "photo": null,
    "tags": [],
    "roles": [
-    {
-     "role": "Discussant",
-     "session": 1
-    },
     {
      "role": "Live case operator",
      "session": 4
@@ -544,12 +565,22 @@
    "tags": [],
    "roles": [
     {
-     "role": "Discussant",
-     "session": 3
-    },
-    {
      "role": "Speaker",
      "session": 3
+    }
+   ]
+  },
+  {
+   "id": "jirous",
+   "name": "Štěpán Jirouš",
+   "country": "Czechia",
+   "countryCode": "CZE",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Discussant",
+     "session": 4
     }
    ]
   },
@@ -562,7 +593,7 @@
    "tags": [],
    "roles": [
     {
-     "role": "Discussant",
+     "role": "Chair",
      "session": 1
     },
     {
@@ -580,36 +611,12 @@
    "tags": [],
    "roles": [
     {
+     "role": "Discussant",
+     "session": 1
+    },
+    {
      "role": "Speaker",
      "session": 4
-    }
-   ]
-  },
-  {
-   "id": "kanovsky",
-   "name": "Jan Kaňovský",
-   "country": "Czechia",
-   "countryCode": "CZE",
-   "photo": null,
-   "tags": [],
-   "roles": [
-    {
-     "role": "Discussant",
-     "session": 4
-    }
-   ]
-  },
-  {
-   "id": "kaucak",
-   "name": "Vladimír Kaučák",
-   "country": "Czechia",
-   "countryCode": "CZE",
-   "photo": null,
-   "tags": [],
-   "roles": [
-    {
-     "role": "Discussant",
-     "session": 2
     }
    ]
   },
@@ -640,6 +647,10 @@
    "tags": [],
    "roles": [
     {
+     "role": "Local coordinator",
+     "session": 1
+    },
+    {
      "role": "Discussant",
      "session": 3
     },
@@ -659,7 +670,7 @@
    "roles": [
     {
      "role": "Chair",
-     "session": 4
+     "session": 1
     }
    ]
   },
@@ -674,6 +685,10 @@
     {
      "role": "Cath Lab coordinator",
      "session": null
+    },
+    {
+     "role": "Local coordinator",
+     "session": 4
     }
    ]
   },
@@ -772,6 +787,20 @@
     {
      "role": "Speaker",
      "session": 3
+    }
+   ]
+  },
+  {
+   "id": "pleva",
+   "name": "Leoš Pleva",
+   "country": "Czechia",
+   "countryCode": "CZE",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Discussant",
+     "session": 1
     }
    ]
   },
@@ -925,7 +954,7 @@
    "roles": [
     {
      "role": "Chair",
-     "session": 1
+     "session": 4
     }
    ]
   },
