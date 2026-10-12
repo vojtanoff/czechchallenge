@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-10",
+ "generated": "2026-10-12",
  "event": {
   "name": "CTO&CHIP Czech Challenge 2026",
   "date": "2026-10-23",
@@ -47,8 +47,7 @@
      "discussants": [
       "postu",
       "andreka",
-      "pleva",
-      "kalnins"
+      "pleva"
      ],
      "provokers": [
       "avramovic"
@@ -610,10 +609,6 @@
    "photo": null,
    "tags": [],
    "roles": [
-    {
-     "role": "Discussant",
-     "session": 1
-    },
     {
      "role": "Speaker",
      "session": 4
