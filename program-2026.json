@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-12",
+ "generated": "2026-10-20",
  "event": {
   "name": "CTO&CHIP Czech Challenge 2026",
   "date": "2026-10-23",
@@ -62,7 +62,8 @@
        "country": "Australia",
        "remote": true,
        "operators": [
-        "dautov"
+        "dautov",
+        "cq5z6rk4txtouccqtx94"
        ],
        "ivus": null
       },
@@ -258,12 +259,12 @@
      "to": "16:30",
      "chairs": [
       "novotny",
-      "will"
+      "boukhris"
      ],
      "discussants": [
       "colletti",
       "jirous",
-      "boukhris",
+      "kalnins",
       "tomasov"
      ],
      "provokers": [
@@ -458,7 +459,7 @@
      "session": 1
     },
     {
-     "role": "Discussant",
+     "role": "Chair",
      "session": 4
     }
    ]
@@ -556,6 +557,20 @@
    ]
   },
   {
+   "id": "cq5z6rk4txtouccqtx94",
+   "name": "Su Hnin Hlaing",
+   "country": "Australia",
+   "countryCode": "AUS",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Live case operator",
+     "session": 1
+    }
+   ]
+  },
+  {
    "id": "hlinomaz",
    "name": "Ota Hlinomaz",
    "country": "Czechia",
@@ -609,6 +624,10 @@
    "photo": null,
    "tags": [],
    "roles": [
+    {
+     "role": "Discussant",
+     "session": 4
+    },
     {
      "role": "Speaker",
      "session": 4
@@ -936,20 +955,6 @@
     {
      "role": "Chair",
      "session": 3
-    }
-   ]
-  },
-  {
-   "id": "will",
-   "name": "Maximilian Will",
-   "country": "Austria",
-   "countryCode": "AUT",
-   "photo": null,
-   "tags": [],
-   "roles": [
-    {
-     "role": "Chair",
-     "session": 4
     }
    ]
   },
