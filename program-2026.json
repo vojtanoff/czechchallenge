@@ -275,16 +275,6 @@
      ],
      "liveCases": [
       {
-       "title": "Live Case 4",
-       "location": "Remote transmission from Bayamón Heart & Lung Institute, Puerto Rico",
-       "country": "Puerto Rico",
-       "remote": true,
-       "operators": [
-        "trinidad"
-       ],
-       "ivus": null
-      },
-      {
        "title": "Live Case 3",
        "location": "KC AGEL Pardubice",
        "country": "Czechia",
@@ -295,6 +285,16 @@
        ],
        "ivus": "stipal",
        "localCoordinator": "41umzeal6gmv1tj40t7o"
+      },
+      {
+       "title": "Live Case 4",
+       "location": "Remote transmission from Bayamón Heart & Lung Institute, Puerto Rico",
+       "country": "Puerto Rico",
+       "remote": true,
+       "operators": [
+        "trinidad"
+       ],
+       "ivus": null
       }
      ],
      "remote": true,
