@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-20",
+ "generated": "2026-10-22",
  "event": {
   "name": "CTO&CHIP Czech Challenge 2026",
   "date": "2026-10-23",
@@ -83,7 +83,7 @@
      "remote": true,
      "lectures": [
       {
-       "title": "Road 1: Fellowship",
+       "title": "Road 1: Fellowship (online)",
        "speakers": [
         "achim"
        ],
@@ -140,14 +140,14 @@
      "from": "11:00",
      "to": "12:00",
      "chairs": [
-      "achim",
+      "barbero",
       "benabdessalem"
      ],
      "discussants": [
       "pawluczuk",
-      "barbero",
+      "opolski",
       "novobilsky",
-      "cerny"
+      "alzjpxd4uc6atnrz2rpb"
      ],
      "provokers": [],
      "coordinators": [],
@@ -194,7 +194,7 @@
      "to": "13:00",
      "chairs": [
       "kaluzna",
-      "varvarovsky"
+      "sacha"
      ],
      "discussants": [
       "pietrasik",
@@ -276,7 +276,7 @@
      "liveCases": [
       {
        "title": "Live Case 4",
-       "location": "Remote transmission from Puerto Rico",
+       "location": "Remote transmission from Bayamón Heart & Lung Institute, Puerto Rico",
        "country": "Puerto Rico",
        "remote": true,
        "operators": [
@@ -361,10 +361,6 @@
     {
      "role": "Speaker",
      "session": 1
-    },
-    {
-     "role": "Chair",
-     "session": 2
     }
    ]
   },
@@ -423,7 +419,7 @@
    "tags": [],
    "roles": [
     {
-     "role": "Discussant",
+     "role": "Chair",
      "session": 2
     },
     {
@@ -511,20 +507,6 @@
    ]
   },
   {
-   "id": "cerny",
-   "name": "Jindřich Černý",
-   "country": "Czechia",
-   "countryCode": "CZE",
-   "photo": null,
-   "tags": [],
-   "roles": [
-    {
-     "role": "Discussant",
-     "session": 2
-    }
-   ]
-  },
-  {
    "id": "dautov",
    "name": "Rustem Dautov",
    "country": "Australia",
@@ -581,6 +563,20 @@
     {
      "role": "Speaker",
      "session": 3
+    }
+   ]
+  },
+  {
+   "id": "alzjpxd4uc6atnrz2rpb",
+   "name": "Lukáš Jaworski",
+   "country": "Czechia",
+   "countryCode": "CZE",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Discussant",
+     "session": 2
     }
    ]
   },
@@ -763,6 +759,10 @@
    "tags": [],
    "roles": [
     {
+     "role": "Discussant",
+     "session": 2
+    },
+    {
      "role": "Speaker",
      "session": 2
     },
@@ -859,8 +859,26 @@
    "tags": [],
    "roles": [
     {
+     "role": "Chair",
+     "session": 3
+    },
+    {
      "role": "Speaker",
      "session": 3
+    }
+   ]
+  },
+  {
+   "id": "trinidad",
+   "name": "Ricardo Santiago",
+   "country": "Puerto Rico",
+   "countryCode": "PRI",
+   "photo": null,
+   "tags": [],
+   "roles": [
+    {
+     "role": "Live case operator",
+     "session": 4
     }
    ]
   },
@@ -929,20 +947,6 @@
    ]
   },
   {
-   "id": "trinidad",
-   "name": "Ricardo Santiago Trinidad",
-   "country": "Puerto Rico",
-   "countryCode": "PRI",
-   "photo": null,
-   "tags": [],
-   "roles": [
-    {
-     "role": "Live case operator",
-     "session": 4
-    }
-   ]
-  },
-  {
    "id": "varvarovsky",
    "name": "Ivo Varvařovský",
    "country": "Czechia",
@@ -951,12 +955,7 @@
    "tags": [
     "Course director"
    ],
-   "roles": [
-    {
-     "role": "Chair",
-     "session": 3
-    }
-   ]
+   "roles": []
   },
   {
    "id": "woitek",
